@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
 
 class InitiateSetupCommand extends Command {
 
-    protected $signature = 'SEF::initiate';
+    protected $signature = 'SEF:initiate';
     protected $description = 'Second2None Easy Forms initaite setup, run migrations, run seeders';
 
     protected $migrations = [
