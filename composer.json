@@ -24,7 +24,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Core\\Providers\\ServiceProvider"
+                "Second2None\\EasyForms\\Core\\Providers\\ServiceProvider"
             ],
             "aliases": {
                 "EasyForms": "Second2None\\EasyForms\\"
