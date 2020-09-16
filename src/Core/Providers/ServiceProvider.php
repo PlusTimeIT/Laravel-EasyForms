@@ -6,7 +6,7 @@ namespace Second2None\EasyForms\Core\Providers;
 class ServiceProvider extends \Illuminate\Support\ServiceProvider{
 
     protected $commands = [
-        Second2None\EasyForms\Core\Commands\InitiateSetupCommand::class
+        \Second2None\EasyForms\Core\Commands\InitiateSetupCommand::class
     ];
 
     public function boot(){

@@ -9,7 +9,7 @@
             "email": "kane@s2npro.site"
         }
     ],
-    "minimum-stability": "dev-master#0.0.6",
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "Second2None\\EasyForms\\": "src/"
