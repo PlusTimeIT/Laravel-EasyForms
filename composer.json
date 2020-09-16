@@ -1,0 +1,34 @@
+{
+    "name": "second2none/easy-forms", 
+    "description": "Generate, validate and process Vueitfy forms in laravel. Build frontend and backend all from laravel.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kane Grills",
+            "email": "kane@s2npro.site"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Second2None\\EasyForms\\": "src/"
+        }
+    },
+    "require": {
+        "nesbot/carbon": "^2.16"
+    },
+    "require-dev": {
+        "laravel/ui": "^2.2"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Core\\Providers\\ServiceProvider"
+            ],
+            "aliases": {
+                "EasyForms": "Second2None\\EasyForms\\"
+            }
+        }
+    }
+}
