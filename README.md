@@ -4,7 +4,8 @@ This is a general decription about the package
 
 ## Getting started
 ---
-1. Do this command `hello world db`
+1. Open up config/app.php and add `Second2None\EasyForms\Core\Providers\EasyForms::class` to your `providers` array. 
+You should also consider adding `'EasyForms' => Second2None\EasyForms\Core\Providers\EasyForms::class,` to the `alias` array.
 2. Start building forms Yay!
 
 ---

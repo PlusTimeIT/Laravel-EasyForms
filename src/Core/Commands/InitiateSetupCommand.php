@@ -8,8 +8,8 @@ use Illuminate\Console\Command;
 
 class InitiateSetupCommand extends Command {
 
-    protected $signature = 'SEF:initiate';
-    protected $description = 'Second2None Easy Forms initaite setup, run migrations, run seeders';
+    protected $signature    = 'SEF:initiate';
+    protected $description  = 'Second2None Easy Forms initaite setup, run migrations, run seeders';
 
     protected $migrations = [
         '2020_08_30_024400_create_easy_forms_settings' ,
@@ -23,6 +23,7 @@ class InitiateSetupCommand extends Command {
     }
 
     public function handle() {
+        
         $this->comment( 'Second2None Easy Forms ========' );
         $this->comment( 'Completing initial setup' );
         $this->comment( 'Running migrations' );

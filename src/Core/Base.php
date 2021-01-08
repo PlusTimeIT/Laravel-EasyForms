@@ -7,6 +7,7 @@ use Second2None\EasyForms\Core\Models\Settings;
 
 use DB;
 use Schema;
+use Log;
 
 class Base {
 
