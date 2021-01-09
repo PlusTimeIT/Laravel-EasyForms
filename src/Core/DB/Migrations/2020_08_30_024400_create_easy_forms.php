@@ -4,14 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateValidationTypes extends Migration {
+class CreateEasyForms extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
     public function up() {
-        Schema::table( 'ef_forms' , function ( Blueprint $table ) {
+        Schema::create( 'ef_forms' , function ( Blueprint $table ) {
             $table->id();
             $table->string( 'name' );
             $table->string( 'area' );

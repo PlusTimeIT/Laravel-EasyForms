@@ -4,14 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateValidationTypes extends Migration {
+class CreateEasyFormsErrors extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
     public function up() {
-        Schema::table( 'ef_errors' , function ( Blueprint $table ) {
+        Schema::create( 'ef_errors' , function ( Blueprint $table ) {
             $table->id();
             $table->string( 'action' );
             $table->integer( 'type' )->default( 0 );

@@ -4,14 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Settings extends Migration {
+class CreateEasyFormsSettings extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
     public function up() {
-        Schema::table( 'ef_settings' , function ( Blueprint $table ) {
+        Schema::create( 'ef_settings' , function ( Blueprint $table ) {
             $table->id();
             $table->string( 'name' );
             $table->text( 'value' );

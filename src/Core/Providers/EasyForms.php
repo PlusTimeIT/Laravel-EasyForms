@@ -2,6 +2,9 @@
 
 namespace Second2None\EasyForms\Core\Providers;
 
+use Second2None\EasyForms\Core\Base;
+
+use File;
 use Log;
 
 // Second2None\EasyForms\Core\Providers\EasyForms;
@@ -14,9 +17,18 @@ class EasyForms extends \Illuminate\Support\ServiceProvider{
     public function boot(){
         
         // Load Database migrations
-        $this->loadMigrationsFrom( '../DB/Migrations' );
-        $this->publishes( [ '../Config.php' => config_path('easy_forms.php') , ] );
-        $this->loadRoutesFrom(  '../Routes/web.php' );
+        //$this->loadMigrationsFrom( 'DB/Migrations' );
+
+        $this->publishes( 
+            [ dirname( dirname(__FILE__) ) . '/Config.php' => config_path( 'easy_forms.php' ) ] ,
+            'config' 
+        );
+        $this->publishes( 
+            [ dirname( dirname(__FILE__) ) . '/DB/Migrations/' => database_path( 'migrations' ) ] , 
+            'migrations' 
+        );
+
+        $this->loadRoutesFrom(  'Routes/web.php' );
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'courier');
         // Route::get('/dashboard', function () {
         //     return view('courier::dashboard');
@@ -24,12 +36,11 @@ class EasyForms extends \Illuminate\Support\ServiceProvider{
     }
 
     public function register(){
-        Log::debug( 'SERVICE PROVIDER INITITAED' );
         $this->commands( $this->commands );
 
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/easy_forms.php', 'easy_forms'
-        );
+        if( Base::is_vendor_published() )
+            $this->mergeConfigFrom(  '../../config/easy_forms.php', 'easy_forms' );
+           
     }
 
     protected function isEventDispatcher( $instance ) {

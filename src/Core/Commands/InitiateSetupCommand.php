@@ -4,6 +4,10 @@ namespace Second2None\EasyForms\Core\Commands;
 
 use Illuminate\Console\Command;
 
+use Second2None\EasyForms\Core\Base;
+
+use Artisan;
+use File;
 // Second2None\EasyForms\Core\Commands\InitiateSetupCommand
 
 class InitiateSetupCommand extends Command {
@@ -23,15 +27,35 @@ class InitiateSetupCommand extends Command {
     }
 
     public function handle() {
-        
+
         $this->comment( 'Second2None Easy Forms ========' );
         $this->comment( 'Completing initial setup' );
-        $this->comment( 'Running migrations' );
         
-        $migrations = collect( $this->migrations )->map( function( $migration ) {
-            \Artisan::call( 'migrate --path=database/migrations/' . $migration );
-        });
+        
+        if( ! Base::is_vendor_published() ){
+            $this->comment( 'Note: `php artisan vendor:publish --provider=Second2None\EasyForms\Core\Providers\EasyForms` has not been run yet.' );
+            if ( $this->confirm( 'Do you want to run this now?' , true ) ) {
+                $this->comment( 'Running vendor publish...' );
+                Artisan::call( 
+                    'vendor:publish' , [ 
+                        '--provider'    => 'Second2None\EasyForms\Core\Providers\EasyForms' ,
+                        '--force'       => true
+                    ] 
+                );
+            }else{
+                $this->comment( 'Error: You need to run `php artisan vendor:publish --provider=Second2None\EasyForms\Core\Providers\EasyForms` before you can continue further' );
+                return 0;
+            }
+        }
 
+        $this->comment( 'Starting migrations' );
+        Artisan::call( 'migrate' );
+        $this->comment( 'Finished migrations' );
+
+            
+
+
+        $this->comment( 'Second2None Easy Forms ========' );
         return 0;
     }
 }
