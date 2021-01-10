@@ -4,9 +4,12 @@ namespace Second2None\EasyForms\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Second2None\EasyForms\Core\DB\Connector;
+
+// use Second2None\EasyForms\Core\Models\Forms;
 class Forms extends Model {
     
-    protected $table = 'forms';
+    protected $table = Connector::FORMS_TABLE;
 
     protected $fillable = [
         'name' , 'area' , 'field_data' , 'custom_data' , 'callback_functions' , 'status'

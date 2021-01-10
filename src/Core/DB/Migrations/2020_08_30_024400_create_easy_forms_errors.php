@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use Second2None\EasyForms\Core\DB\Connector;
+
 class CreateEasyFormsErrors extends Migration {
     /**
      * Run the migrations.
@@ -11,7 +13,7 @@ class CreateEasyFormsErrors extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create( 'ef_errors' , function ( Blueprint $table ) {
+        Schema::create( Connector::ERROR_TABLE , function ( Blueprint $table ) {
             $table->id();
             $table->string( 'action' );
             $table->integer( 'type' )->default( 0 );
@@ -29,6 +31,6 @@ class CreateEasyFormsErrors extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists( 'ef_errors' );
+        Schema::dropIfExists( Connector::ERROR_TABLE );
     }
 }

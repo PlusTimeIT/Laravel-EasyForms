@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use Second2None\EasyForms\Core\DB\Connector;
+
 class CreateEasyForms extends Migration {
     /**
      * Run the migrations.
@@ -11,7 +13,7 @@ class CreateEasyForms extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create( 'ef_forms' , function ( Blueprint $table ) {
+        Schema::create( Connector::FORMS_TABLE , function ( Blueprint $table ) {
             $table->id();
             $table->string( 'name' );
             $table->string( 'area' );
@@ -30,6 +32,6 @@ class CreateEasyForms extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists( 'ef_forms' );
+        Schema::dropIfExists( Connector::FORMS_TABLE );
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+namespace Second2None\EasyForms\Core\DB\Seeds;
+
 use Illuminate\Database\Seeder;
 
 use Second2None\EasyForms\Core\DB\Connector;
@@ -8,6 +10,7 @@ use Second2None\EasyForms\Core\Models\FormFields;
 use Schema;
 use DB;
 
+// use Second2None\EasyForms\Core\DB\Seeds\FormFieldsSeeder;
 class FormFieldsSeeder extends Seeder{
 
     public function run() {
@@ -112,9 +115,9 @@ class FormFieldsSeeder extends Seeder{
                 'rules'             => FormFields::field_defaults( '' ) ,
                 'status'            => 1 ,
             ]
-        ])->map( function( $field ) {
-            if( FormFields::where( 'name' , $field['name'] )->first() ) return false;
-            FormFields::create( $field );
+        ])->each( function( $field ) {
+            if( ! FormFields::where( 'name' , $field['name'] )->first() )
+                FormFields::create( $field );
         });
     }
 }

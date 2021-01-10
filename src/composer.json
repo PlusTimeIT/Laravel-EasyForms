@@ -19,7 +19,7 @@
         "nesbot/carbon": "^2.16"
     },
     "require-dev": {
-        "laravel/ui": "^2.2"
+        "laravel/ui": "^3.2"
     },
     "extra": {
         "laravel": {
