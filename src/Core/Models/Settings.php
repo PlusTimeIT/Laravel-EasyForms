@@ -28,14 +28,6 @@ class Settings extends Model {
 
     protected $editable_labels = [ 'not editable' , 'editable' ];
     
-    // public function getValueAttribute( $value ){
-    //     return json_decode( $value ) ?? $value;
-    // }
-    
-    // public function setValueAttribute( $value ){
-    //     return is_array( $value ) || is_object( $value ) ? json_encode( $value ) : $value;
-    // }
-    
     public function getStatusLabelAttribute(){
         return $this->status_labels[ $this->status ] ?? 'Status Error';
     }

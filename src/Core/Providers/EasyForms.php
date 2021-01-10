@@ -13,6 +13,7 @@ class EasyForms extends \Illuminate\Support\ServiceProvider{
     protected $commands = [
         \Second2None\EasyForms\Core\Commands\InitiateSetup::class ,
         \Second2None\EasyForms\Core\Commands\DatabaseSeeder::class ,
+        \Second2None\EasyForms\Core\Commands\SettingUpdate::class
     ];
 
     public function boot(){
