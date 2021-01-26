@@ -8,9 +8,9 @@ To ensure Second2None EasyForms runs without errors there is an initial setup ph
 
 Before either of those options is completed you first must:
 - Open up `config/app.php` and add the code below to your `providers` array. 
-`Second2None\EasyForms\Core\Providers\EasyForms::class` 
+`Second2None\EasyForms\App\Providers\EasyForms::class` 
 - You should also consider adding the below code to the `alias` array aswell.
-`'EasyForms' => Second2None\EasyForms\Core\Providers\EasyForms::class,` 
+`'EasyForms' => Second2None\EasyForms\App\Providers\EasyForms::class,` 
 
 ### --- Automatic setup
 This will automatically run through the setup process. This includes `vendor:publish`, migrations, seeders.
@@ -20,7 +20,7 @@ This will automatically run through the setup process. This includes `vendor:pub
 ### --- Manual setup
 If you want to set it up manually or you are having issues with the automatic setup, the following needs to be done for Second2None EasyForms to run smoothly. 
 1. Run the vendor publish command. This will ensure the config, migrations and seed files are copied.
-`php artisan vendor:publish --provider=Second2None\EasyForms\Core\Providers\EasyForms`
+`php artisan vendor:publish --provider=Second2None\EasyForms\App\Providers\EasyForms`
 
 2. The migrations are copied into your `database/migrations/` folder in your laravel project. Running the migrate command will pick these up.
 `php artisan migrate` 

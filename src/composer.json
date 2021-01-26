@@ -12,7 +12,9 @@
     "minimum-stability": "dev-master",
     "autoload": {
         "psr-4": {
-            "Second2None\\EasyForms\\": "src/"
+            "Second2None\\EasyForms\\App\\": "src/" ,
+            "Second2None\\EasyForms\\Database\\Migrations\\": "database/migrations/" ,
+            "Second2None\\EasyForms\\Database\\Seeds\\": "database/seeds/"
         }
     },
     "require": {
@@ -24,10 +26,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Second2None\\EasyForms\\Core\\Providers\\ServiceProvider"
+                "Second2None\\EasyForms\\App\\Providers\\EasyForms"
             ],
             "aliases": {
-                "EasyForms": "Second2None\\EasyForms\\"
+                "EasyForms": "Second2None\\EasyForms\\App"
             }
         }
     }
