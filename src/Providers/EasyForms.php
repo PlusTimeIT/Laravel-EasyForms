@@ -2,13 +2,16 @@
 
 namespace Second2None\EasyForms\App\Providers;
 
+use Illuminate\Support\ServiceProvider;
 use Second2None\EasyForms\App\Core\Base;
+use Second2None\EasyForms\App\Core\LoadForm;
+use Second2None\EasyForms\App\Core\Settings;
 
 use File;
 use Log;
 
 // Second2None\EasyForms\App\Providers\EasyForms;
-class EasyForms extends \Illuminate\Support\ServiceProvider{
+class EasyForms extends ServiceProvider {
 
     protected $package_directories = [];
 
@@ -19,12 +22,21 @@ class EasyForms extends \Illuminate\Support\ServiceProvider{
         \Second2None\EasyForms\App\Commands\Uninstall::class , 
     ];
 
+    public $singletons = [
+        DowntimeNotifier::class => PingdomDowntimeNotifier::class,
+        ServerProvider::class => ServerToolsProvider::class,
+    ];
+
     public function __construct(){
         $this->package_directories = Base::get_directories();
+
+        $form = ( new LoadForm )->getForm( 'example_form' );
+        Log::debug( json_encode( $form ) );
     }
 
     public function boot(){
 
+        
         // publish configuration file
         $this->publishes( 
             [ $this->package_directories[ 'config' ] . '/easy_forms.php' => config_path( 'easy_forms.php' ) ] ,
@@ -50,6 +62,11 @@ class EasyForms extends \Illuminate\Support\ServiceProvider{
     }
 
     public function register(){
+
+        $this->app->singleton( 'EasyForm\Settings', function ($app) {
+            return new Settings($app['EasyFormSettings']);
+        });
+
         $this->commands( $this->commands );
     }
 

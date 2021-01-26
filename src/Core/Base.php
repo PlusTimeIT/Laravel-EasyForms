@@ -46,6 +46,7 @@ class Base {
             
             $package_directories[ 'config' ]      = $package_directories[ 'base' ] . '\config';
             $package_directories[ 'database' ]    = $package_directories[ 'base' ] . '\database';
+            $package_directories[ 'forms' ]       = $package_directories[ 'base' ] . '\forms';
             $package_directories[ 'public' ]      = $package_directories[ 'base' ] . '\public';
             $package_directories[ 'resources' ]   = $package_directories[ 'base' ] . '\resources';
             $package_directories[ 'routes' ]      = $package_directories[ 'base' ] . '\routes';

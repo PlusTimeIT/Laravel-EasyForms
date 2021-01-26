@@ -27,6 +27,7 @@ if( $examples['examples'] )  {
         'easyforms/example/{example_id}' , 
         '\Second2None\EasyForms\App\Core\Controllers\Pages@examples' 
     )->name( 'examples' );
+    
     Route::middleware('web')->get( 
         'easyforms/example/' , 
         '\Second2None\EasyForms\App\Core\Controllers\Pages@example_home' 
