@@ -1,7 +1,7 @@
 {
     "name": "plustime-it/laravel-easy-forms", 
     "description": "Generate, validate and process Vueitfy forms in laravel. Build frontend and backend all from laravel.",
-    "type": "project",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -16,6 +16,7 @@
         }
     },
     "require": {
+        "php": ">=7.4",
         "nesbot/carbon": "^2.16",
         "laravel/framework": "^7.0"
     },
