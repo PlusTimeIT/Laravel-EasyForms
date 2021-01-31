@@ -9,7 +9,7 @@
             "email": "kane@plustime.com.au"
         }
     ],
-    "minimum-stability": "dev-master",
+    "minimum-stability": "0.0.14",
     "autoload": {
         "psr-4": {
             "PlusTimeIT\\EasyForms\\App\\": "src/" ,
