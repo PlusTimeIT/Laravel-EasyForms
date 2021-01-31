@@ -1,5 +1,5 @@
 {
-    "name": "plustime-it/easy-forms", 
+    "name": "plustime-it/laravel-easy-forms", 
     "description": "Generate, validate and process Vueitfy forms in laravel. Build frontend and backend all from laravel.",
     "type": "project",
     "license": "MIT",
