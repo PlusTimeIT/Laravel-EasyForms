@@ -1,6 +1,6 @@
 <?php
 
-namespace Second2None\EasyForms\App\Core\Controllers;
+namespace PlusTimeIT\EasyForms\App\Core\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -12,7 +12,7 @@ use Response;
 use Cache;
 use Log;
 
-// use Second2None\EasyForms\App\Core\Controllers\Pages;
+// use PlusTimeIT\EasyForms\App\Core\Controllers\Pages;
 class Pages extends Controller {
     public function examples( Request $request ){
         return view('vendor.s2n-easyforms.examples.example-1')->with( 'example' , ( object ) [ 'id' => 1 , 'name' => 'Example 1' ] );    

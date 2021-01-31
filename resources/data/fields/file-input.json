@@ -1,0 +1,17 @@
+{
+    "name": "file-input",
+    "default_value": "",
+    "default_rules": [
+        { 
+            "blank_value": true ,
+            "required":  true ,
+            "accept": ".png" ,
+            "placeholder": "" ,
+            "label":  "" ,
+            "readonly":  false ,
+            "value":  "" ,
+            "help":  ""
+        }
+    ],
+    "status": 1
+}

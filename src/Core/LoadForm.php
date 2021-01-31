@@ -1,37 +1,44 @@
 <?php
 
-namespace Second2None\EasyForms\App\Core;
+namespace PlusTimeIT\EasyForms\App\Core;
 
-use Second2None\EasyForms\App\Core\Base;
+use Illuminate\Http\Request;
+use PlusTimeIT\EasyForms\App\Core\Base;
+use PlusTimeIT\EasyForms\App\Objects\EasyForm;
 
 use File;
+use Log;
 
-// use Second2None\EasyForms\App\Core\LoadForm;
+// use PlusTimeIT\EasyForms\App\Core\LoadForm;
 class LoadForm {
 
-        public $package_directories = [];
         protected $load_directory;
-        protected $form_name;
 
-        public function __construct(){
-            $this->package_directories = Base::get_directories();     
-            $this->load_directory = $this->package_directories[ 'forms' ];
+        public function __construct(){ 
+            if( app( Base::class )->isVendorPublished() ){
+                $this->setLoadDirectory( resource_path( 'data\forms' ) );
+            }else{
+                $this->setLoadDirectory( app( Base::class )->directories->data . '\forms' );
+            }
         }
 
-        public function setLoadDirectory( String $directory ){
+        public function setLoadDirectory( string $directory ){
             $this->load_directory = rtrim( $directory , '/' );
             return $this;
         }
 
-        public function getForm( String $form_name ){
-            $this->form_name = $form_name;
+        public function getForm( string $form_name ){
+
             $file_path = $this->load_directory . '/' . $form_name . '.json';
             if( ! File::exists( $file_path ) ){
                 return false;
             }
+            $form_data = json_decode( File::get( $file_path ) );
+            return is_null( $form_data ) ? false : new EasyForm( $form_data ) ;
+        }
 
-            $form_file = json_decode( File::get( $file_path ) );
-            return $form_file ?? false;
+        public static function loadForm( String $form_name ){
+            return ( new LoadForm )->getForm( $form_name );
         }
 
 }

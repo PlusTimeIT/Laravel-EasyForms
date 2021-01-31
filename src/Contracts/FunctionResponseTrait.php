@@ -1,10 +1,10 @@
 <?php
  
- namespace Second2None\EasyForms\App\Traits;
+ namespace PlusTimeIT\EasyForms\App\Contracts;
  
 use Illuminate\Http\Request;
 
-// Second2None\EasyForms\App\Traits;
+// use PlusTimeIT\EasyForms\App\Contracts\FunctionResponseTrait;
  
 trait FunctionResponseTrait {
  
@@ -16,7 +16,7 @@ trait FunctionResponseTrait {
      * @return Object $response 
      */
 
-    public static function response( bool $result , $data ) {
+    public static function response( bool $result , mixed $data ) {
         return ( object ) [ 'success' => $result , 'data' => $data ];
     }
  

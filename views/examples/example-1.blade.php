@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Second2None EasyForm Example {{ $example->id }}</title>
+        <title>PlusTimeIT EasyForm Example {{ $example->id }}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -67,9 +67,10 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                    Second2None EasyForm Example {{ $example->id }}
+                    PlusTimeIT EasyForm Example {{ $example->id }}
                 </div>
                 Example Form 1
+                
                 <div class="links">
                     <a href="/easyforms/example/">Home</a>
                     <a href="/easyforms/example/1">Example 1</a>

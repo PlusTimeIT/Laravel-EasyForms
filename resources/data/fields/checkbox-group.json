@@ -1,0 +1,18 @@
+{
+    "name": "checkbox-group",
+    "default_value": "",
+    "default_rules": [
+        { 
+            "blank_value": true ,
+            "required":  true ,
+            "multiple": false ,
+            "any_field": false ,
+            "placeholder": "" ,
+            "label":  "" ,
+            "readonly":  false ,
+            "value":  "" ,
+            "help":  ""
+        }
+    ],
+    "status": 1
+}

@@ -1,16 +1,16 @@
 <?php
 
-namespace Second2None\EasyForms\Database\Seeds;
+namespace PlusTimeIT\EasyForms\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 
-use Second2None\EasyForms\App\DB\Connector;
-use Second2None\EasyForms\App\Models\Errors;
+use PlusTimeIT\EasyForms\App\DB\Connector;
+use PlusTimeIT\EasyForms\App\Models\Errors;
 
 use Schema;
 use DB;
 
-// use Second2None\EasyForms\Database\Seeds\ErrorsSeeder;
+// use PlusTimeIT\EasyForms\Database\Seeds\ErrorsSeeder;
 class ErrorsSeeder extends Seeder{
 
     public function run() {

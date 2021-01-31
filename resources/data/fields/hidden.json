@@ -1,0 +1,16 @@
+{
+    "name": "hidden",
+    "default_value": "",
+    "default_rules": [
+        { 
+            "blank_value": true ,
+            "required":  true ,
+            "placeholder": "" ,
+            "label":  "" ,
+            "readonly":  false ,
+            "value":  "" ,
+            "help":  ""
+        }
+    ],
+    "status": 1
+}

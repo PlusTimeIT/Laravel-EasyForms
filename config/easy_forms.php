@@ -9,4 +9,5 @@ return [
         // register example routes.
         'examples'  => true , 
     ] ,
+    
 ];

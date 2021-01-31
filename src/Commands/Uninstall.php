@@ -1,19 +1,19 @@
 <?php
 
-namespace Second2None\EasyForms\App\Commands;
+namespace PlusTimeIT\EasyForms\App\Commands;
 
 use Illuminate\Console\Command;
 
-use Second2None\EasyForms\App\Core\Base;
+use PlusTimeIT\EasyForms\App\Core\Base;
 
 use Artisan;
 use File;
 
-// use Second2None\EasyForms\App\Commands\Uninstall;
+// use PlusTimeIT\EasyForms\App\Commands\Uninstall;
 class Uninstall extends Command {
 
     protected $signature    = 'SEF:uninstall {--database=1} {--config=1} {--views=1} {--resources=1}';
-    protected $description  = 'Second2None Easy Forms Uninstaller removes everything created by Second2None EasyForms.';
+    protected $description  = 'PlusTimeIT Easy Forms Uninstaller removes everything created by PlusTimeIT EasyForms.';
 
     public function __construct() {
         parent::__construct();
@@ -21,7 +21,7 @@ class Uninstall extends Command {
 
     public function handle() {
         
-        $this->comment( 'Second2None EasyForms Uninstall Starting ===================================================================' );
+        $this->comment( 'PlusTimeIT EasyForms Uninstall Starting ===================================================================' );
         $this->comment( '-- Running uninstall checks' );
 
         if( $this->option('config') === 1 ) {
@@ -75,7 +75,7 @@ class Uninstall extends Command {
             $this->comment( '--- Removed databases' );
         }
         
-        $this->comment( 'Second2None EasyForms Uninstall Finished ===================================================================' );
+        $this->comment( 'PlusTimeIT EasyForms Uninstall Finished ===================================================================' );
         return 0;
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Second2None\EasyForms\App\Models;
+namespace PlusTimeIT\EasyForms\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Second2None\EasyForms\App\DB\Connector;
+use PlusTimeIT\EasyForms\App\DB\Connector;
 
 class Errors extends Model {
 

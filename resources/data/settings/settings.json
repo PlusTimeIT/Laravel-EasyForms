@@ -1,0 +1,19 @@
+[
+    {
+        "name": "vendor_published",
+        "value": false
+    },
+    {
+        "name": "cache",
+        "value": {
+            "forms": {
+                "enabled": true ,
+                "updated_at": ""
+            },
+            "fields": {
+                "enabled": true ,
+                "updated_at": ""
+            }
+        }
+    }
+]

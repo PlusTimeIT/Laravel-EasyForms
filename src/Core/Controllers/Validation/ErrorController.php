@@ -1,11 +1,11 @@
 <?php
 
-namespace  Second2None\EasyForms\App\Core\Controllers\Validation;
+namespace  PlusTimeIT\EasyForms\App\Core\Controllers\Validation;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use Second2None\EasyForms\App\Models\FormErrors;
+use PlusTimeIT\EasyForms\App\Models\FormErrors;
 
 use Log;
 

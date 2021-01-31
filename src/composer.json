@@ -1,5 +1,5 @@
 {
-    "name": "second2none/easy-forms", 
+    "name": "PlusTimeIT/easy-forms", 
     "description": "Generate, validate and process Vueitfy forms in laravel. Build frontend and backend all from laravel.",
     "type": "project",
     "license": "MIT",
@@ -12,9 +12,9 @@
     "minimum-stability": "dev-master",
     "autoload": {
         "psr-4": {
-            "Second2None\\EasyForms\\App\\": "src/" ,
-            "Second2None\\EasyForms\\Database\\Migrations\\": "database/migrations/" ,
-            "Second2None\\EasyForms\\Database\\Seeds\\": "database/seeds/"
+            "PlusTimeIT\\EasyForms\\App\\": "src/" ,
+            "PlusTimeIT\\EasyForms\\Database\\Migrations\\": "database/migrations/" ,
+            "PlusTimeIT\\EasyForms\\Database\\Seeds\\": "database/seeds/"
         }
     },
     "require": {
@@ -26,10 +26,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Second2None\\EasyForms\\App\\Providers\\EasyForms"
+                "PlusTimeIT\\EasyForms\\App\\Providers\\EasyForms"
             ],
             "aliases": {
-                "EasyForms": "Second2None\\EasyForms\\App"
+                "EasyForms": "PlusTimeIT\\EasyForms\\App"
             }
         }
     }

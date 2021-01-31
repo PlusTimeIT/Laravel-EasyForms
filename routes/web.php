@@ -2,7 +2,8 @@
 
 
 use Illuminate\Support\Facades\Route;
-use Second2None\EasyForms\App\Core\Controllers\Pages;
+use PlusTimeIT\EasyForms\App\Core\Controllers\Pages;
+use PlusTimeIT\EasyForms\App\Core\Base;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,12 +26,19 @@ if( $examples['examples'] )  {
     
     Route::middleware('web')->get( 
         'easyforms/example/{example_id}' , 
-        '\Second2None\EasyForms\App\Core\Controllers\Pages@examples' 
+        '\PlusTimeIT\EasyForms\App\Core\Controllers\Pages@examples' 
     )->name( 'examples' );
     
     Route::middleware('web')->get( 
         'easyforms/example/' , 
-        '\Second2None\EasyForms\App\Core\Controllers\Pages@example_home' 
+        '\PlusTimeIT\EasyForms\App\Core\Controllers\Pages@example_home' 
     )->name( 'example-home' );
+    
+
 }
+
+Route::post( 
+    '/axios/forms/load' , 
+    '\PlusTimeIT\EasyForms\App\Core\Controllers\Axios@loadForm' 
+)->name( 'form.loader' )->middleware('web');
 

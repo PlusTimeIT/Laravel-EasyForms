@@ -1,37 +1,39 @@
 # General Readme
 
-S2N-EasyForms is a laravel / vue package that makes setting up and magaing forms and actions in your laravel applciation simple. All data is edited in the backend and this generates your forms on the front end.
+S2N-EasyForms is a laravel / vue package that makes setting up and magaing forms and actions in your laravel applciation simple. All data is edited in the backend and this generates your forms on the front end. For simplicity the forms, fields and settings are loaded in using the JSON format.
 
 ## Getting started
 ---
-To ensure Second2None EasyForms runs without errors there is an initial setup phase that must be completed either through our automatic command or you can do this manually. 
+To ensure PlusTimeIT EasyForms runs without errors there is an initial setup phase that must be completed either through our automatic command or you can do this manually. 
 
 Before either of those options is completed you first must:
 - Open up `config/app.php` and add the code below to your `providers` array. 
-`Second2None\EasyForms\App\Providers\EasyForms::class` 
+`PlusTimeIT\EasyForms\App\Providers\EasyForms::class` 
 - You should also consider adding the below code to the `alias` array aswell.
-`'EasyForms' => Second2None\EasyForms\App\Providers\EasyForms::class,` 
+`'EasyForms' => PlusTimeIT\EasyForms\App\Providers\EasyForms::class,` 
 
 ### --- Automatic setup
-This will automatically run through the setup process. This includes `vendor:publish`, migrations, seeders.
-- Run the Second2None EasyForms initiate command
-`php artisan SEF:initiate` 
+- Run the PlusTimeIT EasyForms initiate command
+`php artisan SEF:initial-setup` 
 
-### --- Manual setup
-If you want to set it up manually or you are having issues with the automatic setup, the following needs to be done for Second2None EasyForms to run smoothly. 
-1. Run the vendor publish command. This will ensure the config, migrations and seed files are copied.
-`php artisan vendor:publish --provider=Second2None\EasyForms\App\Providers\EasyForms`
+### --- Vue Components
+Once published the components will be added to your projects `/resources/assets/components/forms`. You only need to import the Vue component `FormLoader` into your `app.js` file.
 
-2. The migrations are copied into your `database/migrations/` folder in your laravel project. Running the migrate command will pick these up.
-`php artisan migrate` 
+`import FormLoader from './components/forms/FormLoader.vue';`
+`Vue.component( 'form-loader' , FormLoader );`
 
-3. We have created a simple seed command to make seeding the migrations easier. 
-`php artisan SEF:db-seeder`
+### --- Forms
+There are 2 types of forms you can create with easy forms, input and action. To edit your forms you can find them:
+`/resources/data/forms`
 
-4. The last step is setting the `initial_setup` in the database to be a value of 1 (true). This lets the package know everything is ready. 
-We have made a simple command that allows you to edit any Second2None EasyForms settings, the command follows the following format. `php artisan SEF:update-setting {--name=} {--value=}` So to get the initial_setup variable changed to 1, we need to run.
-`php artisan SEF:update-setting --name=initial_setup --value=1`
-or
-`php artisan SEF:update-setting --name initial_setup --value 1`
+Input forms are used for user input forms, like logins, data editing forms.
+Action forms are forms that process data but don't require user input, like table data actions, view, edit, delete. 
 
----
+
+
+### ---  Fields
+`/resources/data/fields`
+
+### --- Settings
+`/resources/data/settings`
+
