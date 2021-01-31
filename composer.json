@@ -12,13 +12,12 @@
     "minimum-stability": "beta",
     "autoload": {
         "psr-4": {
-            "PlusTimeIT\\EasyForms\\App\\": "src/" ,
-            "PlusTimeIT\\EasyForms\\Database\\Migrations\\": "database/migrations/" ,
-            "PlusTimeIT\\EasyForms\\Database\\Seeds\\": "database/seeds/"
+            "PlusTimeIT\\EasyForms\\App\\": "src/"
         }
     },
     "require": {
-        "nesbot/carbon": "^2.16"
+        "nesbot/carbon": "^2.16",
+        "laravel/framework": "^7.0"
     },
     "require-dev": {
         "laravel/ui": "^3.2"
