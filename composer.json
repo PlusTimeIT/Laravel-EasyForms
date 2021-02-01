@@ -5,8 +5,12 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Kane Grills",
+      "name": "PlusTimeIT",
       "email": "kane@plustime.com.au"
+    },
+    {
+      "name": "LionEagleSolutions",
+      "email": "james@lioneagle.solutions"
     }
   ],
   "minimum-stability": "beta",

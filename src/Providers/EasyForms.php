@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use PlusTimeIT\EasyForms\App\Core\Base;
 
 use PlusTimeIT\EasyForms\App\Core\LoadForm;
+use PlusTimeIT\EasyForms\App\Core\Settings;
 use PlusTimeIT\EasyForms\App\Core\LoadFields;
 
 // PlusTimeIT\EasyForms\App\Providers\EasyForms;
@@ -21,9 +22,7 @@ class EasyForms extends ServiceProvider {
     ];
 
     public function __construct(){
-        $this->package_directories = Base::getDirectories();
-
-        
+        $this->package_directories = Base::getDirectories();        
     }
 
     public function boot(){
@@ -65,6 +64,9 @@ class EasyForms extends ServiceProvider {
         });
         App::singleton('Base', function ($app) {
             return new Base();
+        });
+        App::singleton('Base', function ($app) {
+            return new Settings();
         });
     }
 
