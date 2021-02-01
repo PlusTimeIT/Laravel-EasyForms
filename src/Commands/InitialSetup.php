@@ -54,11 +54,11 @@ class InitialSetup extends Command {
         Settings::save();
         $this->comment( '-- Vendor publish complete ...' );
 
-        if ( ! $this->confirm( 'Do you want to run `npm install laravel-vue-s2n-easyforms` ?' , true ) ) {
+        if ( ! $this->confirm( 'Do you want to run `npm install laravel-vue-easyforms` ?' , true ) ) {
             $this->comment( 'If this hasn;t been run before you need to install this npm package for the front end.' );
             return 0;
         }
-        shell_exec( 'npm install --save laravel-vue-s2n-easyforms' );
+        shell_exec( 'npm install --save laravel-vue-easyforms' );
 
         $this->comment( '-- Successfully completed Initial Setup Script' );
         $this->comment( 'PlusTimeIT EasyForms Initiate Script Finsihed ===================================================================' );

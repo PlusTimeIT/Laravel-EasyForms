@@ -17,10 +17,12 @@ Before either of those options is completed you first must:
 `php artisan SEF:initial-setup` 
 
 ### --- Vue Components
-Once published the components will be added to your projects `/resources/assets/components/forms`. You only need to import the Vue component `FormLoader` into your `app.js` file.
+The vue components are added from the NPM package installed from the above setup function.
 
-`import FormLoader from './components/forms/FormLoader.vue';`
-`Vue.component( 'form-loader' , FormLoader );`
+To get it loaded in, included the following in your app.js file
+
+`import LaravelEasyForms from 'laravel-vue-easyforms/dist/laravel-vue-easyforms.common.js';`
+`Vue.use( LaravelEasyForms );`
 
 ### --- Forms
 There are 2 types of forms you can create with easy forms, input and action. To edit your forms you can find them:

@@ -2,14 +2,13 @@
 
 namespace PlusTimeIT\EasyForms\App\Providers;
 
+use App;
+
 use Illuminate\Support\ServiceProvider;
 use PlusTimeIT\EasyForms\App\Core\Base;
+
 use PlusTimeIT\EasyForms\App\Core\LoadForm;
 use PlusTimeIT\EasyForms\App\Core\LoadFields;
-use PlusTimeIT\EasyForms\App\Core\Settings;
-
-use File;
-use Log;
 
 // PlusTimeIT\EasyForms\App\Providers\EasyForms;
 class EasyForms extends ServiceProvider {
@@ -24,10 +23,11 @@ class EasyForms extends ServiceProvider {
     public function __construct(){
         $this->package_directories = Base::getDirectories();
 
-        app( LoadFields::class );
+        
     }
 
     public function boot(){
+        
         
         // publish configuration file
         $this->publishes( 
@@ -56,6 +56,16 @@ class EasyForms extends ServiceProvider {
 
     public function register(){
         $this->commands( $this->commands );
+
+        App::singleton('LoadForm', function ($app) {
+            return new LoadForm();
+        });
+        App::singleton('LoadFields', function ($app) {
+            return new LoadFields();
+        });
+        App::singleton('Base', function ($app) {
+            return new Base();
+        });
     }
 
     protected function isEventDispatcher( $instance ) {
