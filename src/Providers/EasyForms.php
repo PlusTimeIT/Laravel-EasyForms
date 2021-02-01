@@ -27,7 +27,6 @@ class EasyForms extends ServiceProvider {
 
     public function boot(){
         
-        
         // publish configuration file
         $this->publishes( 
             [ app( Base::class )->directories->config . '/easy_forms.php' => config_path( 'easy_forms.php' ) ] ,
@@ -46,8 +45,8 @@ class EasyForms extends ServiceProvider {
         );
 
         $this->publishes( 
-            [ app( Base::class )->directories->data => resource_path('data') ] , 
-            'data' 
+            [ app( Base::class )->directories->data => 'form_data' ] , 
+            'form_data' 
         );
 
         $this->loadRoutesFrom( app( Base::class )->directories->routes . '/web.php' );
@@ -65,7 +64,7 @@ class EasyForms extends ServiceProvider {
         App::singleton('Base', function ($app) {
             return new Base();
         });
-        App::singleton('Base', function ($app) {
+        App::singleton('Settings', function ($app) {
             return new Settings();
         });
     }

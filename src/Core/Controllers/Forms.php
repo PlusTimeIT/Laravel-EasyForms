@@ -23,14 +23,10 @@ class Forms extends Controller {
     }
 
     public static function loadFormFields( request $request , easyform $form ) {
-        $fields = self::getFormFieldsForVue( 
+        return self::getFormFieldsForVue( 
             $form , 
             ( $request->populate ) ? self::getValuesForForm( $request , $form ) : collect([]) 
         );
-        if( ! $fields )
-            return ( object ) [ 'success' => false , 'message' => 'Failed to find form fields' ];
-
-        return ( object ) [ 'success' => true , 'message' => [ 'fields' => $fields , 'form' => $form ] ];
     }
 
     public static function getValuesForForm( request $request , easyform $form ){

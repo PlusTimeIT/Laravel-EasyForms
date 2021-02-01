@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>PlusTimeIT EasyForm Example {{ $example->id }}</title>
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -64,16 +64,18 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            <div class="content">
-                <div class="title m-b-md">
-                    PlusTimeIT EasyForm Example {{ $example->id }}
-                </div>
-                Example Form 1
-                
-                <div class="links">
-                    <a href="/easyforms/example/">Home</a>
-                    <a href="/easyforms/example/1">Example 1</a>
+        <div id="app">
+            <div class="flex-center position-ref full-height">
+                <div class="content">
+                    <div class="title m-b-md">
+                        PlusTimeIT EasyForm Example {{ $example->id }}
+                    </div>
+                    Example Form 1
+                    <form-loader load_form="example_form"></form-loader>
+                    <div class="links">
+                        <a href="/easyforms/example/">Home</a>
+                        <a href="/easyforms/example/1">Example 1</a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -12,8 +12,8 @@ use File;
 // use PlusTimeIT\EasyForms\App\Commands\Uninstall;
 class Uninstall extends Command {
 
-    protected $signature    = 'SEF:uninstall {--database=1} {--config=1} {--views=1} {--resources=1}';
-    protected $description  = 'PlusTimeIT Easy Forms Uninstaller removes everything created by PlusTimeIT EasyForms.';
+    protected $signature    = 'PTI:uninstall {--config=1} {--views=1} {--form-data=1}';
+    protected $description  = 'PlusTimeIT Laravel Easy Forms Uninstaller removes everything created by PlusTimeIT Laravel EasyForms.';
 
     public function __construct() {
         parent::__construct();
@@ -46,33 +46,15 @@ class Uninstall extends Command {
             }
         }
 
-        if( $this->option('resources') === 1 ) {
+        if( $this->option('form-data') === 1 ) {
             // clear resources
-            $this->comment( '--- Removing resources folder' );
-            if( File::isDirectory( resource_path('assets/vendor/s2n-easyforms') ) ){
+            $this->comment( '--- Removing form data folder' );
+            if( File::isDirectory( '/form_data') ){
                 $this->comment( '---- View folder found' );                
-                $this->comment( File::deleteDirectory( resource_path('assets/vendor/s2n-easyforms') ) ? '--- Removed resources folder' : 'Error removing resources folder' );
+                $this->comment( File::deleteDirectory( '/form_data' ) ? '--- Removed form data folder' : 'Error removing form data folder' );
             }else{
-                $this->comment( '--- Resources folder not found' );
+                $this->comment( '--- Form data folder not found' );
             }
-        }
-
-        if( $this->option('database') === 1 ) {
-            // clear databases
-            $this->comment( '--- Removing databases' );
-
-            collect( Base::$migrations )->each( function( $migration ){
-                $this->comment( '--- Attempting to rollback: ' . $migration );
-                Artisan::call( 'migrate:rollback --path=' . database_path( '/migrations/' ) . '/' . $migration );
-                if( File::Exists( database_path( '/migrations/' ) . '/' . $migration ) ){
-                    $this->comment( '---- Migration file found' );                
-                    $this->comment( File::delete( database_path( '/migrations/' ) . '/' . $migration ) ? '--- Removed migration file: '  . $migration : 'Error removing migration file: '  . $migration );
-                }else{
-                    $this->comment( '--- Migration file not found' );
-                }
-            });
-
-            $this->comment( '--- Removed databases' );
         }
         
         $this->comment( 'PlusTimeIT EasyForms Uninstall Finished ===================================================================' );

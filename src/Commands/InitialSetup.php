@@ -14,7 +14,7 @@ use File;
 // use PlusTimeIT\EasyForms\App\Commands\InitialSetup;
 class InitialSetup extends Command {
 
-    protected $signature    = 'SEF:initial-setup';
+    protected $signature    = 'PTI:initial-setup';
     protected $description  = 'PlusTimeIT Easy Forms initial-setup command to run vendor-publish and npm install';
 
     public function __construct() {

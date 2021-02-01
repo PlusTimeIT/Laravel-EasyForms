@@ -18,18 +18,15 @@ use Log;
 class Axios extends Controller {
     
     public function loadForm( Request $request ){
-        $form_data = LoadForm::loadForm( $request->form_name );
-        if( ! $form_data ){
-            return response()->json([
-                'success' => false ,
-                'data' => [] ,
-            ]);
+        $form = LoadForm::loadForm( $request->form_name );
+        if( ! $form ){
+            return response()->json([ 'success' => false , 'data' => 'Failed to load form' ]);
         }
-        $fields = Forms::loadFormFields( $request , $form_data );
-        return response()->json([
-            'success' => true ,
-            'data' => $fields ,
-        ]);
+        $fields = Forms::loadFormFields( $request , $form );
+        if( ! $fields ) {
+            return response()->json([ 'success' => false , 'data' => 'Failed to load form' ]);
+        }
+        return response()->json([ 'success' => true , 'data' => [ 'form' => $form , 'fields' => $fields ] ]);
     }
 
 }

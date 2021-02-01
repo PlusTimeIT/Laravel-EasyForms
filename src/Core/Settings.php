@@ -22,12 +22,12 @@ class Settings {
 		private $directory = null;
 		
 		public function __construct(){ 
-			// if( File::exists( resource_path( 'data\settings\settings.json' ) ) ){
+			if( file_exists( resource_path( 'data\settings\settings.json' ) ) ){
                 $this->setLoadDirectory( resource_path( 'data\settings\settings.json' ) );
-            // }else{
-            //     $this->setLoadDirectory( app( Base::class )->directories->data . '\settings\settings.json' );
-            // }
-            //$this->loadSettings();
+            }else{
+                 $this->setLoadDirectory( app( Base::class )->directories->data . '\settings\settings.json' );
+            }
+            $this->loadSettings();
         }
 
         public function setLoadDirectory( string $directory ){

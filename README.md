@@ -14,7 +14,7 @@ Before either of those options is completed you first must:
 
 ### --- Automatic setup
 - Run the PlusTimeIT EasyForms initiate command
-`php artisan SEF:initial-setup` 
+`php artisan PTI:initial-setup` 
 
 ### --- Vue Components
 The vue components are added from the NPM package installed from the above setup function.
@@ -26,7 +26,7 @@ To get it loaded in, included the following in your app.js file
 
 ### --- Forms
 There are 2 types of forms you can create with easy forms, input and action. To edit your forms you can find them:
-`/resources/data/forms`
+`/form_data/forms`
 
 Input forms are used for user input forms, like logins, data editing forms.
 Action forms are forms that process data but don't require user input, like table data actions, view, edit, delete. 
@@ -34,8 +34,8 @@ Action forms are forms that process data but don't require user input, like tabl
 
 
 ### ---  Fields
-`/resources/data/fields`
+`/form_data/fields`
 
 ### --- Settings
-`/resources/data/settings`
+`/form_data/settings`
 
