@@ -1,0 +1,22 @@
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+#plustime-link a .first {
+    color: #09c;
+}
+#plustime-link a .second {
+    color: #333;
+}
+#plustime-link a .third {
+    color: #999;
+}
+#plustime-link a{
+    text-decoration: none;
+    cursor: pointer;
+}

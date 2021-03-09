@@ -1,0 +1,40 @@
+{
+    "name": "plustime-it/laravel-easyforms",
+    "description": "Laravel EasyForms",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kane G",
+            "email": "kane@plustime.com.au"
+        },
+        {
+          "name": "LionEagleSolutions",
+          "email": "james@lioneagle.solutions"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "PlusTimeIT\\EasyForms\\": "src/"
+        }
+    },
+    "minimum-stability": "beta",
+    "require": {
+        "php": "^7.3|^8.0",
+        "nesbot/carbon": "^2.16",
+        "laravel/framework": "^7.0|^8.0"
+    },
+    "require-dev": {
+        "laravel/ui": "^3.2"
+    },
+    "extra": {
+      "laravel": {
+        "providers": [
+          "PlusTimeIT\\EasyForms\\Providers\\EasyForms"
+        ],
+        "aliases": {
+          "EasyForms": "PlusTimeIT\\EasyForms"
+        }
+      }
+    }
+}

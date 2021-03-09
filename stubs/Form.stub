@@ -1,0 +1,22 @@
+<?php
+namespace <projectNamespace>;
+
+use PlusTimeIT\EasyForms\Base\<formType>;
+use PlusTimeIT\EasyForms\Elements\{Action, Axios, Button, Header, Icon};
+use PlusTimeIT\EasyForms\Fields\{PasswordField, TextField};
+use PlusTimeIT\EasyForms\Traits\{ToArrayTrait, ToJsonTrait};
+
+class <formName> extends <formType>
+{
+    public function __construct()
+    {
+        return $this;
+    }
+
+    protected $name = '<formName>';
+
+    protected $title = 'Example Title';
+
+    use ToArrayTrait;
+    use ToJsonTrait;
+}
