@@ -6,6 +6,9 @@ Larave EasyForms is a package that makes setting up and managing forms and actio
 ---
 To ensure PlusTimeIT EasyForms runs without errors please follow below: 
 
+Add Laravel Easyforms to your project:
+`composer require plustime-it/laravel-easyforms`
+
 Before either of those options is completed you first must:
 - Open up `config/app.php` and add the code below to your `providers` array. 
 ```php
@@ -19,7 +22,6 @@ Before either of those options is completed you first must:
 
 You'll also need to run `vendor:publish`
 `php artisan vendor:publish --provider=PlusTimeIT\EasyForms\Providers\EasyForms`
-
 
 
 ## Examples
