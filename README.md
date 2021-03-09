@@ -1,10 +1,10 @@
 # General Readme
 
-S2N-EasyForms is a laravel / vue package that makes setting up and magaing forms and actions in your laravel applciation simple. All data is edited in the backend and this generates your forms on the front end. For simplicity the forms, fields and settings are loaded in using the JSON format.
+Larave EasyForms is a package that makes setting up and managing forms and actions in your laravel applciation simple. All data is edited in the backend and this generates your forms on the front end. 
 
 ## Getting started
 ---
-To ensure PlusTimeIT EasyForms runs without errors there is an initial setup phase that must be completed either through our automatic command or you can do this manually. 
+To ensure PlusTimeIT EasyForms runs without errors please follow below: 
 
 Before either of those options is completed you first must:
 - Open up `config/app.php` and add the code below to your `providers` array. 
@@ -19,6 +19,8 @@ Before either of those options is completed you first must:
 
 You'll also need to run `vendor:publish`
 `php artisan vendor:publish --provider=PlusTimeIT\EasyForms\Providers\EasyForms`
+
+
 
 ## Examples
 
