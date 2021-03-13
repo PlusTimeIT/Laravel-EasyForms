@@ -5,6 +5,10 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+### 0.0.3
+---
+- Fixes to fields and traits
+
 ### 0.0.2
 ---
 - Merged toArray and toJson traits into ConvertTrait
