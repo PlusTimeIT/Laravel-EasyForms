@@ -5,6 +5,10 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+### 0.0.4
+---
+-  Fixed bug: FileInputField not displaying file dialog box #5
+
 ### 0.0.3
 ---
 - Fixes to fields and traits
