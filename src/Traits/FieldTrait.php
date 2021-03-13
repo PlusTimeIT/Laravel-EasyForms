@@ -146,6 +146,5 @@ trait FieldTrait
         return $this;
     }
 
-    use toArrayTrait;
-    use toJsonTrait;
+    use ConvertTraits;
 }

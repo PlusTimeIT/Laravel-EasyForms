@@ -4,7 +4,7 @@ namespace <projectNamespace>;
 use PlusTimeIT\EasyForms\Base\<formType>;
 use PlusTimeIT\EasyForms\Elements\{Action, Axios, Button, Header, Icon};
 use PlusTimeIT\EasyForms\Fields\{PasswordField, TextField};
-use PlusTimeIT\EasyForms\Traits\{ToArrayTrait, ToJsonTrait};
+use PlusTimeIT\EasyForms\Traits\ConvertTraits;
 
 class <formName> extends <formType>
 {
@@ -17,6 +17,5 @@ class <formName> extends <formType>
 
     protected $title = 'Example Title';
 
-    use ToArrayTrait;
-    use ToJsonTrait;
+    use ConvertTraits;
 }

@@ -1,7 +1,7 @@
 <?php
 namespace PlusTimeIT\EasyForms\Elements;
 
-use PlusTimeIT\EasyForms\Traits\{ToArrayTrait, ToJsonTrait};
+use PlusTimeIT\EasyForms\Traits\ConvertTraits;
 
 class Button
 {
@@ -36,6 +36,5 @@ class Button
 
     protected $text;
 
-    use ToArrayTrait;
-    use ToJsonTrait;
+    use ConvertTraits;
 }

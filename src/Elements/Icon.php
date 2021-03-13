@@ -1,8 +1,6 @@
 <?php
 namespace PlusTimeIT\EasyForms\Elements;
 
-use PlusTimeIT\EasyForms\Traits\{ToArrayTrait, ToJsonTrait};
-
 class Icon
 {
     public function __construct(string $icon, string $tooltip)
@@ -37,6 +35,5 @@ class Icon
 
     protected $tooltip;
 
-    use ToArrayTrait;
-    use ToJsonTrait;
+    use ConvertTraits;
 }

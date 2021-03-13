@@ -44,6 +44,5 @@ trait ActionTrait
 
     protected $buttons = [];
 
-    use ToArrayTrait;
-    use ToJsonTrait;
+    use ConvertTraits;
 }

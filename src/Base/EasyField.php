@@ -1,6 +1,7 @@
 <?php
 namespace PlusTimeIT\EasyForms\Base;
 
+use Log;
 use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
 use PlusTimeIT\EasyForms\Traits\FieldTrait;
 
@@ -9,12 +10,19 @@ class EasyField implements FieldInterface
     public function __construct(string $name, array $options = [])
     {
         $this->name = $name;
-        foreach ($options as $option => $value) {
-            if ( ! property_exists(EasyField::class, $option)) {
-                continue;
+        return $this->fillOptions($options);
+    }
+
+    public function fillOptions($class, array $options): self
+    {
+        collect($options)->each(function($value, $option) {
+            Log::debug('OPTIONS', ['option' => $option]);
+            Log::debug('Value', ['value' => $value]);
+            if (property_exists($class, $option)) {
+                Log::debug('option exists');
+                $this->{$option} = $value;
             }
-            $this->{$option} = $value;
-        }
+        });
         return $this;
     }
 

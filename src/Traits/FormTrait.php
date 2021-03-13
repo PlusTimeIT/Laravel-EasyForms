@@ -58,6 +58,5 @@ trait FormTrait
         return $this;
     }
 
-    use ToArrayTrait;
-    use ToJsonTrait;
+    use ConvertTraits;
 }

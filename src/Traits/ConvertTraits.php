@@ -1,9 +1,7 @@
 <?php
 namespace PlusTimeIT\EasyForms\Traits;
 
-use Log;
-
-trait ToArrayTrait
+trait ConvertTraits
 {
     public function toArray(): array
     {
@@ -18,5 +16,10 @@ trait ToArrayTrait
             }
             return $self->{$key};
         })->toArray();
+    }
+
+    public function toJson(): string
+    {
+        return collect($this->toArray())->toJson();
     }
 }

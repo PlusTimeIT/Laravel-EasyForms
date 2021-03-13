@@ -5,7 +5,7 @@ use Carbon\Carbon;
 use PlusTimeIT\EasyForms\Base\InputForm;
 use PlusTimeIT\EasyForms\Elements\{Action, Axios, Button, Header, Icon, SelectItem};
 use PlusTimeIT\EasyForms\Fields\{CheckboxField, FileInputField, HiddenField, NumberField, PasswordField, SelectField, TextField, TextareaField};
-use PlusTimeIT\EasyForms\Traits\{ToArrayTrait, ToJsonTrait};
+use PlusTimeIT\EasyForms\Traits\ConvertTraits;
 
 class ExampleForm2 extends InputForm
 {
@@ -81,7 +81,7 @@ class ExampleForm2 extends InputForm
                         'item_text' => 'value' ,
                         'item_value' => 'id' ,
                         'items' => [
-                            new SelectItem(0, 'Apple') ,
+                            new SelectItem(0, 'Chicken') ,
                             new SelectItem(1, 'Banana') ,
                             new SelectItem(2, 'Watermelon') ,
                             new SelectItem(3, 'Grapes') ,
@@ -113,6 +113,5 @@ class ExampleForm2 extends InputForm
 
     protected $title = 'Example Form 2 Title';
 
-    use ToArrayTrait;
-    use ToJsonTrait;
+    use ConvertTraits;
 }

@@ -36,6 +36,5 @@ trait HeaderTrait
 
     protected $value;
 
-    use ToArrayTrait;
-    use ToJsonTrait;
+    use ConvertTraits;
 }

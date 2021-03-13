@@ -74,6 +74,5 @@ trait AxiosTrait
 
     protected $notification = TRUE;
 
-    use ToArrayTrait;
-    use ToJsonTrait;
+    use ConvertTraits;
 }

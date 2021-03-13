@@ -2,16 +2,22 @@
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\{toArrayTrait, toJsonTrait};
+use PlusTimeIT\EasyForms\Traits\ConvertTraits;
 
 class FileInputField extends EasyField
 {
+    public function __construct(string $name, array $options = [])
+    {
+        $this->name = $name;
+        return $this->fillOptions($options);
+    }
+
     public function getAccept()
     {
         return $this->accept;
     }
 
-    public function setAccept(string $accept): string
+    public function setAccept(string $accept): self
     {
         $this->accept = $accept;
         return $this;
@@ -25,8 +31,7 @@ class FileInputField extends EasyField
 
     protected $value = [];
 
-    use toArrayTrait;
-    use toJsonTrait;
+    use ConvertTraits;
 
     public const TYPE = 'file-input';
 }

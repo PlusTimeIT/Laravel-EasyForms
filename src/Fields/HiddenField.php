@@ -2,18 +2,23 @@
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\{toArrayTrait, toJsonTrait};
+use PlusTimeIT\EasyForms\Traits\ConvertTraits;
 
 class HiddenField extends EasyField
 {
+    public function __construct(string $name, array $options = [])
+    {
+        $this->name = $name;
+        return $this->fillOptions($options);
+    }
+
     protected $component = 'v-text-field';
 
     protected $component_type = self::TYPE;
 
     protected $type = self::TYPE;
 
-    use toArrayTrait;
-    use toJsonTrait;
+    use ConvertTraits;
 
     public const TYPE = 'hidden';
 }

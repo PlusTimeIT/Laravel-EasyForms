@@ -3,20 +3,14 @@ namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Elements\SelectItem;
-use PlusTimeIT\EasyForms\Traits\{toArrayTrait, toJsonTrait};
+use PlusTimeIT\EasyForms\Traits\ConvertTraits;
 
 class SelectField extends EasyField
 {
     public function __construct(string $name, array $options = [])
     {
         $this->name = $name;
-        foreach ($options as $key => $value) {
-            if ( ! property_exists(__CLASS__, $key)) {
-                continue;
-            }
-            $this->{$key} = $value;
-        }
-        return $this;
+        return $this->fillOptions($options);
     }
 
     public function addItem(SelectItem $item): self
@@ -81,8 +75,7 @@ class SelectField extends EasyField
 
     protected $type = self::TYPE;
 
-    use toArrayTrait;
-    use toJsonTrait;
+    use ConvertTraits;
 
     public const TYPE = 'select';
 }
