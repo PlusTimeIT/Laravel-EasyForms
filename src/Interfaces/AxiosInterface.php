@@ -23,6 +23,8 @@ interface AxiosInterface
 
     public function setNotification(bool $notification);
 
+    public function setOptions(array $options);
+
     public function toArray();
 
     public function toJson();

@@ -5,17 +5,6 @@ use PlusTimeIT\EasyForms\Elements\Header;
 
 trait AxiosTrait
 {
-    public function __construct(array $options)
-    {
-        foreach ($options as $key => $value) {
-            if ( ! isset($this->{$key})) {
-                continue;
-            }
-            $this->{$key} = $value;
-        }
-        return $this;
-    }
-
     public function addHeaders(Header $header): self
     {
         $this->headers[] = $header;

@@ -115,22 +115,20 @@ export default {
       Object.keys(this.field_list).forEach(field => {
         let this_field = self.field_list[field];
 
-        if (!self.is_undefined(this_field.hide)) {
-          if (
-            !self.is_undefined(this_field.show) &&
-            self.is_object(this_field.show)
-          ) {
+        if (!self.is_undefined(this_field.hide)) 
+        {
+          if (!self.is_undefined(this_field.show) && self.is_object(this_field.show)) 
+          {
             Object.keys(this_field.show).forEach(value => {
-              if (
-                !self.is_undefined(self.field_list[value].value) &&
-                self.field_list[value].value ===
-                  this_field.show[value]
-              ) {
+              if (!self.is_undefined(self.field_list[value].value) && self.field_list[value].value === this_field.show[value]) 
+              {
                 new_field_list[field] = this_field;
               }
             });
           }
-        } else {
+        } 
+        else 
+        {
           new_field_list[field] = this_field;
         }
       });
@@ -152,53 +150,48 @@ export default {
       var self = this;
       var inputs = {};
       var form_data = new FormData();
-      let multi_part =
-        !this.is_undefined(this.loaded_form_data.action.axios) &&
-        !this.is_undefined(
-          this.loaded_form_data.action.axios.multi_part
-        ) &&
-        this.loaded_form_data.action.axios.multi_part
-          ? true
-          : false;
-      let identifier =
-        !this.is_undefined(this.loaded_identifier) &&
-        this.loaded_identifier !== null &&
-        this.loaded_identifier !== 0
-          ? true
-          : false;
+      let multi_part = !this.is_undefined(this.loaded_form_data.action.axios) && !this.is_undefined(this.loaded_form_data.action.axios.multi_part) && this.loaded_form_data.action.axios.multi_part
+        ? true
+        : false;
+      let identifier = !this.is_undefined(this.loaded_identifier) && this.loaded_identifier !== null && this.loaded_identifier !== 0
+        ? true
+        : false;
 
       Object.keys(this.async_field_list).forEach(item => {
-        if (multi_part) {
-          //prep formdata
-          if (form_data.has(self.async_field_list[item].name)) {
+        if (multi_part) 
+        {
+          if (form_data.has(self.async_field_list[item].name)) 
+          {
             form_data.set(
               self.async_field_list[item].name,
-              this.is_object(self.async_field_list[item].value) ||
-                this.is_array(self.async_field_list[item].value)
+              this.is_object(self.async_field_list[item].value) || this.is_array(self.async_field_list[item].value)
                 ? JSON.stringify(self.async_field_list[item].value)
                 : self.async_field_list[item].value
             );
-          } else {
+          } 
+          else 
+          {
             form_data.append(
               self.async_field_list[item].name,
-              this.is_object(self.async_field_list[item].value) ||
-                this.is_array(self.async_field_list[item].value)
+              this.is_object(self.async_field_list[item].value) || this.is_array(self.async_field_list[item].value)
                 ? JSON.stringify(self.async_field_list[item].value)
                 : self.async_field_list[item].value
             );
           }
-        } else {
-          //prep inputs
-          inputs[self.async_field_list[item].name] =
-            self.async_field_list[item].value;
+        } 
+        else 
+        {
+          inputs[self.async_field_list[item].name] = self.async_field_list[item].value;
         }
       });
 
       if (multi_part) {
         //prep formdata
         form_data.append("form_name", this.loaded_form_name);
-        if (identifier) {
-          if (form_data.has("id")) {
+        if (identifier) 
+        {
+          if (form_data.has("id")) 
+          {
             form_data.set(
               "id",
               this.is_object(this.loaded_identifier) ||
@@ -206,7 +199,9 @@ export default {
                 ? JSON.stringify(this.loaded_identifier)
                 : this.loaded_identifier
             );
-          } else {
+          } 
+          else 
+          {
             form_data.append(
               "id",
               this.is_object(this.loaded_identifier) ||
@@ -217,9 +212,12 @@ export default {
           }
         }
         return form_data;
-      } else {
+      } 
+      else 
+      {
         inputs["form_name"] = this.loaded_form_data.name;
-        if (identifier) {
+        if (identifier) 
+        {
           inputs["id"] = this.loaded_identifier;
         }
         return inputs;
@@ -284,12 +282,15 @@ export default {
     loaded_additional_form_data: function() {}
   },
   async mounted() {
-    if( this.is_object( this.load_form ) ){
+    if( this.is_object( this.load_form ) )
+    {
       this.loaded_form_name = this.load_form.name;
       this.form_loaded = true;
       this.field_list = this.load_form.fields;
       this.loaded_form_data = this.load_form;
-    }else{
+    }
+    else
+    {
       this.loaded_form_name = this.load_form;
       await this.load_form_fields(this.loaded_identifier);
     }
@@ -297,26 +298,26 @@ export default {
   },
   methods: {
     loaded_computed_field_list() {
-      if (this.field_list.length !== 0) {
+      if (this.field_list.length !== 0) 
+      {
         let new_field_list = {};
         let self = this;
         Object.keys(this.field_list).forEach(field => {
           let this_field = self.field_list[field];
-          if (!self.is_undefined(this_field.hide)) {
-            if (
-              !self.is_undefined(this_field.show) &&
-              self.is_array(this_field.show)
-            ) {
+          if (!self.is_undefined(this_field.hide)) 
+          {
+            if (!self.is_undefined(this_field.show) && self.is_array(this_field.show)) 
+            {
               this_field.show.forEach((value, x) => {
-                if (
-                  !self.is_undefined(self.field_list[x].value) &&
-                  self.field_list[x].value === value
-                ) {
+                if (!self.is_undefined(self.field_list[x].value) && self.field_list[x].value === value) 
+                {
                   new_field_list[field] = this_field;
                 }
               });
             }
-          } else {
+          } 
+          else 
+          {
             new_field_list[field] = this_field;
           }
         });
@@ -334,13 +335,8 @@ export default {
     form_props: function() {
       let result = {};
       if (!this.loaded_form_data) return result;
-      if (
-        !this.is_undefined(this.loaded_form_data.action.axios) &&
-        !this.is_undefined(
-          this.loaded_form_data.action.axios.multi_part
-        ) &&
-        this.loaded_form_data.action.axios.multi_part
-      ) {
+      if (!this.is_undefined(this.loaded_form_data.action.axios) && !this.is_undefined(this.loaded_form_data.action.axios.multi_part) && this.loaded_form_data.action.axios.multi_part) 
+      {
         result["enctype"] = "application/x-www-form-urlencoded";
       }
       return result;
@@ -348,58 +344,52 @@ export default {
     prepare_props: function() {
       let result = {};
 
-      if (this.display_icon) {
-        result.color = !this.is_undefined(
-          this.loaded_form_data.action.buttons[0].colour
-        )
+      if (this.display_icon) 
+      {
+        result.color = !this.is_undefined(this.loaded_form_data.action.buttons[0].colour)
           ? this.loaded_form_data.action.buttons[0].colour
           : "primary";
-        result.class = !this.is_undefined(
-          this.loaded_form_data.action.buttons[0].icon.class
-        )
+        result.class = !this.is_undefined(this.loaded_form_data.action.buttons[0].icon.class)
           ? this.loaded_form_data.action.buttons[0].icon.class
           : "";
-        if (
-          this.is_undefined(this.loaded_form_data.action.buttons[0].icon.size)
-        ) {
+        if (this.is_undefined(this.loaded_form_data.action.buttons[0].icon.size)) 
+        {
           result[this.loaded_form_data.action.buttons[0].icon.size] = true;
         }
       }
-
       return result;
     },
     input_cols: function(field) {
       return this.is_undefined(field.cols) ? 12 : field.cols;
     },
     merge_addition_data: function(form_data, additional_data) {
-      let multi_part =
-        !this.is_undefined(this.loaded_form_data.action.axios) &&
-        !this.is_undefined(
-          this.loaded_form_data.action.axios.multi_part
-        ) &&
-        this.loaded_form_data.action.axios.multi_part
-          ? true
-          : false;
+      let multi_part = !this.is_undefined(this.loaded_form_data.action.axios) && !this.is_undefined(this.loaded_form_data.action.axios.multi_part) && this.loaded_form_data.action.axios.multi_part
+        ? true
+        : false;
       Object.keys(additional_data).forEach(function(key) {
-        if (multi_part) {
-          if (form_data.has(key)) {
+        if (multi_part) 
+        {
+          if (form_data.has(key)) 
+          {
             form_data.set(
               key,
-              this.is_object(additional_data[key]) ||
-                this.is_array(additional_data[key])
+              this.is_object(additional_data[key]) || this.is_array(additional_data[key])
                 ? JSON.stringify(additional_data[key])
                 : additional_data[key]
             );
-          } else {
+          } 
+          else 
+          {
             form_data.append(
               key,
-              this.is_object(additional_data[key]) ||
-                this.is_array(additional_data[key])
+              this.is_object(additional_data[key]) || this.is_array(additional_data[key])
                 ? JSON.stringify(additional_data[key])
                 : additional_data[key]
             );
           }
-        } else {
+        } 
+        else 
+        {
           form_data[key] = additional_data[key];
         }
       });
@@ -429,10 +419,9 @@ export default {
         true,
         false
       ).then(axios_response => {
-        console.log( axios_response );
         self.form_loaded = ! axios_response.loader;
-        self.field_list = axios_response.response.fields;
-        self.loaded_form_data = axios_response.response;
+        self.field_list = axios_response.response.data.fields;
+        self.loaded_form_data = axios_response.response.data;
       });
     },
     process_form: function() {
@@ -450,25 +439,27 @@ export default {
         this.loaded_form_data.action.axios.headers
       ).then(response => {
         self.form_loaded = true;
-        if (!response.success) {
+        if (!response.success) 
+        {
           self.$refs.form.setErrors(self.validate_response(response.data));
           return false;
         }
 
         self.$refs.form.reset();
 
-        if (self.loaded_form_data.action.axios.expecting_results) {
+        if (self.loaded_form_data.action.axios.expecting_results) 
+        {
           self[self.loaded_form_data.action.axios.result_variable] =
             response.data;
           self.$emit("results", response.data);
         }
 
-        if (
-          !self.is_undefined(response.redirect_override) &&
-          response.redirect_override !== false
-        ) {
+        if ( !self.is_undefined(response.redirect_override) && response.redirect_override !== false ) 
+        {
           self.redirect(response.redirect_override);
-        } else if (self.loaded_form_data.action.axios.redirect !== false) {
+        } 
+        else if (self.loaded_form_data.action.axios.redirect !== false) 
+        {
           self.redirect(self.loaded_form_data.action.axios.redirect);
         }
       });

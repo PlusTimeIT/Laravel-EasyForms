@@ -1,13 +1,13 @@
 <?php
 namespace PlusTimeIT\EasyForms\Base;
 
-use Log;
-use PlusTimeIT\EasyForms\Traits\InputFormTrait;
 use PlusTimeIT\EasyForms\Interfaces\InputFormInterface;
+use PlusTimeIT\EasyForms\Traits\{FormTrait, InputFormTrait};
 
-class InputForm extends EasyForm implements InputFormInterface
+abstract class InputForm extends EasyForm implements InputFormInterface
 {
     protected $action = '';
-    
+
     use InputFormTrait;
+    use FormTrait;
 }

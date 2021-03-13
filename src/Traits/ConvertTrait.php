@@ -3,6 +3,16 @@ namespace PlusTimeIT\EasyForms\Traits;
 
 trait ConvertTrait
 {
+    public function setOptions(array $options): self
+    {
+        collect($options)->each(function($value, $option) {
+            if (property_exists(__CLASS__, $option)) {
+                $this->{$option} = $value;
+            }
+        });
+        return $this;
+    }
+
     public function toArray(): array
     {
         $all_vars = get_class_vars(__CLASS__);

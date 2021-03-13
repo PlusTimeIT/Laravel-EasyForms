@@ -98,16 +98,6 @@ trait FieldTrait
         return $this;
     }
 
-    public function setOptions(array $options): self
-    {
-        collect($options)->each(function($value, $option) {
-            if (property_exists(__CLASS__, $option)) {
-                $this->{$option} = $value;
-            }
-        });
-        return $this;
-    }
-
     public function setOrder(int $order): self
     {
         $this->order = $order;

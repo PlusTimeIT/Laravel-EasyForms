@@ -57,6 +57,4 @@ trait FormTrait
         $this->fields = collect($this->fields)->sortBy([fn($a, $b) => $a->getOrder() <=> $b->getOrder()])->toArray();
         return $this;
     }
-
-    use ConvertTrait;
 }
