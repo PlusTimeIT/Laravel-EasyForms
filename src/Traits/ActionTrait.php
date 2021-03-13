@@ -44,5 +44,5 @@ trait ActionTrait
 
     protected $buttons = [];
 
-    use ConvertTraits;
+    use ConvertTrait;
 }

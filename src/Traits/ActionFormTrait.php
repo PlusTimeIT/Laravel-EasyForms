@@ -7,5 +7,5 @@ trait ActionFormTrait
 
     protected $type = '';
 
-    use ConvertTraits;
+    use ConvertTrait;
 }

@@ -58,5 +58,5 @@ trait FormTrait
         return $this;
     }
 
-    use ConvertTraits;
+    use ConvertTrait;
 }

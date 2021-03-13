@@ -5,7 +5,7 @@ use Carbon\Carbon;
 use PlusTimeIT\EasyForms\Base\InputForm;
 use PlusTimeIT\EasyForms\Elements\{Action, Axios, Button, Header, Icon, SelectItem};
 use PlusTimeIT\EasyForms\Fields\{CheckboxField, FileInputField, HiddenField, NumberField, PasswordField, SelectField, TextField, TextareaField};
-use PlusTimeIT\EasyForms\Traits\ConvertTraits;
+use PlusTimeIT\EasyForms\Traits\ConvertTrait;
 
 class ExampleForm2 extends InputForm
 {
@@ -90,6 +90,24 @@ class ExampleForm2 extends InputForm
                         'value' => '',
                     ]
                 ),
+                new SelectField(
+                    'customer_select',
+                    [
+                        'order' => 9,
+                        'multiple' => TRUE ,
+                        'any_field' => TRUE ,
+                        'label' => 'Select Customers',
+                        'item_text' => 'value' ,
+                        'item_value' => 'id' ,
+                        'items' => [
+                            new SelectItem(0, 'John Doe') ,
+                            new SelectItem(1, 'Sammy Did') ,
+                            new SelectItem(2, 'Smithy McSmithy') ,
+                            new SelectItem(3, 'HELLO WORLD INC.') ,
+                        ],
+                        'value' => '',
+                    ]
+                ),
             ])
             ->setAction(new Action(
                 [
@@ -113,5 +131,5 @@ class ExampleForm2 extends InputForm
 
     protected $title = 'Example Form 2 Title';
 
-    use ConvertTraits;
+    use ConvertTrait;
 }

@@ -1,6 +1,8 @@
 <?php
 namespace PlusTimeIT\EasyForms\Elements;
 
+use PlusTimeIT\EasyForms\Traits\ConvertTrait;
+
 class SelectItem
 {
     public function __construct($id, $value)
@@ -36,5 +38,5 @@ class SelectItem
 
     protected $value;
 
-    use ConvertTraits;
+    use ConvertTrait;
 }

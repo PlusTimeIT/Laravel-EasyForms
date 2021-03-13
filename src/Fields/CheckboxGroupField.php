@@ -5,7 +5,7 @@ use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
 use PlusTimeIT\EasyForms\Traits\{ConvertTrait, FieldTrait};
 
-class CheckboxField extends EasyField implements FieldInterface
+class CheckboxGroupField extends EasyField implements FieldInterface
 {
     public function __construct(string $name, array $options = [])
     {

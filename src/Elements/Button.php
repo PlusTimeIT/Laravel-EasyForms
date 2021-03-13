@@ -1,7 +1,7 @@
 <?php
 namespace PlusTimeIT\EasyForms\Elements;
 
-use PlusTimeIT\EasyForms\Traits\ConvertTraits;
+use PlusTimeIT\EasyForms\Traits\ConvertTrait;
 
 class Button
 {
@@ -36,5 +36,5 @@ class Button
 
     protected $text;
 
-    use ConvertTraits;
+    use ConvertTrait;
 }

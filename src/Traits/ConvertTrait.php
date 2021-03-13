@@ -1,7 +1,7 @@
 <?php
 namespace PlusTimeIT\EasyForms\Traits;
 
-trait ConvertTraits
+trait ConvertTrait
 {
     public function toArray(): array
     {

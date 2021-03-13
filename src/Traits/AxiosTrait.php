@@ -74,5 +74,5 @@ trait AxiosTrait
 
     protected $notification = TRUE;
 
-    use ConvertTraits;
+    use ConvertTrait;
 }

@@ -36,5 +36,5 @@ trait HeaderTrait
 
     protected $value;
 
-    use ConvertTraits;
+    use ConvertTrait;
 }

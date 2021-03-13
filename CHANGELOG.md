@@ -7,7 +7,8 @@ All version change notes to be placed here.
 
 ### 0.0.2
 ---
-- Initial build
+- Merged toArray and toJson traits into ConvertTrait
+- Created setOptions function for easier portability.
 
 ### 0.0.1
 ---

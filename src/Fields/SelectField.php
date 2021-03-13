@@ -3,20 +3,26 @@ namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Elements\SelectItem;
-use PlusTimeIT\EasyForms\Traits\ConvertTraits;
+use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
+use PlusTimeIT\EasyForms\Traits\{ConvertTrait, FieldTrait};
 
-class SelectField extends EasyField
+class SelectField extends EasyField implements FieldInterface
 {
     public function __construct(string $name, array $options = [])
     {
         $this->name = $name;
-        return $this->fillOptions($options);
+        return $this->setOptions($options);
     }
 
     public function addItem(SelectItem $item): self
     {
         $this->items[] = $item;
         return $this;
+    }
+
+    public function getAnyField(): bool
+    {
+        return $this->any_field;
     }
 
     public function getItemId()
@@ -37,6 +43,12 @@ class SelectField extends EasyField
     public function getMultiple(): bool
     {
         return $this->multiple;
+    }
+
+    public function setAnyField(bool $any_field): self
+    {
+        $this->any_field = $any_field;
+        return $this;
     }
 
     public function setItemId($id): self
@@ -63,6 +75,8 @@ class SelectField extends EasyField
         return $this;
     }
 
+    protected $any_field = FALSE;
+
     protected $component = 'v-select';
 
     protected $item_text = 'value';
@@ -75,7 +89,8 @@ class SelectField extends EasyField
 
     protected $type = self::TYPE;
 
-    use ConvertTraits;
+    use ConvertTrait;
+    use FieldTrait;
 
     public const TYPE = 'select';
 }

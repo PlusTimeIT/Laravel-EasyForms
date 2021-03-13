@@ -1,31 +1,8 @@
 <?php
 namespace PlusTimeIT\EasyForms\Base;
 
-use Log;
-use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
-use PlusTimeIT\EasyForms\Traits\FieldTrait;
-
-class EasyField implements FieldInterface
+class EasyField
 {
-    public function __construct(string $name, array $options = [])
-    {
-        $this->name = $name;
-        return $this->fillOptions($options);
-    }
-
-    public function fillOptions($class, array $options): self
-    {
-        collect($options)->each(function($value, $option) {
-            Log::debug('OPTIONS', ['option' => $option]);
-            Log::debug('Value', ['value' => $value]);
-            if (property_exists($class, $option)) {
-                Log::debug('option exists');
-                $this->{$option} = $value;
-            }
-        });
-        return $this;
-    }
-
     protected $cols = 12;
 
     protected $component = 'v-text-field';
@@ -53,6 +30,4 @@ class EasyField implements FieldInterface
     protected $validation = [];
 
     protected $value = '';
-
-    use FieldTrait;
 }

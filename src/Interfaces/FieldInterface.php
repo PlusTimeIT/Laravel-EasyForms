@@ -39,6 +39,8 @@ interface FieldInterface
 
     public function setMasking(array $masking);
 
+    public function setOptions(array $options);
+
     public function setOrder(int $order);
 
     public function setPlaceholder(string $placeholder);
