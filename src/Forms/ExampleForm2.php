@@ -3,8 +3,8 @@ namespace PlusTimeIT\EasyForms\Forms;
 
 use Carbon\Carbon;
 use PlusTimeIT\EasyForms\Base\InputForm;
-use PlusTimeIT\EasyForms\Elements\{Action, Axios, Button, Header, Icon, SelectItem};
-use PlusTimeIT\EasyForms\Fields\{CheckboxField, FileInputField, HiddenField, NumberField, PasswordField, SelectField, TextField, TextareaField};
+use PlusTimeIT\EasyForms\Elements\{Action, Axios, Button, Header, Icon, RadioItem, SelectItem};
+use PlusTimeIT\EasyForms\Fields\{AutoCompleteField, CheckboxField, FileInputField, HiddenField, NumberField, PasswordField, RadioGroupField, SelectField, TextField, TextareaField};
 use PlusTimeIT\EasyForms\Traits\ConvertTrait;
 
 class ExampleForm2 extends InputForm
@@ -18,6 +18,9 @@ class ExampleForm2 extends InputForm
                     [
                         'order' => 0,
                         'label' => 'Username',
+                        'maxlength' => 20,
+                        'counter' => TRUE ,
+                        'help' => 'This is your Username!',
                     ]
                 ),
                 new PasswordField(
@@ -25,6 +28,9 @@ class ExampleForm2 extends InputForm
                     [
                         'order' => 1,
                         'label' => 'Password',
+                        'maxlength' => 5,
+                        'counter' => TRUE ,
+                        'help' => 'This is your Password!',
                     ]
                 ),
                 new TextField(
@@ -32,6 +38,7 @@ class ExampleForm2 extends InputForm
                     [
                         'order' => 2,
                         'label' => 'Email',
+                        'help' => 'Leave your email!',
                     ]
                 ),
                 new FileInputField(
@@ -40,6 +47,7 @@ class ExampleForm2 extends InputForm
                         'order' => 5,
                         'label' => 'Upload your resume in .doc or .pdf',
                         'accept' => '.doc|.pdf',
+                        'help' => 'Upload your resume!',
                     ]
                 ),
                 new NumberField(
@@ -52,14 +60,15 @@ class ExampleForm2 extends InputForm
                     ]
                 ),
                 new TextareaField(
-                    'note',
+                    'notes',
                     [
                         'order' => 4,
                         'label' => 'Account Notes',
+                        'clearable' => TRUE,
                     ]
                 ),
                 new CheckboxField(
-                    'note',
+                    'terms',
                     [
                         'order' => 6,
                         'label' => 'Do you accept the current terms and conditions',
@@ -78,8 +87,6 @@ class ExampleForm2 extends InputForm
                     [
                         'order' => 8,
                         'label' => 'What\'s your favourite fruit?',
-                        'item_text' => 'value' ,
-                        'item_value' => 'id' ,
                         'items' => [
                             new SelectItem(0, 'Chicken') ,
                             new SelectItem(1, 'Banana') ,
@@ -97,8 +104,6 @@ class ExampleForm2 extends InputForm
                         'multiple' => TRUE ,
                         'any_field' => TRUE ,
                         'label' => 'Select Customers',
-                        'item_text' => 'value' ,
-                        'item_value' => 'id' ,
                         'items' => [
                             new SelectItem(0, 'John Doe') ,
                             new SelectItem(1, 'Sammy Did') ,
@@ -108,13 +113,50 @@ class ExampleForm2 extends InputForm
                         'value' => '',
                     ]
                 ),
+                new AutoCompleteField(
+                    'rating',
+                    [
+                        'order' => 10,
+                        'label' => 'Leave us a rating',
+                        'items' => [
+                            new SelectItem(0, '1 Star') ,
+                            new SelectItem(1, '2 Star') ,
+                            new SelectItem(2, '3 Star') ,
+                            new SelectItem(3, '4 Star') ,
+                            new SelectItem(4, '5 Star') ,
+                        ],
+                        'value' => '',
+                    ]
+                ),
+                new RadioGroupField(
+                    'What\'s the colour of the sky?',
+                    [
+                        'order' => 11,
+                        'label' => 'Pick the colour of the sky?',
+                        'items' => [
+                            new RadioItem('The sky is blue', 'blue', 'blue') ,
+                            new RadioItem('The sky is red', 'red', 'red') ,
+                            new RadioItem('The sky is pink', 'pink', 'pink') ,
+                        ],
+                        'value' => '',
+                    ]
+                ),
             ])
             ->setAction(new Action(
                 [
                     new Button(
+                        'process',
                         'Register',
                         'primary',
-                        new Icon('mdi-star', 'Register')
+                        new Icon('mdi-star', 'Register'),
+                        1
+                    ),
+                    new Button(
+                        'reset',
+                        'Reset Form',
+                        'secondary',
+                        new Icon('mdi-refresh', 'Reset the form fields'),
+                        0
                     ),
                 ],
                 new Axios([

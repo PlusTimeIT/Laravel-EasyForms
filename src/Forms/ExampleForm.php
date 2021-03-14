@@ -30,9 +30,25 @@ class ExampleForm extends InputForm
             ->setAction(new Action(
                 [
                     new Button(
+                        'process',
                         'Login',
                         'primary',
-                        new Icon('mdi-login', 'Login to the app.')
+                        new Icon('mdi-login', 'Login to the app.'),
+                        0
+                    ),
+                    new Button(
+                        'reset',
+                        'Reset Form',
+                        'secondary',
+                        new Icon('mdi-refresh', 'Reset the form fields'),
+                        1
+                    ),
+                    new Button(
+                        'cancel',
+                        'Cancel',
+                        'secondary',
+                        new Icon('mdi-cancel', 'Cancel the form'),
+                        2
                     ),
                 ],
                 new Axios([

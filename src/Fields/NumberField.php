@@ -13,25 +13,36 @@ class NumberField extends EasyField implements FieldInterface
         return $this->setOptions($options);
     }
 
-    public function getMax()
+    public function getMax(): float
     {
         return $this->max;
     }
 
-    public function getMin()
+    public function getMin(): float
     {
         return $this->min;
     }
 
-    public function setMax(int $max): self
+    public function getStep(): float
+    {
+        return $this->step;
+    }
+
+    public function setMax(float $max): self
     {
         $this->max = $max;
         return $this;
     }
 
-    public function setMin(int $max): self
+    public function setMin(float $max): self
     {
         $this->max = $max;
+        return $this;
+    }
+
+    public function setStep(float $step): self
+    {
+        $this->step = $step;
         return $this;
     }
 
@@ -42,6 +53,8 @@ class NumberField extends EasyField implements FieldInterface
     protected $max = 99999;
 
     protected $min = 0;
+
+    protected $step = 1;
 
     protected $type = self::TYPE;
 

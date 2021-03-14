@@ -13,9 +13,35 @@ class PasswordField extends EasyField implements FieldInterface
         return $this->setOptions($options);
     }
 
+    public function getCounter(): bool
+    {
+        return $this->counter;
+    }
+
+    public function getMaxLength(): int
+    {
+        return $this->maxlength;
+    }
+
+    public function setCounter(bool $counter): self
+    {
+        $this->counter = $counter;
+        return $this;
+    }
+
+    public function setMaxLength(int $maxlength): self
+    {
+        $this->maxlength = $maxlength;
+        return $this;
+    }
+
     protected $component = 'v-text-field';
 
     protected $component_type = self::TYPE;
+
+    protected $counter = FALSE;
+
+    protected $maxlength;
 
     protected $type = self::TYPE;
 

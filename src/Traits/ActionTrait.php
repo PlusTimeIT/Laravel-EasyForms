@@ -9,7 +9,7 @@ trait ActionTrait
     {
         $this->buttons = $buttons;
         $this->axios = $axios;
-        return $this;
+        return $this->sortButtons();
     }
 
     public function addButton(Button $button): self
@@ -37,6 +37,12 @@ trait ActionTrait
     public function setButtons(array $buttons): self
     {
         $this->buttons = $buttons;
+        return $this->sortButtons();
+    }
+
+    public function sortButtons(): self
+    {
+        $this->buttons = collect($this->buttons)->sortBy([fn($a, $b) => $a->getOrder() <=> $b->getOrder()])->toArray();
         return $this;
     }
 

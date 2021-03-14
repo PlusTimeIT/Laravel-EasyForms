@@ -2,11 +2,11 @@
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Elements\SelectItem;
+use PlusTimeIT\EasyForms\Elements\RadioItem;
 use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
 use PlusTimeIT\EasyForms\Traits\{ConvertTrait, FieldTrait};
 
-class SelectField extends EasyField implements FieldInterface
+class RadioGroupField extends EasyField implements FieldInterface
 {
     public function __construct(string $name, array $options = [])
     {
@@ -14,40 +14,10 @@ class SelectField extends EasyField implements FieldInterface
         return $this->setOptions($options);
     }
 
-    public function addItem(SelectItem $item): self
+    public function addItem(RadioItem $item): self
     {
         $this->items[] = $item;
         return $this;
-    }
-
-    public function getAnyField(): bool
-    {
-        return $this->any_field;
-    }
-
-    public function getChips(): bool
-    {
-        return $this->chips;
-    }
-
-    public function getItemId()
-    {
-        return $this->item_text;
-    }
-
-    public function getItems(): array
-    {
-        return $this->items;
-    }
-
-    public function getItemValue(): string
-    {
-        return $this->item_value;
-    }
-
-    public function getMultiple(): bool
-    {
-        return $this->multiple;
     }
 
     public function setAnyField(bool $any_field): self
@@ -59,6 +29,12 @@ class SelectField extends EasyField implements FieldInterface
     public function setChips(bool $chips): self
     {
         $this->chips = $chips;
+        return $this;
+    }
+
+    public function setColumn(bool $column): self
+    {
+        $this->column = $column;
         return $this;
     }
 
@@ -80,9 +56,21 @@ class SelectField extends EasyField implements FieldInterface
         return $this;
     }
 
+    public function setMandatory(bool $mandatory): self
+    {
+        $this->mandatory = $mandatory;
+        return $this;
+    }
+
     public function setMultiple(bool $multiple): self
     {
         $this->multiple = $multiple;
+        return $this;
+    }
+
+    public function setRow(bool $row): self
+    {
+        $this->row = $row;
         return $this;
     }
 
@@ -90,15 +78,15 @@ class SelectField extends EasyField implements FieldInterface
 
     protected $chips = FALSE;
 
-    protected $component = 'v-select';
+    protected $column = TRUE;
 
-    protected $item_text = 'value';
-
-    protected $item_value = 'id';
+    protected $component = 'v-radio-group';
 
     protected $items = [];
 
-    protected $multiple = FALSE;
+    protected $mandatory = TRUE;
+
+    protected $row = FALSE;
 
     protected $type = self::TYPE;
 

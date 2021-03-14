@@ -5,6 +5,13 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+### 0.0.6
+---
+-  Include any_field for select fields
+-  Update InputForm buttons to include process, reset and cancel buttons
+-  Fixed reset form issue
+-  process of moving validation to rules aray
+
 ### 0.0.5
 ---
 -  Fixing FormInput and FormLoader vue files

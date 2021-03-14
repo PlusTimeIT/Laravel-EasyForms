@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Elements\SelectItem;
 use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
 use PlusTimeIT\EasyForms\Traits\{ConvertTrait, FieldTrait};
 
-class SelectField extends EasyField implements FieldInterface
+class AutoCompleteField extends EasyField implements FieldInterface
 {
     public function __construct(string $name, array $options = [])
     {
@@ -90,7 +90,7 @@ class SelectField extends EasyField implements FieldInterface
 
     protected $chips = FALSE;
 
-    protected $component = 'v-select';
+    protected $component = 'v-autocomplete';
 
     protected $item_text = 'value';
 
@@ -105,5 +105,5 @@ class SelectField extends EasyField implements FieldInterface
     use ConvertTrait;
     use FieldTrait;
 
-    public const TYPE = 'select';
+    public const TYPE = 'autocomplete';
 }
