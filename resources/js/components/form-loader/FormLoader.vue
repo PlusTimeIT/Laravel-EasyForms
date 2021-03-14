@@ -1,469 +1,443 @@
 <template>
-  
+
   <v-col :cols="cols" class="pa-0">
-    <v-col v-if="loaded_form_name == ''" class="pa-0">
-        <h1>Error Loading Form</h1> 
+    <v-col v-if="loadedFormName == ''" class="pa-0">
+        <h1>Error Loading Form</h1>
+    </v-col>
+    <v-col v-if="loadedFormName == ''" class="pa-0">
+        <h1>Error Loading Form</h1>
     </v-col>
     <validation-observer ref="form" tag="div">
-      <form v-bind="form_props()" :ref="loaded_form_name" :key="update_form">
+        <v-progress-circular
+            v-if="formLoading"
+            indeterminate
+            color="primary"
+        ></v-progress-circular>
+      <v-form v-if="!formLoading" v-bind="formProps()" ref="loaded_form" :key="updateForm">
         <v-row class="px-4">
           <v-col cols="12" mx-auto>
             <v-row>
               <form-input
-                v-for="(field, index_f) in async_field_list"
+                v-for="(field, index_f) in asyncFieldList"
                 :key="index_f"
-                :form_field="field"
-                :cols="input_cols(field)"
-                :additional_form_data="loaded_additional_form_data"
-                @field_update="update_field"
+                v-model="fieldList[index_f]"
+                :cols="getInputCols(field)"
+                :additional_form_data="loadedAdditionalFormData"
+                @field_update="updateField"
               ></form-input>
             </v-row>
-            <v-row v-if="display_button || cancel_button">
-              <v-col v-if="display_button">
+            <v-row v-if="displayButton">
+              <v-col v-for="( button, index ) in loadedFormData.action.buttons" :key="index">
                 <v-btn
                   class="p-4"
-                  :color="button_colour"
-                  @click="process_form"
+                  :color="button.colour"
+                  @click="buttonAction( button )"
                   :rounded="false"
                   tile
                 >
-                  {{ button_text }}
-                </v-btn>
-              </v-col>
-              <v-col class="text-right" v-if="cancel_button">
-                <v-btn class="p-4" @click="cancel_form" :rounded="false" tile>
-                  Cancel
+                  {{ button.text }}
                 </v-btn>
               </v-col>
             </v-row>
-            <v-tooltip top v-if="!display_icon">
+            <v-tooltip top v-if="!displayIcon">
               <template v-slot:activator="{ on , attrs }">
                 <v-icon
                   v-on="on"
-                  v-bind="prepare_props(attrs)"
-                  @click.stop="process_form"
-                  :key="icon_mdi"
+                  v-bind="prepareProps(attrs)"
+                  @click.stop="processForm"
+                  :key="iconMdi"
                 >
                 </v-icon>
               </template>
-              <span>{{ icon_text }}</span>
+              <span>{{ iconText }}</span>
             </v-tooltip>
           </v-col>
         </v-row>
-      </form>
+      </v-form>
     </validation-observer>
   </v-col>
 </template>
 
 <script>
 
-import { ValidationObserver } from "vee-validate";
-import { FormMixin } from "./FormMixins";
-import FormInput from "./FormInput.vue";
+import {ValidationObserver} from 'vee-validate';
+import {FormMixin} from './FormMixins';
+import FormInput from './FormInput.vue';
 
 
 export default {
-  name: "FormLoader",
+  name: 'FormLoader',
   components: {
     ValidationObserver,
-    FormInput
+    FormInput,
   },
-  mixins: [ FormMixin ] ,
+  mixins: [FormMixin],
   props: {
     identifier: {
       type: [Array, String, Object],
       default: function() {
         return null;
-      }
+      },
     },
     additional_form_data: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     additional_load_form_data: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     cols: {
       type: Number,
-      default: 12
+      default: 12,
     },
     load_form: {
-      type: [ String, Object],
-      default: '' ,
+      type: [String, Object],
+      default: '',
     },
-    load_area: String,
     populate: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
-      field_list: {},
-      form_loaded: true,
-      loaded_area: "",
-      loaded_form_name: "",
-      loaded_form_data: false,
-      update_form: 0
+      fieldList: {},
+      formLoading: true,
+      formLoaded: true,
+      loadedFormName: '',
+      loadedFormData: false,
+      originalFormData: false,
+      updateForm: 0,
     };
   },
   asyncComputed: {
-    async_field_list() {
-      let new_field_list = {};
-      let self = this;
-      Object.keys(this.field_list).forEach(field => {
-        let this_field = self.field_list[field];
+    asyncFieldList() {
+      const newFieldList = {};
+      const self = this;
+      Object.keys(this.fieldList).forEach((field) => {
+        const thisField = self.fieldList[field];
 
-        if (!self.is_undefined(this_field.hide)) 
-        {
-          if (!self.is_undefined(this_field.show) && self.is_object(this_field.show)) 
-          {
-            Object.keys(this_field.show).forEach(value => {
-              if (!self.is_undefined(self.field_list[value].value) && self.field_list[value].value === this_field.show[value]) 
-              {
-                new_field_list[field] = this_field;
+        if (!self.is_undefined(thisField.hide)) {
+          if (!self.is_undefined(thisField.show) && self.is_object(thisField.show)) {
+            Object.keys(thisField.show).forEach((value) => {
+              if (!self.is_undefined(self.fieldList[value].value) && self.fieldList[value].value === thisField.show[value]) {
+                newFieldList[field] = thisField;
               }
             });
           }
-        } 
-        else 
-        {
-          new_field_list[field] = this_field;
+        } else {
+          newFieldList[field] = thisField;
         }
       });
 
-      return new_field_list;
-    }
+      return newFieldList;
+    },
   },
   computed: {
-    loaded_additional_form_data: function() {
+    loadedAdditionalFormData: function() {
       return this.additional_form_data;
     },
-    loaded_additional_load_form_data: function() {
+    loadedAdditionalLoadFormData: function() {
       return this.additional_load_form_data;
     },
-    loaded_identifier: function() {
+    loadedIdentifier: function() {
       return this.identifier;
     },
-    form_data: function() {
-      var self = this;
-      var inputs = {};
-      var form_data = new FormData();
-      let multi_part = !this.is_undefined(this.loaded_form_data.action.axios) && !this.is_undefined(this.loaded_form_data.action.axios.multi_part) && this.loaded_form_data.action.axios.multi_part
-        ? true
-        : false;
-      let identifier = !this.is_undefined(this.loaded_identifier) && this.loaded_identifier !== null && this.loaded_identifier !== 0
-        ? true
-        : false;
+    formData: function() {
+      const self = this;
+      const inputs = {};
+      const formData = new FormData();
+      const multiPart = !this.is_undefined(this.loadedFormData.action.axios) && !this.is_undefined(this.loadedFormData.action.axios.multiPart) && this.loadedFormData.action.axios.multiPart ?
+        true :
+        false;
+      const identifier = !this.is_undefined(this.loadedIdentifier) && this.loadedIdentifier !== null && this.loadedIdentifier !== 0 ?
+        true :
+        false;
 
-      Object.keys(this.async_field_list).forEach(item => {
-        if (multi_part) 
-        {
-          if (form_data.has(self.async_field_list[item].name)) 
-          {
-            form_data.set(
-              self.async_field_list[item].name,
-              this.is_object(self.async_field_list[item].value) || this.is_array(self.async_field_list[item].value)
-                ? JSON.stringify(self.async_field_list[item].value)
-                : self.async_field_list[item].value
+      Object.keys(this.asyncFieldList).forEach((item) => {
+        if (multiPart) {
+          if (formData.has(self.asyncFieldList[item].name)) {
+            formData.set(
+                self.asyncFieldList[item].name,
+              this.is_object(self.asyncFieldList[item].value) || this.is_array(self.asyncFieldList[item].value) ?
+                JSON.stringify(self.asyncFieldList[item].value) :
+                self.asyncFieldList[item].value,
             );
-          } 
-          else 
-          {
-            form_data.append(
-              self.async_field_list[item].name,
-              this.is_object(self.async_field_list[item].value) || this.is_array(self.async_field_list[item].value)
-                ? JSON.stringify(self.async_field_list[item].value)
-                : self.async_field_list[item].value
+          } else {
+            formData.append(
+                self.asyncFieldList[item].name,
+              this.is_object(self.asyncFieldList[item].value) || this.is_array(self.asyncFieldList[item].value) ?
+                JSON.stringify(self.asyncFieldList[item].value) :
+                self.asyncFieldList[item].value,
             );
           }
-        } 
-        else 
-        {
-          inputs[self.async_field_list[item].name] = self.async_field_list[item].value;
+        } else {
+          inputs[self.asyncFieldList[item].name] = self.asyncFieldList[item].value;
         }
       });
 
-      if (multi_part) {
-        //prep formdata
-        form_data.append("form_name", this.loaded_form_name);
-        if (identifier) 
-        {
-          if (form_data.has("id")) 
-          {
-            form_data.set(
-              "id",
-              this.is_object(this.loaded_identifier) ||
-                this.is_array(this.loaded_identifier)
-                ? JSON.stringify(this.loaded_identifier)
-                : this.loaded_identifier
+      if (multiPart) {
+        // prep formdata
+        formData.append('form_name', this.loadedFormName);
+        if (identifier) {
+          if (formData.has('id')) {
+            formData.set(
+                'id',
+              this.is_object(this.loadedIdentifier) ||
+                this.is_array(this.loadedIdentifier) ?
+                JSON.stringify(this.loadedIdentifier) :
+                this.loadedIdentifier,
             );
-          } 
-          else 
-          {
-            form_data.append(
-              "id",
-              this.is_object(this.loaded_identifier) ||
-                this.is_array(this.loaded_identifier)
-                ? JSON.stringify(this.loaded_identifier)
-                : this.loaded_identifier
+          } else {
+            formData.append(
+                'id',
+              this.is_object(this.loadedIdentifier) ||
+                this.is_array(this.loadedIdentifier) ?
+                JSON.stringify(this.loadedIdentifier) :
+                this.loadedIdentifier,
             );
           }
         }
-        return form_data;
-      } 
-      else 
-      {
-        inputs["form_name"] = this.loaded_form_data.name;
-        if (identifier) 
-        {
-          inputs["id"] = this.loaded_identifier;
+        return formData;
+      } else {
+        inputs['form_name'] = this.loadedFormData.name;
+        if (identifier) {
+          inputs['id'] = this.loadedIdentifier;
         }
         return inputs;
       }
     },
-    display_icon: function() {
-      if (!this.form_loaded || !this.loaded_form_data) return false;
-      return this.is_undefined(this.loaded_form_data.action.buttons[0].icon)
-        ? false
-        : true;
+    displayIcon: function() {
+      if (!this.formLoaded || !this.loadedFormData) return false;
+      return this.is_undefined(this.loadedFormData.action.buttons[0].icon) ?
+        false :
+        true;
     },
-    icon_text: function() {
-      if (!this.form_loaded || !this.loaded_form_data) return "";
-      return this.is_undefined(this.loaded_form_data.action.buttons[0].icon)
-        ? "Submit"
-        : this.loaded_form_data.action.buttons[0].icon.tooltip;
+    iconText: function() {
+      if (!this.formLoaded || !this.loadedFormData) return '';
+      return this.is_undefined(this.loadedFormData.action.buttons[0].icon) ?
+        'Submit' :
+        this.loadedFormData.action.buttons[0].icon.tooltip;
     },
-    icon_mdi: function() {
-      if (!this.form_loaded || !this.loaded_form_data) return "";
-      return this.is_undefined(this.loaded_form_data.action.buttons[0].icon.icon)
-        ? ""
-        : this.loaded_form_data.action.buttons[0].icon.mdi;
+    iconMdi: function() {
+      if (!this.formLoaded || !this.loadedFormData) return '';
+      return this.is_undefined(this.loadedFormData.action.buttons[0].icon.icon) ?
+        '' :
+        this.loadedFormData.action.buttons[0].icon.mdi;
     },
-    display_button: function() {
-      if (!this.form_loaded || !this.loaded_form_data) return false;
-      return this.is_undefined(this.loaded_form_data.action.buttons)
-        ? false
-        : true;
+    displayButton: function() {
+      if (!this.formLoaded || !this.loadedFormData) return false;
+      return this.is_undefined(this.loadedFormData.action.buttons) || !this.is_array(this.loadedFormData.action.buttons) || this.loadedFormData.action.buttons.length === 0 ?
+        false :
+        true;
     },
-    cancel_button: function() {
-      if (!this.form_loaded || !this.loaded_form_data) return false;
-      if (this.is_undefined(this.loaded_form_data.action.buttons))
-        return false;
-      if (this.is_undefined(this.loaded_form_data.action.buttons[1]))
-        return false;
-      return this.loaded_form_data.action.buttons[1].cancel;
-    },
-    button_text: function() {
-      if (!this.form_loaded || !this.loaded_form_data) return "Loading...";
-      return this.is_undefined(this.loaded_form_data.action.buttons[0].text)
-        ? "Submit"
-        : this.loaded_form_data.action.buttons[0].text;
-    },
-    button_colour: function() {
-      if (!this.form_loaded || !this.loaded_form_data) return "primary";
-      return this.is_undefined(this.loaded_form_data.action.buttons[0].colour)
-        ? "primary"
-        : this.loaded_form_data.action.buttons[0].colour;
-    }
   },
   watch: {
-    field_list: {
+    fieldList: {
       handler: function() {
-        this.$asyncComputed.async_field_list.update();
+        this.$asyncComputed.asyncFieldList.update();
       },
-      deep: true
+      deep: true,
     },
-    loaded_form_name: function() {},
-    form_loaded: function(val) {
-      this.$emit("loaded", val);
+    formLoaded: function(val) {
+      this.$emit('loaded', val);
     },
-    loaded_additional_form_data: function() {}
   },
   async mounted() {
-    if( this.is_object( this.load_form ) )
-    {
-      this.loaded_form_name = this.load_form.name;
-      this.form_loaded = true;
-      this.field_list = this.load_form.fields;
-      this.loaded_form_data = this.load_form;
+    if ( this.is_object( this.load_form ) ) {
+      this.loadedFormName = this.load_form.name;
+      this.formLoaded = true;
+      this.fieldList = this.load_form.fields;
+      this.loadedFormData = this.load_form;
+      this.originalFormData = JSON.parse(JSON.stringify(this.load_form));
+      this.formLoading = false;
+    } else {
+      this.formLoading = true;
+      this.loadedFormName = this.load_form;
+      await this.loadFormFields(this.loadedIdentifier);
     }
-    else
-    {
-      this.loaded_form_name = this.load_form;
-      await this.load_form_fields(this.loaded_identifier);
-    }
-    
   },
   methods: {
-    loaded_computed_field_list() {
-      if (this.field_list.length !== 0) 
-      {
-        let new_field_list = {};
-        let self = this;
-        Object.keys(this.field_list).forEach(field => {
-          let this_field = self.field_list[field];
-          if (!self.is_undefined(this_field.hide)) 
-          {
-            if (!self.is_undefined(this_field.show) && self.is_array(this_field.show)) 
-            {
-              this_field.show.forEach((value, x) => {
-                if (!self.is_undefined(self.field_list[x].value) && self.field_list[x].value === value) 
-                {
-                  new_field_list[field] = this_field;
+    buttonAction( button ) {
+      this.formLoading = true;
+      if ( !this.is_undefined( button.type ) ) {
+        if ( button.type =='process' ) {
+          this.processForm();
+          return 0;
+        }
+        if ( button.type =='reset' ) {
+          this.resetForm();
+          return 0;
+        }
+        if ( button.type =='cancel' ) {
+          this.cancelForm();
+          return 0;
+        }
+      }
+      alert( 'button action error :(' );
+      return 0;
+    },
+    loadedComputedFieldList() {
+      if (this.fieldList.length !== 0) {
+        const newFieldList = {};
+        const self = this;
+        Object.keys(this.fieldList).forEach((field) => {
+          const thisField = self.fieldList[field];
+          if (!self.is_undefined(thisField.hide)) {
+            if (!self.is_undefined(thisField.show) && self.is_array(thisField.show)) {
+              thisField.show.forEach((value, x) => {
+                if (!self.is_undefined(self.fieldList[x].value) && self.fieldList[x].value === value) {
+                  newFieldList[field] = thisField;
                 }
               });
             }
-          } 
-          else 
-          {
-            new_field_list[field] = this_field;
+          } else {
+            newFieldList[field] = thisField;
           }
         });
-        return new_field_list;
+        return newFieldList;
       }
       return {};
     },
-    update_field(event) {
-      let fieldIndex = this.field_list.findIndex( element => element.name == event.name );
-      this.field_list[fieldIndex] = event;
+    updateField(event) {
+      const fieldIndex = this.fieldList.findIndex( (element) => element.name == event.name );
+      this.fieldList[fieldIndex] = event;
     },
-    cancel_form() {
-      this.$emit("cancelled", true);
+    resetForm() {
+      this.loadedFormData = JSON.parse(JSON.stringify(this.originalFormData));
+      this.fieldList = JSON.parse(JSON.stringify(this.originalFormData.fields));
+      this.$refs.form.reset();
+      this.$refs.loaded_form.reset();
+      this.$emit('resetForm', true);
+      this.formLoading = false;
+      // await this.loadFormFields(this.loadedIdentifier);
     },
-    form_props: function() {
-      let result = {};
-      if (!this.loaded_form_data) return result;
-      if (!this.is_undefined(this.loaded_form_data.action.axios) && !this.is_undefined(this.loaded_form_data.action.axios.multi_part) && this.loaded_form_data.action.axios.multi_part) 
-      {
-        result["enctype"] = "application/x-www-form-urlencoded";
+    cancelForm() {
+      this.$emit('cancelled', true);
+      this.formLoading = false;
+    },
+    formProps: function() {
+      const result = {};
+      if (!this.loadedFormData) return result;
+      if (!this.is_undefined(this.loadedFormData.action.axios) && !this.is_undefined(this.loadedFormData.action.axios.multiPart) && this.loadedFormData.action.axios.multiPart) {
+        result['enctype'] = 'application/x-www-form-urlencoded';
       }
       return result;
     },
-    prepare_props: function() {
-      let result = {};
+    prepareProps: function() {
+      const result = {};
 
-      if (this.display_icon) 
-      {
-        result.color = !this.is_undefined(this.loaded_form_data.action.buttons[0].colour)
-          ? this.loaded_form_data.action.buttons[0].colour
-          : "primary";
-        result.class = !this.is_undefined(this.loaded_form_data.action.buttons[0].icon.class)
-          ? this.loaded_form_data.action.buttons[0].icon.class
-          : "";
-        if (this.is_undefined(this.loaded_form_data.action.buttons[0].icon.size)) 
-        {
-          result[this.loaded_form_data.action.buttons[0].icon.size] = true;
+      if (this.displayIcon) {
+        result.color = !this.is_undefined(this.loadedFormData.action.buttons[0].colour) ?
+          this.loadedFormData.action.buttons[0].colour :
+          'primary';
+        result.class = !this.is_undefined(this.loadedFormData.action.buttons[0].icon.class) ?
+          this.loadedFormData.action.buttons[0].icon.class :
+          '';
+        if (this.is_undefined(this.loadedFormData.action.buttons[0].icon.size)) {
+          result[this.loadedFormData.action.buttons[0].icon.size] = true;
         }
       }
       return result;
     },
-    input_cols: function(field) {
+    getInputCols: function(field) {
       return this.is_undefined(field.cols) ? 12 : field.cols;
     },
-    merge_addition_data: function(form_data, additional_data) {
-      let multi_part = !this.is_undefined(this.loaded_form_data.action.axios) && !this.is_undefined(this.loaded_form_data.action.axios.multi_part) && this.loaded_form_data.action.axios.multi_part
-        ? true
-        : false;
-      Object.keys(additional_data).forEach(function(key) {
-        if (multi_part) 
-        {
-          if (form_data.has(key)) 
-          {
-            form_data.set(
-              key,
-              this.is_object(additional_data[key]) || this.is_array(additional_data[key])
-                ? JSON.stringify(additional_data[key])
-                : additional_data[key]
+    mergeAdditionData: function(formData, additionalData) {
+      const multiPart = !this.is_undefined(this.loadedFormData.action.axios) && !this.is_undefined(this.loadedFormData.action.axios.multi_part) && this.loadedFormData.action.axios.multiPart ?
+        true :
+        false;
+      const self = this;
+      Object.keys(additionalData).forEach(function(key) {
+        if (multiPart) {
+          if (formData.has(key)) {
+            formData.set(
+                key,
+              self.is_object(additionalData[key]) || self.is_array(additionalData[key]) ?
+                JSON.stringify(additionalData[key]) :
+                additionalData[key],
             );
-          } 
-          else 
-          {
-            form_data.append(
-              key,
-              this.is_object(additional_data[key]) || this.is_array(additional_data[key])
-                ? JSON.stringify(additional_data[key])
-                : additional_data[key]
+          } else {
+            formData.append(
+                key,
+              self.is_object(additionalData[key]) || self.is_array(additionalData[key]) ?
+                JSON.stringify(additionalData[key]) :
+                additionalData[key],
             );
           }
-        } 
-        else 
-        {
-          form_data[key] = additional_data[key];
+        } else {
+          formData[key] = additionalData[key];
         }
       });
-      return form_data;
+      return formData;
     },
-    merge_additional_load_form_data: function(form_data, additional_data) {
-      Object.keys(additional_data).forEach(function(key) {
-        form_data[key] = additional_data[key];
+    mergeAdditionalLoadFormData: function(formData, additionalData) {
+      Object.keys(additionalData).forEach(function(key) {
+        formData[key] = additionalData[key];
       });
-      return form_data;
+      return formData;
     },
-    async load_form_fields(id) {
-      var self = this;
-      self.form_loaded = false;
-
+    async loadFormFields(id) {
+      this.formLoaded = false;
+      const self = this;
       return this.request(
-        "post",
-        "/axios/forms/load",
-        this.merge_additional_load_form_data(
-          {
-            form_name: this.loaded_form_name,
-            populate: this.populate,
-            id: id
-          },
-          this.loaded_additional_load_form_data
-        ),
-        true,
-        false
-      ).then(axios_response => {
-        self.form_loaded = ! axios_response.loader;
-        self.field_list = axios_response.response.data.fields;
-        self.loaded_form_data = axios_response.response.data;
+          'post',
+          '/axios/forms/load',
+          this.mergeAdditionalLoadFormData(
+              {
+                form_name: this.loadedFormName,
+                populate: this.populate,
+                id: id,
+              },
+              this.loadedAdditionalLoadFormData,
+          ),
+          true,
+          false,
+      ).then((axiosResponse) => {
+        self.formLoaded = ! axiosResponse.loader;
+        self.formLoading = axiosResponse.loader;
+        self.fieldList = axiosResponse.response.data.fields;
+        self.loadedFormData = axiosResponse.response.data;
+        self.originalFormData = JSON.parse(JSON.stringify(axiosResponse.response.data));
       });
     },
-    process_form: function() {
-      var self = this;
-      self.form_loaded = false;
+    processForm: function() {
+      const self = this;
+      self.formLoaded = false;
       this.request(
-        "post",
-        "/axios/forms/process",
-        this.merge_addition_data(
-          this.form_data,
-          this.loaded_additional_form_data
-        ),
-        this.loaded_form_data.action.axios.expecting_results,
-        this.loaded_form_data.action.axios.display_notification,
-        this.loaded_form_data.action.axios.headers
-      ).then(response => {
-        self.form_loaded = true;
-        if (!response.success) 
-        {
+          'post',
+          '/axios/forms/process',
+          this.mergeAdditionData(
+              this.formData,
+              this.loadedAdditionalFormData,
+          ),
+          this.loadedFormData.action.axios.expecting_results,
+          this.loadedFormData.action.axios.display_notification,
+          this.loadedFormData.action.axios.headers,
+      ).then((response) => {
+        self.formLoaded = true;
+        if (!response.success) {
           self.$refs.form.setErrors(self.validate_response(response.data));
           return false;
         }
 
         self.$refs.form.reset();
+        self.$refs[this.loadedFormName].reset();
 
-        if (self.loaded_form_data.action.axios.expecting_results) 
-        {
-          self[self.loaded_form_data.action.axios.result_variable] =
+        if (self.loadedFormData.action.axios.expecting_results) {
+          self[self.loadedFormData.action.axios.result_variable] =
             response.data;
-          self.$emit("results", response.data);
+          self.$emit('results', response.data);
         }
 
-        if ( !self.is_undefined(response.redirect_override) && response.redirect_override !== false ) 
-        {
+        if ( !self.is_undefined(response.redirect_override) && response.redirect_override !== false ) {
           self.redirect(response.redirect_override);
-        } 
-        else if (self.loaded_form_data.action.axios.redirect !== false) 
-        {
-          self.redirect(self.loaded_form_data.action.axios.redirect);
+        } else if (self.loadedFormData.action.axios.redirect !== false) {
+          self.redirect(self.loadedFormData.action.axios.redirect);
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>

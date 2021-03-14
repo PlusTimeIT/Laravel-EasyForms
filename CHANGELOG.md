@@ -10,7 +10,8 @@ All version change notes to be placed here.
 -  Include any_field for select fields
 -  Update InputForm buttons to include process, reset and cancel buttons
 -  Fixed reset form issue
--  process of moving validation to rules aray
+-  Process of moving validation to rules aray
+-  Implemented ES Lint for vue and js files.
 
 ### 0.0.5
 ---

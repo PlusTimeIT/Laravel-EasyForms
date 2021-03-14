@@ -1,242 +1,258 @@
 <template>
-  <v-col :cols="cols" :offset="offset" class="pt-0 pb-0" v-bind="display_col()">
+  <v-col :cols="cols" :offset="offset" class="pt-0 pb-0" v-if="displayCol()">
     <validation-provider
       v-slot="{ errors }"
-      :name="field_data.name"
+      :name="fieldData.name"
       tag="div"
     >
-    
       <component
-        :is="field_data.component"
-        v-model="field_data.value"
-        v-bind="prepare_props(errors)"
+        :is="fieldData.component"
+        v-model="fieldData.value"
+        v-bind="prepareProps(errors)"
       >
-        <p class="mb-3 mt-4" v-if="field_data.component == 'h2'">
-          {{ field_data.value }}
+        <div v-if="fieldData.component == 'v-radio-group'">
+            <v-radio
+                v-for="(item, index) in fieldData.items"
+                :key="index"
+                :label="item.label"
+                :value="item.value"
+                :color="item.color"
+            ></v-radio>
+        </div>
+
+        <p class="mb-3 mt-4" v-if="fieldData.component == 'h2'">
+          {{ fieldData.value }}
         </p>
-        
-        <v-tooltip v-if="field_data.help !== ''" slot="append" bottom>
-          <template #activator="{ on , attrs }">
-            <v-icon slot="activator" color="primary" v-on="on" v-bind="attrs" icon="mdi-help-box" />
-          </template>
-          
-          <span>{{ field_data.help }} </span>
+        <v-tooltip v-if="fieldData.help !== ''" slot="append" bottom>
+            <template #activator="{ on }">
+                <v-icon
+                    slot="activator"
+                    color="primary"
+                    dark v-on="on"
+                >
+                    mdi-help-box
+                </v-icon>
+            </template>
+            <span>{{ fieldData.help }} </span>
         </v-tooltip>
+
+        <template
+            v-if="!is_undefined( fieldData.counter ) && fieldData.counter"
+            v-slot:counter="{ props }"
+        >
+            <v-counter
+                v-bind="props"
+                :value="fieldData.value.trim().split(' ').length"
+            ></v-counter>
+        </template>
       </component>
     </validation-provider>
   </v-col>
 </template>
 
 <script>
-import { ValidationProvider } from "vee-validate";
-import { FormMixin } from "./FormMixins";
+import {ValidationProvider} from 'vee-validate';
+import {FormMixin} from './FormMixins';
 
 export default {
   $validates: true,
-  mixins: [ FormMixin ] ,
+  mixins: [FormMixin],
   components: {
-    ValidationProvider
+    ValidationProvider,
   },
   props: {
     form_field: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     cols: {
       Type: String,
-      default: "6"
+      default: '6',
     },
     additional_form_data: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     offset: {
       Type: String,
-      default: ""
-    }
+      default: '',
+    },
+    value: {
+      default: '',
+    },
   },
   watch: {
-    field_data: {
+    fieldData: {
       handler: function(val) {
-        this.$emit("update", val.value);
-        this.$emit("field_update", val);
+        this.$emit('update', val.value);
+        this.$emit('field_update', val);
+        this.$emit('input', this.fieldData);
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   data: () => ({
     password: false,
     confirm_password: false,
     menu: false,
     dates: [],
-    field_data: {}
+    fieldData: {},
   }),
-  created(){
-    this.field_data = this.form_field;
+  created() {
+    this.fieldData = this.value;
   },
-  computed:{
+  computed: {
     additional_form: function() {
       return this.additional_form_data;
-    }
+    },
   },
-  methods:{
-    display_col(){
+  methods: {
+    displayCol() {
+      if ( this.is_undefined(this.fieldData.type) ) return false;
+      if ( this.fieldData.type == 'hidden') return false;
+      return true;
+    },
+    prepareProps(errors) {
       let result = {};
-      if (!this.is_undefined(this.field_data.type) && this.field_data.type == "hidden") 
-      {
-        result["class"] = "hidden-input";
-      }  
+      const field = this.fieldData;
+      result['error-messages'] = errors;
+      result['label'] = this.prepareLabel();
+      result['outlined'] = this.fieldData.outlined;
+      result['dense'] = this.fieldData.dense;
+
+      if (!this.is_undefined(field.help) && field.help !== '') {
+        // result['prepend-inner-icon'] = 'mdi-help-box';
+      }
+
+      if (!this.is_undefined(field.type) && field.type == 'time') {
+        result['populate'] = field.value;
+        result['ampm_in_title'] = true;
+        result['no_title'] = false;
+        result['class'] = 'mt-2';
+      }
+
+      if (!this.is_undefined(field.type) && field.type == 'file-input') {
+        result['show-size'] = true;
+        result['accept'] = field.accept;
+      }
+
+      if (!this.is_undefined(field.type) && (field.type == 'select' || field.type == 'autocomplete')) {
+        result['selected'] =
+        !this.is_undefined(field.integer) && field.integer ? parseInt(field.value) : field.value;
+
+
+        const selectItems = field.items;
+        if (!this.is_undefined(field.any_field) && field.any_field) {
+          const anyfield = {};
+          anyfield[field.item_value] = 'any';
+          anyfield[field.item_text] = 'Any';
+          if ( ! selectItems.some((e) => e[field.item_value] === 'any') ) {
+            selectItems.unshift( anyfield );
+          }
+        }
+        result['items'] = selectItems;
+        result['item-text'] = field.item_text;
+        result['item-value'] = field.item_value;
+        result['chips'] = field.chips;
+        result['data-vv-name'] = 'select';
+      }
+      if ( !this.is_undefined(field.type) && field.type == 'hidden' ) {
+        result['class'] = 'hidden-input';
+      }
+
+      if (!this.is_undefined(field.component_type) && field.component_type == 'password') {
+        result['type'] = field.component_type;
+      }
+
+      if (!this.is_undefined(field.component) && field.component == 'date-picker') {
+        result['close-on-content-click'] = false;
+      }
+      result['controls'] = false;
+      if (!this.is_undefined(field.close_on_content_click)) {
+        result['close-on-content-click'] = field.close_on_content_click;
+      }
+
+      if (!this.is_undefined(field.controls)) {
+        result['controls'] = field.controls;
+      }
+
+
+      if (!this.is_undefined(field.step)) {
+        result['step'] = field.step;
+      }
+
+      if (!this.is_undefined(field.component_type) &&
+          field.component_type !== '') {
+        result['type'] = field.component_type;
+      }
+
+      if (!this.is_undefined(field.min)) {
+        result['min'] = field.min;
+      }
+
+      if (!this.is_undefined(field.max)) {
+        result['max'] = field.max;
+      }
+
+      if (!this.is_undefined(field.placeholder)) {
+        result['placeholder'] = field.placeholder;
+      }
+
+      if (!this.is_undefined(field.readonly)) {
+        result['readonly'] = field.readonly;
+      }
+
+      if (!this.is_undefined(field.multiple)) {
+        result['multiple'] = field.multiple;
+      }
+
+      if (!this.is_undefined(field.clearable)) {
+        result['clearable'] = field.clearable;
+      }
+
+      if (!this.is_undefined(field.counter)) {
+        result['counter'] = field.counter;
+      }
+
+      if (!this.is_undefined(field.maxlength)) {
+        result['maxlength'] = field.maxlength;
+      }
+
+      if (!this.is_undefined(this.additional_form_data)) {
+        result['additional_form_data'] = this.additional_form;
+      }
+
+      if (field.component == 'h2') {
+        result = {'v-html': field.value};
+      }
       return result;
     },
-    prepare_props(errors){
-      let result = {};
-      result["error-messages"] = errors;
-      result["label"] = this.prepare_label();
-      result["outlined"] = true;
-      result["dense"] = true;
+    prepareLabel() {
+      let label = !this.is_undefined(this.fieldData.label) ?
+        this.fieldData.label :
+        this.fieldData.name;
 
-      if (!this.is_undefined(this.field_data.help) && this.field_data.help !== "") 
-      {
-        result['prepend-inner-icon'] = this.field_data.value;
-      }
-
-      if (!this.is_undefined(this.field_data.type) && this.field_data.type == "time") 
-      {
-        result["populate"] = this.field_data.value;
-        result["ampm_in_title"] = true;
-        result["no_title"] = false;
-        result["class"] = "mt-2";
-      }
-
-      if (!this.is_undefined(this.field_data.type) && this.field_data.type == "file-input") 
-      {
-        result["show-size"] = true;
-        result["accept"] = this.field_data.accept;
-      }
-
-      if (!this.is_undefined(this.field_data.type) && (this.field_data.type == "select")) 
-      {
-        result["selected"] = !this.is_undefined(this.field_data.integer) && this.field_data.integer
-          ? parseInt(this.field_data.value)
-          : this.field_data.value;
-
-        let select_items = this.field_data.items;
-        if(!this.is_undefined(this.field_data.any_field) && this.field_data.any_field)
-        {
-          let anyfield = {};
-          anyfield[this.field_data.item_value] = 'any';
-          anyfield[this.field_data.item_text] = 'Any';
-          //select_items.unshift( anyfield );
-        }
-        result["items"] = select_items;
-        result["item-text"] = this.field_data.item_text;
-        result["item-value"] = this.field_data.item_value;
-        result["data-vv-name"] = "select";
-        result["chips"] = true;
-      }
-      if ( !this.is_undefined(this.field_data.type) && this.field_data.type == "hidden" )
-      {
-        result["class"] = "hidden-input";
-      }
-
-      if (!this.is_undefined(this.field_data.component_type) && this.field_data.component_type == "password") 
-      {
-        result["type"] = this.field_data.component_type;
-      }
-
-      if (!this.is_undefined(this.field_data.component) && this.field_data.component == "date-picker") 
-      {
-        result["close-on-content-click"] = false;
-        result["controls"] = false;
-        if (!this.is_undefined(this.field_data.close_on_content_click))
-        {
-          result["close-on-content-click"] = this.field_data.close_on_content_click;
-        }
-        if (!this.is_undefined(this.field_data.controls))
-        {
-          result["controls"] = this.field_data.controls;
-        }
-      }
-
-      if (!this.is_undefined(this.field_data.step)) 
-      {
-        result["step"] = this.field_data.step;
-      }
-
-      if (!this.is_undefined(this.field_data.component_type) && this.field_data.component_type !== '') 
-      {
-        result["type"] = this.field_data.component_type;
-      }
-
-      if (!this.is_undefined(this.field_data.min)) 
-      {
-        result["min"] = this.field_data.min;
-      }
-
-      if (!this.is_undefined(this.field_data.max)) 
-      {
-        result["max"] = this.field_data.max;
-      }
-
-      if (!this.is_undefined(this.field_data.placeholder)) 
-      {
-        result["placeholder"] = this.field_data.placeholder;
-      }
-
-      if (!this.is_undefined(this.field_data.readonly)) 
-      {
-        result["readonly"] = this.field_data.readonly;
-      }
-
-      if (!this.is_undefined(this.field_data.multiple)) 
-      {
-        result["multiple"] = this.field_data.multiple;
-      }
-
-      if (!this.is_undefined(this.additional_form_data)) 
-      {
-        result["additional_form_data"] = this.additional_form;
-      }
-
-      if (this.field_data.component == "h2") 
-      {
-        result = { "v-html": this.field_data.value };
-      }
-
-      return result;
-    },
-    prepare_label() {
-      let label = !this.is_undefined(this.field_data.label)
-        ? this.field_data.label
-        : this.field_data.name;
-
-      if (!this.is_undefined(this.field_data.required) && this.field_data.required) 
-      {
-        label += " ( * required )";
-
-      } 
-      else if (!this.is_undefined(this.field_data.readonly) && this.field_data.readonly) 
-      {
-        label += " ( readonly )";
-      } 
-      else 
-      {
-        label += " ( optional )";
+      if (!this.is_undefined(this.fieldData.required) && this.fieldData.required) {
+        label += ' ( * required )';
+      } else if (!this.is_undefined(this.fieldData.readonly) && this.fieldData.readonly) {
+        label += ' ( readonly )';
+      } else {
+        label += ' ( optional )';
       }
 
       return label;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
-.v-select__selections 
+.v-select__selections
 {
   margin-top: 3px !important;
   margin-bottom: 2px !important;
 }
-.v-select.v-input--dense .v-chip 
+.v-select.v-input--dense .v-chip
 {
   margin-bottom: 2px !important;
 }
