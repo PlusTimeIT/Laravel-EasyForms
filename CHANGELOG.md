@@ -12,6 +12,8 @@ All version change notes to be placed here.
 -  Fixed reset form issue
 -  Process of moving validation to rules aray
 -  Implemented ES Lint for vue and js files.
+-  Added autocomplete field
+-  Added radio group field
 
 ### 0.0.5
 ---
