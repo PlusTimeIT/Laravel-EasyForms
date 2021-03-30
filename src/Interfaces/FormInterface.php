@@ -5,15 +5,17 @@ use Illuminate\Http\Request;
 
 interface FormInterface
 {
-    public function fill(array $data);
+    public function alerts();
+
+    public static function fill(request $request);
 
     public function getName();
 
     public function getTitle();
 
-    public function load();
+    public static function make();
 
-    public function process(request $request);
+    public static function process(request $request);
 
     public function setName(string $name);
 

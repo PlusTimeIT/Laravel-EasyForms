@@ -4,12 +4,14 @@
       v-slot="{ errors }"
       :name="fieldData.name"
       tag="div"
+      :rules="prepareRules()"
     >
       <component
         :is="fieldData.component"
         v-model="fieldData.value"
         v-bind="prepareProps(errors)"
       >
+
         <div v-if="fieldData.component == 'v-radio-group'">
             <v-radio
                 v-for="(item, index) in fieldData.items"
@@ -37,12 +39,12 @@
         </v-tooltip>
 
         <template
-            v-if="!is_undefined( fieldData.counter ) && fieldData.counter"
+            v-if="!isUndefined( fieldData.counter ) && fieldData.counter"
             v-slot:counter="{ props }"
         >
             <v-counter
                 v-bind="props"
-                :value="fieldData.value.trim().split(' ').length"
+                :value="fieldValueLength(fieldData.value)"
             ></v-counter>
         </template>
       </component>
@@ -51,14 +53,18 @@
 </template>
 
 <script>
-import {ValidationProvider} from 'vee-validate';
+import {ValidationProvider} from 'vee-validate/dist/vee-validate.full.esm';
 import {FormMixin} from './FormMixins';
+import DatePicker from './custom/DatePicker';
+import TimePicker from './custom/TimePicker';
 
 export default {
   $validates: true,
   mixins: [FormMixin],
   components: {
     ValidationProvider,
+    DatePicker,
+    TimePicker,
   },
   props: {
     form_field: {
@@ -84,9 +90,7 @@ export default {
   watch: {
     fieldData: {
       handler: function(val) {
-        this.$emit('update', val.value);
         this.$emit('field_update', val);
-        this.$emit('input', this.fieldData);
       },
       deep: true,
     },
@@ -102,47 +106,80 @@ export default {
     this.fieldData = this.value;
   },
   computed: {
-    additional_form: function() {
+    additionalForm: function() {
       return this.additional_form_data;
+    },
+    displayLabel() {
+      let label = !this.isUndefined(this.fieldData.label) ?
+        this.fieldData.label :
+        this.fieldData.name;
+      if (!this.isUndefined(this.fieldData.required) && this.fieldData.required) {
+        label += ' ( * required )';
+      } else if (!this.isUndefined(this.fieldData.readonly) && this.fieldData.readonly) {
+        label += ' ( readonly )';
+      } else {
+        label += ' ( optional )';
+      }
+
+      return label;
     },
   },
   methods: {
+    fieldValueLength: function( value ) {
+      return ( value != null ) ? value.length : 0;
+    },
     displayCol() {
-      if ( this.is_undefined(this.fieldData.type) ) return false;
+      if ( this.isUndefined(this.fieldData.type) ) return false;
       if ( this.fieldData.type == 'hidden') return false;
       return true;
+    },
+    prepareRules() {
+      // BUILD FIELD RULES
+      const rules = [];
+      this.fieldData.rules.forEach( function( rule ) {
+        if (typeof(rule.value) === 'boolean') {
+          if ( rule.value ) {
+            rules.push( rule.name );
+          }
+        } else {
+          rules.push( rule.name + ':' + rule.value );
+        }
+      });
+      return rules.join( '|' );
     },
     prepareProps(errors) {
       let result = {};
       const field = this.fieldData;
       result['error-messages'] = errors;
-      result['label'] = this.prepareLabel();
+      result['label'] = this.displayLabel;
       result['outlined'] = this.fieldData.outlined;
       result['dense'] = this.fieldData.dense;
 
-      if (!this.is_undefined(field.help) && field.help !== '') {
+      // TO DO PREPEND ICON
+      if (!this.isUndefined(field.help) && field.help !== '') {
         // result['prepend-inner-icon'] = 'mdi-help-box';
       }
+      if (!this.isUndefined(field.masking) && field.masking !== '') {
+        result['v-mask'] = fieldData.masking;
+      }
 
-      if (!this.is_undefined(field.type) && field.type == 'time') {
+      if (!this.isUndefined(field.type) && field.type == 'time') {
         result['populate'] = field.value;
         result['ampm_in_title'] = true;
         result['no_title'] = false;
         result['class'] = 'mt-2';
       }
 
-      if (!this.is_undefined(field.type) && field.type == 'file-input') {
+      if (!this.isUndefined(field.type) && field.type == 'file-input') {
         result['show-size'] = true;
         result['accept'] = field.accept;
       }
 
-      if (!this.is_undefined(field.type) && (field.type == 'select' || field.type == 'autocomplete')) {
-        result['selected'] =
-        !this.is_undefined(field.integer) && field.integer ? parseInt(field.value) : field.value;
-
+      if (!this.isUndefined(field.type) && (field.type == 'select' || field.type == 'autocomplete')) {
+        result['selected'] = !this.isUndefined(field.integer) && field.integer ? parseInt(field.value) : field.value;
 
         const selectItems = field.items;
-        if (!this.is_undefined(field.any_field) && field.any_field) {
+        if (!this.isUndefined(field.any_field) && field.any_field) {
           const anyfield = {};
           anyfield[field.item_value] = 'any';
           anyfield[field.item_text] = 'Any';
@@ -156,91 +193,76 @@ export default {
         result['chips'] = field.chips;
         result['data-vv-name'] = 'select';
       }
-      if ( !this.is_undefined(field.type) && field.type == 'hidden' ) {
+      if ( !this.isUndefined(field.type) && field.type == 'hidden' ) {
         result['class'] = 'hidden-input';
       }
 
-      if (!this.is_undefined(field.component_type) && field.component_type == 'password') {
+      if (!this.isUndefined(field.component_type) && field.component_type == 'password') {
         result['type'] = field.component_type;
       }
 
-      if (!this.is_undefined(field.component) && field.component == 'date-picker') {
+      if (!this.isUndefined(field.component) && field.component == 'date-picker') {
         result['close-on-content-click'] = false;
       }
       result['controls'] = false;
-      if (!this.is_undefined(field.close_on_content_click)) {
+      if (!this.isUndefined(field.close_on_content_click)) {
         result['close-on-content-click'] = field.close_on_content_click;
       }
 
-      if (!this.is_undefined(field.controls)) {
+      if (!this.isUndefined(field.controls)) {
         result['controls'] = field.controls;
       }
 
 
-      if (!this.is_undefined(field.step)) {
+      if (!this.isUndefined(field.step)) {
         result['step'] = field.step;
       }
 
-      if (!this.is_undefined(field.component_type) &&
+      if (!this.isUndefined(field.component_type) &&
           field.component_type !== '') {
         result['type'] = field.component_type;
       }
 
-      if (!this.is_undefined(field.min)) {
+      if (!this.isUndefined(field.min)) {
         result['min'] = field.min;
       }
 
-      if (!this.is_undefined(field.max)) {
+      if (!this.isUndefined(field.max)) {
         result['max'] = field.max;
       }
 
-      if (!this.is_undefined(field.placeholder)) {
+      if (!this.isUndefined(field.placeholder)) {
         result['placeholder'] = field.placeholder;
       }
 
-      if (!this.is_undefined(field.readonly)) {
+      if (!this.isUndefined(field.readonly)) {
         result['readonly'] = field.readonly;
       }
 
-      if (!this.is_undefined(field.multiple)) {
+      if (!this.isUndefined(field.multiple)) {
         result['multiple'] = field.multiple;
       }
 
-      if (!this.is_undefined(field.clearable)) {
+      if (!this.isUndefined(field.clearable)) {
         result['clearable'] = field.clearable;
       }
 
-      if (!this.is_undefined(field.counter)) {
+      if (!this.isUndefined(field.counter)) {
         result['counter'] = field.counter;
       }
 
-      if (!this.is_undefined(field.maxlength)) {
+      if (!this.isUndefined(field.maxlength)) {
         result['maxlength'] = field.maxlength;
       }
 
-      if (!this.is_undefined(this.additional_form_data)) {
-        result['additional_form_data'] = this.additional_form;
+      if (!this.isUndefined(this.additional_form_data)) {
+        result['additional_form_data'] = this.additionalForm;
       }
 
       if (field.component == 'h2') {
         result = {'v-html': field.value};
       }
       return result;
-    },
-    prepareLabel() {
-      let label = !this.is_undefined(this.fieldData.label) ?
-        this.fieldData.label :
-        this.fieldData.name;
-
-      if (!this.is_undefined(this.fieldData.required) && this.fieldData.required) {
-        label += ' ( * required )';
-      } else if (!this.is_undefined(this.fieldData.readonly) && this.fieldData.readonly) {
-        label += ' ( readonly )';
-      } else {
-        label += ' ( optional )';
-      }
-
-      return label;
     },
   },
 };

@@ -3,14 +3,21 @@ namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
-use PlusTimeIT\EasyForms\Traits\{ConvertTrait, FieldTrait};
+use PlusTimeIT\EasyForms\Traits\{FieldTrait, Transformable};
+
+// File input Accept values
+// image/*, video/*, audio/*, .doc,.pdf etc.
+//
+// Specifying mime types
+// image/jpeg,image/png,application/msword,application/pdf
+//
+//
 
 class FileInputField extends EasyField implements FieldInterface
 {
-    public function __construct(string $name, array $options = [])
+    public function __construct()
     {
-        $this->name = $name;
-        return $this->setOptions($options);
+        return $this;
     }
 
     public function getAccept(): string
@@ -38,9 +45,14 @@ class FileInputField extends EasyField implements FieldInterface
         return $this->show_size;
     }
 
-    public function setAccept(bool $counter): self
+    public static function make()
     {
-        $this->counter = $counter;
+        return new static();
+    }
+
+    public function setAccept(string $accept): self
+    {
+        $this->accept = $accept;
         return $this;
     }
 
@@ -68,6 +80,8 @@ class FileInputField extends EasyField implements FieldInterface
         return $this;
     }
 
+    protected $accept = '*';
+
     protected $component = 'v-file-input';
 
     protected $counter = FALSE;
@@ -82,8 +96,9 @@ class FileInputField extends EasyField implements FieldInterface
 
     protected $value = [];
 
-    use ConvertTrait;
     use FieldTrait;
+
+    use Transformable;
 
     public const TYPE = 'file-input';
 }

@@ -9,8 +9,10 @@ class Pages extends Controller
     public function example(request $request)
     {
         $example_id = $request->example_id ?? 1;
-        $form_class = $this->form_namespace . 'ExampleForm' . ($example_id > 1 ? $example_id : '');
-        return view("vendor.plustime-it.laravel-easyforms.examples.example-{$example_id}")->with('example', ( new $form_class() ));
+        $form_class = "{$this->form_namespace}ExampleForm{$example_id}";
+        return view('vendor.plustime-it.laravel-easyforms.examples.example-template')
+            ->with('load', $example_id == 1 ? 'page' : 'axios')
+            ->with('example', ( new $form_class() ));
     }
 
     public function exampleHome(request $request)

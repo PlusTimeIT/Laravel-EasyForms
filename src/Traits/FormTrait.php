@@ -5,13 +5,14 @@ use Illuminate\Http\Request;
 
 trait FormTrait
 {
-    public function fill(array $data)
+    public static function fill(request $request)
     {
+        return self::make()->fields();
     }
 
-    public function getFields(): array
+    public function getAlerts(): array
     {
-        return $this->fields;
+        return $this->alerts;
     }
 
     public function getName(): string
@@ -24,20 +25,31 @@ trait FormTrait
         return $this->title;
     }
 
-    public function load()
+    public function getValidation(): array
     {
-        return self::TYPE == 'input' ? $this->fields->toJson() : $this->fields->toJson();
+        return collect($this->fields)->mapWithKeys(function($field) {
+            $rules = [];
+            collect($field->getRules())->each(function($rule) use (&$rules) {
+                $rules[] = (is_bool($rule->getValue()) ? $rule->getName() : implode(':', [$rule->getName() , $rule->getValue()]));
+            });
+            return [$field->getName() => implode('|', $rules)];
+        })->reject(fn($rules) => empty($rules))->toArray();
     }
 
-    public function process(request $request)
+    public static function make(): self
+    {
+        return new static();
+    }
+
+    public static function process(request $request)
     {
         //validate
     }
 
-    public function setFields(array $fields): self
+    public function setAlerts(array $alerts): self
     {
-        $this->fields = $fields;
-        return $this->sortFields();
+        $this->alerts = $alerts;
+        return $this;
     }
 
     public function setName(string $name): self
@@ -52,9 +64,8 @@ trait FormTrait
         return $this;
     }
 
-    public function sortFields(): self
+    public function validateRequest(request $request)
     {
-        $this->fields = collect($this->fields)->sortBy([fn($a, $b) => $a->getOrder() <=> $b->getOrder()])->toArray();
-        return $this;
+        return \Validator::make($request->all(), $this->getValidation());
     }
 }

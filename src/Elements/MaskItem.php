@@ -1,18 +1,20 @@
 <?php
-namespace PlusTimeIT\EasyForms\Traits;
+namespace PlusTimeIT\EasyForms\Elements;
 
-trait HeaderTrait
+use PlusTimeIT\EasyForms\Traits\Transformable;
+
+class MaskItem
 {
-    public function __construct(string $key, $value)
+    public function __construct($name, $value = NULL)
     {
-        $this->key = $key;
+        $this->name = $name;
         $this->value = $value;
         return $this;
     }
 
-    public function getKey(): string
+    public function getName(): string
     {
-        return $this->key;
+        return $this->name;
     }
 
     public function getValue()
@@ -20,9 +22,9 @@ trait HeaderTrait
         return $this->value;
     }
 
-    public function setKey(string $key): self
+    public function setName(string $name): self
     {
-        $this->key = $key;
+        $this->name = $name;
         return $this;
     }
 
@@ -32,7 +34,7 @@ trait HeaderTrait
         return $this;
     }
 
-    protected $key;
+    protected $name;
 
     protected $value;
 

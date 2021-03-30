@@ -3,21 +3,16 @@ namespace PlusTimeIT\EasyForms\Elements;
 
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
-class RadioItem
+class RuleItem
 {
     public function __construct()
     {
         return $this;
     }
 
-    public function getColor()
+    public function getName(): string
     {
-        return $this->color;
-    }
-
-    public function getLabel()
-    {
-        return $this->label;
+        return $this->name;
     }
 
     public function getValue()
@@ -30,15 +25,9 @@ class RadioItem
         return new static();
     }
 
-    public function setColor(string $color): self
+    public function setName(string $name): self
     {
-        $this->color = $color;
-        return $this;
-    }
-
-    public function setLabel(string $label): self
-    {
-        $this->label = $label;
+        $this->name = $name;
         return $this;
     }
 
@@ -48,9 +37,7 @@ class RadioItem
         return $this;
     }
 
-    protected $color;
-
-    protected $label;
+    protected $name;
 
     protected $value;
 

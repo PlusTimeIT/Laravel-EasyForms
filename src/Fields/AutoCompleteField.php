@@ -4,14 +4,13 @@ namespace PlusTimeIT\EasyForms\Fields;
 use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Elements\SelectItem;
 use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
-use PlusTimeIT\EasyForms\Traits\{ConvertTrait, FieldTrait};
+use PlusTimeIT\EasyForms\Traits\{FieldTrait, Transformable};
 
 class AutoCompleteField extends EasyField implements FieldInterface
 {
-    public function __construct(string $name, array $options = [])
+    public function __construct()
     {
-        $this->name = $name;
-        return $this->setOptions($options);
+        return $this;
     }
 
     public function addItem(SelectItem $item): self
@@ -48,6 +47,11 @@ class AutoCompleteField extends EasyField implements FieldInterface
     public function getMultiple(): bool
     {
         return $this->multiple;
+    }
+
+    public static function make()
+    {
+        return new static();
     }
 
     public function setAnyField(bool $any_field): self
@@ -102,8 +106,9 @@ class AutoCompleteField extends EasyField implements FieldInterface
 
     protected $type = self::TYPE;
 
-    use ConvertTrait;
     use FieldTrait;
+
+    use Transformable;
 
     public const TYPE = 'autocomplete';
 }

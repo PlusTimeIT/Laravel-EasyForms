@@ -3,7 +3,7 @@ namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
-use PlusTimeIT\EasyForms\Traits\{ConvertTrait, FieldTrait};
+use PlusTimeIT\EasyForms\Traits\{Transformable, FieldTrait};
 
 class CheckboxGroupField extends EasyField implements FieldInterface
 {
@@ -17,7 +17,7 @@ class CheckboxGroupField extends EasyField implements FieldInterface
 
     protected $type = self::TYPE;
 
-    use ConvertTrait;
+    use Transformable;
     use FieldTrait;
 
     public const TYPE = 'checkbox';

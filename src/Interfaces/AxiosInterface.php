@@ -13,15 +13,13 @@ interface AxiosInterface
 
     public function getMultiPart();
 
-    public function getNotification();
+    public static function make();
 
-    public function setExpectingResults(bool $expecting_reults);
+    public function setExpectingResults(bool $expecting_results);
 
     public function setHeaders(array $headers);
 
     public function setMultiPart(bool $multi_part);
-
-    public function setNotification(bool $notification);
 
     public function setOptions(array $options);
 

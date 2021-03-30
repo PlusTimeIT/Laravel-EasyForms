@@ -1,23 +1,18 @@
 <?php
 namespace PlusTimeIT\EasyForms\Elements;
 
-use PlusTimeIT\EasyForms\Traits\ConvertTrait;
+use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class Button
 {
-    public function __construct(string $type, string $text, string $colour, Icon $icon, int $order)
+    public function __construct()
     {
-        $this->type = $type;
-        $this->text = $text;
-        $this->colour = $colour;
-        $this->icon = $icon;
-        $this->order = $order;
         return $this;
     }
 
-    public function getColour(): string
+    public function getColor(): string
     {
-        return $this->colour;
+        return $this->color;
     }
 
     public function getIcon(): Icon
@@ -40,9 +35,14 @@ class Button
         return $this->type;
     }
 
-    public function setColour(string $colour): self
+    public static function make()
     {
-        $this->colour = $colour;
+        return new static();
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
         return $this;
     }
 
@@ -70,7 +70,7 @@ class Button
         return $this;
     }
 
-    protected $colour;
+    protected $color;
 
     protected $icon;
 
@@ -80,5 +80,5 @@ class Button
 
     protected $type;
 
-    use ConvertTrait;
+    use Transformable;
 }

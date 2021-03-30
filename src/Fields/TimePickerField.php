@@ -5,7 +5,7 @@ use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
 use PlusTimeIT\EasyForms\Traits\{FieldTrait, Transformable};
 
-class HiddenField extends EasyField implements FieldInterface
+class TimePickerField extends EasyField implements FieldInterface
 {
     public function __construct()
     {
@@ -17,15 +17,17 @@ class HiddenField extends EasyField implements FieldInterface
         return new static();
     }
 
-    protected $component = 'v-text-field';
+    protected $ampmInTitle = TRUE;
 
-    protected $component_type = self::TYPE;
+    protected $component = 'time-picker';
 
-    protected $type = self::TYPE;
+    protected $multiple = FALSE;
+
+    protected $noTitle = FALSE;
 
     use FieldTrait;
 
     use Transformable;
 
-    public const TYPE = 'hidden';
+    public const TYPE = 'time-picker';
 }

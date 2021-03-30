@@ -27,8 +27,6 @@ interface FieldInterface
 
     public function getReadonly();
 
-    public function getRequied();
-
     public function getRules();
 
     public function getTooltip();
@@ -51,7 +49,7 @@ interface FieldInterface
 
     public function setLabel(string $label);
 
-    public function setMasking(array $masking);
+    public function setMasking($masking);
 
     public function setOptions(array $options);
 
@@ -62,8 +60,6 @@ interface FieldInterface
     public function setPlaceholder(string $placeholder);
 
     public function setReadonly(bool $readonly);
-
-    public function setRequied(bool $required);
 
     public function setRules(array $rules);
 

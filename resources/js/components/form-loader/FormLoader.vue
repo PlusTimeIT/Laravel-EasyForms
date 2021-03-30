@@ -1,59 +1,73 @@
 <template>
 
-  <v-col :cols="cols" class="pa-0">
-    <v-col v-if="loadedFormName == ''" class="pa-0">
-        <h1>Error Loading Form</h1>
-    </v-col>
-    <v-col v-if="loadedFormName == ''" class="pa-0">
-        <h1>Error Loading Form</h1>
-    </v-col>
-    <validation-observer ref="form" tag="div">
-        <v-progress-circular
-            v-if="formLoading"
-            indeterminate
-            color="primary"
-        ></v-progress-circular>
-      <v-form v-if="!formLoading" v-bind="formProps()" ref="loaded_form" :key="updateForm">
-        <v-row class="px-4">
-          <v-col cols="12" mx-auto>
-            <v-row>
-              <form-input
-                v-for="(field, index_f) in asyncFieldList"
-                :key="index_f"
-                v-model="fieldList[index_f]"
-                :cols="getInputCols(field)"
-                :additional_form_data="loadedAdditionalFormData"
-                @field_update="updateField"
-              ></form-input>
-            </v-row>
-            <v-row v-if="displayButton">
-              <v-col v-for="( button, index ) in loadedFormData.action.buttons" :key="index">
-                <v-btn
-                  class="p-4"
-                  :color="button.colour"
-                  @click="buttonAction( button )"
-                  :rounded="false"
-                  tile
+  <v-col :cols="cols" :sm="sm" :md="md" :lg="lg">
+    <v-row>
+        <v-col v-if="loadedFormName == ''">
+            <h1>Error Loading Form</h1>
+        </v-col>
+    </v-row>
+    <validation-observer ref="observer">
+        <v-row>
+             <v-col cols="12">
+                <v-alert
+                    v-for="(alert, index) in loadedAlerts" :key="index"
+                    v-model="alerts[index].display"
+                    v-bind="prepareAlertProps(alert)"
                 >
-                  {{ button.text }}
-                </v-btn>
-              </v-col>
-            </v-row>
-            <v-tooltip top v-if="!displayIcon">
-              <template v-slot:activator="{ on , attrs }">
-                <v-icon
-                  v-on="on"
-                  v-bind="prepareProps(attrs)"
-                  @click.stop="processForm"
-                  :key="iconMdi"
-                >
-                </v-icon>
-              </template>
-              <span>{{ iconText }}</span>
-            </v-tooltip>
-          </v-col>
+                    <div v-html="alert.contents"></div>
+                </v-alert>
+            </v-col>
         </v-row>
-      </v-form>
+         <v-row v-show="formLoading">
+             <v-col>
+                <v-progress-circular
+                    indeterminate
+                    color="primary"
+                ></v-progress-circular>
+            </v-col>
+        </v-row>
+         <v-row v-show="!formLoading">
+            <v-form v-bind="formProps()" ref="loadedForm" :key="updateForm" class="mx-auto w-100">
+                    <v-col cols="12">
+                        <v-row>
+                            <form-input
+                                v-for="(field, index_f) in asyncFieldList"
+                                :key="index_f"
+                                v-model="fieldList[index_f]"
+                                :cols="getInputCols(field)"
+                                :additional_form_data="loadedAdditionalFormData"
+                                @field_update="updateField"
+                            ></form-input>
+                        </v-row>
+                        <v-row v-if="displayButton">
+                            <v-col v-for="( button, index ) in loadedFormData.buttons" :key="index">
+                                <v-btn
+                                    class="p-4"
+                                    :color="button.color"
+                                    @click="buttonAction( button )"
+                                    :rounded="false"
+                                    tile
+                                >
+                                {{ button.text }}
+                                <v-tooltip top v-if="!displayButtonIcon(index)">
+                                    <template v-slot:activator="{ on  }">
+                                        <v-icon
+                                            v-on="on"
+                                            v-bind="prepareButtonIconProps(index)"
+                                            @click.stop="processForm"
+                                            :key="buttonIconMdi(index)"
+                                            dismissible
+                                        >
+                                        </v-icon>
+                                    </template>
+                                    <span>{{ buttonIconText(index) }}</span>
+                                </v-tooltip>
+                                </v-btn>
+                            </v-col>
+                        </v-row>
+                    </v-col>
+            </v-form>
+        </v-row>
     </validation-observer>
   </v-col>
 </template>
@@ -91,6 +105,18 @@ export default {
       type: Number,
       default: 12,
     },
+    sm: {
+      type: Number,
+      default: 12,
+    },
+    md: {
+      type: Number,
+      default: 12,
+    },
+    lg: {
+      type: Number,
+      default: 12,
+    },
     load_form: {
       type: [String, Object],
       default: '',
@@ -102,6 +128,8 @@ export default {
   },
   data() {
     return {
+      displayBefore: false,
+      alerts: [],
       fieldList: {},
       formLoading: true,
       formLoaded: true,
@@ -114,14 +142,14 @@ export default {
   asyncComputed: {
     asyncFieldList() {
       const newFieldList = {};
-      const self = this;
+      const _this = this;
       Object.keys(this.fieldList).forEach((field) => {
-        const thisField = self.fieldList[field];
+        const thisField = _this.fieldList[field];
 
-        if (!self.is_undefined(thisField.hide)) {
-          if (!self.is_undefined(thisField.show) && self.is_object(thisField.show)) {
+        if (!_this.isUndefined(thisField.hide)) {
+          if (!_this.isUndefined(thisField.show) && _this.isObject(thisField.show)) {
             Object.keys(thisField.show).forEach((value) => {
-              if (!self.is_undefined(self.fieldList[value].value) && self.fieldList[value].value === thisField.show[value]) {
+              if (!_this.isUndefined(_this.fieldList[value].value) && _this.fieldList[value].value === thisField.show[value]) {
                 newFieldList[field] = thisField;
               }
             });
@@ -135,6 +163,14 @@ export default {
     },
   },
   computed: {
+    loadedAlerts: {
+      get() {
+        return this.alerts;
+      },
+      set( val ) {
+        console.log( 'SET loadedAlerts', val );
+      },
+    },
     loadedAdditionalFormData: function() {
       return this.additional_form_data;
     },
@@ -145,35 +181,35 @@ export default {
       return this.identifier;
     },
     formData: function() {
-      const self = this;
+      const _this = this;
       const inputs = {};
       const formData = new FormData();
-      const multiPart = !this.is_undefined(this.loadedFormData.action.axios) && !this.is_undefined(this.loadedFormData.action.axios.multiPart) && this.loadedFormData.action.axios.multiPart ?
+      const multiPart = !this.isUndefined(this.loadedFormData.axios) && !this.isUndefined(this.loadedFormData.axios.multiPart) && this.loadedFormData.axios.multiPart ?
         true :
         false;
-      const identifier = !this.is_undefined(this.loadedIdentifier) && this.loadedIdentifier !== null && this.loadedIdentifier !== 0 ?
+      const identifier = !this.isUndefined(this.loadedIdentifier) && this.loadedIdentifier !== null && this.loadedIdentifier !== 0 ?
         true :
         false;
 
       Object.keys(this.asyncFieldList).forEach((item) => {
         if (multiPart) {
-          if (formData.has(self.asyncFieldList[item].name)) {
+          if (formData.has(_this.asyncFieldList[item].name)) {
             formData.set(
-                self.asyncFieldList[item].name,
-              this.is_object(self.asyncFieldList[item].value) || this.is_array(self.asyncFieldList[item].value) ?
-                JSON.stringify(self.asyncFieldList[item].value) :
-                self.asyncFieldList[item].value,
+                _this.asyncFieldList[item].name,
+              this.isObject(_this.asyncFieldList[item].value) || this.isArray(_this.asyncFieldList[item].value) ?
+                JSON.stringify(_this.asyncFieldList[item].value) :
+                _this.asyncFieldList[item].value,
             );
           } else {
             formData.append(
-                self.asyncFieldList[item].name,
-              this.is_object(self.asyncFieldList[item].value) || this.is_array(self.asyncFieldList[item].value) ?
-                JSON.stringify(self.asyncFieldList[item].value) :
-                self.asyncFieldList[item].value,
+                _this.asyncFieldList[item].name,
+              this.isObject(_this.asyncFieldList[item].value) || this.isArray(_this.asyncFieldList[item].value) ?
+                JSON.stringify(_this.asyncFieldList[item].value) :
+                _this.asyncFieldList[item].value,
             );
           }
         } else {
-          inputs[self.asyncFieldList[item].name] = self.asyncFieldList[item].value;
+          inputs[_this.asyncFieldList[item].name] = _this.asyncFieldList[item].value;
         }
       });
 
@@ -184,16 +220,16 @@ export default {
           if (formData.has('id')) {
             formData.set(
                 'id',
-              this.is_object(this.loadedIdentifier) ||
-                this.is_array(this.loadedIdentifier) ?
+              this.isObject(this.loadedIdentifier) ||
+                this.isArray(this.loadedIdentifier) ?
                 JSON.stringify(this.loadedIdentifier) :
                 this.loadedIdentifier,
             );
           } else {
             formData.append(
                 'id',
-              this.is_object(this.loadedIdentifier) ||
-                this.is_array(this.loadedIdentifier) ?
+              this.isObject(this.loadedIdentifier) ||
+                this.isArray(this.loadedIdentifier) ?
                 JSON.stringify(this.loadedIdentifier) :
                 this.loadedIdentifier,
             );
@@ -208,27 +244,9 @@ export default {
         return inputs;
       }
     },
-    displayIcon: function() {
-      if (!this.formLoaded || !this.loadedFormData) return false;
-      return this.is_undefined(this.loadedFormData.action.buttons[0].icon) ?
-        false :
-        true;
-    },
-    iconText: function() {
-      if (!this.formLoaded || !this.loadedFormData) return '';
-      return this.is_undefined(this.loadedFormData.action.buttons[0].icon) ?
-        'Submit' :
-        this.loadedFormData.action.buttons[0].icon.tooltip;
-    },
-    iconMdi: function() {
-      if (!this.formLoaded || !this.loadedFormData) return '';
-      return this.is_undefined(this.loadedFormData.action.buttons[0].icon.icon) ?
-        '' :
-        this.loadedFormData.action.buttons[0].icon.mdi;
-    },
     displayButton: function() {
       if (!this.formLoaded || !this.loadedFormData) return false;
-      return this.is_undefined(this.loadedFormData.action.buttons) || !this.is_array(this.loadedFormData.action.buttons) || this.loadedFormData.action.buttons.length === 0 ?
+      return this.isUndefined(this.loadedFormData.buttons) || !this.isArray(this.loadedFormData.buttons) || this.loadedFormData.buttons.length === 0 ?
         false :
         true;
     },
@@ -244,14 +262,22 @@ export default {
       this.$emit('loaded', val);
     },
   },
-  async mounted() {
-    if ( this.is_object( this.load_form ) ) {
+  async created() {
+    if ( this.isObject( this.load_form ) ) {
+      const _this = this;
       this.loadedFormName = this.load_form.name;
       this.formLoaded = true;
-      this.fieldList = this.load_form.fields;
       this.loadedFormData = this.load_form;
-      this.originalFormData = JSON.parse(JSON.stringify(this.load_form));
+      this.alerts = [...this.alerts, ...this.loadedFormData.alerts];
+      this.alerts.forEach( function( alert, index ) {
+        alert.display = false;
+        _this.$set(_this.alerts, index, alert);
+      });
+      this.triggerAlerts('before_load');
+      this.fieldList = this.load_form.fields;
+      this.originalFormData = {...this.load_form};
       this.formLoading = false;
+      this.triggerAlerts('after_load');
     } else {
       this.formLoading = true;
       this.loadedFormName = this.load_form;
@@ -259,9 +285,58 @@ export default {
     }
   },
   methods: {
+    prepareAlertProps: function( alert ) {
+      const result = {};
+      Object.keys(alert).forEach(function(key) {
+        console.log(key);
+        console.log(alert[key]);
+        result[key] = alert[key];
+        if ( key == 'icon' && alert[key] !== null ) {
+          result[key] = alert[key].icon;
+        }
+      });
+      return result;
+    },
+    displayButtonIcon: function( index ) {
+      if (!this.formLoaded || !this.loadedFormData) return false;
+      return this.isUndefined(this.loadedFormData.buttons[index].icon) ?
+        false :
+        true;
+    },
+    buttonIconText: function(index) {
+      if (!this.formLoaded || !this.loadedFormData) return '';
+      return this.isUndefined(this.loadedFormData.buttons[index].icon) ?
+        'Submit' :
+        this.loadedFormData.buttons[index].icon.tooltip;
+    },
+    buttonIconMdi: function(index) {
+      if (!this.formLoaded || !this.loadedFormData) return '';
+      return this.isUndefined(this.loadedFormData.buttons[index].icon.icon) ?
+        '' :
+        this.loadedFormData.buttons[index].icon.mdi;
+    },
+    triggerAlerts(alertTrigger, text = null) {
+      const _this = this;
+      this.alerts.forEach( function( alert, index ) {
+        if ( alert.trigger == alertTrigger ) {
+          alert.display = true;
+          if ( text !== null ) {
+            alert.contents = text;
+          }
+          if ( alert.auto_close_timer !== 0 ) {
+            setTimeout(function() {
+              alert.display = false;
+              _this.$set(_this.alerts, index, alert);
+            }, alert.auto_close_timer);
+          }
+        }
+
+        _this.$set(_this.alerts, index, alert);
+      });
+    },
     buttonAction( button ) {
       this.formLoading = true;
-      if ( !this.is_undefined( button.type ) ) {
+      if ( !this.isUndefined( button.type ) ) {
         if ( button.type =='process' ) {
           this.processForm();
           return 0;
@@ -278,40 +353,24 @@ export default {
       alert( 'button action error :(' );
       return 0;
     },
-    loadedComputedFieldList() {
-      if (this.fieldList.length !== 0) {
-        const newFieldList = {};
-        const self = this;
-        Object.keys(this.fieldList).forEach((field) => {
-          const thisField = self.fieldList[field];
-          if (!self.is_undefined(thisField.hide)) {
-            if (!self.is_undefined(thisField.show) && self.is_array(thisField.show)) {
-              thisField.show.forEach((value, x) => {
-                if (!self.is_undefined(self.fieldList[x].value) && self.fieldList[x].value === value) {
-                  newFieldList[field] = thisField;
-                }
-              });
-            }
-          } else {
-            newFieldList[field] = thisField;
-          }
-        });
-        return newFieldList;
-      }
-      return {};
-    },
     updateField(event) {
       const fieldIndex = this.fieldList.findIndex( (element) => element.name == event.name );
       this.fieldList[fieldIndex] = event;
     },
-    resetForm() {
-      this.loadedFormData = JSON.parse(JSON.stringify(this.originalFormData));
-      this.fieldList = JSON.parse(JSON.stringify(this.originalFormData.fields));
-      this.$refs.form.reset();
-      this.$refs.loaded_form.reset();
+    resetForm(triggerAlerts = true) {
+      // clear data
+      this.$refs.observer.reset();
+      this.$refs.loadedForm.reset();
+
+      // repopulate
+      this.loadedFormData = {...this.originalFormData};
+      this.fieldList = [...this.originalFormData.fields];
       this.$emit('resetForm', true);
       this.formLoading = false;
-      // await this.loadFormFields(this.loadedIdentifier);
+
+      if ( triggerAlerts ) {
+        this.triggerAlerts('reset_form');
+      }
     },
     cancelForm() {
       this.$emit('cancelled', true);
@@ -320,48 +379,48 @@ export default {
     formProps: function() {
       const result = {};
       if (!this.loadedFormData) return result;
-      if (!this.is_undefined(this.loadedFormData.action.axios) && !this.is_undefined(this.loadedFormData.action.axios.multiPart) && this.loadedFormData.action.axios.multiPart) {
+      if (!this.isUndefined(this.loadedFormData.axios) && !this.isUndefined(this.loadedFormData.axios.multiPart) && this.loadedFormData.axios.multiPart) {
         result['enctype'] = 'application/x-www-form-urlencoded';
       }
       return result;
     },
-    prepareProps: function() {
+    prepareButtonIconProps: function(index) {
       const result = {};
 
-      if (this.displayIcon) {
-        result.color = !this.is_undefined(this.loadedFormData.action.buttons[0].colour) ?
-          this.loadedFormData.action.buttons[0].colour :
+      if (this.displayButtonIcon) {
+        result.color = !this.isUndefined(this.loadedFormData.buttons[index].color) ?
+          this.loadedFormData.buttons[index].color :
           'primary';
-        result.class = !this.is_undefined(this.loadedFormData.action.buttons[0].icon.class) ?
-          this.loadedFormData.action.buttons[0].icon.class :
+        result.class = !this.isUndefined(this.loadedFormData.buttons[index].icon.class) ?
+          this.loadedFormData.buttons[index].icon.class :
           '';
-        if (this.is_undefined(this.loadedFormData.action.buttons[0].icon.size)) {
-          result[this.loadedFormData.action.buttons[0].icon.size] = true;
+        if (this.isUndefined(this.loadedFormData.buttons[index].icon.size)) {
+          result[this.loadedFormData.buttons[index].icon.size] = true;
         }
       }
       return result;
     },
     getInputCols: function(field) {
-      return this.is_undefined(field.cols) ? 12 : field.cols;
+      return this.isUndefined(field.cols) ? 12 : field.cols;
     },
     mergeAdditionData: function(formData, additionalData) {
-      const multiPart = !this.is_undefined(this.loadedFormData.action.axios) && !this.is_undefined(this.loadedFormData.action.axios.multi_part) && this.loadedFormData.action.axios.multiPart ?
+      const multiPart = !this.isUndefined(this.loadedFormData.axios) && !this.isUndefined(this.loadedFormData.axios.multi_part) && this.loadedFormData.axios.multiPart ?
         true :
         false;
-      const self = this;
+      const _this = this;
       Object.keys(additionalData).forEach(function(key) {
         if (multiPart) {
           if (formData.has(key)) {
             formData.set(
                 key,
-              self.is_object(additionalData[key]) || self.is_array(additionalData[key]) ?
+              _this.isObject(additionalData[key]) || _this.isArray(additionalData[key]) ?
                 JSON.stringify(additionalData[key]) :
                 additionalData[key],
             );
           } else {
             formData.append(
                 key,
-              self.is_object(additionalData[key]) || self.is_array(additionalData[key]) ?
+              _this.isObject(additionalData[key]) || _this.isArray(additionalData[key]) ?
                 JSON.stringify(additionalData[key]) :
                 additionalData[key],
             );
@@ -380,7 +439,7 @@ export default {
     },
     async loadFormFields(id) {
       this.formLoaded = false;
-      const self = this;
+      const _this = this;
       return this.request(
           'post',
           '/axios/forms/load',
@@ -392,19 +451,22 @@ export default {
               },
               this.loadedAdditionalLoadFormData,
           ),
-          true,
-          false,
       ).then((axiosResponse) => {
-        self.formLoaded = ! axiosResponse.loader;
-        self.formLoading = axiosResponse.loader;
-        self.fieldList = axiosResponse.response.data.fields;
-        self.loadedFormData = axiosResponse.response.data;
-        self.originalFormData = JSON.parse(JSON.stringify(axiosResponse.response.data));
+        _this.formLoading = axiosResponse.loader;
+        if (!axiosResponse.result) {
+          _this.triggerAlerts('failed_load');
+          return false;
+        }
+        _this.formLoaded = true;
+        _this.fieldList = axiosResponse.data.fields;
+        _this.loadedFormData = axiosResponse.data;
+        _this.originalFormData = JSON.parse(JSON.stringify(axiosResponse.data));
+        _this.triggerAlerts('after_load');
       });
     },
     processForm: function() {
-      const self = this;
-      self.formLoaded = false;
+      const _this = this;
+      _this.triggerAlerts('before_processing');
       this.request(
           'post',
           '/axios/forms/process',
@@ -412,30 +474,25 @@ export default {
               this.formData,
               this.loadedAdditionalFormData,
           ),
-          this.loadedFormData.action.axios.expecting_results,
-          this.loadedFormData.action.axios.display_notification,
-          this.loadedFormData.action.axios.headers,
-      ).then((response) => {
-        self.formLoaded = true;
-        if (!response.success) {
-          self.$refs.form.setErrors(self.validate_response(response.data));
-          return false;
+          this.loadedFormData.axios.headers,
+      ).then((axiosResponse) => {
+        _this.formLoading = axiosResponse.loader;
+        if (_this.loadedFormData.axios.expecting_results) {
+          _this.$emit('results', axiosResponse);
         }
-
-        self.$refs.form.reset();
-        self.$refs[this.loadedFormName].reset();
-
-        if (self.loadedFormData.action.axios.expecting_results) {
-          self[self.loadedFormData.action.axios.result_variable] =
-            response.data;
-          self.$emit('results', response.data);
+        if (!axiosResponse.result) {
+          _this.$refs.observer.setErrors(axiosResponse.data);
+          _this.triggerAlerts('failed_processing');
+          return Promise.resolve();
         }
-
-        if ( !self.is_undefined(response.redirect_override) && response.redirect_override !== false ) {
-          self.redirect(response.redirect_override);
-        } else if (self.loadedFormData.action.axios.redirect !== false) {
-          self.redirect(self.loadedFormData.action.axios.redirect);
+        if (!_this.isUndefined(_this.loadedFormData.axios.redirect) && _this.loadedFormData.axios.redirect !== false) {
+          _this.redirect(_this.loadedFormData.axios.redirect);
         }
+        _this.triggerAlerts('successful_processing');
+        if (!_this.isUndefined(_this.loadedFormData.axios.form_reset) && _this.loadedFormData.axios.form_reset !== false) {
+          _this.resetForm(false);
+        }
+        return Promise.resolve();
       });
     },
   },

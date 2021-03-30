@@ -4,7 +4,7 @@ namespace <projectNamespace>;
 use PlusTimeIT\EasyForms\Base\<formType>;
 use PlusTimeIT\EasyForms\Elements\{Action, Axios, Button, Header, Icon};
 use PlusTimeIT\EasyForms\Fields\{PasswordField, TextField};
-use PlusTimeIT\EasyForms\Traits\ConvertTrait;
+use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class <formName> extends <formType>
 {
@@ -17,5 +17,5 @@ class <formName> extends <formType>
 
     protected $title = 'Example Title';
 
-    use ConvertTrait;
+    use Transformable;
 }

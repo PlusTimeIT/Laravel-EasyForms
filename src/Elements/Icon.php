@@ -1,14 +1,13 @@
 <?php
 namespace PlusTimeIT\EasyForms\Elements;
 
-use PlusTimeIT\EasyForms\Traits\ConvertTrait;
+use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class Icon
 {
-    public function __construct(string $icon, string $tooltip)
+    public function __construct()
     {
-        $this->icon = $icon;
-        $this->tooltip = $tooltip;
+        return $this;
     }
 
     public function getIcon(): string
@@ -21,13 +20,18 @@ class Icon
         return $this->tooltip;
     }
 
+    public static function make()
+    {
+        return new static();
+    }
+
     public function setIcon(string $icon): self
     {
         $this->icon = $icon;
         return $this;
     }
 
-    public function setTooptip(string $tooltip): self
+    public function setTooltip(string $tooltip): self
     {
         $this->tooltip = $tooltip;
         return $this;
@@ -37,5 +41,5 @@ class Icon
 
     protected $tooltip;
 
-    use ConvertTrait;
+    use Transformable;
 }

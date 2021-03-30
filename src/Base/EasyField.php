@@ -17,7 +17,7 @@ class EasyField
 
     protected $label = '';
 
-    protected $masking = [];
+    protected $masking = '';
 
     protected $name = '';
 

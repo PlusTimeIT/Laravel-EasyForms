@@ -6,5 +6,10 @@ use PlusTimeIT\EasyForms\Traits\ActionTrait;
 
 class Action implements ActionInterface
 {
+    public static function make()
+    {
+        return new static();
+    }
+
     use ActionTrait;
 }

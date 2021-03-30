@@ -38,9 +38,14 @@ trait FieldTrait
         return $this->label;
     }
 
-    public function getMasking(): array
+    public function getMasking()
     {
         return $this->masking;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 
     public function getOrder(): int
@@ -130,9 +135,15 @@ trait FieldTrait
         return $this;
     }
 
-    public function setMasking(array $masking): self
+    public function setMasking($masking): self
     {
         $this->masking = $masking;
+        return $this;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
         return $this;
     }
 
@@ -190,5 +201,5 @@ trait FieldTrait
         return $this;
     }
 
-    use ConvertTrait;
+    use Transformable;
 }

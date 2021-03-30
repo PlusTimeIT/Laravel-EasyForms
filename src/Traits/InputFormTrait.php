@@ -1,18 +1,46 @@
 <?php
 namespace PlusTimeIT\EasyForms\Traits;
 
-use PlusTimeIT\EasyForms\Elements\Action;
+use PlusTimeIT\EasyForms\Elements\Axios;
 
 trait InputFormTrait
 {
-    public function getAction(): Action
+    public function getAxios(): Axios
     {
-        return $this->action;
+        return $this->axios;
     }
 
-    public function setAction(Action $action): self
+    public function getButtons(): array
     {
-        $this->action = $action;
+        return $this->buttons;
+    }
+
+    public function getFields(): array
+    {
+        return $this->fields;
+    }
+
+    public function setAxios(Axios $axios): self
+    {
+        $this->axios = $axios;
+        return $this;
+    }
+
+    public function setButtons(array $buttons): self
+    {
+        $this->buttons = $buttons;
+        return $this;
+    }
+
+    public function setFields(array $fields): self
+    {
+        $this->fields = $fields;
+        return $this->sortFields();
+    }
+
+    public function sortFields(): self
+    {
+        $this->fields = collect($this->fields)->sortBy([fn($a, $b) => $a->getOrder() <=> $b->getOrder()])->toArray();
         return $this;
     }
 }

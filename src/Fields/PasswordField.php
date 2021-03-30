@@ -3,14 +3,13 @@ namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
-use PlusTimeIT\EasyForms\Traits\{ConvertTrait, FieldTrait};
+use PlusTimeIT\EasyForms\Traits\{FieldTrait, Transformable};
 
 class PasswordField extends EasyField implements FieldInterface
 {
-    public function __construct(string $name, array $options = [])
+    public function __construct()
     {
-        $this->name = $name;
-        return $this->setOptions($options);
+        return $this;
     }
 
     public function getCounter(): bool
@@ -21,6 +20,11 @@ class PasswordField extends EasyField implements FieldInterface
     public function getMaxLength(): int
     {
         return $this->maxlength;
+    }
+
+    public static function make()
+    {
+        return new static();
     }
 
     public function setCounter(bool $counter): self
@@ -45,8 +49,9 @@ class PasswordField extends EasyField implements FieldInterface
 
     protected $type = self::TYPE;
 
-    use ConvertTrait;
     use FieldTrait;
+
+    use Transformable;
 
     public const TYPE = 'password';
 }

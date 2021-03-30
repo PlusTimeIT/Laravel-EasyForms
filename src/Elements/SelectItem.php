@@ -1,14 +1,12 @@
 <?php
 namespace PlusTimeIT\EasyForms\Elements;
 
-use PlusTimeIT\EasyForms\Traits\ConvertTrait;
+use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class SelectItem
 {
-    public function __construct($id, $value)
+    public function __construct()
     {
-        $this->id = $id;
-        $this->value = $value;
         return $this;
     }
 
@@ -20,6 +18,11 @@ class SelectItem
     public function getValue()
     {
         return $this->value;
+    }
+
+    public static function make()
+    {
+        return new static();
     }
 
     public function setId($id): self
@@ -38,5 +41,5 @@ class SelectItem
 
     protected $value;
 
-    use ConvertTrait;
+    use Transformable;
 }

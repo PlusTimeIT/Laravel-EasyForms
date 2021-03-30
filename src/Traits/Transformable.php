@@ -1,7 +1,7 @@
 <?php
 namespace PlusTimeIT\EasyForms\Traits;
 
-trait ConvertTrait
+trait Transformable
 {
     public function setOptions(array $options): self
     {

@@ -7,9 +7,13 @@ interface ActionInterface
 {
     public function addButton(Button $button);
 
+    public function getAlerts();
+
     public function getAxios();
 
     public function getButtons();
+
+    public function setAlerts(array $alerts);
 
     public function setAxios(Axios $axios);
 

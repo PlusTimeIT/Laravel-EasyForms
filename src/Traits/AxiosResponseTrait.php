@@ -27,5 +27,7 @@ trait AxiosResponseTrait
 
     protected $data;
 
+    protected $loader;
+
     protected $result;
 }

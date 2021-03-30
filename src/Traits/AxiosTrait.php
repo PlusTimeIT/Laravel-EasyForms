@@ -13,7 +13,7 @@ trait AxiosTrait
 
     public function getExpectingResults(): bool
     {
-        return $this->expecting_reults;
+        return $this->expecting_results;
     }
 
     public function getHeaders(): array
@@ -26,14 +26,14 @@ trait AxiosTrait
         return $this->multi_part;
     }
 
-    public function getNotification(): bool
+    public static function make()
     {
-        return $this->notification;
+        return new static();
     }
 
-    public function setExpectingResults(bool $expecting_reults): self
+    public function setExpectingResults(bool $expecting_results): self
     {
-        $this->expecting_reults = $expecting_reults;
+        $this->expecting_results = $expecting_results;
         return $this;
     }
 
@@ -49,19 +49,11 @@ trait AxiosTrait
         return $this;
     }
 
-    public function setNotification(bool $notification): self
-    {
-        $this->notification = $notification;
-        return $this;
-    }
-
     protected $expecting_results = TRUE;
 
     protected $headers = [];
 
     protected $multi_part = FALSE;
 
-    protected $notification = TRUE;
-
-    use ConvertTrait;
+    use Transformable;
 }
