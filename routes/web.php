@@ -1,11 +1,9 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 
 $examples = \Config::get('easyforms.routes');
-if ( ! $examples || ! $examples['global']) {
-    return;
-}
-if ( ! $examples['examples']) {
+if ( ! $examples || ! $examples['global'] || ! $examples['examples']) {
     return;
 }
 

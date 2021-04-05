@@ -5,6 +5,9 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+### 0.0.9
+- Updates to Vue components
+
 ### 0.0.8
 ---
 -  Too many to list I was slack. Overhauled fields and forms to be statically available.
