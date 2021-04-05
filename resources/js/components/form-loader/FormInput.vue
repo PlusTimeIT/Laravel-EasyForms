@@ -11,7 +11,6 @@
         v-model="fieldData.value"
         v-bind="prepareProps(errors)"
       >
-
         <div v-if="fieldData.component == 'v-radio-group'">
             <v-radio
                 v-for="(item, index) in fieldData.items"
@@ -21,7 +20,6 @@
                 :color="item.color"
             ></v-radio>
         </div>
-
         <p class="mb-3 mt-4" v-if="fieldData.component == 'h2'">
           {{ fieldData.value }}
         </p>
@@ -37,7 +35,6 @@
             </template>
             <span>{{ fieldData.help }} </span>
         </v-tooltip>
-
         <template
             v-if="!isUndefined( fieldData.counter ) && fieldData.counter"
             v-slot:counter="{ props }"
