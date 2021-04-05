@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
 $examples = \Config::get('easyforms.routes');
@@ -26,7 +25,6 @@ Route::prefix('axios')->group(function() {
             '/load',
             '\PlusTimeIT\EasyForms\Controllers\Axios@load'
         )->name('axios.forms.loader')->middleware('web');
-
         Route::post(
             '/process',
             '\PlusTimeIT\EasyForms\Controllers\Axios@process'

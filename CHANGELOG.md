@@ -5,6 +5,9 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+### 0.0.10
+- Testing update from master github project
+
 ### 0.0.9
 - Updates to Vue components
 
