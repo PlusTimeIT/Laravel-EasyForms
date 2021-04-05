@@ -5,6 +5,9 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+### 0.0.11
+- Recurse on demand check
+
 ### 0.0.10
 - Testing update from master github project
 

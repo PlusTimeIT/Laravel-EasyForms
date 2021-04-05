@@ -11,17 +11,14 @@ class EasyForms extends ServiceProvider
             __DIR__ . '/../../config/easyforms.php' => config_path('easyforms.php'),
             'easyforms',
         ]);
-
         $this->publishes(
             [__DIR__ . '/../../views/' => resource_path('views') . '/vendor/plustime-it/laravel-easyforms'],
             'easyforms'
         );
-
         $this->publishes(
             [__DIR__ . '/../../resources/js/components/form-loader' => resource_path('js/components/vendor/plustime-it/laravel-easyforms')],
             'easyforms'
         );
-
         $this->publishes(
             [__DIR__ . '/../../resources/css' => public_path('css/vendor/plustime-it/laravel-easyforms')],
             'easyforms'
@@ -33,7 +30,6 @@ class EasyForms extends ServiceProvider
     public function register()
     {
         $this->commands($this->commands);
-
         $this->mergeConfigFrom(
             __DIR__ . '/../../config/easyforms.php',
             'easyforms'
