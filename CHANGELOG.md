@@ -5,6 +5,9 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+### Branch: test-recurse-submodule-branch
+- Recurse on demand check while branching
+
 ### 0.0.11
 - Recurse on demand check
 
