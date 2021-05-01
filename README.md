@@ -1,4 +1,4 @@
-# General Readme
+# Laravel EasyForms
 
 Laravel EasyForms is a package that makes setting up and managing forms and actions in your laravel application simple. All data is edited in the backend and this generates your forms on the front end. 
 
@@ -23,7 +23,7 @@ Before either of those options is completed you first must:
 You'll also need to run `vendor:publish`
 `php artisan vendor:publish --provider=PlusTimeIT\EasyForms\Providers\EasyForms`
 
-## Dependancies
+## Current Dependencies
 
 1. vuejs - `npm install vue@^2.5.17 --save`
 2. vuetify - `npm install vuetify@^2.4.5 --save`
@@ -48,7 +48,7 @@ Examples can be found at the following routes if the config setting is set to `T
 ### Example 2 Load from Axios
 `<yourDomain>/easyforms/example/2`
 
-### Example 3 Masking
+### Example 3 Load from Axios with masking
 `<yourDomain>/easyforms/example/3`
 
 ## Vue Components
@@ -82,9 +82,11 @@ components: {
 
 ## Fields
 
+We have a list of fields below that we have already created but you can create any field you need and attach any attributes and properties you need. These do not need to be vuetify fields as it uses the `<component>` field in vue to create the needed field. 
+
 ### Available fields
 
-### Creating customer fields
+### Creating a custom field example
 
 ## Forms
 

@@ -1,7 +1,7 @@
 <?php
 namespace PlusTimeIT\EasyForms\Traits;
 
-trait AxiosResponseTrait
+trait ProcessResponseTrait
 {
     public function data($data): self
     {
@@ -18,35 +18,24 @@ trait AxiosResponseTrait
         return $this->data;
     }
 
-    public function getLoader(): bool
-    {
-        return $this->loader;
-    }
-
     public function getResult(): bool
     {
         return $this->result;
     }
 
-    public function keepLoader()
+    public static function make(): self
     {
-        return $this->setLoader(TRUE);
+        return new static();
     }
 
-    public static function make()
+    public function result(): bool
     {
-        return ( new static() )->setLoader(FALSE);
+        return $this->getResult();
     }
 
     public function setData($data): self
     {
         $this->data = $data;
-        return $this;
-    }
-
-    public function setLoader(bool $loader): self
-    {
-        $this->loader = $loader;
         return $this;
     }
 
@@ -61,9 +50,12 @@ trait AxiosResponseTrait
         return $this->setResult(TRUE);
     }
 
-    protected $data;
+    public function wasSuccessful()
+    {
+        return $this->getResult();
+    }
 
-    protected $loader;
+    protected $data;
 
     protected $result;
 }

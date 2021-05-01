@@ -14,7 +14,7 @@ class DatePickerField extends EasyField implements FieldInterface
 
     public function getCloseOnContentClick(): bool
     {
-        return $this->closeOnContentClick;
+        return $this->close_on_content_click;
     }
 
     public function getControls(): bool
@@ -32,9 +32,9 @@ class DatePickerField extends EasyField implements FieldInterface
         return new static();
     }
 
-    public function setCloseOnContentClick(bool $closeOnContentClick): self
+    public function setCloseOnContentClick(bool $close_on_content_click): self
     {
-        $this->closeOnContentClick = $closeOnContentClick;
+        $this->close_on_content_click = $close_on_content_click;
         return $this;
     }
 
@@ -50,7 +50,7 @@ class DatePickerField extends EasyField implements FieldInterface
         return $this;
     }
 
-    protected $closeOnContentClick = TRUE;
+    protected $close_on_content_click = TRUE;
 
     protected $component = 'date-picker';
 
@@ -58,7 +58,7 @@ class DatePickerField extends EasyField implements FieldInterface
 
     protected $multiple = FALSE;
 
-    protected $value = [];
+    protected $value = '';
 
     use FieldTrait;
 

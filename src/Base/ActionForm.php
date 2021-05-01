@@ -1,13 +1,21 @@
 <?php
 namespace PlusTimeIT\EasyForms\Base;
 
-use PlusTimeIT\EasyForms\Interfaces\InputFormInterface;
-use PlusTimeIT\EasyForms\Traits\{FormTrait, InputFormTrait};
+use PlusTimeIT\EasyForms\Interfaces\ActionFormInterface;
+use PlusTimeIT\EasyForms\Traits\ActionFormTrait;
 
-abstract class InputForm extends EasyForm implements InputFormInterface
+abstract class ActionForm extends EasyForm implements ActionFormInterface
 {
-    protected $action = '';
+    public function __construct()
+    {
+        $this
+            ->setAlerts($this->alerts())
+            ->setActions($this->actions());
+    }
 
-    use InputFormTrait;
-    use FormTrait;
+    protected $alerts = [];
+
+    protected $actions;
+
+    use ActionFormTrait;
 }

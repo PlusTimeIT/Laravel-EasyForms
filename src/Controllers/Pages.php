@@ -12,7 +12,7 @@ class Pages extends Controller
         $form_class = "{$this->form_namespace}ExampleForm{$example_id}";
         return view('vendor.plustime-it.laravel-easyforms.examples.example-template')
             ->with('load', $example_id == 1 ? 'page' : 'axios')
-            ->with('example', ( new $form_class() ));
+            ->with('example', $example_id == 1 ? (new $form_class())->preFill() : (new $form_class()));
     }
 
     public function exampleHome(request $request)

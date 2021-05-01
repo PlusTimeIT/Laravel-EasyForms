@@ -9,6 +9,7 @@
       <component
         :is="fieldData.component"
         v-model="fieldData.value"
+        v-mask="fieldData.masking"
         v-bind="prepareProps(errors)"
       >
         <div v-if="fieldData.component == 'v-radio-group'">
@@ -155,9 +156,6 @@ export default {
       // TO DO PREPEND ICON
       if (!this.isUndefined(field.help) && field.help !== '') {
         // result['prepend-inner-icon'] = 'mdi-help-box';
-      }
-      if (!this.isUndefined(field.masking) && field.masking !== '') {
-        result['v-mask'] = fieldData.masking;
       }
 
       if (!this.isUndefined(field.type) && field.type == 'time') {

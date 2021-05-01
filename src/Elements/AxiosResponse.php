@@ -6,11 +6,8 @@ use PlusTimeIT\EasyForms\Traits\{AxiosResponseTrait, Transformable};
 
 class AxiosResponse implements AxiosResponseInterface
 {
-    public function __construct(bool $result, $data, bool $loader)
+    public function __construct()
     {
-        $this->result = $result;
-        $this->data = $data;
-        $this->loader = $loader;
         return $this;
     }
 

@@ -1,6 +1,7 @@
 <?php
 namespace PlusTimeIT\EasyForms\Forms;
 
+use Illuminate\Http\Request;
 use PlusTimeIT\EasyForms\Base\InputForm;
 use PlusTimeIT\EasyForms\Elements\{Action, Alert, Axios, Button, Header, Icon, MaskItem, RadioItem, RuleItem, SelectItem};
 use PlusTimeIT\EasyForms\Fields\{AutoCompleteField, CheckboxField, FileInputField, HiddenField, NumberField, PasswordField, RadioGroupField, SelectField, TextField, TextareaField};
@@ -10,142 +11,139 @@ class ExampleForm3 extends InputForm
 {
     public function __construct()
     {
-        $this
-            ->setFields([
-                new TextField(
-                    'mobile1',
-                    [
-                        'order' => 0,
-                        'label' => 'Mobile Number',
-                        'rules' => [
-                            new RuleItem('required', TRUE),
-                        ],
-                        'masking' => '04##-###-###',
-                        'help' => 'Number format 1',
-                    ]
-                ),
-                new TextField(
-                    'mobile2',
-                    [
-                        'order' => 0,
-                        'label' => 'Mobile Number',
-                        'rules' => [
-                            new RuleItem('required', TRUE),
-                        ],
-                        'masking' => '+61 4########',
-                        'help' => 'Number format 2',
-                    ]
-                ),
-                new TextField(
-                    'mobile3',
-                    [
-                        'order' => 0,
-                        'label' => 'Mobile Number',
-                        'rules' => [
-                            new RuleItem('required', TRUE),
-                        ],
-                        'masking' => '(+61) 4########',
-                        'help' => 'Number format 3',
-                    ]
-                ),
-                new TextField(
-                    'quick_date',
-                    [
-                        'order' => 0,
-                        'label' => 'Quick Date D/M/Y',
-                        'rules' => [
-                            new RuleItem('required', TRUE),
-                        ],
-                        'masking' => '##/##/####',
-                        'help' => 'Type a date quickly',
-                    ]
-                ),
-                new TextField(
-                    'quick_time',
-                    [
-                        'order' => 0,
-                        'label' => 'Quick Time h:i',
-                        'rules' => [
-                            new RuleItem('required', TRUE),
-                        ],
-                        'masking' => '##:##',
-                        'help' => 'Type a time quickly',
-                    ]
-                ),
-                new TextField(
-                    'license_plate',
-                    [
-                        'order' => 0,
-                        'label' => 'License Plate',
-                        'rules' => [
-                            new RuleItem('required', TRUE),
-                        ],
-                        'masking' => 'NNN-NNN',
-                        'help' => 'Type numbers and letters',
-                    ]
-                ),
-            ])
-            ->setAction(
-                new Action(
-                    [
-                        new Button(
-                            'process',
-                            'Process Form',
-                            'primary',
-                            new Icon('mdi-star', 'Process'),
-                            0
-                        ),
-                        new Button(
-                            'reset',
-                            'Reset Form',
-                            'secondary',
-                            new Icon('mdi-refresh', 'Reset the form fields'),
-                            1
-                        ),
-                    ],
-                    [
-                        new Alert(
-                            'before_load',
-                            [
-                                'color' => 'blue',
-                                'border' => 'top',
-                                'dismissible' => TRUE,
-                                'contents' => 'This alert will be ignored because we load by axios',
-                            ]
-                        ),
-                        new Alert(
-                            'process_success',
-                            [
-                                'color' => 'green',
-                                'border' => 'top',
-                                'dismissible' => TRUE,
-                                'contents' => 'Processing successful!',
-                            ]
-                        ),
-                        new Alert(
-                            'process_failed',
-                            [
-                                'color' => 'red',
-                                'border' => 'top',
-                                'dismissible' => TRUE,
-                                'contents' => '<axios-response>',
-                            ]
-                        ),
-                    ],
-                    new Axios([
-                        'multi_part' => FALSE ,
-                        'expecting_results' => TRUE ,
-                        'headers' => [] ,
-                        'notification' => TRUE,
-                    ])
-                )
-            );
-        return $this;
+        parent::__construct();
+        return $this
+            ->setName('ExampleForm3')
+            ->setTitle('Load from axios with masking');
     }
 
-    protected $name = 'ExampleForm3';
+    public function alerts(): array
+    {
+        return [
+            Alert::make()
+                ->setTrigger('before_load')
+                ->setType('error')
+                ->setColor('red')
+                ->setProminent(TRUE)
+                ->setBorder('bottom')
+                ->setDismissible(TRUE)
+                ->setContents('This alert will be ignored because we load by axios!')
+            ,
+            Alert::make()
+                ->setTrigger('failed_processing')
+                ->setType('error')
+                ->setColor('red')
+                ->setProminent(TRUE)
+                ->setBorder('bottom')
+                ->setDismissible(TRUE)
+                ->setContents('Processing Failed!')
+            ,
+            Alert::make()
+                ->setTrigger('successful_processing')
+                ->setType('success')
+                ->setColor('green')
+                ->setProminent(TRUE)
+                ->setBorder('top')
+                ->setDismissible(TRUE)
+                ->setContents('Processing Successful!')
+            ,
+        ];
+    }
 
-    protected $title = 'Load from axios with masking';
+    public function axios(): Axios
+    {
+        return Axios::make();
+    }
+
+    public function buttons(): array
+    {
+        return [
+            Button::make()
+                ->setType('process')
+                ->setColor('primary')
+                ->setText('Process Form')
+                ->setIcon(
+                    Icon::make()->setIcon('mdi-star')->setTooltip('Process')
+                )
+                ->setOrder(0)
+            ,
+        ];
+    }
+
+    public function fields(): array
+    {
+        return [
+            TextField::make()
+                ->setName('mobile1')
+                ->setOrder(0)
+                ->setLabel('Mobile Number 1')
+                ->setMasking('04##-###-###')
+                ->setHelp('Number format 1')
+                ->setRules([
+                    RuleItem::make()->setName('required')->setValue(TRUE),
+                ])
+            ,
+            TextField::make()
+                ->setName('mobile2')
+                ->setOrder(0)
+                ->setLabel('Mobile Number 2')
+                ->setMasking('+61 4########')
+                ->setHelp('Number format 2')
+                ->setRules([
+                    RuleItem::make()->setName('required')->setValue(TRUE),
+                ])
+            ,
+            TextField::make()
+                ->setName('mobile3')
+                ->setOrder(0)
+                ->setLabel('Mobile Number 3')
+                ->setMasking('(+61) 4########')
+                ->setHelp('Number format 3')
+                ->setRules([
+                    RuleItem::make()->setName('required')->setValue(TRUE),
+                ])
+            ,
+            TextField::make()
+                ->setName('quick_date')
+                ->setOrder(0)
+                ->setLabel('Quick Date d/m/Y')
+                ->setMasking('##/##/####')
+                ->setHelp('Type a date quickly')
+                ->setRules([
+                    RuleItem::make()->setName('required')->setValue(TRUE),
+                ])
+            ,
+            TextField::make()
+                ->setName('quick_time')
+                ->setOrder(0)
+                ->setLabel('Quick Time h:i')
+                ->setMasking('##:##')
+                ->setHelp('Type a time quickly')
+                ->setRules([
+                    RuleItem::make()->setName('required')->setValue(TRUE),
+                ])
+            ,
+            TextField::make()
+                ->setName('TextField')
+                ->setOrder(0)
+                ->setLabel('License Plate')
+                ->setMasking('NNN-NNN')
+                ->setHelp('Type numbers and letters')
+                ->setRules([
+                    RuleItem::make()->setName('required')->setValue(TRUE),
+                ]),
+        ];
+    }
+
+    public static function fill(request $request): self
+    {
+        return $request;
+    }
+
+    public static function process(request $request)
+    {
+        $form = self::make();
+    }
 
     use Transformable;
 }

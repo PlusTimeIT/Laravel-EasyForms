@@ -2,8 +2,13 @@
 
 All version change notes to be placed here.
 
-
 ## Version Updates
+
+## 0.0.13
+- Added Action forms
+
+### 0.0.12
+- Fixed v-mask issue
 
 ### Branch: test-recurse-submodule-branch
 - Recurse on demand check while branching

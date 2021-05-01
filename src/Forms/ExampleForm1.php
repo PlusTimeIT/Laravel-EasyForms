@@ -3,6 +3,7 @@ namespace PlusTimeIT\EasyForms\Forms;
 
 use Illuminate\Http\Request;
 use PlusTimeIT\EasyForms\Base\InputForm;
+use PlusTimeIT\EasyForms\Elements\ProcessResponse;
 use PlusTimeIT\EasyForms\Elements\{Action, Alert, Axios, Button, Header, Icon, RuleItem};
 use PlusTimeIT\EasyForms\Fields\{PasswordField, TextField};
 use PlusTimeIT\EasyForms\Traits\Transformable;
@@ -67,7 +68,7 @@ class ExampleForm1 extends InputForm
                 ->setProminent(TRUE)
                 ->setBorder('bottom')
                 ->setDismissible(TRUE)
-                ->setContents('Processing Failed!')
+                ->setContents('Concat the response: <response-data>')
             ,
             Alert::make()
                 ->setTrigger('successful_processing')
@@ -76,7 +77,7 @@ class ExampleForm1 extends InputForm
                 ->setProminent(TRUE)
                 ->setBorder('top')
                 ->setDismissible(TRUE)
-                ->setContents('Processing Successful!')
+                ->setContents('<response-data>')
             ,
             Alert::make()
                 ->setTrigger('reset_form')
@@ -112,16 +113,7 @@ class ExampleForm1 extends InputForm
                 ->setIcon(
                     Icon::make()->setIcon('mdi-refresh')->setTooltip('Reset the form fields')
                 )
-                ->setOrder(1)
-            ,
-            Button::make()
-                ->setType('cancel')
-                ->setColor('secondary')
-                ->setText('Cancel')
-                ->setIcon(
-                    Icon::make()->setIcon('mdi-cancel')->setTooltip('Cancel the form')
-                )
-                ->setOrder(2),
+                ->setOrder(1),
         ];
     }
 
@@ -148,18 +140,42 @@ class ExampleForm1 extends InputForm
 
     public static function fill(request $request): self
     {
-        $fields = self::fields();
-        //check if request->id exists or whatever variable
-        //you are sending via additional form data
+        // we can just set this to preFill if we want to load by axios later
+        return ( new self() )->preFill();
+    }
+
+    public function populateFields($data): array
+    {
+        return collect($this->fields())->map(function($field) use ($data) {
+            if (isset($data[ $field->getName()])) {
+                $field->setValue($data[ $field->getName()]);
+            }
+
+            return $field;
+        })->toArray();
+    }
+
+    public function preFill(): self
+    {
+        //this form is always loaded by page not axios so we want to prefill it
         $fakeData = [
-            'username' => 'HelloWorld' ,
-            'password' => 'HelloWorld' ,
+            'username' => 'Pre-populated Username' ,
         ];
+        return $this->setFields($this->populateFields($fakeData));
     }
 
     public static function process(request $request)
     {
-        $form = self::make();
+        //request has been validated so we know what we have.
+        $username = $request->username;
+        $password = $request->password;
+
+        //run checks
+        if ($username !== 'Pre-populated Username') {
+            return ProcessResponse::make()->failed()->data('Wrong username silly, use the preloaded one');
+        }
+
+        return ProcessResponse::make()->success()->data('Yay you logged in!');
     }
 
     use Transformable;

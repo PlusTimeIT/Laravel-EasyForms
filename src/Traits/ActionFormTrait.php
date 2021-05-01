@@ -3,9 +3,36 @@ namespace PlusTimeIT\EasyForms\Traits;
 
 trait ActionFormTrait
 {
-    protected $name = '';
+    public function actions(): array
+    {
+        return [];
+    }
 
-    protected $type = '';
+    public function getCallback(): string
+    {
+        return $this->callback;
+    }
 
-    use Transformable;
+    public function getInline(): bool
+    {
+        return $this->inline;
+    }
+
+    public function setActions(array $actions): self
+    {
+        $this->actions = $actions;
+        return $this;
+    }
+
+    public function setCallback(string $callback): self
+    {
+        $this->callback = $callback;
+        return $this;
+    }
+
+    public function setInline(bool $inline): self
+    {
+        $this->inline = $inline;
+        return $this;
+    }
 }
