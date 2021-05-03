@@ -15,6 +15,7 @@
                 readonly
                 v-on="on"
                 outlined
+                :error-messages="loadedErrorMessages"
                 dense
                  :label="label"
             ></v-text-field>
@@ -31,6 +32,10 @@ export default {
   props: {
     value: {
       default: '',
+    },
+    errorMessages: {
+      type: Array,
+      default: () => [],
     },
     label: {
       type: String,
@@ -60,6 +65,9 @@ export default {
     this.time_input = this.populate;
   },
   computed: {
+    loadedErrorMessages(){
+      return this.errorMessages;
+    },
     computedTimesFormatted: function() {
       return this.time_input;
     },

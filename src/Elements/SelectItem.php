@@ -5,9 +5,9 @@ use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class SelectItem
 {
-    public function __construct()
+    public function __construct($id = '', $value = '')
     {
-        return $this;
+        return $this->setId($id)->setValue($value);
     }
 
     public function getId()

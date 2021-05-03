@@ -15,14 +15,24 @@ class Icon
         return $this->icon;
     }
 
+    public function getColor(): string
+    {
+        return $this->color;
+    }
+
+    public function getSize(): string
+    {
+        return $this->size;
+    }
+
     public function getTooltip(): string
     {
         return $this->tooltip;
     }
 
-    public static function make()
+    public static function make(string $icon = '' , string $tooltip = '')
     {
-        return new static();
+        return ( new static())->setIcon($icon)->setTooltip($tooltip);
     }
 
     public function setIcon(string $icon): self
@@ -37,7 +47,23 @@ class Icon
         return $this;
     }
 
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
+        return $this;
+    }
+
+    public function setSize(string $size): self
+    {
+        $this->size = $size;
+        return $this;
+    }
+
     protected $icon;
+
+    protected $size;
+
+    protected $color = 'primary';
 
     protected $tooltip;
 

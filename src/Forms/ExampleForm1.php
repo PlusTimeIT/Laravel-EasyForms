@@ -15,7 +15,7 @@ class ExampleForm1 extends InputForm
         parent::__construct();
         return $this
             ->setName('ExampleForm1')
-            ->setTitle('Load from page');
+            ->setTitle('Load from page with alerts');
     }
 
     public function alerts(): array
@@ -77,7 +77,7 @@ class ExampleForm1 extends InputForm
                 ->setProminent(TRUE)
                 ->setBorder('top')
                 ->setDismissible(TRUE)
-                ->setContents('<response-data>')
+                ->setContents('Concat the response: <response-data>')
             ,
             Alert::make()
                 ->setTrigger('reset_form')
@@ -89,10 +89,6 @@ class ExampleForm1 extends InputForm
         ];
     }
 
-    public function axios(): Axios
-    {
-        return Axios::make();
-    }
 
     public function buttons(): array
     {
@@ -123,6 +119,8 @@ class ExampleForm1 extends InputForm
             TextField::make()
                 ->setName('username')
                 ->setOrder(0)
+                ->setClearable(TRUE)
+                ->setHelp('OH OH')
                 ->setLabel('Username')
                 ->setRules([
                     RuleItem::make()->setName('required')->setValue(TRUE),

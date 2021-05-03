@@ -27,7 +27,7 @@
             </v-col>
         </v-row>
          <v-row v-show="!formLoading">
-            <v-form v-bind="formProps()" ref="loadedForm" :key="updateForm" class="mx-auto w-100">
+            <v-form v-if="loadedFormData.form_type == 'input'" v-bind="formProps()" ref="loadedForm" :key="updateForm" class="mx-auto w-100">
                     <v-col cols="12">
                         <v-row>
                             <form-input
@@ -42,31 +42,76 @@
                         <v-row v-if="displayButton">
                             <v-col v-for="( button, index ) in loadedFormData.buttons" :key="index">
                                 <v-btn
-                                    class="p-4"
+                                    :class="button.class"
                                     :color="button.color"
+
                                     @click="buttonAction( button )"
-                                    :rounded="false"
-                                    tile
+                                    :rounded="button.rounded"
+                                    :tile="button.tile"
                                 >
-                                {{ button.text }}
-                                <v-tooltip top v-if="!displayButtonIcon(index)">
-                                    <template v-slot:activator="{ on  }">
-                                        <v-icon
-                                            v-on="on"
-                                            v-bind="prepareButtonIconProps(index)"
-                                            @click.stop="processForm"
-                                            :key="buttonIconMdi(index)"
-                                            dismissible
-                                        >
-                                        </v-icon>
-                                    </template>
-                                    <span>{{ buttonIconText(index) }}</span>
-                                </v-tooltip>
+                                    {{ button.text }}
+                                    <v-tooltip top v-if="displayButtonIcon(button)">
+                                        <template v-slot:activator="{ on  }">
+                                            <v-icon
+                                                v-on="on"
+                                                v-bind="prepareButtonIconProps(button)"
+                                                :key="buttonIconMdi(button)"
+                                            >
+                                            </v-icon>
+                                        </template>
+                                        <span>{{ buttonIconText(button) }}</span>
+                                    </v-tooltip>
                                 </v-btn>
                             </v-col>
                         </v-row>
                     </v-col>
             </v-form>
+            <v-row v-if="loadedFormData.form_type == 'action'" justify="center">
+                <v-col
+                    v-for="(action, index) in filteredActions"
+                    :key="index"
+                    cols="auto"
+                    class="py-0 px-2"
+                >
+                    <v-tooltip top v-if="!isUndefined(action.icon)">
+                        <template v-slot:activator="{ on }">
+                            <v-icon
+                                v-on="on"
+                                @click="processForm(action.identifier)"
+                                dismissible
+                            >
+                            {{ action.icon.icon }}
+                            </v-icon>
+                        </template>
+                        <span>{{ action.icon.tooltip }}</span>
+                    </v-tooltip>
+                    <v-tooltip top v-if="!isUndefined(action.button)">
+                        <template v-slot:activator="{ on }">
+                            <v-btn
+                                :class="action.button.class"
+                                :color="action.button.color"
+                                @click="buttonAction( action.button , action.identifier )"
+                                :rounded="action.button.rounded"
+                                :tile="action.button.tile"
+                            >
+                                {{ action.button.text }}
+                                <v-tooltip top v-if="displayButtonIcon(action.button)">
+                                    <template v-slot:activator="{ on }">
+                                        <v-icon
+                                            v-on="on"
+                                            v-bind="prepareButtonIconProps(action.button)"
+                                        >
+                                        {{ buttonIconMdi(action.button) }}
+                                        </v-icon>
+                                    </template>
+                                    <span>{{ buttonIconText(action.button) }}</span>
+                                </v-tooltip>
+                            </v-btn>
+                        </template>
+                        <span>{{ action.button.tooltip }}</span>
+                    </v-tooltip>
+                </v-col>
+            </v-row>
         </v-row>
     </validation-observer>
   </v-col>
@@ -143,33 +188,37 @@ export default {
     asyncFieldList() {
       const newFieldList = {};
       const _this = this;
-      Object.keys(this.fieldList).forEach((field) => {
-        const thisField = _this.fieldList[field];
+      if( ! this.isUndefined(this.fieldList) ) {
+        Object.keys(this.fieldList).forEach((field) => {
+            const thisField = _this.fieldList[field];
 
-        if (!_this.isUndefined(thisField.hide)) {
-          if (!_this.isUndefined(thisField.show) && _this.isObject(thisField.show)) {
-            Object.keys(thisField.show).forEach((value) => {
-              if (!_this.isUndefined(_this.fieldList[value].value) && _this.fieldList[value].value === thisField.show[value]) {
-                newFieldList[field] = thisField;
-              }
-            });
-          }
-        } else {
-          newFieldList[field] = thisField;
-        }
-      });
+            if (!_this.isUndefined(thisField.hide)) {
+            if (!_this.isUndefined(thisField.show) && _this.isObject(thisField.show)) {
+                Object.keys(thisField.show).forEach((value) => {
+                if (!_this.isUndefined(_this.fieldList[value].value) && _this.fieldList[value].value === thisField.show[value]) {
+                    newFieldList[field] = thisField;
+                }
+                });
+            }
+            } else {
+            newFieldList[field] = thisField;
+            }
+        });
 
-      return newFieldList;
+        return newFieldList;
+      }
+      return [];
     },
   },
   computed: {
-    loadedAlerts: {
-      get() {
+    filteredActions: function() {
+        let _this = this;
+        return this.loadedFormData.actions.filter(function(action){
+            return _this.checkActionDisplay(action)
+        });
+    },
+    loadedAlerts: function() {
         return this.alerts;
-      },
-      set( val ) {
-        console.log( 'SET loadedAlerts', val );
-      },
     },
     loadedAdditionalFormData: function() {
       return this.additional_form_data;
@@ -271,6 +320,7 @@ export default {
       this.alerts = [...this.alerts, ...this.loadedFormData.alerts];
       this.alerts.forEach( function( alert, index ) {
         alert.display = false;
+        alert.old_contents = alert.contents;
         _this.$set(_this.alerts, index, alert);
       });
       this.triggerAlerts('before_load');
@@ -285,11 +335,22 @@ export default {
     }
   },
   methods: {
+    checkActionDisplay: function( action ) {
+        let _this = this;
+        if( ! this.isUndefined(action.conditions) && action.conditions !== null ){
+            let results = [];
+            action.conditions.forEach( function(condition){
+                results.push(eval( '"' + _this.loadedAdditionalFormData[condition.check] + '" ' + condition.operator + ' "' + condition.against + '"' ));
+            });
+            if( results.includes(false) ){
+                return false;
+            }
+        }
+        return true;
+    },
     prepareAlertProps: function( alert ) {
       const result = {};
       Object.keys(alert).forEach(function(key) {
-        console.log(key);
-        console.log(alert[key]);
         result[key] = alert[key];
         if ( key == 'icon' && alert[key] !== null ) {
           result[key] = alert[key].icon;
@@ -297,32 +358,21 @@ export default {
       });
       return result;
     },
-    displayButtonIcon: function( index ) {
-      if (!this.formLoaded || !this.loadedFormData) return false;
-      return this.isUndefined(this.loadedFormData.buttons[index].icon) ?
-        false :
-        true;
+    displayButtonIcon: function( button ) {
+      return !this.isUndefined(button.icon) ? true : false;
     },
-    buttonIconText: function(index) {
-      if (!this.formLoaded || !this.loadedFormData) return '';
-      return this.isUndefined(this.loadedFormData.buttons[index].icon) ?
-        'Submit' :
-        this.loadedFormData.buttons[index].icon.tooltip;
+    buttonIconText: function( button ) {
+      return !this.isUndefined(button.icon.tooltip) ? button.icon.tooltip : 'Submit';
     },
-    buttonIconMdi: function(index) {
-      if (!this.formLoaded || !this.loadedFormData) return '';
-      return this.isUndefined(this.loadedFormData.buttons[index].icon.icon) ?
-        '' :
-        this.loadedFormData.buttons[index].icon.mdi;
+    buttonIconMdi: function( button ) {
+      return !this.isUndefined(button.icon.icon) ? button.icon.icon : '';
     },
     triggerAlerts(alertTrigger, text = null) {
       const _this = this;
       this.alerts.forEach( function( alert, index ) {
         if ( alert.trigger == alertTrigger ) {
           alert.display = true;
-          if ( text !== null ) {
-            alert.contents = text;
-          }
+          alert.contents = alert.old_contents.replace('<response-data>', _this.isObject(text) ? 'There is validation errors' : text);
           if ( alert.auto_close_timer !== 0 ) {
             setTimeout(function() {
               alert.display = false;
@@ -330,13 +380,16 @@ export default {
             }, alert.auto_close_timer);
           }
         }
-
         _this.$set(_this.alerts, index, alert);
       });
     },
-    buttonAction( button ) {
+    buttonAction( button , attributes = null ) {
       this.formLoading = true;
       if ( !this.isUndefined( button.type ) ) {
+        if ( button.type =='action' ) {
+          this.processForm(attributes);
+          return 0;
+        }
         if ( button.type =='process' ) {
           this.processForm();
           return 0;
@@ -384,26 +437,26 @@ export default {
       }
       return result;
     },
-    prepareButtonIconProps: function(index) {
+    prepareButtonIconProps: function(button) {
       const result = {};
+      if (this.displayButtonIcon(button)) {
+        result.color = !this.isUndefined(button.icon.color) ?
+          button.icon.color : 'primary';
 
-      if (this.displayButtonIcon) {
-        result.color = !this.isUndefined(this.loadedFormData.buttons[index].color) ?
-          this.loadedFormData.buttons[index].color :
-          'primary';
-        result.class = !this.isUndefined(this.loadedFormData.buttons[index].icon.class) ?
-          this.loadedFormData.buttons[index].icon.class :
-          '';
-        if (this.isUndefined(this.loadedFormData.buttons[index].icon.size)) {
-          result[this.loadedFormData.buttons[index].icon.size] = true;
+        result.class = !this.isUndefined(button.icon.class) ?
+          button.icon.class : '';
+
+        if (!this.isUndefined(button.icon.size)) {
+          result[button.icon.size] = true;
         }
       }
+      console.log( 'ICON RESULT:', result );
       return result;
     },
     getInputCols: function(field) {
       return this.isUndefined(field.cols) ? 12 : field.cols;
     },
-    mergeAdditionData: function(formData, additionalData) {
+    mergeAdditionData: function(formData, additionalData, action) {
       const multiPart = !this.isUndefined(this.loadedFormData.axios) && !this.isUndefined(this.loadedFormData.axios.multi_part) && this.loadedFormData.axios.multiPart ?
         true :
         false;
@@ -429,6 +482,13 @@ export default {
           formData[key] = additionalData[key];
         }
       });
+
+      if (multiPart) {
+        formData.append('action' , action);
+      } else {
+          formData['action'] = action;
+      }
+
       return formData;
     },
     mergeAdditionalLoadFormData: function(formData, additionalData) {
@@ -444,12 +504,12 @@ export default {
           'post',
           '/axios/forms/load',
           this.mergeAdditionalLoadFormData(
-              {
-                form_name: this.loadedFormName,
-                populate: this.populate,
-                id: id,
-              },
-              this.loadedAdditionalLoadFormData,
+            {
+              form_name: this.loadedFormName,
+              populate: this.populate,
+              id: id,
+            },
+            this.loadedAdditionalLoadFormData,
           ),
       ).then((axiosResponse) => {
         _this.formLoading = axiosResponse.loader;
@@ -464,17 +524,30 @@ export default {
         _this.triggerAlerts('after_load');
       });
     },
-    processForm: function() {
+    cleanAlerts: function() {
+        const _this = this;
+        this.alerts.forEach( function( alert, index ) {
+        if ( alert.trigger == 'failed_processing' || alert.trigger == 'successful_processing' ) {
+          alert.display = false;
+          alert.contents = alert.old_contents;
+          _this.$set(_this.alerts, index, alert);
+        }
+      });
+    },
+    processForm: function(action = []) {
       const _this = this;
+      this.formLoading = true;
+      _this.cleanAlerts();
       _this.triggerAlerts('before_processing');
-      this.request(
+      _this.request(
           'post',
           '/axios/forms/process',
-          this.mergeAdditionData(
-              this.formData,
-              this.loadedAdditionalFormData,
+          _this.mergeAdditionData(
+              _this.formData,
+              _this.loadedAdditionalFormData,
+              action
           ),
-          this.loadedFormData.axios.headers,
+          _this.loadedFormData.axios.headers,
       ).then((axiosResponse) => {
         _this.formLoading = axiosResponse.loader;
         if (_this.loadedFormData.axios.expecting_results) {
@@ -482,13 +555,18 @@ export default {
         }
         if (!axiosResponse.result) {
           _this.$refs.observer.setErrors(axiosResponse.data);
-          _this.triggerAlerts('failed_processing');
+          _this.triggerAlerts('failed_processing' , axiosResponse.data);
           return Promise.resolve();
         }
         if (!_this.isUndefined(_this.loadedFormData.axios.redirect) && _this.loadedFormData.axios.redirect !== false) {
           _this.redirect(_this.loadedFormData.axios.redirect);
         }
-        _this.triggerAlerts('successful_processing');
+        if (!_this.isUndefined(axiosResponse.redirect) && axiosResponse.redirect !== null) {
+            console.log( 'RESPONSE:' + axiosResponse.redirect );
+          _this.redirect(axiosResponse.redirect);
+        }
+
+        _this.triggerAlerts('successful_processing' , axiosResponse.data );
         if (!_this.isUndefined(_this.loadedFormData.axios.form_reset) && _this.loadedFormData.axios.form_reset !== false) {
           _this.resetForm(false);
         }

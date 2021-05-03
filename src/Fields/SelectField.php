@@ -66,6 +66,12 @@ class SelectField extends EasyField implements FieldInterface
         return $this;
     }
 
+    public function setItemText(string $text): self
+    {
+        $this->item_text = $text;
+        return $this;
+    }
+
     public function setItemId($id): self
     {
         $this->item_text = $id;

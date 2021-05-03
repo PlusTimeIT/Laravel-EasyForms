@@ -15,6 +15,11 @@ class Button
         return $this->color;
     }
 
+    public function getClass(): string
+    {
+        return $this->class;
+    }
+
     public function getIcon(): Icon
     {
         return $this->icon;
@@ -25,9 +30,19 @@ class Button
         return $this->order;
     }
 
+    public function getRounded(): bool
+    {
+        return $this->rounded;
+    }
+
     public function getText(): string
     {
         return $this->text;
+    }
+
+    public function getTile(): bool
+    {
+        return $this->tile;
     }
 
     public function getType(): string
@@ -69,6 +84,30 @@ class Button
         $this->type = $type;
         return $this;
     }
+
+    public function setClass(string $type): self
+    {
+        $this->class = $class;
+        return $this;
+    }
+
+    public function setTile(bool $tile): self
+    {
+        $this->tile = $tile;
+        return $this;
+    }
+
+    public function setRounded(bool $rounded): self
+    {
+        $this->rounded = $rounded;
+        return $this;
+    }
+
+    protected $tile = TRUE;
+
+    protected $rounded = FALSE;
+
+    protected $class = 'p-4';
 
     protected $color;
 

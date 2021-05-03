@@ -7,6 +7,7 @@
         <title>PlusTimeIT EasyForm Examples</title>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{  asset('css/vendor/plustime-it/laravel-easyforms/example-form.css') }}" rel="stylesheet">
@@ -39,8 +40,8 @@
                             @include('vendor.plustime-it.laravel-easyforms.examples.menu.links')
                         </v-row>
                         <v-row>
-                            <v-col cols="12" class="pa-0">
-                                {{ Illuminate\Mail\Markdown::parse(file_get_contents(base_path() . '/README.md')) }}
+                            <v-col cols="12" class="pa-0 text-left markdown-body">
+                                {{ Illuminate\Mail\Markdown::parse(file_get_contents(base_path() . '/packages/PlusTimeIT/laravel-easyforms/README.md')) }}
                             </v-col>
                         </v-row>
                     </v-container>

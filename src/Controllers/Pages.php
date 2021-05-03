@@ -3,6 +3,7 @@ namespace PlusTimeIT\EasyForms\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use PlusTimeIT\EasyForms\Controllers\Users;
 
 class Pages extends Controller
 {
@@ -10,9 +11,18 @@ class Pages extends Controller
     {
         $example_id = $request->example_id ?? 1;
         $form_class = "{$this->form_namespace}ExampleForm{$example_id}";
-        return view('vendor.plustime-it.laravel-easyforms.examples.example-template')
+
+        if( $example_id < 4 ){
+            return view('vendor.plustime-it.laravel-easyforms.examples.example-template')
             ->with('load', $example_id == 1 ? 'page' : 'axios')
             ->with('example', $example_id == 1 ? (new $form_class())->preFill() : (new $form_class()));
+        }
+
+        $userList = Users::getAllUsers();
+        return view('vendor.plustime-it.laravel-easyforms.examples.example-' . $example_id)
+            ->with('load', 'axios')
+            ->with('userList',  $userList )
+            ->with('example', new $form_class());
     }
 
     public function exampleHome(request $request)

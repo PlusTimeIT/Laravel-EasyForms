@@ -14,7 +14,7 @@
                 persistent-hint
                 readonly
                 v-on="on"
-                :error-messages="errorMessages"
+                :error-messages="loadedErrorMessages"
                 outlined
                 dense
                  :label="label"
@@ -75,6 +75,9 @@ export default {
     }
   },
   computed: {
+    loadedErrorMessages(){
+        return this.errorMessages;
+    },
     formattedDates() {
       if ( ! this.isArray( this.dates ) ) {
         return this.formatPickerDate( this.dates );

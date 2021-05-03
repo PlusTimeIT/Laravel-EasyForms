@@ -5,9 +5,9 @@ use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class RuleItem
 {
-    public function __construct()
+    public function __construct(string $name  = '' , $value = '')
     {
-        return $this;
+        return $this->setName($name)->setValue($value);
     }
 
     public function getName(): string

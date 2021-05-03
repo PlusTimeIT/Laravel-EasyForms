@@ -3,7 +3,7 @@ namespace PlusTimeIT\EasyForms\Elements;
 
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
-class ActionIcon
+class ActionButton
 {
     public function __construct()
     {
@@ -20,9 +20,9 @@ class ActionIcon
         return $this->conditions;
     }
 
-    public function getIcon(): Icon
+    public function getButton(): Button
     {
-        return $this->icon;
+        return $this->button;
     }
 
     public function getIdentifier(): string
@@ -57,9 +57,9 @@ class ActionIcon
         return $this;
     }
 
-    public function setIcon(Icon $icon): self
+    public function setButton(Button $button): self
     {
-        $this->icon = $icon;
+        $this->button = $button;
         return $this;
     }
 
@@ -85,7 +85,7 @@ class ActionIcon
 
     protected $callback;
 
-    protected $icon;
+    protected $button;
 
     protected $identifier;
 

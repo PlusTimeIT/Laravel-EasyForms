@@ -23,6 +23,11 @@ trait ProcessResponseTrait
         return $this->result;
     }
 
+    public function getRedirect()
+    {
+        return $this->redirect;
+    }
+
     public static function make(): self
     {
         return new static();
@@ -33,9 +38,20 @@ trait ProcessResponseTrait
         return $this->getResult();
     }
 
+    public function redirect($redirect): self
+    {
+        return $this->setRedirect($redirect);
+    }
+
     public function setData($data): self
     {
         $this->data = $data;
+        return $this;
+    }
+
+    public function setRedirect($redirect): self
+    {
+        $this->redirect = $redirect;
         return $this;
     }
 
@@ -58,4 +74,6 @@ trait ProcessResponseTrait
     protected $data;
 
     protected $result;
+
+    protected $redirect;
 }

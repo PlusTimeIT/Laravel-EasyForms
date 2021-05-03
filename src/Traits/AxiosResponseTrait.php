@@ -13,9 +13,19 @@ trait AxiosResponseTrait
         return $this->setResult(FALSE);
     }
 
+    public function redirect($redirect)
+    {
+        return $this->setRedirect($redirect);
+    }
+
     public function getData()
     {
         return $this->data;
+    }
+
+    public function getRedirect()
+    {
+        return $this->redirect;
     }
 
     public function getLoader(): bool
@@ -56,6 +66,12 @@ trait AxiosResponseTrait
         return $this;
     }
 
+    public function setRedirect($redirect): self
+    {
+        $this->redirect = $redirect;
+        return $this;
+    }
+
     public function success()
     {
         return $this->setResult(TRUE);
@@ -66,4 +82,6 @@ trait AxiosResponseTrait
     protected $loader;
 
     protected $result;
+
+    protected $redirect;
 }

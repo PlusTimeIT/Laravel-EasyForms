@@ -8,14 +8,15 @@ abstract class ActionForm extends EasyForm implements ActionFormInterface
 {
     public function __construct()
     {
+        parent::__construct();
         $this
-            ->setAlerts($this->alerts())
             ->setActions($this->actions());
     }
 
-    protected $alerts = [];
 
     protected $actions;
+
+    protected $form_type = 'action';
 
     use ActionFormTrait;
 }

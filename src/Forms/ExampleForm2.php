@@ -179,6 +179,21 @@ class ExampleForm2 extends InputForm
                     SelectItem::make()->setId(3)->setValue('HELLO WORLD INC.'),
                 ])
                 ->setRules([
+                    RuleItem::make( 'required' , True ),
+                ])
+            ,
+            SelectField::make()
+                ->setName('officer_select')
+                ->setOrder(8)
+                ->setLabel('Select an Officer')
+                ->setItemText('name')
+                ->setItemValue('badge_id')
+                ->setItems([
+                    [ 'name' => 'Bob Security 1' , 'badge_id' => 1 ],
+                    [ 'name' => 'Smith Security 2' , 'badge_id' => 2 ],
+                    [ 'name' => 'Jane Security 3' , 'badge_id' => 3 ],
+                ])
+                ->setRules([
                     RuleItem::make()->setName('required')->setValue(TRUE),
                 ])
             ,
@@ -224,6 +239,7 @@ class ExampleForm2 extends InputForm
             DatePickerField::make()
                 ->setName('birth_date')
                 ->setLabel('Whats ya Birthday?')
+                ->setValue(\Carbon\Carbon::now()->toIso8601String())
                 ->setOrder(12)
                 ->setRules([
                     RuleItem::make()->setName('required')->setValue(TRUE),
@@ -232,6 +248,7 @@ class ExampleForm2 extends InputForm
             TimePickerField::make()
                 ->setName('born_time')
                 ->setLabel('What time were you born?')
+                ->setValue([])
                 ->setOrder(13)
                 ->setRules([
                     RuleItem::make()->setName('required')->setValue(TRUE),
