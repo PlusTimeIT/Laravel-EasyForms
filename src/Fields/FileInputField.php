@@ -58,11 +58,6 @@ class FileInputField extends EasyField implements FieldInterface
         return $this->show_size;
     }
 
-    public static function make()
-    {
-        return new static();
-    }
-
     public function setAccept(string $accept): self
     {
         $this->accept = $accept;

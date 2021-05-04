@@ -39,11 +39,6 @@ class DatePickerField extends EasyField implements FieldInterface
         return $this->controls;
     }
 
-    public static function make()
-    {
-        return new static();
-    }
-
     public function setCloseOnContentClick(bool $close_on_content_click): self
     {
         $this->close_on_content_click = $close_on_content_click;

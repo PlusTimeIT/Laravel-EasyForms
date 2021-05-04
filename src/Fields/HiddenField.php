@@ -24,9 +24,4 @@ class HiddenField extends EasyField implements FieldInterface
     {
         return $this;
     }
-
-    public static function make()
-    {
-        return new static();
-    }
 }

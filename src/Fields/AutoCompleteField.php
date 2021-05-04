@@ -60,11 +60,6 @@ class AutoCompleteField extends EasyField implements FieldInterface
         return $this->item_value;
     }
 
-    public static function make()
-    {
-        return new static();
-    }
-
     public function setItemId($id): self
     {
         $this->item_text = $id;
