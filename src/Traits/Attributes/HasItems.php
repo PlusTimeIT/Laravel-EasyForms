@@ -2,8 +2,6 @@
 
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
-use PlusTimeIT\EasyForms\Elements\SelectItem;
-
 trait HasItems
 {
     protected $items = [];
@@ -21,7 +19,7 @@ trait HasItems
         return $this;
     }
 
-    public function addItem(SelectItem $item): self
+    public function addItem($item): self
     {
         $this->items[] = $item;
 

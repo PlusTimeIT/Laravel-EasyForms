@@ -19,9 +19,4 @@ class HiddenField extends EasyField implements FieldInterface
     protected $component_type = self::TYPE;
 
     protected $type = self::TYPE;
-
-    public function __construct()
-    {
-        return $this;
-    }
 }

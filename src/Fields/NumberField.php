@@ -1,65 +1,33 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
-use PlusTimeIT\EasyForms\Traits\{Transformable, FieldTrait};
+use PlusTimeIT\EasyForms\Traits\Attributes\HasMinMax;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasStep;
+use PlusTimeIT\EasyForms\Traits\FieldTrait;
+use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class NumberField extends EasyField implements FieldInterface
 {
-    public function __construct(string $name, array $options = [])
-    {
-        $this->name = $name;
-        return $this->setOptions($options);
-    }
+    use Transformable;
+    use FieldTrait;
+    use HasStep;
+    use HasMinMax;
 
-    public function getMax(): float
-    {
-        return $this->max;
-    }
-
-    public function getMin(): float
-    {
-        return $this->min;
-    }
-
-    public function getStep(): float
-    {
-        return $this->step;
-    }
-
-    public function setMax(float $max): self
-    {
-        $this->max = $max;
-        return $this;
-    }
-
-    public function setMin(float $max): self
-    {
-        $this->max = $max;
-        return $this;
-    }
-
-    public function setStep(float $step): self
-    {
-        $this->step = $step;
-        return $this;
-    }
+    public const TYPE = 'number';
 
     protected $component = 'v-text-field';
 
     protected $component_type = self::TYPE;
 
-    protected $max = 99999;
-
-    protected $min = 0;
-
-    protected $step = 1;
-
     protected $type = self::TYPE;
 
-    use Transformable;
-    use FieldTrait;
+    public function __construct(string $name, array $options = [])
+    {
+        $this->name = $name;
 
-    public const TYPE = 'number';
+        return $this->setOptions($options);
+    }
 }

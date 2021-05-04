@@ -4,6 +4,7 @@ namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
+use PlusTimeIT\EasyForms\Traits\Attributes\AcceptsFiles;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasCounter;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasPrependIcon;
@@ -27,6 +28,7 @@ class FileInputField extends EasyField implements FieldInterface
     use HasMultiple;
     use HasPrependIcon;
     use HasSize;
+    use AcceptsFiles;
 
     public const TYPE = 'file-input';
 
