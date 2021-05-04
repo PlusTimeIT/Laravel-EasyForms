@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Base;
 
 class EasyField
 {
-    protected $clearable = FALSE;
+    protected $clearable = false;
 
     protected $cols = 12;
 
@@ -11,7 +12,7 @@ class EasyField
 
     protected $component_type = '';
 
-    protected $dense = TRUE;
+    protected $dense = true;
 
     protected $help = '';
 
@@ -23,13 +24,13 @@ class EasyField
 
     protected $order = 0;
 
-    protected $outlined = TRUE;
+    protected $outlined = true;
 
     protected $placeholder = '';
 
-    protected $readonly = FALSE;
+    protected $readonly = false;
 
-    protected $required = TRUE;
+    protected $required = true;
 
     protected $rules = [];
 
@@ -38,4 +39,9 @@ class EasyField
     protected $type = 'text';
 
     protected $value = '';
+
+    public static function make()
+    {
+        return new static();
+    }
 }

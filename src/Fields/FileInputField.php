@@ -1,9 +1,13 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
-use PlusTimeIT\EasyForms\Traits\{FieldTrait, Transformable};
+use PlusTimeIT\EasyForms\Traits\FieldTrait;
+use PlusTimeIT\EasyForms\Traits\Transformable;
+use PlusTimeIT\Traits\Attributes\HasCounter;
+use PlusTimeIT\Traits\Attributes\HasMultiple;
 
 // File input Accept values
 // image/*, video/*, audio/*, .doc,.pdf etc.
@@ -15,6 +19,25 @@ use PlusTimeIT\EasyForms\Traits\{FieldTrait, Transformable};
 
 class FileInputField extends EasyField implements FieldInterface
 {
+    use FieldTrait;
+    use Transformable;
+    use HasCounter;
+    use HasMultiple;
+
+    public const TYPE = 'file-input';
+
+    protected $accept = '*';
+
+    protected $component = 'v-file-input';
+
+    protected $prepend_icon = 'mdi-paperclip';
+
+    protected $show_size = false;
+
+    protected $type = self::TYPE;
+
+    protected $value = [];
+
     public function __construct()
     {
         return $this;
@@ -23,16 +46,6 @@ class FileInputField extends EasyField implements FieldInterface
     public function getAccept(): string
     {
         return $this->accept;
-    }
-
-    public function getCounter(): bool
-    {
-        return $this->counter;
-    }
-
-    public function getMultiple(): bool
-    {
-        return $this->multiple;
     }
 
     public function getPrependIcon(): string
@@ -53,52 +66,21 @@ class FileInputField extends EasyField implements FieldInterface
     public function setAccept(string $accept): self
     {
         $this->accept = $accept;
-        return $this;
-    }
 
-    public function setCounter(string $accept): self
-    {
-        $this->accept = $accept;
-        return $this;
-    }
-
-    public function setMultiple(bool $multiple): self
-    {
-        $this->multiple = $multiple;
         return $this;
     }
 
     public function setPrependIcon(string $prepend_icon): self
     {
         $this->prepend_icon = $prepend_icon;
+
         return $this;
     }
 
     public function setShowSize(bool $show_size): self
     {
         $this->show_size = $show_size;
+
         return $this;
     }
-
-    protected $accept = '*';
-
-    protected $component = 'v-file-input';
-
-    protected $counter = FALSE;
-
-    protected $multiple = FALSE;
-
-    protected $prepend_icon = 'mdi-paperclip';
-
-    protected $show_size = FALSE;
-
-    protected $type = self::TYPE;
-
-    protected $value = [];
-
-    use FieldTrait;
-
-    use Transformable;
-
-    public const TYPE = 'file-input';
 }

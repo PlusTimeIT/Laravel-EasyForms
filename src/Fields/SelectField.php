@@ -1,13 +1,40 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Elements\SelectItem;
 use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
-use PlusTimeIT\EasyForms\Traits\{FieldTrait, Transformable};
+use PlusTimeIT\EasyForms\Traits\FieldTrait;
+use PlusTimeIT\EasyForms\Traits\Transformable;
+use PlusTimeIT\Traits\Attributes\HasAnyField;
+use PlusTimeIT\Traits\Attributes\HasChips;
+use PlusTimeIT\Traits\Attributes\HasMultiple;
 
 class SelectField extends EasyField implements FieldInterface
 {
+    use FieldTrait;
+    use Transformable;
+    use HasMultiple;
+    use HasChips;
+    use HasAnyField;
+
+    public const TYPE = 'select';
+
+    protected $any_field = false;
+
+    protected $chips = false;
+
+    protected $component = 'v-select';
+
+    protected $item_text = 'value';
+
+    protected $item_value = 'id';
+
+    protected $items = [];
+
+    protected $type = self::TYPE;
+
     public function __construct()
     {
         return $this;
@@ -16,17 +43,8 @@ class SelectField extends EasyField implements FieldInterface
     public function addItem(SelectItem $item): self
     {
         $this->items[] = $item;
+
         return $this;
-    }
-
-    public function getAnyField(): bool
-    {
-        return $this->any_field;
-    }
-
-    public function getChips(): bool
-    {
-        return $this->chips;
     }
 
     public function getItemId()
@@ -44,77 +62,36 @@ class SelectField extends EasyField implements FieldInterface
         return $this->item_value;
     }
 
-    public function getMultiple(): bool
-    {
-        return $this->multiple;
-    }
-
     public static function make()
     {
         return new static();
     }
 
-    public function setAnyField(bool $any_field): self
-    {
-        $this->any_field = $any_field;
-        return $this;
-    }
-
-    public function setChips(bool $chips): self
-    {
-        $this->chips = $chips;
-        return $this;
-    }
-
     public function setItemText(string $text): self
     {
         $this->item_text = $text;
+
         return $this;
     }
 
     public function setItemId($id): self
     {
         $this->item_text = $id;
+
         return $this;
     }
 
     public function setItems(array $items): self
     {
         $this->items = $items;
+
         return $this;
     }
 
     public function setItemValue(string $value): self
     {
         $this->item_value = $value;
+
         return $this;
     }
-
-    public function setMultiple(bool $multiple): self
-    {
-        $this->multiple = $multiple;
-        return $this;
-    }
-
-    protected $any_field = FALSE;
-
-    protected $chips = FALSE;
-
-    protected $component = 'v-select';
-
-    protected $item_text = 'value';
-
-    protected $item_value = 'id';
-
-    protected $items = [];
-
-    protected $multiple = FALSE;
-
-    protected $type = self::TYPE;
-
-    use FieldTrait;
-
-    use Transformable;
-
-    public const TYPE = 'select';
 }
