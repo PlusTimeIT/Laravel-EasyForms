@@ -52,11 +52,12 @@
 
 <script>
 import {ValidationProvider} from 'vee-validate/dist/vee-validate.full.esm';
-import {FormMixin} from './FormMixins';
-import DatePicker from './custom/DatePicker';
-import TimePicker from './custom/TimePicker';
+import {FormMixin} from '../mixins/FormMixins';
+import DatePicker from '../fields/DatePicker';
+import TimePicker from '../fields/TimePicker';
 
 export default {
+  name: 'Input',
   $validates: true,
   mixins: [FormMixin],
   components: {

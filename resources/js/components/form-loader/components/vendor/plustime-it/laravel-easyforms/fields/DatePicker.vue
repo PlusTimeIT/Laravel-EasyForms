@@ -31,7 +31,7 @@
 <script>
 
 import moment from 'moment-timezone';
-import {FormMixin} from '../FormMixins';
+import {FormMixin} from '../mixins/FormMixins';
 
 export default {
   mixins: [FormMixin],
