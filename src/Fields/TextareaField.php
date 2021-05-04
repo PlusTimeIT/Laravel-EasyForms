@@ -1,31 +1,22 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
-use PlusTimeIT\EasyForms\Traits\{FieldTrait, Transformable};
+use PlusTimeIT\EasyForms\Traits\FieldTrait;
+use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class TextareaField extends EasyField implements FieldInterface
 {
-    public function __construct()
-    {
-        return $this;
-    }
+    use FieldTrait;
+    use Transformable;
 
-    public static function make()
-    {
-        return new static();
-    }
+    public const TYPE = 'textarea';
 
     protected $component = 'v-textarea';
 
     protected $rows = 5;
 
     protected $type = self::TYPE;
-
-    use FieldTrait;
-
-    use Transformable;
-
-    public const TYPE = 'textarea';
 }

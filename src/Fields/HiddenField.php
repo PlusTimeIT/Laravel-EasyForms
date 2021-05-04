@@ -1,31 +1,22 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
-use PlusTimeIT\EasyForms\Traits\{FieldTrait, Transformable};
+use PlusTimeIT\EasyForms\Traits\FieldTrait;
+use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class HiddenField extends EasyField implements FieldInterface
 {
-    public function __construct()
-    {
-        return $this;
-    }
+    use FieldTrait;
+    use Transformable;
 
-    public static function make()
-    {
-        return new static();
-    }
+    public const TYPE = 'hidden';
 
     protected $component = 'v-text-field';
 
     protected $component_type = self::TYPE;
 
     protected $type = self::TYPE;
-
-    use FieldTrait;
-
-    use Transformable;
-
-    public const TYPE = 'hidden';
 }
