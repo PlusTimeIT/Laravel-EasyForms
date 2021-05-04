@@ -1,10 +1,43 @@
 <?php
-
 namespace PlusTimeIT\EasyForms\Traits;
 
 trait FieldTrait
 {
     use Transformable;
+
+    protected $clearable = FALSE;
+
+    protected $cols = 12;
+
+    protected $component = 'v-text-field';
+
+    protected $component_type = '';
+
+    protected $dense = TRUE;
+
+    protected $help = '';
+
+    protected $label = '';
+
+    protected $masking = '';
+
+    protected $name = '';
+
+    protected $order = 0;
+
+    protected $outlined = TRUE;
+
+    protected $placeholder = '';
+
+    protected $readonly = FALSE;
+
+    protected $rules = [];
+
+    protected $tooltip = '';
+
+    protected $type = 'text';
+
+    protected $value = '';
 
     public function getClearable(): bool
     {
@@ -69,11 +102,6 @@ trait FieldTrait
     public function getReadonly(): bool
     {
         return $this->readonly;
-    }
-
-    public function getRequied(): bool
-    {
-        return $this->required;
     }
 
     public function getRules(): array
@@ -183,13 +211,6 @@ trait FieldTrait
     public function setReadonly(bool $readonly): self
     {
         $this->readonly = $readonly;
-
-        return $this;
-    }
-
-    public function setRequied(bool $required): self
-    {
-        $this->required = $required;
 
         return $this;
     }

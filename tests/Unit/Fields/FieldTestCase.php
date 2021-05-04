@@ -1,5 +1,4 @@
 <?php
-
 namespace PlusTimeIT\EasyForms\Tests\Unit\Fields;
 
 /**
@@ -8,7 +7,11 @@ namespace PlusTimeIT\EasyForms\Tests\Unit\Fields;
  */
 class FieldTestCase extends \Orchestra\Testbench\TestCase
 {
-    public $fieldClass;
+    protected $fieldClass;
+
+    protected $fieldComponent;
+
+    protected $fieldType;
 
     public function testItCanBeStaticallyCreated()
     {

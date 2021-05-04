@@ -1,22 +1,16 @@
 <?php
-
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
-use PlusTimeIT\EasyForms\Traits\FieldTrait;
+use PlusTimeIT\EasyForms\Traits\Attributes\{HasCloseOnContentClick, HasControls, HasMultiple};
 use PlusTimeIT\EasyForms\Traits\Transformable;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasCloseOnContentClick;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasControls;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
 
-class DatePickerField extends EasyField implements FieldInterface
+class DatePickerField extends EasyField
 {
-    use FieldTrait;
-    use Transformable;
-    use HasMultiple;
     use HasCloseOnContentClick;
     use HasControls;
+    use HasMultiple;
+    use Transformable;
 
     public const TYPE = 'date-picker';
 

@@ -1,30 +1,20 @@
 <?php
-
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
-use PlusTimeIT\EasyForms\Traits\FieldTrait;
+use PlusTimeIT\EasyForms\Traits\Attributes\{HasAnyField, HasChips, HasItemId, HasItemText, HasItemValue, HasItems, HasMultiple};
 use PlusTimeIT\EasyForms\Traits\Transformable;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasAnyField;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasChips;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasItemId;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasItems;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasItemText;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasItemValue;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
 
-class AutoCompleteField extends EasyField implements FieldInterface
+class AutoCompleteField extends EasyField
 {
-    use FieldTrait;
-    use Transformable;
-    use HasMultiple;
-    use HasChips;
     use HasAnyField;
-    use HasItems;
+    use HasChips;
     use HasItemId;
-    use HasItemValue;
+    use HasItems;
     use HasItemText;
+    use HasItemValue;
+    use HasMultiple;
+    use Transformable;
 
     public const TYPE = 'autocomplete';
 

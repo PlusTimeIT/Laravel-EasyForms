@@ -1,15 +1,11 @@
 <?php
-
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
-use PlusTimeIT\EasyForms\Traits\FieldTrait;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
-class HiddenField extends EasyField implements FieldInterface
+class HiddenField extends EasyField
 {
-    use FieldTrait;
     use Transformable;
 
     public const TYPE = 'hidden';

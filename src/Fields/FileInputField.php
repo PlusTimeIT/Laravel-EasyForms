@@ -1,15 +1,8 @@
 <?php
-
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
-use PlusTimeIT\EasyForms\Traits\Attributes\AcceptsFiles;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasCounter;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasPrependIcon;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasSize;
-use PlusTimeIT\EasyForms\Traits\FieldTrait;
+use PlusTimeIT\EasyForms\Traits\Attributes\{AcceptsFiles, HasCounter, HasMultiple, HasPrependIcon, HasSize};
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 // File input Accept values
@@ -20,15 +13,14 @@ use PlusTimeIT\EasyForms\Traits\Transformable;
 //
 //
 
-class FileInputField extends EasyField implements FieldInterface
+class FileInputField extends EasyField
 {
-    use FieldTrait;
-    use Transformable;
+    use AcceptsFiles;
     use HasCounter;
     use HasMultiple;
     use HasPrependIcon;
     use HasSize;
-    use AcceptsFiles;
+    use Transformable;
 
     public const TYPE = 'file-input';
 

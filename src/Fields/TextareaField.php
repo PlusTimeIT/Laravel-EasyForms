@@ -1,22 +1,18 @@
 <?php
-
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
-use PlusTimeIT\EasyForms\Traits\FieldTrait;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasRows;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
-class TextareaField extends EasyField implements FieldInterface
+class TextareaField extends EasyField
 {
-    use FieldTrait;
+    use HasRows;
     use Transformable;
 
     public const TYPE = 'textarea';
 
     protected $component = 'v-textarea';
-
-    protected $rows = 5;
 
     protected $type = self::TYPE;
 }
