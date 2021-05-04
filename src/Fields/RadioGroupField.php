@@ -12,7 +12,6 @@ class RadioGroupField extends EasyField
     use HasChips;
     use HasItems;
     use HasMandatory;
-    use HasMultiple;
     use HasRowColumnLayout;
     use Transformable;
 

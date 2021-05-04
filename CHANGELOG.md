@@ -4,6 +4,9 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+## 0.0.16
+- Updated readme to finish off the fields
+
 ## 0.0.15
 - Added the rest of the field tests
 
