@@ -4,6 +4,9 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+## 0.0.15
+- Added the rest of the field tests
+
 ## 0.0.14
 - Move vue files to vue npm package `laravel-vue-easyforms`
 
