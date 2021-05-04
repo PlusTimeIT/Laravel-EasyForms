@@ -19,8 +19,9 @@ trait HasRowColumnLayout
         return $this;
     }
 
-    public function getColumn(): bool {
-        return $this->column
+    public function getColumn(): bool
+    {
+        return $this->column;
     }
 
     public function setColumn(bool $column): self

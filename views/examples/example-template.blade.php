@@ -35,7 +35,7 @@
                             </v-col>
                         </v-row>
                         <v-row>
-                            @include('vendor.plustime-it.laravel-easyforms.examples.menu.links')
+                            @include('laravel-easyforms::examples.menu.links')
                         </v-row>
                         <v-row>
                             <v-col cols="12">
