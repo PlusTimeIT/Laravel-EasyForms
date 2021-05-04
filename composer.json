@@ -18,6 +18,11 @@
             "PlusTimeIT\\EasyForms\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "PlusTimeIT\\EasyForms\\Tests\\": "tests"
+        }
+    },
     "minimum-stability": "beta",
     "require": {
         "php": "^7.3|^8.0",
@@ -26,7 +31,8 @@
     },
     "require-dev": {
         "laravel/ui": "^3.2",
-        "orchestra/testbench": "^6.17"
+        "orchestra/testbench": "^6.17",
+        "phpunit/phpunit": "^9.5"
     },
     "extra": {
       "laravel": {
