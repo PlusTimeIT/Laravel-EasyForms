@@ -14,6 +14,7 @@ Laravel EasyForms is a package that makes setting up and managing forms and acti
     - [Example 3 Load from Axios with masking](#example-3-load-from-axios-with-masking)
     - [Example 4 Action form example](#example-4-action-form-example)
   - [Vue Components](#vue-components)
+    - [Globally](#globally)
   - [Forms](#forms)
     - [Building forms](#building-forms)
     - [Input Forms](#input-forms)
@@ -74,7 +75,8 @@ You'll also need to run `vendor:publish`
 5. material design icon - `npm install @mdi/font -D --save`
 6. vue-async-computed - `npm install vue-async-computed@^3.9.0 --save`
 7. vee-validate - `npm install vee-validate@^3.4.5 --save`
-8. v-mask - `npm install v-mask@^^2.2.4 --save`
+8. v-mask - `npm install v-mask@^2.2.4 --save`
+9. laravel-vue-easyforms - `npm install laravel-vue-easyforms@^0.0.35 --save`
 
 
 ## Examples
@@ -99,32 +101,13 @@ Examples can be found at the following routes if the config setting is set to `T
 
 ## Vue Components
 
----
-Laravel EasyForms includes Vue files for easy frontend form loading, filling and processing.
-These Vue files are published:
-```javascript
-resources/js/components/vendor/plustime-it/laravel-easyforms/FormLoader.vue
-resources/js/components/vendor/plustime-it/laravel-easyforms/FormInput.vue
-resources/js/components/vendor/plustime-it/laravel-easyforms/custom/DatePicker.vue
-resources/js/components/vendor/plustime-it/laravel-easyforms/custom/TimePicker.vue
+### Globally 
+```
+import LaravelVueEasyforms from 'laravel-vue-easyforms';
+Vue.use( LaravelVueEasyforms );
 ```
 
-To use the form loader vue component you must include it in your project, you can do this globally in your main app file:
-```javascript
-Vue.component('form-loader', require('./components/vendor/plustime-it/laravel-easyforms/FormLoader.vue').default );
-```
-
-You can also include this locally in your Vue files:
-```javascript
-import FormLoader from "./components/vendor/plustime-it/laravel-easyforms/FormLoader.vue"
-```
-
-Then add to your components:
-```javascript
-components: {
-    FormInput
-}
-```
+You can then start using it in your components `<form-loader load_form"formname"></form-loader>`
 
 ## Forms
 

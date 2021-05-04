@@ -4,6 +4,9 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+## 0.0.14
+- Move vue files to vue npm package `laravel-vue-easyforms`
+
 ## 0.0.13
 - Added Action forms
 
