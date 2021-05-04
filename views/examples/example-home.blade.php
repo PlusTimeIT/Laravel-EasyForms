@@ -37,12 +37,12 @@
                             </v-col>
                         </v-row>
                         <v-row>
-                            @include('vendor.plustime-it.laravel-easyforms.examples.menu.links')
+                            @include('laravel-easyforms::examples.menu.links')
                         </v-row>
                         <v-row>
-                            <v-col cols="12" class="pa-0 text-left markdown-body">
-                                {{ Illuminate\Mail\Markdown::parse(file_get_contents(base_path() . '/packages/PlusTimeIT/laravel-easyforms/README.md')) }}
-                            </v-col>
+                            <!-- <v-col cols="12" class="pa-0 text-left markdown-body">
+                                {{ Illuminate\Mail\Markdown::parse(file_get_contents(app_path() . '/../packages/PlusTimeIT/laravel-easyforms/README.md')) }}
+                            </v-col> -->
                         </v-row>
                     </v-container>
                 </v-main>

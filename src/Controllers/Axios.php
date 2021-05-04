@@ -1,16 +1,17 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use PlusTimeIT\EasyForms\Base\{ActionForm, InputForm};
+use Illuminate\Routing\Controller;
 use PlusTimeIT\EasyForms\Elements\AxiosResponse;
 
 class Axios extends Controller
 {
     public function load(request $request)
     {
-        $form_class = config('easyforms.form-namespace') . '\\' . str_replace('-', '\\', $request->form_name);
+        $form_class = config('easyforms.form-namespace').'\\'.str_replace('-', '\\', $request->form_name);
+
         return AxiosResponse::make()
             ->success()
             ->data(( new $form_class() ))
@@ -19,7 +20,7 @@ class Axios extends Controller
 
     public function process(request $request)
     {
-        $form_class = config('easyforms.form-namespace') . '\\' . str_replace('-', '\\', $request->form_name);
+        $form_class = config('easyforms.form-namespace').'\\'.str_replace('-', '\\', $request->form_name);
         $form = new $form_class();
         $results = $form->validateRequest($request);
         if ($results->fails()) {
@@ -30,13 +31,14 @@ class Axios extends Controller
         }
 
         $process = $form->process($request);
-        if ( ! $process->result()) {
+        if (!$process->result()) {
             return AxiosResponse::make()
                 ->failed()
                 ->data($process->getData())
                 ->redirect($process->getRedirect())
                 ->toJson();
         }
+
         return AxiosResponse::make()
             ->success()
             ->data($process->getData())
