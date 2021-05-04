@@ -6,13 +6,13 @@ use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Interfaces\FieldInterface;
 use PlusTimeIT\EasyForms\Traits\FieldTrait;
 use PlusTimeIT\EasyForms\Traits\Transformable;
-use PlusTimeIT\Traits\Attributes\HasAnyField;
-use PlusTimeIT\Traits\Attributes\HasChips;
-use PlusTimeIT\Traits\Attributes\HasItemId;
-use PlusTimeIT\Traits\Attributes\HasItems;
-use PlusTimeIT\Traits\Attributes\HasItemText;
-use PlusTimeIT\Traits\Attributes\HasItemValue;
-use PlusTimeIT\Traits\Attributes\HasMultiple;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasAnyField;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasChips;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasItemId;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasItems;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasItemText;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasItemValue;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
 
 class AutoCompleteField extends EasyField implements FieldInterface
 {

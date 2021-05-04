@@ -1,6 +1,6 @@
 <?php
 
-namespace PlusTimeIT\Traits\Attributes;
+namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasChips
 {

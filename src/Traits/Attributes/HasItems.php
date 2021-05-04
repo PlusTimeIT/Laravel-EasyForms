@@ -1,6 +1,6 @@
 <?php
 
-namespace PlusTimeIT\Traits\Attributes;
+namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 use PlusTimeIT\EasyForms\Elements\SelectItem;
 
@@ -14,7 +14,7 @@ trait HasItems
         return $this->items;
     }
 
-    public function setItems(string $items): self
+    public function setItems(array $items): self
     {
         $this->items = $items;
 
