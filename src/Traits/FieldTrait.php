@@ -13,6 +13,8 @@ trait FieldTrait
 
     protected $component_type = '';
 
+    protected $conditions = [];
+
     protected $dense = TRUE;
 
     protected $help = '';
@@ -30,6 +32,8 @@ trait FieldTrait
     protected $placeholder = '';
 
     protected $readonly = FALSE;
+
+    protected $required = TRUE;
 
     protected $rules = [];
 
@@ -57,6 +61,11 @@ trait FieldTrait
     public function getComponentType(): string
     {
         return $this->component_type;
+    }
+
+    public function getConditions(): array
+    {
+        return $this->conditions;
     }
 
     public function getDense(): bool
@@ -104,6 +113,11 @@ trait FieldTrait
         return $this->readonly;
     }
 
+    public function getRequired(): bool
+    {
+        return $this->required;
+    }
+
     public function getRules(): array
     {
         return $this->rules;
@@ -148,6 +162,13 @@ trait FieldTrait
     public function setComponentType(string $component_type): self
     {
         $this->component_type = $component_type;
+
+        return $this;
+    }
+
+    public function setConditions(array $conditions): self
+    {
+        $this->conditions = $conditions;
 
         return $this;
     }
@@ -211,6 +232,13 @@ trait FieldTrait
     public function setReadonly(bool $readonly): self
     {
         $this->readonly = $readonly;
+
+        return $this;
+    }
+
+    public function setRequired(bool $required): self
+    {
+        $this->required = $required;
 
         return $this;
     }

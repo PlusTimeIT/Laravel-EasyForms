@@ -2,34 +2,41 @@
 namespace PlusTimeIT\EasyForms\Traits;
 
 use Illuminate\Http\Request;
-
-use PlusTimeIT\EasyForms\Elements\Axios;
-use PlusTimeIT\EasyForms\Elements\ProcessResponse;
+use PlusTimeIT\EasyForms\Elements\{Axios, ProcessResponse};
 
 trait FormTrait
 {
-    public function axios(): Axios
-    {
-        return Axios::make();
-    }
+    protected $alerts = [];
+
+    protected $axios;
+
+    protected $name = '';
+
+    protected $title = '';
+
     public function alerts(): array
     {
         return $this->getAlerts();
     }
 
-    public static function fill(request $request)
+    public function axios(): Axios
     {
-        return self::make()->fields();
+        return Axios::make();
     }
 
-    public function getAxios(): Axios
+    public static function fill(request $request)
     {
-        return $this->axios;
+        return self::make();
     }
 
     public function getAlerts(): array
     {
         return $this->alerts;
+    }
+
+    public function getAxios(): Axios
+    {
+        return $this->axios;
     }
 
     public function getName(): string
@@ -63,15 +70,15 @@ trait FormTrait
         return ProcessResponse::make()->success()->data('Yay you processed!');
     }
 
-    public function setAxios(Axios $axios): self
-    {
-        $this->axios = $axios;
-        return $this;
-    }
-
     public function setAlerts(array $alerts): self
     {
         $this->alerts = $alerts;
+        return $this;
+    }
+
+    public function setAxios(Axios $axios): self
+    {
+        $this->axios = $axios;
         return $this;
     }
 
@@ -91,6 +98,4 @@ trait FormTrait
     {
         return \Validator::make($request->all(), $this->getValidation());
     }
-
-    protected $axios;
 }

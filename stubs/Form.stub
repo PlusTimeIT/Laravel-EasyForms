@@ -2,20 +2,43 @@
 namespace <projectNamespace>;
 
 use PlusTimeIT\EasyForms\Base\<formType>;
-use PlusTimeIT\EasyForms\Elements\{Action, Axios, Button, Header, Icon};
+use PlusTimeIT\EasyForms\Elements\{Action, Alert, Axios, Button, Header, Icon, ProcessResponse};
 use PlusTimeIT\EasyForms\Fields\{PasswordField, TextField};
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class <formName> extends <formType>
 {
+    use Transformable;
+
     public function __construct()
     {
-        return $this;
+        parent::__construct();
+        return $this
+            ->setName('<formName>')
+            ->setTitle('<formName> Title');
     }
 
-    protected $name = '<formName>';
+    public static function fill(request $request): self
+    {
+        return ( new self() )->preFill();
+    }
 
-    protected $title = 'Example Title';
+    public static function process(request $request)
+    {
+        if(true){
+            return ProcessResponse::make()->success()->data('Yay');
+        }
+        return ProcessResponse::make()->failed()->data('Boo');
+    }
 
-    use Transformable;
+    public function alerts(): array
+    {
+
+    }
+
+    // If not altering the axios section
+    public function axios(): Axios
+    {
+        return Axios::make();
+    }
 }

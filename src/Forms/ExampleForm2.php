@@ -9,6 +9,8 @@ use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class ExampleForm2 extends InputForm
 {
+    use Transformable;
+
     public function __construct()
     {
         parent::__construct();
@@ -179,7 +181,7 @@ class ExampleForm2 extends InputForm
                     SelectItem::make()->setId(3)->setValue('HELLO WORLD INC.'),
                 ])
                 ->setRules([
-                    RuleItem::make( 'required' , True ),
+                    RuleItem::make('required', TRUE),
                 ])
             ,
             SelectField::make()
@@ -189,9 +191,9 @@ class ExampleForm2 extends InputForm
                 ->setItemText('name')
                 ->setItemValue('badge_id')
                 ->setItems([
-                    [ 'name' => 'Bob Security 1' , 'badge_id' => 1 ],
-                    [ 'name' => 'Smith Security 2' , 'badge_id' => 2 ],
-                    [ 'name' => 'Jane Security 3' , 'badge_id' => 3 ],
+                    ['name' => 'Bob Security 1' , 'badge_id' => 1],
+                    ['name' => 'Smith Security 2' , 'badge_id' => 2],
+                    ['name' => 'Jane Security 3' , 'badge_id' => 3],
                 ])
                 ->setRules([
                     RuleItem::make()->setName('required')->setValue(TRUE),
@@ -259,19 +261,16 @@ class ExampleForm2 extends InputForm
 
     public static function fill(request $request): self
     {
-        $fields = self::fields();
+        $form = self::make();
+        $fields = $form->fields();
+
         //check if request->id exists or whatever variable
         //you are sending via additional form data
-        $fakeData = [
-            'username' => 'HelloWorld' ,
-            'password' => 'HelloWorld' ,
-        ];
+        return $form;
     }
 
     public static function process(request $request)
     {
         $form = self::make();
     }
-
-    use Transformable;
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace PlusTimeIT\EasyForms\Controllers;
 
 use Illuminate\Http\Request;
@@ -10,17 +9,17 @@ class Axios extends Controller
 {
     public function load(request $request)
     {
-        $form_class = config('easyforms.form-namespace').'\\'.str_replace('-', '\\', $request->form_name);
+        $form_class = config('easyforms.form-namespace') . '\\' . str_replace('-', '\\', $request->form_name);
 
         return AxiosResponse::make()
             ->success()
-            ->data(( new $form_class() ))
+            ->data(( new $form_class() )->fill($request))
             ->toJson();
     }
 
     public function process(request $request)
     {
-        $form_class = config('easyforms.form-namespace').'\\'.str_replace('-', '\\', $request->form_name);
+        $form_class = config('easyforms.form-namespace') . '\\' . str_replace('-', '\\', $request->form_name);
         $form = new $form_class();
         $results = $form->validateRequest($request);
         if ($results->fails()) {
@@ -31,7 +30,7 @@ class Axios extends Controller
         }
 
         $process = $form->process($request);
-        if (!$process->result()) {
+        if ( ! $process->result()) {
             return AxiosResponse::make()
                 ->failed()
                 ->data($process->getData())

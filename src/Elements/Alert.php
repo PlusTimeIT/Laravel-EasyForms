@@ -3,7 +3,6 @@ namespace PlusTimeIT\EasyForms\Elements;
 
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
-// TODO Implement Alert Triggers
 // TODO Create and implement Alert interface and trait
 // Alert triggers
 // before_load - Alert triggers before the form fields have loaded when supplied on page load. N/A on Axios Load.
@@ -17,6 +16,42 @@ use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class Alert
 {
+    use Transformable;
+
+    protected $auto_close_timer = 0;
+
+    protected $border = 'left';
+
+    protected $color = 'primary';
+
+    protected $contents = '';
+
+    protected $dark = FALSE;
+
+    protected $dense = FALSE;
+
+    protected $dismissible = FALSE;
+
+    protected $elevation = 0;
+
+    protected $icon;
+
+    protected $order = 0;
+
+    protected $origin = 'center center';
+
+    protected $outlined = FALSE;
+
+    protected $prominent = FALSE;
+
+    protected $text = FALSE;
+
+    protected $transition = 'fade-transition';
+
+    protected $trigger = 'process_success';
+
+    protected $type;
+
     public function __construct()
     {
         return $this;
@@ -202,40 +237,4 @@ class Alert
         $this->type = $type;
         return $this;
     }
-
-    protected $auto_close_timer = 0;
-
-    protected $border = 'left';
-
-    protected $color = 'primary';
-
-    protected $contents = '';
-
-    protected $dark = FALSE;
-
-    protected $dense = FALSE;
-
-    protected $dismissible = FALSE;
-
-    protected $elevation = 0;
-
-    protected $icon;
-
-    protected $order = 0;
-
-    protected $origin = 'center center';
-
-    protected $outlined = FALSE;
-
-    protected $prominent = FALSE;
-
-    protected $text = FALSE;
-
-    protected $transition = 'fade-transition';
-
-    protected $trigger = 'process_success';
-
-    protected $type;
-
-    use Transformable;
 }

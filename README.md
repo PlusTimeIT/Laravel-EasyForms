@@ -20,46 +20,23 @@ Laravel EasyForms is a package that makes setting up and managing forms and acti
     - [Globally](#globally)
   - [Forms](#forms)
   - [Building your forms](#building-your-forms)
+    - [Alerts](#alerts)
+    - [Axios](#axios)
+  - [**Form Types**](#form-types)
     - [Fields](#fields)
-      - [Rule Items](#rule-items)
-      - [Select Items](#select-items)
       - [Available fields](#available-fields)
         - [Autocomplete](#autocomplete)
-          - [Properties](#properties)
-          - [Example](#example)
         - [Checkbox](#checkbox)
-          - [Properties](#properties-1)
-          - [Example](#example-1)
         - [Date Picker](#date-picker)
-          - [Properties](#properties-2)
-          - [Example](#example-2)
         - [File Input](#file-input)
-          - [Properties](#properties-3)
-          - [Example](#example-3)
         - [Hidden](#hidden)
-          - [Properties](#properties-4)
-          - [Example](#example-4)
         - [Number](#number)
-          - [Properties](#properties-5)
-          - [Example](#example-5)
         - [Password](#password)
-          - [Properties](#properties-6)
-          - [Example](#example-6)
         - [RadioGroup](#radiogroup)
-          - [Properties](#properties-7)
-          - [Example](#example-7)
         - [Select](#select)
-          - [Properties](#properties-8)
-          - [Example](#example-8)
-        - [Select](#select-1)
-          - [Properties](#properties-9)
-          - [Example](#example-9)
+        - [Textareas](#textareas)
         - [Text](#text)
-          - [Properties](#properties-10)
-          - [Example](#example-10)
         - [Time Picker](#time-picker)
-          - [Properties](#properties-11)
-          - [Example](#example-11)
     - [Creating a custom field example](#creating-a-custom-field-example)
 
 
@@ -158,27 +135,174 @@ To create your first form run the following artisan command:
 example:
 `php artisan make:form UserActionTableForm formType=action`
 
-> ### **Action Forms:**
->Action Forms are used when you have a group of actions you want to display as buttons or icons or both.
->Action forms don't have fields, they have actions.
+All forms come with the following properties:
+
+<details>
+<summary>Form Properties</summary>
+
+| Property   | Type   | Default        | Description                                                               |
+| :--------- | :----- | :------------- | :------------------------------------------------------------------------ |
+| **alerts** | Array  | Empty          | The alerts to display when certain events are triggered                   |
+| **axios**  | Axios  | Default Axios  | Additional information for handling data on the front end                 |
+| **name**   | String | FormName       | Name of the form, this should be the same as the file name and class name |
+| **title**  | String | FormName Title | Title of the form - optional                                              |
+
+</details>
 
 
-> ### **Input Forms:**
->Input Forms are used for creating and editing forms that require user input such as logins, registration, account editing forms etc.
->Input forms require fields and can have 3 buttons attached. Process, Reset and Cancel.
+### Alerts
+[Vuetify Alerts](https://vuetifyjs.com/en/components/alerts/)
+
+Alerts are triggered at specific events and are optional. They can be dismissable, removed after timeout, cleared on process and left as a sticky. The content accepts HTML and you can also link the response data from the axios call by adding `<response-data>` into the contents
+
+Any [Vuetify Transitions](https://vuetifyjs.com/en/styles/transitions/#motion) can also be used.
+
+<details>
+<summary>Alert Properties</summary>
+
+| Property             | Type    | Default         | Description                                     |
+| :------------------- | :------ | :-------------- | :---------------------------------------------- |
+| **auto_close_timer** | Integer | 0               | Timer in milliseconds                           |
+| **border**           | String  | left            | Border location                                 |
+| **color**            | String  | primary         | Primary colour of alert                         |
+| **contents**         | String  | Empty           | Contents of the alert                           |
+| **dark**             | Boolean | FALSE           | Give alert a dark theme                         |
+| **dense**            | Boolean | FALSE           | Make the alert dense in appearance              |
+| **dismissible**      | Boolean | FALSE           | Make the alert dismissable                      |
+| **elevation**        | Integer | 0               | TODO: Better description - Add elevation?       |
+| **icon**             | String  | Empty           | Icon mdi string for left side                   |
+| **order**            | Integer | 0               | Order of the alert if there are multiple alerts |
+| **origin**           | String  | center center   | Location of the alert on show                   |
+| **outlined**         | Boolean | FALSE           | Invert the style of an alert                    |
+| **prominent**        | Boolean | FALSE           | Make alert more pronounced                      |
+| **text**             | Boolean | FALSE           | Display variant to reduce opacity of background |
+| **transition**       | String  | fade-transition | Apply a transition                              |
+| **trigger**          | Trigger | process_success | Alert triggers when a form has been reset       |
+| **type**             | String  | Empty           | Alert triggers when a form has been reset       |
+     
+
+</details>
+
+<details>
+<summary>Event Triggers</summary>
+
+| Event                  | Type  | Default | Description                                                                                      |
+| :--------------------- | :---- | :------ | :----------------------------------------------------------------------------------------------- |
+| **before_load**        | Alert | Empty   | Alert triggers before the form fields have loaded when supplied on page load. N/A on Axios Load. |
+| **after_load**         | Alert | Empty   | Alert triggers after the form fields have loaded for an axios load or shown on page load.        |
+| **failed_load**        | Alert | Empty   | Alert triggers if form has failed to load fields.                                                |
+| **before_processing**  | Alert | Empty   | Alert triggers before the axios call is made for form processing                                 |
+| **after_processing**   | Alert | Empty   | Alert triggers when axios call is completed, regardless of the outcome                           |
+| **failed_processing**  | Alert | Empty   | Alert triggers on a failed axios call                                                            |
+| **success_processing** | Alert | Empty   | Alert triggers on a successful axios call                                                        |
+| **form_reset**         | Alert | Empty   | Alert triggers when a form has been reset                                                        |
+
+
+</details>
+
+<details>
+<summary>Alert Example</summary>
+
+````php
+public function alerts(): array
+{
+    return [
+        Alert::make()
+            ->setTrigger('before_load')
+            ->setColor('secondary')
+            ->setBorder('top')
+            ->setDismissible(FALSE)
+            ->setText(TRUE)
+            ->setContents('<p>This is a sticky alert</p> <p><a target="_blank" href="/easyforms/example/2">Check out Example 2 😁</a></p>')
+            ->setIcon(
+                Icon::make()->setIcon('mdi-note-multiple')
+            )
+        ,
+        Alert::make()
+            ->setTrigger('successful_processing')
+            ->setType('success')
+            ->setColor('green')
+            ->setProminent(TRUE)
+            ->setBorder('top')
+            ->setDismissible(TRUE)
+            ->setContents('Concat the response: <response-data>')
+    ];
+}
+
+````
+</details>
+
+### Axios
+
+Axios objects are used to determine what to do with the data on the front end and how it interacts with Laravel.
+
+In its simplest form the Axios object works using `Axios::make();`
+
+<details>
+<summary>Axios Properties</summary>
+
+| Property              | Type    | Default | Description                                        |
+| :-------------------- | :------ | :------ | :------------------------------------------------- |
+| **expecting_results** | Boolean | TRUE    | Should the form emit the results of the axios call |
+| **headers**           | Array   | Empty   | Additional headers to add into the axios calls     |
+| **multi_part**        | Boolean | FALSE   | Is the form a multipart form                       |
+
+</details>
+
+<details>
+<summary>Axios Example</summary>
+
+````php
+public function axios(): Axios
+{
+    return Axios::make()->setExpectingResults(FALSE)->setMultiPart(TRUE);
+}
+
+````
+</details>
+
+ ## **Form Types**
+
+---
+
+<details>
+
+<summary>Action Forms</summary>
+Action Forms are used when you have a group of actions you want to display as buttons or icons or both.
+
+Action forms don't have fields, they have actions which are displayed as buttons or icons. 
+
+Because you can pass them data they are useful for:
+1. Single operations of lists - See Example 4
+2. Bulk operations of lists - See Example 4
+3. Any action that requires a button or icon where you need to process data on the backend.
+
+</details>
+
+<details>
+<summary> Input Forms </summary>
+
+Input Forms are used for creating and editing forms that require user input such as logins, registration, account editing forms etc.
+
+Input forms require fields and can have 3 buttons attached. Process, Reset and Cancel.
+
+Input forms are useful for:
+1. Data input forms - basic CRUD functionality
+2. Authenticating forms - taking input and utilising it in the backend in some way
+3. 
+
+</details>
 
 Both forms should have a process function that returns a `ProcessResponse`. This handles what happens when the form is processed.
 
+---
 
 ### Fields
 
 We have a list of fields below that we have already created but you can create any field you need and attach any attributes and properties you need. These do not need to be vuetify fields as it uses the `<component>` field in vue to create the needed field. 
 
-
-#### Rule Items
-
 <details>
-<summary>More details</summary>
+<summary>Rule Items</summary>
 
 
 When creating rules for validation the array accepts multiple formats and it just depends on how you want the overall form to look like.
@@ -192,10 +316,8 @@ When creating rules for validation the array accepts multiple formats and it jus
 ````
 </details>
 
-#### Select Items
-
 <details>
-<summary>More details</summary>
+<summary>Select Items</summary>
 Select items can also be easily created in multiple formats.
 
 ````php
@@ -220,12 +342,8 @@ If you set your own text and value identifiers you can also do this
 
 </details>
 
----
-
-#### Available fields
-
 <details>
-<summary>More details</summary>
+<summary>Field Properties</summary>
 
 All fields have the following properties. These properties can be edited on the field instance by the getters and the setters. `$form->set{PropertyName}($new_value)` or `$form->get{PropertyName}()`
 
@@ -237,7 +355,7 @@ All fields have the following properties. These properties can be edited on the 
 | **component_type** | String  | *Component | If the component above includes a `type` attribute eg. input has number etc.                                           |
 | **dense**          | Boolean | TRUE       | If the field should have a dense look                                                                                  |
 | **help**           | String  | NULL       | Includes a question mark icon that clears the field, positioned on the inside of the field (to the right)              |
-| **label**          | String  | Field Name | The Label to display on the field, if left blank it will displa ythe field name                                        |
+| **label**          | String  | Field Name | The Label to display on the field, if left blank it will display the field name                                        |
 | **masking**        | String  | NULL       | V-mask masking for the field                                                                                           |
 | **name**           | String  | NULL       | The name of the field, this should be unique to this form                                                              |
 | **order**          | Integer | 0          | The display order of the fields                                                                                        |
@@ -250,12 +368,15 @@ All fields have the following properties. These properties can be edited on the 
 
 </details>
 
-##### Autocomplete
-[Vuetify Autocompletes](https://vuetifyjs.com/en/components/autocompletes/)
+---
 
-###### Properties
+#### Available fields
+
+##### Autocomplete
+[Vuetify Autocomplete](https://vuetifyjs.com/en/components/autocompletes/)
+
 <details>
-<summary>More details</summary>
+<summary>Autocomplete Properties</summary>
 
 | Property       | Type    | Default | Description                                                                       |
 | :------------- | :------ | :------ | :-------------------------------------------------------------------------------- |
@@ -268,10 +389,8 @@ All fields have the following properties. These properties can be edited on the 
 
 </details>
 
-###### Example
-
 <details>
-<summary>More details</summary>
+<summary>Autocomplete Example</summary>
 
 ````php
 AutoCompleteField::make()
@@ -294,14 +413,13 @@ AutoCompleteField::make()
 ##### Checkbox
 [Vuetify Checkbox](https://vuetifyjs.com/en/components/checkboxes/)
 
-###### Properties
-
-No additional properties
-
-###### Example
+<details>
+<summary>Checkbox Properties</summary>
+    No additional properties
+</details>
 
 <details>
-<summary>More details</summary>
+<summary>Checkbox Example</summary>
 
 ````php
 CheckboxField::make()
@@ -318,13 +436,10 @@ CheckboxField::make()
 ---
 
 ##### Date Picker
-This is a custom date input that utilizes the vuetify date picker
-[Vuetify Date Picker](https://vuetifyjs.com/en/components/date-pickers/)
-
-###### Properties
+This is a custom date input that utilizes the [Vuetify Date Picker](https://vuetifyjs.com/en/components/date-pickers/)
 
 <details>
-<summary>More details</summary>
+<summary>Date Picker Properties</summary>
 
 | Property                   | Type    | Default | Description                        |
 | :------------------------- | :------ | :------ | :--------------------------------- |
@@ -334,10 +449,8 @@ This is a custom date input that utilizes the vuetify date picker
 
 </details>
 
-###### Example
-
 <details>
-<summary>More details</summary>
+<summary>Date Picker Example</summary>
 
 ````php
 DatePickerField::make()
@@ -357,10 +470,8 @@ DatePickerField::make()
 ##### File Input
 [Vuetify File Input](https://vuetifyjs.com/en/components/file-inputs/)
 
-###### Properties
-
 <details>
-<summary>More details</summary>
+<summary>File Input Properties</summary>
 
 | Property         | Type    | Default       | Description                        |
 | :--------------- | :------ | :------------ | :--------------------------------- |
@@ -372,10 +483,8 @@ DatePickerField::make()
 
 </details>
 
-###### Example
-
 <details>
-<summary>More details</summary>
+<summary>File Input Example</summary>
 
 ````php
 FileInputField::make()
@@ -398,14 +507,13 @@ FileInputField::make()
 
 Just a hidden input field
 
-###### Properties
-
+<details>
+<summary>Hidden Properties</summary>
 No additional properties
-
-###### Example
+</details>
 
 <details>
-<summary>More details</summary>
+<summary>Hidden Example</summary>
 
 ````php
 HiddenField::make()
@@ -424,10 +532,8 @@ HiddenField::make()
 ##### Number
 Just a number input field
 
-###### Properties
-
 <details>
-<summary>More details</summary>
+<summary>Number Properties</summary>
 
 | Property | Type  | Default | Description                                   |
 | :------- | :---- | :------ | :-------------------------------------------- |
@@ -437,10 +543,8 @@ Just a number input field
 
 </details>
 
-###### Example
-
 <details>
-<summary>More details</summary>
+<summary>Number Example</summary>
 
 ````php
 HiddenField::make()
@@ -459,10 +563,8 @@ HiddenField::make()
 ##### Password
 Just a password input field
 
-###### Properties
-
 <details>
-<summary>More details</summary>
+<summary>Password Properties</summary>
 
 | Property      | Type    | Default | Description            |
 | :------------ | :------ | :------ | :--------------------- |
@@ -471,10 +573,8 @@ Just a password input field
 
 </details>
 
-###### Example
-
 <details>
-<summary>More details</summary>
+<summary>Password Example</summary>
 
 ````php
 PasswordField::make()
@@ -493,10 +593,8 @@ PasswordField::make()
 ##### RadioGroup
 [Vuetify Radio Buttons](https://vuetifyjs.com/en/components/radio-buttons/)
 
-###### Properties
-
 <details>
-<summary>More details</summary>
+<summary>RadioGroup Properties</summary>
 
 | Property      | Type    | Default | Description                                               |
 | :------------ | :------ | :------ | :-------------------------------------------------------- |
@@ -509,10 +607,8 @@ PasswordField::make()
 
 </details>
 
-###### Example
-
 <details>
-<summary>More details</summary>
+<summary>RadioGroup Example</summary>
 
 ````php
 RadioGroupField::make()
@@ -548,10 +644,8 @@ RadioGroupField::make()
 ##### Select
 [Vuetify Select](https://vuetifyjs.com/en/components/selects/)
 
-###### Properties
-
 <details>
-<summary>More details</summary>
+<summary>Select Properties</summary>
 
 | Property       | Type    | Default | Description                                                                       |
 | :------------- | :------ | :------ | :-------------------------------------------------------------------------------- |
@@ -564,10 +658,8 @@ RadioGroupField::make()
 
 </details>
 
-###### Example
-
 <details>
-<summary>More details</summary>
+<summary>Select Example</summary>
 
 ````php
 SelectField::make()
@@ -590,13 +682,11 @@ SelectField::make()
 
 ---
 
-##### Select
+##### Textareas
 [Vuetify Textareas](https://vuetifyjs.com/en/components/textareas/)
 
-###### Properties
-
 <details>
-<summary>More details</summary>
+<summary>Textareas Properties</summary>
 
 | Property | Type    | Default | Description                            |
 | :------- | :------ | :------ | :------------------------------------- |
@@ -604,10 +694,8 @@ SelectField::make()
 
 </details>
 
-###### Example
-
 <details>
-<summary>More details</summary>
+<summary>Textareas Example</summary>
 
 ````php
 SelectField::make()
@@ -633,10 +721,8 @@ SelectField::make()
 ##### Text
 [Vuetify Text](https://vuetifyjs.com/en/components/text-fields/)
 
-###### Properties
-
 <details>
-<summary>More details</summary>
+<summary>Text Properties</summary>
 
 | Property      | Type    | Default | Description            |
 | :------------ | :------ | :------ | :--------------------- |
@@ -645,10 +731,8 @@ SelectField::make()
 
 </details>
 
-###### Example
-
 <details>
-<summary>More details</summary>
+<summary>Text Example</summary>
 
 ````php
 TextField::make()
@@ -665,13 +749,10 @@ TextField::make()
 ---
 
 ##### Time Picker
-This is a custom time input that utilizes the vuetify time picker
-[Vuetify Time Picker](https://vuetifyjs.com/en/components/time-pickers/)
-
-###### Properties
+This is a custom time input that utilizes the [Vuetify Time Picker](https://vuetifyjs.com/en/components/time-pickers/)
 
 <details>
-<summary>More details</summary>
+<summary>Time Picker Properties</summary>
 
 | Property        | Type    | Default | Description                        |
 | :-------------- | :------ | :------ | :--------------------------------- |
@@ -681,10 +762,8 @@ This is a custom time input that utilizes the vuetify time picker
 
 </details>
 
-###### Example
-
 <details>
-<summary>More details</summary>
+<summary>Time Picker </summary>
 
 ````php
 TimePickerField::make()

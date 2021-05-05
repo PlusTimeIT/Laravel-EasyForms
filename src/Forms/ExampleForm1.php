@@ -3,13 +3,14 @@ namespace PlusTimeIT\EasyForms\Forms;
 
 use Illuminate\Http\Request;
 use PlusTimeIT\EasyForms\Base\InputForm;
-use PlusTimeIT\EasyForms\Elements\ProcessResponse;
-use PlusTimeIT\EasyForms\Elements\{Action, Alert, Axios, Button, Header, Icon, RuleItem};
+use PlusTimeIT\EasyForms\Elements\{Action, Alert, Axios, Button, Header, Icon, ProcessResponse, RuleItem};
 use PlusTimeIT\EasyForms\Fields\{PasswordField, TextField};
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class ExampleForm1 extends InputForm
 {
+    use Transformable;
+
     public function __construct()
     {
         parent::__construct();
@@ -88,7 +89,6 @@ class ExampleForm1 extends InputForm
             ,
         ];
     }
-
 
     public function buttons(): array
     {
@@ -175,6 +175,4 @@ class ExampleForm1 extends InputForm
 
         return ProcessResponse::make()->success()->data('Yay you logged in!');
     }
-
-    use Transformable;
 }

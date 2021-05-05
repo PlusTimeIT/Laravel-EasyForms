@@ -3,8 +3,25 @@ namespace PlusTimeIT\EasyForms\Elements;
 
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
+// TODO Create ActionIcon Interface and Traits
 class ActionIcon
 {
+    use Transformable;
+
+    protected $callback;
+
+    protected $cols;
+
+    protected $conditions;
+
+    protected $icon;
+
+    protected $identifier;
+
+    protected $name;
+
+    protected $order = 0;
+
     public function __construct()
     {
         return $this;
@@ -13,6 +30,11 @@ class ActionIcon
     public function getCallback(): string
     {
         return $this->callback;
+    }
+
+    public function getCols(): int | null
+    {
+        return $this->cols;
     }
 
     public function getConditions(): array
@@ -51,6 +73,12 @@ class ActionIcon
         return $this;
     }
 
+    public function setCols(int | NULL $cols): self
+    {
+        $this->cols = $cols;
+        return $this;
+    }
+
     public function setConditions(array $conditions): self
     {
         $this->conditions = $conditions;
@@ -80,18 +108,4 @@ class ActionIcon
         $this->order = $order;
         return $this;
     }
-
-    protected $conditions;
-
-    protected $callback;
-
-    protected $icon;
-
-    protected $identifier;
-
-    protected $name;
-
-    protected $order = 0;
-
-    use Transformable;
 }

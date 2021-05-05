@@ -3,6 +3,16 @@ namespace PlusTimeIT\EasyForms\Traits;
 
 trait ActionFormTrait
 {
+    protected $actions = [];
+
+    protected $callback;
+
+    protected $form_type = 'action';
+
+    protected $inline;
+
+    protected $justify = 'center';
+
     public function actions(): array
     {
         return [];
@@ -16,6 +26,11 @@ trait ActionFormTrait
     public function getInline(): bool
     {
         return $this->inline;
+    }
+
+    public function getJustify(): string
+    {
+        return $this->justify;
     }
 
     public function setActions(array $actions): self
@@ -33,6 +48,12 @@ trait ActionFormTrait
     public function setInline(bool $inline): self
     {
         $this->inline = $inline;
+        return $this;
+    }
+
+    public function setJustify(string $justify): self
+    {
+        $this->justify = $justify;
         return $this;
     }
 }

@@ -4,6 +4,12 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+## 0.0.17
+- Added required back into field 
+- //TODO: update field required to work off rule item required to remove redundancy
+- Added justify attribute with getters and setters to ActionForms, defaults to center
+- Added cols attribute with getters and setters to ActionIcon and ActionButton
+
 ## 0.0.16
 - Updated readme to finish off the fields
 
