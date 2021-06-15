@@ -5,9 +5,27 @@ use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class ConditionItem
 {
-    public function __construct($check = '', $operator = '' ,  $against = '')
+    use Transformable;
+
+    protected $against;
+
+    protected $check;
+
+    protected $operator;
+
+    protected $source;
+
+    public function __construct($check = '', $operator = '', $against = '')
     {
-        return $this->setCheck($check)->setOperator($operator)->setAgainst($against);
+        return $this
+            ->setCheck($check)
+            ->setOperator($operator)
+            ->setAgainst($against);
+    }
+
+    public function getAgainst()
+    {
+        return $this->against;
     }
 
     public function getCheck()
@@ -20,14 +38,15 @@ class ConditionItem
         return $this->operator;
     }
 
-    public function getAgainst()
+    public static function make($check = '', $operator = '', $against = '')
     {
-        return $this->against;
+        return new static($check, $operator,  $against);
     }
 
-    public static function make($check = '', $operator = '' ,  $against = '')
+    public function setAgainst($against): self
     {
-        return new static($check, $operator,  $against );
+        $this->against = $against;
+        return $this;
     }
 
     public function setCheck($check): self
@@ -41,18 +60,4 @@ class ConditionItem
         $this->operator = $operator;
         return $this;
     }
-
-    public function setAgainst($against): self
-    {
-        $this->against = $against;
-        return $this;
-    }
-
-    protected $check;
-
-    protected $operator;
-
-    protected $against;
-
-    use Transformable;
 }

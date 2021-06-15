@@ -23,7 +23,7 @@
                             </v-col>
                             <v-col cols="6" class="mx-auto mb-4">
                                 <v-row align="center" id="plustime-link">
-                                    <v-col cols="1" class="text-left ml-auto">
+                                    <v-col cols="auto" class="text-left ml-auto">
                                         <a target="_blank" href="https://plustime.com.au/">
                                             <v-img width="32" height="32" src="https://plustime.com.au/images/brand/PTIT_logo_solo_transparent.webp"></v-img>
                                         </a>

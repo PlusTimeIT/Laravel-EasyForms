@@ -19,10 +19,10 @@ trait Transformable
         $self = $this;
         return collect($all_vars)->map(function($value, $key) use ($self) {
             if (is_array($self->{$key})) {
-                return collect($self->{$key})->map(fn($field) => ( is_array($field) ? $field : $field->toArray() ) );
+                return collect($self->{$key})->map(fn($field) => (is_array($field) ? $field : $field->toArray()));
             }
             if (is_object($self->{$key})) {
-                return $self->{$key}->toArray();
+                return  method_exists($self->{$key}, 'toArray') ? $self->{$key}->toArray() : $self->{$key};
             }
             return $self->{$key};
         })->toArray();

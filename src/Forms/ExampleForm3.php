@@ -3,12 +3,15 @@ namespace PlusTimeIT\EasyForms\Forms;
 
 use Illuminate\Http\Request;
 use PlusTimeIT\EasyForms\Base\InputForm;
+use PlusTimeIT\EasyForms\Elements\ProcessResponse;
 use PlusTimeIT\EasyForms\Elements\{Action, Alert, Axios, Button, Header, Icon, MaskItem, RadioItem, RuleItem, SelectItem};
 use PlusTimeIT\EasyForms\Fields\{AutoCompleteField, CheckboxField, FileInputField, HiddenField, NumberField, PasswordField, RadioGroupField, SelectField, TextField, TextareaField};
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
-class ExampleForm3 extends InputForm
+final class ExampleForm3 extends InputForm
 {
+    use Transformable;
+
     public function __construct()
     {
         parent::__construct();
@@ -124,7 +127,7 @@ class ExampleForm3 extends InputForm
                 ])
             ,
             TextField::make()
-                ->setName('TextField')
+                ->setName('license_plate')
                 ->setOrder(0)
                 ->setLabel('License Plate')
                 ->setMasking('NNN-NNN')
@@ -137,13 +140,11 @@ class ExampleForm3 extends InputForm
 
     public static function fill(request $request): self
     {
-        return $request;
+        return self::make();
     }
 
     public static function process(request $request)
     {
-        $form = self::make();
+        return ProcessResponse::make()->success()->data('We processed yo!');
     }
-
-    use Transformable;
 }

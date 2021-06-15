@@ -13,15 +13,13 @@ trait FieldTrait
 
     protected $component_type = '';
 
-    protected $conditions = [];
-
     protected $dense = TRUE;
+
+    protected $dependsOn;
 
     protected $help = '';
 
     protected $label = '';
-
-    protected $masking = '';
 
     protected $name = '';
 
@@ -43,6 +41,12 @@ trait FieldTrait
 
     protected $value = '';
 
+    public function dependsOn($dependsOn)
+    {
+        $this->dependsOn = $dependsOn;
+        return $this;
+    }
+
     public function getClearable(): bool
     {
         return $this->clearable;
@@ -63,14 +67,14 @@ trait FieldTrait
         return $this->component_type;
     }
 
-    public function getConditions(): array
-    {
-        return $this->conditions;
-    }
-
     public function getDense(): bool
     {
         return $this->dense;
+    }
+
+    public function getDependsOn(): string
+    {
+        return $this->dependsOn;
     }
 
     public function getHelp(): string
@@ -81,11 +85,6 @@ trait FieldTrait
     public function getLabel(): string
     {
         return $this->label;
-    }
-
-    public function getMasking()
-    {
-        return $this->masking;
     }
 
     public function getName(): string
@@ -166,17 +165,16 @@ trait FieldTrait
         return $this;
     }
 
-    public function setConditions(array $conditions): self
-    {
-        $this->conditions = $conditions;
-
-        return $this;
-    }
-
     public function setDense(bool $dense): self
     {
         $this->dense = $dense;
 
+        return $this;
+    }
+
+    public function setDependsOn($dependsOn)
+    {
+        $this->dependsOn = $dependsOn;
         return $this;
     }
 
@@ -190,13 +188,6 @@ trait FieldTrait
     public function setLabel(string $label): self
     {
         $this->label = $label;
-
-        return $this;
-    }
-
-    public function setMasking($masking): self
-    {
-        $this->masking = $masking;
 
         return $this;
     }

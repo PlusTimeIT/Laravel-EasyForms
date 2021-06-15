@@ -4,6 +4,10 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+## 0.0.18
+- Updates to dependsOn
+- ExampleForm5 Added to edit user details
+
 ## 0.0.17
 - Added required back into field 
 - //TODO: update field required to work off rule item required to remove redundancy

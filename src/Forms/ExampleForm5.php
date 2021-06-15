@@ -2,92 +2,27 @@
 namespace PlusTimeIT\EasyForms\Forms;
 
 use Illuminate\Http\Request;
-use PlusTimeIT\EasyForms\Base\ActionForm;
-use PlusTimeIT\EasyForms\Elements\ProcessResponse;
-use PlusTimeIT\EasyForms\Elements\{Action, ActionIcon, Alert, Axios, Button, Header, Icon, MaskItem, RadioItem, RuleItem, SelectItem,ConditionItem};
-use PlusTimeIT\EasyForms\Fields\{AutoCompleteField, CheckboxField, FileInputField, HiddenField, NumberField, PasswordField, RadioGroupField, SelectField, TextField, TextareaField};
-use PlusTimeIT\EasyForms\Traits\Transformable;
+use PlusTimeIT\EasyForms\Base\InputForm;
 use PlusTimeIT\EasyForms\Controllers\Users;
+use PlusTimeIT\EasyForms\Elements\{Action, Alert, Axios, Button, Header, Icon, ProcessResponse, RuleItem, SelectItem};
+use PlusTimeIT\EasyForms\Fields\{HiddenField, SelectField, TextField};
+use PlusTimeIT\EasyForms\Traits\Transformable;
 
-class ExampleForm4 extends ActionForm
+final class ExampleForm5 extends InputForm
 {
+    use Transformable;
+
     public function __construct()
     {
         parent::__construct();
         return $this
-            ->setName('ExampleForm4')
-            ->setTitle('Action Form with conditional icons')
-            ->setInline(TRUE);
-    }
-
-    public function actions(): array
-    {
-        return [
-            ActionIcon::make()
-                ->setIdentifier('editUser')
-                ->setName('Edit User Details')
-                ->setIcon(
-                    Icon::make()->setIcon('mdi-pencil')->setTooltip('Edit Action')
-                )
-                ->setCallback('editUser')
-                ->setOrder(0)
-            ,
-            ActionIcon::make()
-                ->setIdentifier('activateUser')
-                ->setName('Activate User')
-                ->setIcon(
-                    Icon::make('mdi-account-check' , 'Activate User')
-                )
-                ->setConditions([
-                    ConditionItem::make('status', '!=' , 'active')
-                ])
-                ->setCallback('deleteUser')
-                ->setOrder(1),
-            ActionIcon::make()
-                ->setIdentifier('deactivateUser')
-                ->setName('Deactivate User')
-                ->setIcon(
-                    Icon::make('mdi-account-clock' , 'Deactivate User')
-                )
-                ->setConditions([
-                    ConditionItem::make('status', '!=' , 'inactive')
-                ])
-                ->setCallback('deleteUser')
-                ->setOrder(2),
-            ActionIcon::make()
-                ->setIdentifier('banUser')
-                ->setName('Ban User')
-                ->setConditions([
-                    ConditionItem::make('status', '!=' , 'banned')
-                ])
-                ->setIcon(
-                    Icon::make('mdi-account-off' , 'Ban User')
-                )
-                ->setCallback('banUser')
-                ->setOrder(3),
-            ActionIcon::make()
-                ->setIdentifier('deleteUser')
-                ->setName('Delete User')
-                ->setIcon(
-                    Icon::make('mdi-delete-circle' , 'Delete Action')
-                )
-                ->setCallback('deleteUser')
-                ->setOrder(4),
-        ];
+            ->setName('ExampleForm5')
+            ->setTitle('Edit User details with fill');
     }
 
     public function alerts(): array
     {
         return [
-            Alert::make()
-                ->setTrigger('failed_processing')
-                ->setType('error')
-                ->setColor('red')
-                ->setProminent(TRUE)
-                ->setBorder('bottom')
-                ->setDismissible(TRUE)
-                ->setContents('Processing Failed!')
-            ,
             Alert::make()
                 ->setTrigger('successful_processing')
                 ->setType('success')
@@ -95,75 +30,119 @@ class ExampleForm4 extends ActionForm
                 ->setProminent(TRUE)
                 ->setBorder('top')
                 ->setDismissible(TRUE)
-                ->setContents('Processing Successful!'),
+                ->setContents('Successfully saved user')
+            ,
+            Alert::make()
+                ->setTrigger('failed_processing')
+                ->setType('error')
+                ->setColor('green')
+                ->setProminent(TRUE)
+                ->setBorder('top')
+                ->setDismissible(TRUE)
+                ->setContents('<response-data>'),
         ];
+    }
+
+    public function buttons(): array
+    {
+        return [
+            Button::make()
+                ->setType('process')
+                ->setColor('primary')
+                ->setText('Save User')
+                ->setIcon(
+                    Icon::make()->setIcon('mdi-content-save')->setTooltip('Save')
+                )
+                ->setOrder(0),
+        ];
+    }
+
+    public function fields(): array
+    {
+        return [
+            HiddenField::make()
+                ->setName('id')
+                ->setOrder(0)
+                ->setRules([
+                    RuleItem::make()->setName('required')->setValue(TRUE),
+                ])
+            ,
+            TextField::make()
+                ->setName('username')
+                ->setOrder(0)
+                ->setClearable(TRUE)
+                ->setHelp('OH OH')
+                ->setLabel('Username')
+                ->setRules([
+                    RuleItem::make()->setName('required')->setValue(TRUE),
+                ])
+            ,
+            TextField::make()
+                ->setName('email')
+                ->setOrder(1)
+                ->setLabel('Email')
+                ->setRules([
+                    RuleItem::make()->setName('required')->setValue(TRUE),
+                ])
+            ,
+            SelectField::make()
+                ->setName('status')
+                ->setOrder(2)
+                ->setLabel('Status')
+                ->setItems([
+                    SelectItem::make()->setId('active')->setValue('Active'),
+                    SelectItem::make()->setId('inactive')->setValue('Inactive'),
+                    SelectItem::make()->setId('banned')->setValue('Banned'),
+                ])
+                ->setRules([
+                    RuleItem::make()->setName('required')->setValue(TRUE),
+                ])
+            ,
+        ];
+    }
+
+    public static function fill(request $request): self
+    {
+        $form = self::make();
+        return $form->setFields(
+            $form->populateFields(Users::find($request->data))
+        );
+    }
+
+    public function populateFields($data): array
+    {
+        return collect($this->fields())->map(function($field) use ($data) {
+            if (isset($data[ $field->getName()])) {
+                $field->setValue($data[ $field->getName()]);
+            }
+
+            return $field;
+        })->toArray();
     }
 
     public static function process(request $request)
     {
-        if(!$request->action || ! collect( self::make()->actions() )->where( 'identifier' , $request->action ) ){
-            return ProcessResponse::make()->failed()->data('Don\'t mess with the actions yo!');
-        }
-        return self::{$request->action}($request);
-    }
+        //request has been validated so we know what we have.
+        $username = $request->username;
+        $password = $request->password;
 
-    public static function deleteUser(request $request)
-    {
-        $user = Users::find($request->id);
-        if(!$user){
-            return ProcessResponse::make()
-                ->failed()
-                ->data('User not found with id:' . $user->get('id') );
-        }
-
-        if(Users::deleteUser($request->id)){
-            return ProcessResponse::make()->success()->data('Successfully deleted user')->redirect('reload');
-        }
-
-        return ProcessResponse::make()->failed()->data('Unable to delete user');
-    }
-
-    public static function editUser(request $request)
-    {
         //check if user exists if it does send redirect
         $user = Users::find($request->id);
-        if(!$user){
+        if ( ! $user) {
             return ProcessResponse::make()
                 ->failed()
-                ->data('User not found with id:' . $user->get('id') );
+                ->data('User not found with id:' . $request->id);
         }
+
+        Users::updateUser($request->id, [
+            'username' => $request->username ,
+            'email' => $request->email ,
+            'status' => $request->status,
+        ]);
+
+        $user = Users::find($request->id);
         return ProcessResponse::make()
             ->success()
-            ->data('Found user id:' . $user->get('id') )
-            ->redirect('/easyforms/example/5/' . $user->get('id') );
+            ->data($user);
     }
-
-    public static function deactivateUser(request $request)
-    {
-        Users::updateUserStatus( $request->id , 'inactive' );
-        return ProcessResponse::make()
-            ->success()
-            ->data('You just made them inactive!')
-            ->redirect('reload');
-    }
-
-    public static function banUser(request $request)
-    {
-        Users::updateUserStatus( $request->id , 'banned' );
-        return ProcessResponse::make()
-            ->success()
-            ->data('You just banned them!')
-            ->redirect('reload');
-    }
-
-    public static function activateUser(request $request)
-    {
-        Users::updateUserStatus( $request->id , 'active' );
-        return ProcessResponse::make()
-            ->success()
-            ->data('You just activated them')
-            ->redirect('reload');
-    }
-
-    use Transformable;
 }

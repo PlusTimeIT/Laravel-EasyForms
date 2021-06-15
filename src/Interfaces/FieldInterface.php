@@ -17,8 +17,6 @@ interface FieldInterface
 
     public function getLabel();
 
-    public function getMasking();
-
     public function getOrder();
 
     public function getOutlined();
@@ -48,8 +46,6 @@ interface FieldInterface
     public function setHelp(string $help);
 
     public function setLabel(string $label);
-
-    public function setMasking($masking);
 
     public function setOptions(array $options);
 

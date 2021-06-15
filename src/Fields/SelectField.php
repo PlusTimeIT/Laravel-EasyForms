@@ -21,6 +21,8 @@ class SelectField extends EasyField
 
     protected $component = 'v-select';
 
+    protected $loadable;
+
     protected $type = self::TYPE;
 
     /**
@@ -29,6 +31,17 @@ class SelectField extends EasyField
     public function addItem(SelectItem $item): self
     {
         $this->items[] = $item;
+        return $this;
+    }
+
+    public function load($args)
+    {
+        return call_user_func($this->loadable, $args);
+    }
+
+    public function loadItems(\Closure $closure): self
+    {
+        $this->loadable = $closure;
         return $this;
     }
 }

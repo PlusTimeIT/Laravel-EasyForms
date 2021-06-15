@@ -3,14 +3,16 @@ namespace PlusTimeIT\EasyForms\Forms;
 
 use Illuminate\Http\Request;
 use PlusTimeIT\EasyForms\Base\ActionForm;
+use PlusTimeIT\EasyForms\Controllers\Users;
 use PlusTimeIT\EasyForms\Elements\ProcessResponse;
-use PlusTimeIT\EasyForms\Elements\{Action, ActionIcon, ActionButton, Alert, Axios, Button, Header, Icon, MaskItem, RadioItem, RuleItem, SelectItem,ConditionItem};
+use PlusTimeIT\EasyForms\Elements\{Action, ActionButton, ActionIcon, Alert, Axios, Button, ConditionItem, Header, Icon, MaskItem, RadioItem, RuleItem, SelectItem};
 use PlusTimeIT\EasyForms\Fields\{AutoCompleteField, CheckboxField, FileInputField, HiddenField, NumberField, PasswordField, RadioGroupField, SelectField, TextField, TextareaField};
 use PlusTimeIT\EasyForms\Traits\Transformable;
-use PlusTimeIT\EasyForms\Controllers\Users;
 
 class ResetCacheForm extends ActionForm
 {
+    use Transformable;
+
     public function __construct()
     {
         parent::__construct();
@@ -36,13 +38,13 @@ class ResetCacheForm extends ActionForm
                         )
                 )
                 ->setCallback('resetCache')
-                ->setOrder(0)
+                ->setOrder(0),
         ];
     }
 
     public static function process(request $request)
     {
-        if(!$request->action || ! collect( self::make()->actions() )->where( 'identifier' , $request->action ) ){
+        if ( ! $request->action || ! collect(self::make()->actions())->where('identifier', $request->action)) {
             return ProcessResponse::make()->failed()->data('Don\'t mess with the actions yo!');
         }
         return self::{$request->action}($request);
@@ -53,6 +55,4 @@ class ResetCacheForm extends ActionForm
         Users::resetCache();
         return ProcessResponse::make()->success()->data('Cache reset')->redirect('reload');
     }
-
-    use Transformable;
 }

@@ -7,7 +7,7 @@ use PlusTimeIT\EasyForms\Elements\{Action, Alert, Axios, Button, Header, Icon, P
 use PlusTimeIT\EasyForms\Fields\{PasswordField, TextField};
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
-class ExampleForm1 extends InputForm
+final class ExampleForm1 extends InputForm
 {
     use Transformable;
 

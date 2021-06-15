@@ -1,10 +1,8 @@
 <?php
 namespace PlusTimeIT\EasyForms\Traits;
 
-
 trait InputFormTrait
 {
-
     public function getButtons(): array
     {
         return $this->buttons;

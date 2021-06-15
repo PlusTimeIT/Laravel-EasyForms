@@ -9,7 +9,7 @@ use PlusTimeIT\EasyForms\Elements\{Action, ActionIcon, Alert, Axios, Button, Con
 use PlusTimeIT\EasyForms\Fields\{AutoCompleteField, CheckboxField, FileInputField, HiddenField, NumberField, PasswordField, RadioGroupField, SelectField, TextField, TextareaField};
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
-class ExampleForm4 extends ActionForm
+final class ExampleForm4 extends ActionForm
 {
     use Transformable;
 
@@ -19,7 +19,7 @@ class ExampleForm4 extends ActionForm
         return $this
             ->setName('ExampleForm4')
             ->setTitle('Action Form with conditional icons')
-            ->setInline(FALSE);
+            ->setInline(TRUE);
     }
 
     public function actions(): array
@@ -151,7 +151,7 @@ class ExampleForm4 extends ActionForm
         if ( ! $user) {
             return ProcessResponse::make()
                 ->failed()
-                ->data('User not found with id:' . $user->get('id'));
+                ->data('User not found with id:' . $request->id);
         }
         return ProcessResponse::make()
             ->success()

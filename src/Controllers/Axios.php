@@ -7,20 +7,33 @@ use PlusTimeIT\EasyForms\Elements\AxiosResponse;
 
 class Axios extends Controller
 {
+    public function fieldLoad(request $request)
+    {
+        // load fields value
+        $form = config('easyforms.form-namespace') . '\\' . str_replace('-', '\\', $request->form_name);
+
+        $form = new $form();
+        $field = collect($form->fields())->filter(fn($field) => $field->getName() == $request->field_name)->first();
+        return AxiosResponse::make()
+            ->success()
+            ->data($field->load($request->dependsOn))
+            ->toJson();
+    }
+
     public function load(request $request)
     {
-        $form_class = config('easyforms.form-namespace') . '\\' . str_replace('-', '\\', $request->form_name);
+        $form = config('easyforms.form-namespace') . '\\' . str_replace('-', '\\', $request->form_name);
 
         return AxiosResponse::make()
             ->success()
-            ->data(( new $form_class() )->fill($request))
+            ->data(( new $form() )->fill($request))
             ->toJson();
     }
 
     public function process(request $request)
     {
-        $form_class = config('easyforms.form-namespace') . '\\' . str_replace('-', '\\', $request->form_name);
-        $form = new $form_class();
+        $form = config('easyforms.form-namespace') . '\\' . str_replace('-', '\\', $request->form_name);
+        $form = new $form();
         $results = $form->validateRequest($request);
         if ($results->fails()) {
             return AxiosResponse::make()

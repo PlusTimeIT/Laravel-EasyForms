@@ -7,7 +7,7 @@ use PlusTimeIT\EasyForms\Elements\{Action, Alert, Axios, Button, Header, Icon, M
 use PlusTimeIT\EasyForms\Fields\{AutoCompleteField, CheckboxField, DatePickerField, FileInputField, HiddenField, NumberField, PasswordField, RadioGroupField, SelectField, TextField, TextareaField, TimePickerField};
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
-class ExampleForm2 extends InputForm
+final class ExampleForm2 extends InputForm
 {
     use Transformable;
 
@@ -16,7 +16,7 @@ class ExampleForm2 extends InputForm
         parent::__construct();
         return $this
             ->setName('ExampleForm2')
-            ->setTitle('Load from axios');
+            ->setTitle('Load from axios with conditionals');
     }
 
     public function alerts(): array
@@ -155,6 +155,7 @@ class ExampleForm2 extends InputForm
                 ->setRules([
                     RuleItem::make()->setName('required')->setValue(TRUE),
                 ])
+
             ,
             SelectField::make()
                 ->setName('favourite_fruit')
@@ -179,6 +180,7 @@ class ExampleForm2 extends InputForm
                     SelectItem::make()->setId(1)->setValue('Sammy Did'),
                     SelectItem::make()->setId(2)->setValue('Smithy McSmithy'),
                     SelectItem::make()->setId(3)->setValue('HELLO WORLD INC.'),
+                    SelectItem::make()->setId(4)->setValue('Earth Movers From Earth'),
                 ])
                 ->setRules([
                     RuleItem::make('required', TRUE),
@@ -188,16 +190,26 @@ class ExampleForm2 extends InputForm
                 ->setName('officer_select')
                 ->setOrder(8)
                 ->setLabel('Select an Officer')
-                ->setItemText('name')
+                ->setItemText('value')
                 ->setItemValue('badge_id')
-                ->setItems([
-                    ['name' => 'Bob Security 1' , 'badge_id' => 1],
-                    ['name' => 'Smith Security 2' , 'badge_id' => 2],
-                    ['name' => 'Jane Security 3' , 'badge_id' => 3],
-                ])
+                ->loadItems(function($customer_id) {
+                    if ( ! $customer_id && $customer_id !== 0) {
+                        // this wasn't passed or it was null
+                        return NULL;
+                    }
+                    $officers = self::getOfficers();
+                    // dependsOn should be an ID from the customers above
+                    if ( ! isset($officers[$customer_id])) {
+                        return NULL;
+                    }
+                    return collect($officers[$customer_id])
+                        ->map(fn($officer) => SelectItem::make()->setId($officer['id'])->setValue($officer['name']))
+                        ->toArray();
+                })
                 ->setRules([
                     RuleItem::make()->setName('required')->setValue(TRUE),
                 ])
+                ->dependsOn('customer_select')
             ,
             AutoCompleteField::make()
                 ->setName('rating')
@@ -237,7 +249,8 @@ class ExampleForm2 extends InputForm
                 ])
                 ->setRules([
                     RuleItem::make()->setName('required')->setValue(TRUE),
-                ]),
+                ])
+            ,
             DatePickerField::make()
                 ->setName('birth_date')
                 ->setLabel('Whats ya Birthday?')
@@ -267,6 +280,37 @@ class ExampleForm2 extends InputForm
         //check if request->id exists or whatever variable
         //you are sending via additional form data
         return $form;
+    }
+
+    public static function getOfficers()
+    {
+        return [
+            0 => [
+                ['id' => 0, 'name' => 'Steve'],
+                ['id' => 1, 'name' => 'John'],
+                ['id' => 2, 'name' => 'Sally'],
+            ],
+            1 => [
+                ['id' => 3, 'name' => 'Bob'],
+                ['id' => 4, 'name' => 'Billy'],
+                ['id' => 5, 'name' => 'Sam'],
+            ],
+            2 => [
+                ['id' => 6, 'name' => 'Jane'],
+                ['id' => 7, 'name' => 'Lilly'],
+                ['id' => 8, 'name' => 'Ben'],
+            ],
+            3 => [
+                ['id' => 9, 'name' => 'Steve'],
+                ['id' => 10, 'name' => 'Simon'],
+                ['id' => 11, 'name' => 'Alex'],
+            ],
+            4 => [
+                ['id' => 12, 'name' => 'Wendy'],
+                ['id' => 13, 'name' => 'Jim'],
+                ['id' => 14, 'name' => 'Mark'],
+            ],
+        ];
     }
 
     public static function process(request $request)
