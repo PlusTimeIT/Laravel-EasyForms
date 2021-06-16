@@ -3,33 +3,37 @@ namespace PlusTimeIT\EasyForms\Interfaces;
 
 interface FieldInterface
 {
-    public function getClearable();
+    public function dependsOn(string $dependsOn);
 
-    public function getCols();
+    public function getClearable(): bool;
 
-    public function getComponent();
+    public function getCols(): int;
 
-    public function getComponentType();
+    public function getComponent(): string;
 
-    public function getDense();
+    public function getComponentType(): string;
 
-    public function getHelp();
+    public function getDense(): bool;
 
-    public function getLabel();
+    public function getDependsOn(): string | NULL;
 
-    public function getOrder();
+    public function getHelp(): string;
 
-    public function getOutlined();
+    public function getLabel(): string;
 
-    public function getPlaceholder();
+    public function getOrder(): int;
 
-    public function getReadonly();
+    public function getOutlined(): bool;
 
-    public function getRules();
+    public function getPlaceholder(): string;
 
-    public function getTooltip();
+    public function getReadonly(): bool;
 
-    public function getType();
+    public function getRules(): array;
+
+    public function getTooltip(): string;
+
+    public function getType(): string;
 
     public function getValue();
 
@@ -42,6 +46,8 @@ interface FieldInterface
     public function setComponentType(string $component_type);
 
     public function setDense(bool $dense);
+
+    public function setDependsOn(string $dependsOn);
 
     public function setHelp(string $help);
 

@@ -16,9 +16,7 @@ class AutoCompleteField extends EasyField
     use HasMultiple;
     use Transformable;
 
-    public const TYPE = 'autocomplete';
-
     protected $component = 'v-autocomplete';
 
-    protected $type = self::TYPE;
+    protected $type = 'autocomplete';
 }

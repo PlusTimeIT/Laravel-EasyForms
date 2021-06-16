@@ -6,47 +6,15 @@ use PlusTimeIT\EasyForms\Elements\{Axios, ProcessResponse};
 
 trait FormTrait
 {
-    protected $alerts = [];
-
-    protected $axios;
-
-    protected $name = '';
-
-    protected $title = '';
-
-    public function alerts(): array
-    {
-        return $this->getAlerts();
-    }
-
-    public function axios(): Axios
-    {
-        return Axios::make();
-    }
+    use Attributes\HasAlerts;
+    use Attributes\HasAxios;
+    use Attributes\HasName;
+    use Attributes\HasTitle;
+    use Attributes\HasType;
 
     public static function fill(request $request)
     {
         return self::make();
-    }
-
-    public function getAlerts(): array
-    {
-        return $this->alerts;
-    }
-
-    public function getAxios(): Axios
-    {
-        return $this->axios;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getTitle(): string
-    {
-        return $this->title;
     }
 
     public function getValidation(): array
@@ -68,30 +36,6 @@ trait FormTrait
     public static function process(request $request)
     {
         return ProcessResponse::make()->success()->data('Yay you processed!');
-    }
-
-    public function setAlerts(array $alerts): self
-    {
-        $this->alerts = $alerts;
-        return $this;
-    }
-
-    public function setAxios(Axios $axios): self
-    {
-        $this->axios = $axios;
-        return $this;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-        return $this;
     }
 
     public function validateRequest(request $request)

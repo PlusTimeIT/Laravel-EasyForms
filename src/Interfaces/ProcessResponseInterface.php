@@ -7,6 +7,8 @@ interface ProcessResponseInterface
 
     public function getResult();
 
+    public function result();
+
     public function setData($data);
 
     public function setOptions(array $options);

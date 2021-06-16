@@ -4,6 +4,9 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+## 0.0.19
+- Added more attribute traits
+
 ## 0.0.18
 - Updates to dependsOn
 - ExampleForm5 Added to edit user details

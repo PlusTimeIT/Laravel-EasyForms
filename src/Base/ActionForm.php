@@ -8,6 +8,8 @@ abstract class ActionForm extends EasyForm implements ActionFormInterface
 {
     use ActionFormTrait;
 
+    protected $type = 'action';
+
     public function __construct()
     {
         parent::__construct();

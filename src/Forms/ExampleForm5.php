@@ -71,7 +71,7 @@ final class ExampleForm5 extends InputForm
                 ->setName('username')
                 ->setOrder(0)
                 ->setClearable(TRUE)
-                ->setHelp('OH OH')
+                ->setHelp('The users username')
                 ->setLabel('Username')
                 ->setRules([
                     RuleItem::make()->setName('required')->setValue(TRUE),
@@ -80,6 +80,7 @@ final class ExampleForm5 extends InputForm
             TextField::make()
                 ->setName('email')
                 ->setOrder(1)
+                ->setHelp('The users email address')
                 ->setLabel('Email')
                 ->setRules([
                     RuleItem::make()->setName('required')->setValue(TRUE),
@@ -88,6 +89,7 @@ final class ExampleForm5 extends InputForm
             SelectField::make()
                 ->setName('status')
                 ->setOrder(2)
+                ->setHelp('The users status')
                 ->setLabel('Status')
                 ->setItems([
                     SelectItem::make()->setId('active')->setValue('Active'),

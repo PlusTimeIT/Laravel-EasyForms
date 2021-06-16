@@ -8,9 +8,7 @@ class CheckboxField extends EasyField
 {
     use Transformable;
 
-    public const TYPE = 'checkbox';
-
     protected $component = 'v-checkbox';
 
-    protected $type = self::TYPE;
+    protected $type = 'checkbox';
 }

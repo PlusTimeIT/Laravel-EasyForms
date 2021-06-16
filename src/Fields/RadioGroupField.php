@@ -15,11 +15,9 @@ class RadioGroupField extends EasyField
     use HasRowColumnLayout;
     use Transformable;
 
-    public const TYPE = 'select';
-
     protected $component = 'v-radio-group';
 
-    protected $type = self::TYPE;
+    protected $type = 'select';
 
     /**
      * Override trait so that we can cast this item.

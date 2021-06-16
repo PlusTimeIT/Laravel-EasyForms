@@ -11,11 +11,9 @@ class PasswordField extends EasyField
     use HasMaxLength;
     use Transformable;
 
-    public const TYPE = 'password';
-
     protected $component = 'v-text-field';
 
-    protected $component_type = self::TYPE;
+    protected $component_type = 'password';
 
-    protected $type = self::TYPE;
+    protected $type = 'password';
 }

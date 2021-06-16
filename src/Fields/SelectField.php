@@ -17,17 +17,12 @@ class SelectField extends EasyField
     use HasMultiple;
     use Transformable;
 
-    public const TYPE = 'select';
-
     protected $component = 'v-select';
 
     protected $loadable;
 
-    protected $type = self::TYPE;
+    protected $type = 'select';
 
-    /**
-     * Override trait so that we can cast this item.
-     */
     public function addItem(SelectItem $item): self
     {
         $this->items[] = $item;

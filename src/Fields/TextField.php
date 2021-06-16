@@ -12,9 +12,7 @@ class TextField extends EasyField
     use HasMaxLength;
     use Transformable;
 
-    public const TYPE = 'text';
-
     protected $component = 'v-text-field';
 
-    protected $maxlength;
+    protected $type = 'text';
 }

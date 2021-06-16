@@ -12,7 +12,7 @@ class TimePickerField extends EasyField
     use HasNoTitle;
     use Transformable;
 
-    public const TYPE = 'time-picker';
-
     protected $component = 'time-picker';
+
+    protected $type = 'time-picker';
 }

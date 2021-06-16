@@ -12,9 +12,7 @@ class DatePickerField extends EasyField
     use HasMultiple;
     use Transformable;
 
-    public const TYPE = 'date-picker';
-
     protected $component = 'date-picker';
 
-    protected $value = '';
+    protected $type = 'date-picker';
 }

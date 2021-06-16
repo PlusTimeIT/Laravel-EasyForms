@@ -6,6 +6,10 @@ use PlusTimeIT\EasyForms\Traits\InputFormTrait;
 
 abstract class InputForm extends EasyForm implements InputFormInterface
 {
+    use InputFormTrait;
+
+    protected $type = 'input';
+
     public function __construct()
     {
         parent::__construct();
@@ -13,12 +17,4 @@ abstract class InputForm extends EasyForm implements InputFormInterface
             ->setFields($this->fields())
             ->setButtons($this->buttons());
     }
-
-    protected $buttons = [];
-
-    protected $fields = [];
-
-    protected $form_type = 'input';
-
-    use InputFormTrait;
 }

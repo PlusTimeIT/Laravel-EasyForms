@@ -2,7 +2,7 @@
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\Attributes\{AcceptsFiles, HasCounter, HasMultiple, HasPrependIcon, HasSize};
+use PlusTimeIT\EasyForms\Traits\Attributes\{AcceptsFiles, HasCounter, HasMultiple, HasPrependIcon, HasShowSize};
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 // File input Accept values
@@ -19,14 +19,12 @@ class FileInputField extends EasyField
     use HasCounter;
     use HasMultiple;
     use HasPrependIcon;
-    use HasSize;
+    use HasShowSize;
     use Transformable;
-
-    public const TYPE = 'file-input';
 
     protected $component = 'v-file-input';
 
-    protected $type = self::TYPE;
+    protected $type = 'file-input';
 
     protected $value = [];
 
