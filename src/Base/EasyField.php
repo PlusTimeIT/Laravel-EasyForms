@@ -7,9 +7,4 @@ use PlusTimeIT\EasyForms\Traits\FieldTrait;
 class EasyField implements FieldInterface
 {
     use FieldTrait;
-
-    public static function make()
-    {
-        return new static();
-    }
 }

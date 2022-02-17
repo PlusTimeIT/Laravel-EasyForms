@@ -5,12 +5,12 @@ trait HasText
 {
     protected $text = FALSE;
 
-    public function getText(): bool
+    public function getText(): string
     {
         return $this->text;
     }
 
-    public function setText(bool $text): self
+    public function setText(string $text): self
     {
         $this->text = $text;
         return $this;

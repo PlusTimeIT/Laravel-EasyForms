@@ -1,10 +1,11 @@
 <?php
 namespace PlusTimeIT\EasyForms\Elements;
 
-use PlusTimeIT\EasyForms\Traits\Transformable;
+use PlusTimeIT\EasyForms\Traits\{Creatable, Transformable};
 
 class ConditionItem
 {
+    use Creatable;
     use Transformable;
 
     protected $against;

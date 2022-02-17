@@ -7,9 +7,4 @@ trait AxiosResponseTrait
     use Attributes\HasLoader;
     use Attributes\HasRedirect;
     use Attributes\HasResult;
-
-    public static function make()
-    {
-        return ( new static() )->setLoader(FALSE);
-    }
 }

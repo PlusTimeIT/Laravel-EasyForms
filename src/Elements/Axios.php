@@ -2,15 +2,11 @@
 namespace PlusTimeIT\EasyForms\Elements;
 
 use PlusTimeIT\EasyForms\Interfaces\AxiosInterface;
-use PlusTimeIT\EasyForms\Traits\{AxiosTrait, Transformable};
+use PlusTimeIT\EasyForms\Traits\{AxiosTrait, Creatable, Transformable};
 
 class Axios implements AxiosInterface
 {
-    public function __construct()
-    {
-        return $this;
-    }
-
     use AxiosTrait;
+    use Creatable;
     use Transformable;
 }

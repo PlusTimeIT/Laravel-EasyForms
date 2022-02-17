@@ -7,7 +7,7 @@ interface FieldInterface
 
     public function getClearable(): bool;
 
-    public function getCols(): int;
+    public function getCols(): int | NULL;
 
     public function getComponent(): string;
 
@@ -39,7 +39,7 @@ interface FieldInterface
 
     public function setClearable(bool $clearable);
 
-    public function setCols(int $cols);
+    public function setCols(int | NULL $cols);
 
     public function setComponent(string $component);
 

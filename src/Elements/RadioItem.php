@@ -6,22 +6,13 @@ use PlusTimeIT\EasyForms\Traits\Attributes\{
     HasLabel,
     HasValue
 };
-use PlusTimeIT\EasyForms\Traits\Transformable;
+use PlusTimeIT\EasyForms\Traits\{Creatable, Transformable};
 
 class RadioItem
 {
+    use Creatable;
     use HasColor;
     use HasLabel;
     use HasValue;
     use Transformable;
-
-    public function __construct()
-    {
-        return $this;
-    }
-
-    public static function make()
-    {
-        return new static();
-    }
 }

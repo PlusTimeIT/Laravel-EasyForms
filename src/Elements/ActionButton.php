@@ -10,10 +10,11 @@ use PlusTimeIT\EasyForms\Traits\Attributes\{
     HasName,
     HasOrder
 };
-use PlusTimeIT\EasyForms\Traits\Transformable;
+use PlusTimeIT\EasyForms\Traits\{Creatable, Transformable};
 
 class ActionButton
 {
+    use Creatable;
     use HasButton;
     use HasCallback;
     use HasCols;
@@ -22,14 +23,4 @@ class ActionButton
     use HasName;
     use HasOrder;
     use Transformable;
-
-    public function __construct()
-    {
-        return $this;
-    }
-
-    public static function make()
-    {
-        return new static();
-    }
 }

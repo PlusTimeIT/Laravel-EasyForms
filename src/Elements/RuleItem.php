@@ -5,21 +5,12 @@ use PlusTimeIT\EasyForms\Traits\Attributes\{
     HasName,
     HasValue
 };
-use PlusTimeIT\EasyForms\Traits\Transformable;
+use PlusTimeIT\EasyForms\Traits\{Creatable, Transformable};
 
 class RuleItem
 {
+    use Creatable;
     use HasName;
     use HasValue;
     use Transformable;
-
-    public function __construct(string $name = '', $value = '')
-    {
-        return $this->setName($name)->setValue($value);
-    }
-
-    public static function make()
-    {
-        return new static();
-    }
 }

@@ -20,5 +20,6 @@ trait FieldTrait
     use Attributes\HasTooltip;
     use Attributes\HasType;
     use Attributes\HasValue;
+    use Creatable;
     use Transformable;
 }

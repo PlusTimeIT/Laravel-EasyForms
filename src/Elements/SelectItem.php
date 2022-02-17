@@ -5,23 +5,12 @@ use PlusTimeIT\EasyForms\Traits\Attributes\{
     HasId,
     HasValue
 };
-use PlusTimeIT\EasyForms\Traits\Transformable;
+use PlusTimeIT\EasyForms\Traits\{Creatable, Transformable};
 
 class SelectItem
 {
+    use Creatable;
     use HasId;
     use HasValue;
     use Transformable;
-
-    protected $value;
-
-    public function __construct($id = '', $value = '')
-    {
-        return $this->setId($id)->setValue($value);
-    }
-
-    public static function make()
-    {
-        return new static();
-    }
 }

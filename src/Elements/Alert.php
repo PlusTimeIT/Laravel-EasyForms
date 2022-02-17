@@ -20,7 +20,7 @@ use PlusTimeIT\EasyForms\Traits\Attributes\{
     HasTrigger,
     HasType,
 };
-use PlusTimeIT\EasyForms\Traits\Transformable;
+use PlusTimeIT\EasyForms\Traits\{Creatable, Transformable};
 
 // TODO Create and implement Alert interface and trait
 // Alert triggers
@@ -35,6 +35,7 @@ use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class Alert
 {
+    use Creatable;
     use HasAutoCloseTimer;
     use HasBorder;
     use HasColor;
@@ -53,14 +54,4 @@ class Alert
     use HasTrigger;
     use HasType;
     use Transformable;
-
-    public function __construct()
-    {
-        return $this;
-    }
-
-    public static function make()
-    {
-        return new static();
-    }
 }

@@ -3,8 +3,32 @@ namespace PlusTimeIT\EasyForms\Forms;
 
 use Illuminate\Http\Request;
 use PlusTimeIT\EasyForms\Base\InputForm;
-use PlusTimeIT\EasyForms\Elements\{Action, Alert, Axios, Button, Header, Icon, RadioItem, RuleItem, SelectItem};
-use PlusTimeIT\EasyForms\Fields\{AutoCompleteField, CheckboxField, DatePickerField, FileInputField, HiddenField, NumberField, PasswordField, RadioGroupField, SelectField, TextField, TextareaField, TimePickerField};
+use PlusTimeIT\EasyForms\Elements\{
+    Action,
+    Alert,
+    Axios,
+    Button,
+    Header,
+    Icon,
+    RadioItem,
+    RuleItem,
+    SelectItem
+};
+use PlusTimeIT\EasyForms\Fields\{
+    AutoCompleteField,
+    CheckboxField,
+    ColorPickerField,
+    DatePickerField,
+    FileInputField,
+    HiddenField,
+    NumberField,
+    PasswordField,
+    RadioGroupField,
+    SelectField,
+    TextField,
+    TextareaField,
+    TimePickerField
+};
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 final class ExampleForm2 extends InputForm
@@ -101,6 +125,16 @@ final class ExampleForm2 extends InputForm
                     RuleItem::make()->setName('email')->setValue('filter'),
                 ])
             ,
+            ColorPickerField::make()
+                ->setName('customer_colour')
+                ->setMode('hexa')
+                ->setOrder(2)
+                ->setLabel('Customer Colour')
+                ->setHelp('Select a colour for this customer')
+                ->setRules([
+                    RuleItem::make()->setName('required')->setValue(TRUE),
+                ])
+            ,
             FileInputField::make()
                 ->setName('resume')
                 ->setOrder(3)
@@ -183,7 +217,7 @@ final class ExampleForm2 extends InputForm
                     SelectItem::make()->setId(4)->setValue('Earth Movers From Earth'),
                 ])
                 ->setRules([
-                    RuleItem::make('required', TRUE),
+                    RuleItem::make(['name' => 'required', 'value' => TRUE]),
                 ])
             ,
             SelectField::make()

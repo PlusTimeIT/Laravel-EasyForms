@@ -5,12 +5,12 @@ trait HasCols
 {
     protected $cols = 12;
 
-    public function getCols(): int
+    public function getCols(): int | NULL
     {
         return $this->cols;
     }
 
-    public function setCols(int $cols): self
+    public function setCols(int | NULL $cols): self
     {
         $this->cols = $cols;
         return $this;

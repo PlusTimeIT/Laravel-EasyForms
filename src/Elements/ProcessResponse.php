@@ -2,15 +2,11 @@
 namespace PlusTimeIT\EasyForms\Elements;
 
 use PlusTimeIT\EasyForms\Interfaces\ProcessResponseInterface;
-use PlusTimeIT\EasyForms\Traits\{ProcessResponseTrait, Transformable};
+use PlusTimeIT\EasyForms\Traits\{Creatable, ProcessResponseTrait, Transformable};
 
 class ProcessResponse implements ProcessResponseInterface
 {
-    public function __construct()
-    {
-        return $this;
-    }
-
+    use Creatable;
     use ProcessResponseTrait;
     use Transformable;
 }

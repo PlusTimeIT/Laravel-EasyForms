@@ -1,6 +1,7 @@
 <?php
 namespace PlusTimeIT\EasyForms\Models;
 
+use Faker\Factory;
 use Illuminate\Support\Collection;
 
 class User
@@ -21,6 +22,24 @@ class User
         return $this->all;
     }
 
+    public static function createUsers(int $count = 1)
+    {
+        $faker = Factory::create();
+        $users = [];
+        for ($i = 0; $i <= ($count - 1); $i++) {
+            $users[] = collect((object) [
+                'id' => $i ,
+                'username' => $faker->lastName(),
+                'password' => '12345' ,
+                'email' => $faker->email(),
+                'status' => $faker->randomElement(['active', 'inactive', 'banned']),
+                'created_at' => $faker->iso8601(),
+                'colour' => $faker->hexColor(),
+            ]);
+        }
+        return collect($users);
+    }
+
     public function deleteUserById($id): self
     {
         $this->all = $this->all->filter(fn($user) => $user->get('id') == $id ? FALSE : TRUE);
@@ -35,13 +54,7 @@ class User
 
     public static function initialUserList()
     {
-        return collect([
-            collect((object) ['id' => 0 , 'username' => 'user_1', 'password' => '12345' , 'email' => 'testing@12345.com', 'status' => 'active', 'created_at' => '2021-05-01T01:00:00.000Z']),
-            collect((object) ['id' => 1 , 'username' => 'user_2', 'password' => '23456' , 'email' => 'testing@23456.com', 'status' => 'active', 'created_at' => '2021-05-02T01:00:00.000Z']),
-            collect((object) ['id' => 2 , 'username' => 'user_3', 'password' => '34567' , 'email' => 'testing@34567.com', 'status' => 'inactive', 'created_at' => '2021-05-03T01:00:00.000Z']),
-            collect((object) ['id' => 3 , 'username' => 'user_4', 'password' => '45678' , 'email' => 'testing@45678.com', 'status' => 'inactive', 'created_at' => '2021-05-04T01:00:00.000Z']),
-            collect((object) ['id' => 4 , 'username' => 'user_5', 'password' => '56789' , 'email' => 'testing@12345.com', 'status' => 'banned', 'created_at' => '2021-05-05T01:00:00.000Z']),
-        ]);
+        return self::createUsers(5);
     }
 
     public static function make()

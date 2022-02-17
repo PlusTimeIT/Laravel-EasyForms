@@ -10,11 +10,12 @@ use PlusTimeIT\EasyForms\Traits\Attributes\{
     HasName,
     HasOrder
 };
-use PlusTimeIT\EasyForms\Traits\Transformable;
+use PlusTimeIT\EasyForms\Traits\{Creatable, Transformable};
 
 // TODO Create ActionIcon Interface and Traits
 class ActionIcon
 {
+    use Creatable;
     use HasCallback;
     use HasCols;
     use HasConditions;
@@ -23,14 +24,4 @@ class ActionIcon
     use HasName;
     use HasOrder;
     use Transformable;
-
-    public function __construct()
-    {
-        return $this;
-    }
-
-    public static function make()
-    {
-        return new static();
-    }
 }

@@ -38,7 +38,7 @@
                             @include('laravel-easyforms::examples.menu.links')
                         </v-row>
                         <v-row>
-                            <v-col cols="12">
+                            <v-col cols="12" md="8" class="mx-auto">
                                 <v-row>
                                     <v-col class="title">
                                         {{ $example->getName() }} - {{ $example->getTitle() }}

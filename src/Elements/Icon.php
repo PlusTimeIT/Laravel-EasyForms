@@ -6,10 +6,11 @@ use PlusTimeIT\EasyForms\Traits\Attributes\{
     HasSize,
     HasTooltip,
 };
-use PlusTimeIT\EasyForms\Traits\Transformable;
+use PlusTimeIT\EasyForms\Traits\{Creatable, Transformable};
 
 class Icon
 {
+    use Creatable;
     use HasColor;
     use HasSize;
     use HasTooltip;
@@ -17,19 +18,9 @@ class Icon
 
     protected $icon;
 
-    public function __construct()
-    {
-        return $this;
-    }
-
     public function getIcon(): string
     {
         return $this->icon;
-    }
-
-    public static function make(string $icon = '', string $tooltip = '')
-    {
-        return ( new static())->setIcon($icon)->setTooltip($tooltip);
     }
 
     public function setIcon(string $icon): self

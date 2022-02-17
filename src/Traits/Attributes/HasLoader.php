@@ -3,7 +3,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasLoader
 {
-    protected $loader;
+    protected $loader = FALSE;
 
     public function getLoader(): bool
     {

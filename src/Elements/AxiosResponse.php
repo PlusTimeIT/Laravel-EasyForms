@@ -2,15 +2,11 @@
 namespace PlusTimeIT\EasyForms\Elements;
 
 use PlusTimeIT\EasyForms\Interfaces\AxiosResponseInterface;
-use PlusTimeIT\EasyForms\Traits\{AxiosResponseTrait, Transformable};
+use PlusTimeIT\EasyForms\Traits\{AxiosResponseTrait, Creatable, Transformable};
 
 class AxiosResponse implements AxiosResponseInterface
 {
-    public function __construct()
-    {
-        return $this;
-    }
-
     use AxiosResponseTrait;
+    use Creatable;
     use Transformable;
 }

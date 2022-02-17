@@ -3,10 +3,11 @@ namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Traits\Attributes\{HasAnyField, HasChips, HasItemId, HasItemText, HasItemValue, HasItems, HasMultiple};
-use PlusTimeIT\EasyForms\Traits\Transformable;
+use PlusTimeIT\EasyForms\Traits\{Creatable, Transformable};
 
 class AutoCompleteField extends EasyField
 {
+    use Creatable;
     use HasAnyField;
     use HasChips;
     use HasItemId;

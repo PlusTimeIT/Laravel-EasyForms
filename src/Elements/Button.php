@@ -10,10 +10,11 @@ use PlusTimeIT\EasyForms\Traits\Attributes\{
     HasText,
     HasType,
 };
-use PlusTimeIT\EasyForms\Traits\Transformable;
+use PlusTimeIT\EasyForms\Traits\{Creatable, Transformable};
 
 class Button
 {
+    use Creatable;
     use HasClass;
     use HasColor;
     use HasIcon;
@@ -22,14 +23,4 @@ class Button
     use HasText;
     use HasType;
     use Transformable;
-
-    public function __construct()
-    {
-        return $this;
-    }
-
-    public static function make()
-    {
-        return new static();
-    }
 }

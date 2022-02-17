@@ -28,6 +28,7 @@ final class ExampleForm4 extends ActionForm
             ActionIcon::make()
                 ->setIdentifier('editUser')
                 ->setName('Edit User Details')
+                ->setCols(NULL)
                 ->setIcon(
                     Icon::make()->setIcon('mdi-pencil')->setTooltip('Edit Action')
                 )
@@ -37,8 +38,9 @@ final class ExampleForm4 extends ActionForm
             ActionIcon::make()
                 ->setIdentifier('activateUser')
                 ->setName('Activate User')
+                ->setCols(NULL)
                 ->setIcon(
-                    Icon::make('mdi-account-check', 'Activate User')
+                    Icon::make(['icon' => 'mdi-account-check', 'tooltip' => 'Activate User'])
                 )
                 ->setConditions([
                     ConditionItem::make('status', '!=', 'active'),
@@ -48,8 +50,9 @@ final class ExampleForm4 extends ActionForm
             ActionIcon::make()
                 ->setIdentifier('deactivateUser')
                 ->setName('Deactivate User')
+                ->setCols(NULL)
                 ->setIcon(
-                    Icon::make('mdi-account-clock', 'Deactivate User')
+                    Icon::make(['icon' => 'mdi-account-clock', 'tooltip' => 'Deactivate User'])
                 )
                 ->setConditions([
                     ConditionItem::make('status', '!=', 'inactive'),
@@ -58,20 +61,22 @@ final class ExampleForm4 extends ActionForm
                 ->setOrder(2),
             ActionIcon::make()
                 ->setIdentifier('banUser')
+                ->setCols(NULL)
                 ->setName('Ban User')
                 ->setConditions([
                     ConditionItem::make('status', '!=', 'banned'),
                 ])
                 ->setIcon(
-                    Icon::make('mdi-account-off', 'Ban User')
+                    Icon::make(['icon' => 'mdi-account-off', 'tooltip' => 'Ban User'])
                 )
                 ->setCallback('banUser')
                 ->setOrder(3),
             ActionIcon::make()
                 ->setIdentifier('deleteUser')
+                ->setCols(NULL)
                 ->setName('Delete User')
                 ->setIcon(
-                    Icon::make('mdi-delete-circle', 'Delete Action')
+                    Icon::make(['icon' => 'mdi-delete-circle', 'tooltip' => 'Delete Action'])
                 )
                 ->setCallback('deleteUser')
                 ->setOrder(4),

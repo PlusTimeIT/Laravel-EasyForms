@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use PlusTimeIT\EasyForms\Base\InputForm;
 use PlusTimeIT\EasyForms\Controllers\Users;
 use PlusTimeIT\EasyForms\Elements\{Action, Alert, Axios, Button, Header, Icon, ProcessResponse, RuleItem, SelectItem};
-use PlusTimeIT\EasyForms\Fields\{HiddenField, SelectField, TextField};
+use PlusTimeIT\EasyForms\Fields\{ColorPickerField, HiddenField, SelectField, TextField};
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 final class ExampleForm5 extends InputForm
@@ -63,6 +63,26 @@ final class ExampleForm5 extends InputForm
             HiddenField::make()
                 ->setName('id')
                 ->setOrder(0)
+                ->setRules([
+                    RuleItem::make()->setName('required')->setValue(TRUE),
+                ])
+            ,
+
+            TextField::make()
+                ->setName('name')
+                ->setOrder(0)
+                ->setClearable(TRUE)
+                ->setHelp('The users name')
+                ->setLabel('Name')
+                ->setRules([
+                    RuleItem::make()->setName('required')->setValue(TRUE),
+                ])
+            ,
+            ColorPickerField::make()
+                ->setName('colour')
+                ->setOrder(0)
+                ->setHelp('The users colour in hex')
+                ->setLabel('Colour')
                 ->setRules([
                     RuleItem::make()->setName('required')->setValue(TRUE),
                 ])
