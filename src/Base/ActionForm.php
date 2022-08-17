@@ -13,7 +13,7 @@ abstract class ActionForm extends EasyForm implements ActionFormInterface
     public function __construct()
     {
         parent::__construct();
-        $this
+        return $this
             ->setActions($this->actions());
     }
 }

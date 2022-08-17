@@ -10,7 +10,7 @@ abstract class EasyForm implements FormInterface
 
     public function __construct()
     {
-        $this
+        return $this
             ->setAlerts($this->alerts())
             ->setAxios($this->axios());
     }

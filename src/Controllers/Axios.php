@@ -23,10 +23,17 @@ class Axios extends Controller
     public function load(request $request)
     {
         $form = config('easyforms.form-namespace') . '\\' . str_replace('-', '\\', $request->form_name);
-
+        try {
+            $formModel = call_user_func([$form, 'fill'], $request);
+        } catch (\Exception $e) {
+            return AxiosResponse::make()
+                ->success()
+                ->data('Unknown form data')
+                ->toJson();
+        }
         return AxiosResponse::make()
             ->success()
-            ->data(( new $form() )->fill($request))
+            ->data($formModel)
             ->toJson();
     }
 

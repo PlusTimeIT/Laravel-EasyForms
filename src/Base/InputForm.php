@@ -13,7 +13,7 @@ abstract class InputForm extends EasyForm implements InputFormInterface
     public function __construct()
     {
         parent::__construct();
-        $this
+        return $this
             ->setFields($this->fields())
             ->setButtons($this->buttons());
     }

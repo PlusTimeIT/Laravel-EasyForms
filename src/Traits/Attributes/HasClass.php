@@ -10,7 +10,7 @@ trait HasClass
         return $this->class;
     }
 
-    public function setClass(string $type): self
+    public function setClass(string $class): self
     {
         $this->class = $class;
         return $this;
