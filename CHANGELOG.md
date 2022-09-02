@@ -4,6 +4,9 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+## 0.0.8@beta
+- Switched to better version naming convention
+
 ## 0.0.21
 - Implemented outlined and tile on button
 
