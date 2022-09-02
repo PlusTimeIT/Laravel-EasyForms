@@ -1,26 +1,20 @@
 <?php
 namespace PlusTimeIT\EasyForms\Elements;
 
-use PlusTimeIT\EasyForms\Traits\Attributes\{
-    HasClass,
-    HasColor,
-    HasIcon,
-    HasOrder,
-    HasRounded,
-    HasText,
-    HasType,
-};
+use PlusTimeIT\EasyForms\Traits\Attributes;
 use PlusTimeIT\EasyForms\Traits\{Creatable, Transformable};
 
 class Button
 {
     use Creatable;
-    use HasClass;
-    use HasColor;
-    use HasIcon;
-    use HasOrder;
-    use HasRounded;
-    use HasText;
-    use HasType;
+    use Attributes\HasClass;
+    use Attributes\HasColor;
+    use Attributes\HasIcon;
+    use Attributes\HasOrder;
+    use Attributes\HasRounded;
+    use Attributes\HasText;
+    use Attributes\HasType;
+    use Attributes\HasTile;
+    use Attributes\HasOutlined;
     use Transformable;
 }

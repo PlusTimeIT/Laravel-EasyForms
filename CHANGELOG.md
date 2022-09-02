@@ -4,6 +4,9 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+## 0.0.21
+- Implemented outlined and tile on button
+
 ## 0.0.20
 - More traits and fixed missing axios and others\
 - Implemented Creatable trait that handles make, create and __construct() accepting array of options for now.
