@@ -4,6 +4,9 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+## 0.0.10@beta
+- Readded HasItems attribute
+- 
 ## 0.0.9@beta
 - Added CheckboxItem and LvefCheckboxGroup support
 - 
