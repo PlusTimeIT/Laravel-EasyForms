@@ -4,6 +4,9 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+## 0.0.13@beta
+- Added support for `v-switch` named SwitchField including a bunch of new traits
+
 ## 0.0.12@beta
 - Added `protected $type = 'checkbox-group';` to LvefCheckboxGroup
 
