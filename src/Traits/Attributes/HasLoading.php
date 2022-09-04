@@ -1,7 +1,7 @@
 <?php
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
-trait Hasloading
+trait HasLoading
 {
     protected $loading = FALSE;
 

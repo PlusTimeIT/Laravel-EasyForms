@@ -23,6 +23,7 @@ use PlusTimeIT\EasyForms\Traits\Attributes\{
     HasInset,
     HasLabel,
     HasLight,
+    HasLoading,
     HasMessages,
     HasMultiple,
     HasPersistentHint,
@@ -57,7 +58,7 @@ class SwitchField extends EasyField
     use HasInset;
     use HasLabel;
     use HasLight;
-    use Hasloading;
+    use HasLoading;
     use HasMessages;
     use HasMultiple;
     use HasPersistentHint;
