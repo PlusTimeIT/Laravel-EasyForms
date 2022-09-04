@@ -32,6 +32,7 @@ use PlusTimeIT\EasyForms\Traits\Attributes\{
     HasSuccess,
     HasSuccessMessages,
     HasTrueValue,
+    HasValidateOnBlur,
     HasValue
 };
 use PlusTimeIT\EasyForms\Traits\Transformable;
