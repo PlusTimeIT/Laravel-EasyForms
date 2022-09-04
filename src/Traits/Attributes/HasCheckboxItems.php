@@ -1,11 +1,20 @@
 <?php
-
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
-trait HasItems
+use PlusTimeIT\EasyForms\Elements\CheckboxItem;
+
+trait HasCheckboxItems
 {
     protected $items = [];
-    protected $itemType = SelectItem::class;
+
+    protected $itemType = CheckboxItem::class;
+
+    public function addItem($item): self
+    {
+        $this->items[] = $item;
+
+        return $this;
+    }
 
     public function getItems(): array
     {
@@ -15,13 +24,6 @@ trait HasItems
     public function setItems(array $items): self
     {
         $this->items = $items;
-
-        return $this;
-    }
-
-    public function addItem($item): self
-    {
-        $this->items[] = $item;
 
         return $this;
     }
