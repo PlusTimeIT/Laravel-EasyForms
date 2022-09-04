@@ -15,6 +15,8 @@ class CheckboxGroupField extends EasyField
 
     protected $component = 'lvef-checkbox-group';
 
+    protected $type = 'checkbox-group';
+
     /**
      * Override trait so that we can cast this item.
      */

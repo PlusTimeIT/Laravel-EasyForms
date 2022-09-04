@@ -4,6 +4,9 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+## 0.0.12@beta
+- Added `protected $type = 'checkbox-group';` to LvefCheckboxGroup
+
 ## 0.0.11@beta
 - Fixed LvefCheckboxGroup checkbox items to include ID
 - 
