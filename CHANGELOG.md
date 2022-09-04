@@ -4,6 +4,9 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+## 0.0.15@beta
+- HasDisplay bug fix
+
 ## 0.0.14@beta
 - Added support for on checkbox group
 

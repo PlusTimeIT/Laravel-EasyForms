@@ -9,6 +9,7 @@ use PlusTimeIT\EasyForms\Traits\Attributes\{
     HasDark,
     HasDense,
     HasDisabled,
+    HasDisplay,
     HasError,
     HasErrorCount,
     HasErrorMessages,
