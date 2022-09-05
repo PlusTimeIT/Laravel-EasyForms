@@ -3,14 +3,12 @@ namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Elements\CheckboxItem;
-use PlusTimeIT\EasyForms\Traits\Attributes\{HasAnyField, HasCheckboxItems, HasChips, HasItemId, HasItemValue, HasMandatory, HasMultiple, HasRowColumnLayout, HasSwitch};
+use PlusTimeIT\EasyForms\Traits\Attributes\{HasCheckboxItems, HasSwitch};
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class CheckboxGroupField extends EasyField
 {
-    use HasAnyField;
     use HasCheckboxItems;
-    use HasMandatory;
     use HasSwitch;
     use Transformable;
 

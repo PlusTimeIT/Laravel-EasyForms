@@ -18,7 +18,7 @@ class RadioGroupFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
 
     public function testAAnyFieldCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = TRUE;
         $field->setAnyField($test);
         $this->assertSame($field->getAnyField(), $test);
@@ -26,7 +26,7 @@ class RadioGroupFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
 
     public function testAChipsCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = TRUE;
         $field->setChips($test);
         $this->assertSame($field->getChips(), $test);
@@ -34,7 +34,7 @@ class RadioGroupFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
 
     public function testAColumnCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = FALSE;
         $field->setColumn($test);
         $this->assertSame($field->getColumn(), $test);
@@ -42,13 +42,13 @@ class RadioGroupFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
 
     public function testAComponentIsRadioGroup()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $this->assertSame($field->getComponent(), $this->fieldComponent);
     }
 
     public function testAItemCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = RadioItem::make()->setColor('white')->setLabel('Testing')->setValue('test');
         $field->addItem($test);
         $this->assertContains($test, $field->getItems());
@@ -56,7 +56,7 @@ class RadioGroupFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
 
     public function testAItemsCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = [];
         $field->setItems($test);
         $this->assertSame($field->getItems(), $test);
@@ -64,7 +64,7 @@ class RadioGroupFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
 
     public function testAMandatoryCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = TRUE;
         $field->setMandatory($test);
         $this->assertSame($field->getMandatory(), $test);
@@ -72,7 +72,7 @@ class RadioGroupFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
 
     public function testAMultipleCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = TRUE;
         $field->setMultiple($test);
         $this->assertSame($field->getMultiple(), $test);
@@ -80,7 +80,7 @@ class RadioGroupFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
 
     public function testARowCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = TRUE;
         $field->setRow($test);
         $this->assertSame($field->getRow(), $test);

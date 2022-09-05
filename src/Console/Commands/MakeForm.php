@@ -4,6 +4,10 @@ namespace PlusTimeIT\EasyForms\Console\Commands;
 use File;
 use Illuminate\Console\Command;
 
+/**
+ * Command to make a form from the terminal
+ */
+
 class MakeForm extends Command
 {
     public function handle()

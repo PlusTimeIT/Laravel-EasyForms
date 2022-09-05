@@ -17,7 +17,7 @@ class DatePickerFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
 
     public function testACloseOnContentClickCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = FALSE;
         $field->setCloseOnContentClick($test);
         $this->assertSame($field->getCloseOnContentClick(), $test);
@@ -25,13 +25,13 @@ class DatePickerFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
 
     public function testAComponentIsDatePicker()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $this->assertSame($field->getComponent(), $this->fieldComponent);
     }
 
     public function testAControlsCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = TRUE;
         $field->setControls($test);
         $this->assertSame($field->getControls(), $test);
@@ -39,7 +39,7 @@ class DatePickerFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
 
     public function testAMultipleCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = TRUE;
         $field->setMultiple($test);
         $this->assertSame($field->getMultiple(), $test);

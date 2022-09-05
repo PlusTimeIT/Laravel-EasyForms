@@ -18,7 +18,7 @@ class AutoCompleteTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTest
 
     public function testAAnyFieldCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = TRUE;
         $field->setAnyField($test);
         $this->assertSame($field->getAnyField(), $test);
@@ -26,7 +26,7 @@ class AutoCompleteTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTest
 
     public function testAChipsCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = TRUE;
         $field->setChips($test);
         $this->assertSame($field->getChips(), $test);
@@ -34,13 +34,13 @@ class AutoCompleteTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTest
 
     public function testAComponentIsAutoComplete()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $this->assertSame($field->getComponent(), $this->fieldComponent);
     }
 
     public function testAItemCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = SelectItem::make()->setId(0)->setValue('test');
 
         $field->addItem($test);
@@ -49,7 +49,7 @@ class AutoCompleteTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTest
 
     public function testAItemIdCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = 'test id';
         $field->setItemId($test);
         $this->assertSame($field->getItemId(), $test);
@@ -57,7 +57,7 @@ class AutoCompleteTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTest
 
     public function testAItemsCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = [];
         $field->setItems($test);
         $this->assertSame($field->getItems(), $test);
@@ -65,7 +65,7 @@ class AutoCompleteTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTest
 
     public function testAItemTextCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = 'test text';
         $field->setItemText($test);
         $this->assertSame($field->getItemText(), $test);
@@ -73,7 +73,7 @@ class AutoCompleteTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTest
 
     public function testAItemValueCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = 'test value';
         $field->setItemValue($test);
         $this->assertSame($field->getItemValue(), $test);
@@ -81,7 +81,7 @@ class AutoCompleteTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTest
 
     public function testAMultipleCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = TRUE;
         $field->setMultiple($test);
         $this->assertSame($field->getMultiple(), $test);

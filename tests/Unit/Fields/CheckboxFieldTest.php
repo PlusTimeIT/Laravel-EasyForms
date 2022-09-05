@@ -17,7 +17,7 @@ class CheckboxFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTes
 
     public function testAComponentIsCheckbox()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $this->assertSame($field->getComponent(), $this->fieldComponent);
     }
 }

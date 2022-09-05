@@ -17,13 +17,13 @@ class TextareaFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTes
 
     public function testAComponentIsTextarea()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $this->assertSame($field->getComponent(), $this->fieldComponent);
     }
 
     public function testARowsCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = 10;
         $field->setRows($test);
         $this->assertSame($field->getRows(), $test);

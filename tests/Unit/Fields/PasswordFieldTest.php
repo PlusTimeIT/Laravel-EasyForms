@@ -17,34 +17,34 @@ class PasswordFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTes
 
     public function testAComponentIsTextField()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $this->assertSame($field->getComponent(), $this->fieldComponent);
     }
 
     public function testACounterCanBeSet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $field->setCounter('10');
         $this->assertObjectHasAttribute('counter', $field);
     }
 
     public function testAMaxLengthCanBeSet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $field->setMaxLength('10');
         $this->assertObjectHasAttribute('maxlength', $field);
     }
 
     public function testCanGetCounter()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $field->setCounter('10');
         $this->assertTrue('10' == $field->getCounter());
     }
 
     public function testCanGetMaxLength()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $field->setMaxLength('10');
         $this->assertTrue('10' == $field->getMaxLength());
     }

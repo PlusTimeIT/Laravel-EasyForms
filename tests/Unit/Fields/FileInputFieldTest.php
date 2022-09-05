@@ -17,7 +17,7 @@ class FileInputFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTe
 
     public function testAAcceptCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = 'tests';
         $field->setAccept($test);
         $this->assertSame($field->getAccept(), $test);
@@ -25,13 +25,13 @@ class FileInputFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTe
 
     public function testAComponentIsFileInput()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $this->assertSame($field->getComponent(), $this->fieldComponent);
     }
 
     public function testACounterCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = TRUE;
         $field->setCounter($test);
         $this->assertSame($field->getCounter(), $test);
@@ -39,7 +39,7 @@ class FileInputFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTe
 
     public function testAMultipleCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = TRUE;
         $field->setMultiple($test);
         $this->assertSame($field->getMultiple(), $test);
@@ -47,7 +47,7 @@ class FileInputFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTe
 
     public function testAPrependIconCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = 'test icon';
         $field->setPrependIcon($test);
         $this->assertSame($field->getPrependIcon(), $test);
@@ -55,7 +55,7 @@ class FileInputFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTe
 
     public function testAShowSizeCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = TRUE;
         $field->setShowSize($test);
         $this->assertSame($field->getShowSize(), $test);

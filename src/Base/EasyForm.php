@@ -4,6 +4,10 @@ namespace PlusTimeIT\EasyForms\Base;
 use PlusTimeIT\EasyForms\Interfaces\FormInterface;
 use PlusTimeIT\EasyForms\Traits\FormTrait;
 
+/**
+ * Base form class.
+ */
+
 abstract class EasyForm implements FormInterface
 {
     use FormTrait;

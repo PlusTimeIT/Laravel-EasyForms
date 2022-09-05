@@ -17,7 +17,7 @@ class HiddenFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestC
 
     public function testAComponentIsTextField()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $this->assertSame($field->getComponent(), $this->fieldComponent);
     }
 }

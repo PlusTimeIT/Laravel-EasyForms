@@ -4,6 +4,11 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+## 0.0.18@beta
+- Added comments to some files
+- Updates PHPUnit tests
+- Update Readme file
+
 ## 0.0.17@beta
 - HasValidateOnBlur bug fix
 

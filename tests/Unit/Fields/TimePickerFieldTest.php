@@ -17,7 +17,7 @@ class TimePickerFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
 
     public function testAAmPmInTitleCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = FALSE;
         $field->setAmPmInTitle($test);
         $this->assertSame($field->getAmPmInTitle(), $test);
@@ -25,13 +25,13 @@ class TimePickerFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
 
     public function testAComponentIsTimePicker()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $this->assertSame($field->getComponent(), $this->fieldComponent);
     }
 
     public function testAMultipleCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = TRUE;
         $field->setMultiple($test);
         $this->assertSame($field->getMultiple(), $test);
@@ -39,7 +39,7 @@ class TimePickerFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
 
     public function testANoTitleCanBeSetAndGet()
     {
-        $field = new $this->fieldClass();
+        $field = $this->fieldClass::make();
         $test = TRUE;
         $field->setNoTitle($test);
         $this->assertSame($field->getNoTitle(), $test);

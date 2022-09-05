@@ -27,6 +27,8 @@ Laravel EasyForms is a package that makes setting up and managing forms and acti
       - [Available fields](#available-fields)
         - [Autocomplete](#autocomplete)
         - [Checkbox](#checkbox)
+        - [Checkbox Group](#checkbox-group)
+        - [Switch Field](#switch-field)
         - [Date Picker](#date-picker)
         - [File Input](#file-input)
         - [Hidden](#hidden)
@@ -435,6 +437,111 @@ CheckboxField::make()
 
 ---
 
+##### Checkbox Group
+[Vuetify Checkbox](https://vuetifyjs.com/en/components/checkboxes/)
+
+<details>
+<summary>Checkbox Group Properties</summary>
+| Property   | Type        | Default | Description                           |
+|-:----------|-:-----------|-:-------|-:-------------------------------------|
+| **items**  | Array       | []      | Holds an array of CheckBoxItems       |
+| **switch** | SwitchField | NULL    | Show a "Select / Deselect All" switch |
+</details>
+
+<details>
+<summary>Checkbox Group Example</summary>
+
+````php
+CheckboxGroupField::make()
+    ->setName('permissions')
+    ->setOrder(1)
+    ->setCols(12)
+    ->setHelp('Select the Roles permissions')
+    ->setLabel('Select Permissions')
+    ->setItems([
+        CheckboxItem::make()
+            ->setId('can edit profile')
+            ->setValue('Can Edit Profile')
+            ->setCols(6)
+            ->setColor('primary')
+            ->setLabel('Can Edit Profile')
+        ,
+        CheckboxItem::make()
+            ->setId('can edit customer profile')
+            ->setValue('Can Edit Customer Profile')
+            ->setCols(6)->setColor('primary')
+            ->setLabel('Can Edit Customer Profile')
+        ,
+    ])
+    ->setSwitch(
+        SwitchField::make()->setDisplay(TRUE)
+    )
+    ->setRules([
+        RuleItem::make()->setName('required')->setValue(TRUE),
+    ]),
+````
+
+</details>
+
+---
+
+##### Switch Field
+[Vuetify Switches](https://vuetifyjs.com/en/components/switches/)
+
+<details>
+<summary>Switch Field Properties</summary>
+| Property              | Type              | Default | Description                                                                                            |
+|--:--------------------|--:----------------|--:------|--:-----------------------------------------------------------------------------------------------------|
+| **append_icon**       | String            | NULL    | Appends an icon to the component, uses the same syntax as v-icon                                       |
+| **background_color**  | String            | NULL    | Changes the background-color of the input                                                              |
+| **color**             | String            | NULL    | Applies specified color to the control - it can be the name of material color                          |
+| **dark**              | Boolean           | FALSE   | Applies the dark theme variant to the component.                                                       |
+| **dense**             | Boolean           | FALSE   | Reduces the input height                                                                               |
+| **disabled**          | Boolean           | FALSE   | Disable the input                                                                                      |
+| **error**             | Boolean           | FALSE   | Puts the input in a manual error state                                                                 |
+| **error-count**       | Integer or String | 1       | The total number of errors that should display at once                                                 |
+| **error-messages**    | String or Array   | []      | Puts the input in an error state and passes through custom error messages.                             |
+| **false-value**       | Any               | NULL    | Sets value for falsy state                                                                             |
+| **flat**              | Boolean           | FALSE   | Display component without elevation. Default elevation for thumb is 4dp, flat resets it                |
+| **hide_details**      | Boolean or String | NULL    | Hides hint and validation errors. When set to auto messages will be rendered only if there’s a message |
+| **hide_spin_buttons** | Boolean           | FALSE   | Hides spin buttons on the input when type is set to number.                                            |
+| **hint**              | String            | NULL    | Hint text                                                                                              |
+| **id**                | String            | NULL    | Sets the DOM id on the component                                                                       |
+| **input_value**       | Any               | NULL    | The v-model bound value                                                                                |
+| **inset**             | Boolean           | FALSE   | Enlarge the v-switch track to encompass the thumb                                                      |
+| **light**             | Boolean           | FALSE   | Applies the light theme variant to the component.                                                      |
+| **loading**           | Boolean or String | FALSE   | Displays circular progress bar.                                                                        |
+| **messages **         | String or Array   | []      | Displays a list of messages or message if using a string                                               |
+| **multiple **         | Boolean           | FALSE   | Changes expected model to an array                                                                     |
+| **persistent_hint **  | Boolean           | FALSE   | Forces hint to always be visible                                                                       |
+| **prepend_icon **     | Any               | NULL    | Prepends an icon to the component uses the same syntax as v-icon                                       |
+| **readonly **         | Boolean           | FALSE   | Puts input in readonly state                                                                           |
+| **success **          | Boolean           | FALSE   | Puts the input in a manual success state                                                               |
+| **success_messages ** | String or Array   | []      | Puts the input in a success state and passes through custom success messages.                          |
+| **true_value **       | Any               | NULL    | Sets value for truthy state                                                                            |
+| **validate_on_blur ** | Boolean           | FALSE   | Delays validation until blur event                                                                     |
+
+
+</details>
+
+<details>
+<summary>Switch Field Example</summary>
+
+````php
+SwitchField::make()
+    ->setDisplay(TRUE)
+    ->setName('terms_and_conditions')
+    ->setLabel('Do you accept the terms and conditions')
+    ->setOrder(0)
+    ->setRules([
+        RuleItem::make()->setName('required')->setValue(TRUE),
+    ]);
+````
+
+</details>
+
+---
+
 ##### Date Picker
 This is a custom date input that utilizes the [Vuetify Date Picker](https://vuetifyjs.com/en/components/date-pickers/)
 
@@ -547,9 +654,9 @@ Just a number input field
 <summary>Number Example</summary>
 
 ````php
-HiddenField::make()
-    ->setName('token')
-    ->setOrder(99)
+NumberField::make()
+    ->setName('total_count')
+    ->setOrder(0)
     ->setValue(\Carbon\Carbon::now()->toIso8601String())
     ->setRules([
         RuleItem::make()->setName('required')->setValue(TRUE),

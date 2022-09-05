@@ -12,10 +12,4 @@ class FieldTestCase extends \Orchestra\Testbench\TestCase
     protected $fieldComponent;
 
     protected $fieldType;
-
-    public function testItCanBeStaticallyCreated()
-    {
-        $class = $this->fieldClass;
-        $this->assertTrue($class::make() == new $class());
-    }
 }
