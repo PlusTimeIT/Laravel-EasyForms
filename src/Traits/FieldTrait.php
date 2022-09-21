@@ -19,6 +19,7 @@ trait FieldTrait
     use Attributes\HasRules;
     use Attributes\HasTooltip;
     use Attributes\HasType;
+    use Attributes\hasShowIf;
     use Attributes\HasValue;
     use Creatable;
     use Transformable;
