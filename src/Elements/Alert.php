@@ -9,8 +9,10 @@ use PlusTimeIT\EasyForms\Traits\Attributes\{
     HasDark,
     HasDense,
     HasDismissible,
+    HasDisplay,
     HasElevation,
     HasIcon,
+    HasOldContents,
     HasOrder,
     HasOrigin,
     HasOutlined,
@@ -33,6 +35,7 @@ use PlusTimeIT\EasyForms\Traits\{Creatable, Transformable};
 // success_processing - Alert triggers on a successful axios call
 // form_reset - Alert triggers when a form has been reset
 
+// TODO ADD old_contents
 class Alert
 {
     use Creatable;
@@ -43,8 +46,10 @@ class Alert
     use HasDark;
     use HasDense;
     use HasDismissible;
+    use HasDisplay;
     use HasElevation;
     use HasIcon;
+    use HasOldContents;
     use HasOrder;
     use HasOrigin;
     use HasOutlined;
