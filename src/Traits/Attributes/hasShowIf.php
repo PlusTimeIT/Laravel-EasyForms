@@ -16,6 +16,7 @@ trait hasShowIf
 
     public function setShowIf(string $parent, mixed $value)
     {
+        $this->show_if = TRUE;
         $this->show_if_parent = $parent;
         $this->show_if_value = $value;
         return $this;
@@ -23,6 +24,7 @@ trait hasShowIf
 
     public function showIf(string $parent, mixed $value)
     {
+        $this->show_if = TRUE;
         $this->show_if_parent = $parent;
         $this->show_if_value = $value;
         return $this;
