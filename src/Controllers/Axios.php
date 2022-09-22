@@ -40,7 +40,8 @@ class Axios extends Controller
     public function process(request $request)
     {
         $form = config('easyforms.form-namespace') . '\\' . str_replace('-', '\\', $request->form_name);
-        $form = new $form();
+        // fill required to get default values and any rules that may have changed.
+        $form = call_user_func([$form, 'fill'], $request);
         $results = $form->validateRequest($request);
         if ($results->fails()) {
             return AxiosResponse::make()
