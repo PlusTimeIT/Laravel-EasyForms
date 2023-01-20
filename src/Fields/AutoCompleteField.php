@@ -2,7 +2,7 @@
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\Attributes\{HasAnyField, HasChips, HasItemId, HasItemText, HasItemValue, HasItems, HasMultiple};
+use PlusTimeIT\EasyForms\Traits\Attributes\{HasAnyField, HasChips, HasItemId, HasItemText, HasItemValue, HasItems, HasLoadable, HasMultiple};
 use PlusTimeIT\EasyForms\Traits\{Creatable, Transformable};
 
 class AutoCompleteField extends EasyField
@@ -14,6 +14,7 @@ class AutoCompleteField extends EasyField
     use HasItems;
     use HasItemText;
     use HasItemValue;
+    use HasLoadable;
     use HasMultiple;
     use Transformable;
 
