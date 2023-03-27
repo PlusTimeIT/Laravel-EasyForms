@@ -3,7 +3,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasTrigger
 {
-    protected $trigger = 'process_success';
+    protected $trigger = 'success_processing';
 
     public function getTrigger(): string
     {
