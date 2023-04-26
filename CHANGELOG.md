@@ -4,9 +4,12 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+## 0.1.3@beta
+- Added Alert Text Style (boolean not string)
+- 
 ## 0.1.2@beta
 - Updated how order is handled
-- 
+  
 ## 0.0.18@beta
 - Added comments to some files
 - Updates PHPUnit tests

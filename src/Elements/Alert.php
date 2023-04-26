@@ -17,7 +17,7 @@ use PlusTimeIT\EasyForms\Traits\Attributes\{
     HasOrigin,
     HasOutlined,
     HasProminent,
-    HasText,
+    HasTextStyle,
     HasTransition,
     HasTrigger,
     HasType,
@@ -54,7 +54,7 @@ class Alert
     use HasOrigin;
     use HasOutlined;
     use HasProminent;
-    use HasText;
+    use HasTextStyle;
     use HasTransition;
     use HasTrigger;
     use HasType;
