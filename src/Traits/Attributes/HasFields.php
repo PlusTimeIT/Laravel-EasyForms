@@ -18,7 +18,7 @@ trait HasFields
 
     public function sortFields(): self
     {
-        $this->fields = collect($this->fields)->sortBy([fn($a, $b) => $a->getOrder() <=> $b->getOrder()])->toArray();
+        $this->fields = collect($this->fields)->sortBy(fn($field) => $field->getOrder())->values()->all();
         return $this;
     }
 }
