@@ -4,9 +4,12 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+## 0.1.5@beta
+- setMultiple fix bool type hinting
+
 ## 0.1.4@beta
 - Updated Rounded to include ability for text
-- 
+  
 ## 0.1.3@beta
 - Added Alert Text Style (boolean not string)
 - 

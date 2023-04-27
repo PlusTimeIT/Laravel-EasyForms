@@ -1,17 +1,16 @@
 <?php
-
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMultiple
 {
-    protected $multiple = false;
+    protected $multiple = FALSE;
 
     public function getMultiple(): bool
     {
         return $this->multiple;
     }
 
-    public function setMultiple(string $multiple): self
+    public function setMultiple(bool $multiple): self
     {
         $this->multiple = $multiple;
 
