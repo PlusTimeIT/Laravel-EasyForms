@@ -4,6 +4,8 @@ All version change notes to be placed here.
 
 ## Version Updates
 
+## 0.1.6@beta
+- uadded require confoirmation trait
 ## 0.1.5@beta
 - setMultiple fix bool type hinting
 
