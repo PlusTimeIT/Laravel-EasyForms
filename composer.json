@@ -7,10 +7,6 @@
         {
             "name": "Kane G",
             "email": "kane@plustime.com.au"
-        },
-        {
-          "name": "LionEagleSolutions",
-          "email": "james@lioneagle.solutions"
         }
     ],
     "autoload": {
@@ -25,9 +21,9 @@
     },
     "minimum-stability": "beta",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^8.0",
         "nesbot/carbon": "^2.16",
-        "laravel/framework": "^7.0|^8.0|^9.0|^10.0"
+        "laravel/framework": "^10.0"
     },
     "require-dev": {
         "laravel/ui": "^3.2",

@@ -3,6 +3,8 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasClearable
 {
+    use Attributes\HasClearIcon;
+    
     protected $clearable = FALSE;
 
     public function getClearable(): bool

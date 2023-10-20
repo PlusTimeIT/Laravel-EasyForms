@@ -3,7 +3,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasBgColor
 {
-    protected $bg_color = '';
+    protected $bg_color;
 
     public function getBgColor(): string
     {

@@ -7,7 +7,7 @@ use PlusTimeIT\EasyForms\Traits\Attributes\{
     HasBackgroundColor,
     HasColor,
     HasDark,
-    HasDense,
+    HasDensity,
     HasDisabled,
     HasDisplay,
     HasError,
@@ -43,7 +43,7 @@ class SwitchField extends EasyField
     use HasBackgroundColor;
     use HasColor;
     use HasDark;
-    use HasDense;
+    use HasDensity;
     use HasDisabled;
     use HasDisplay;
     use HasError;

@@ -3,7 +3,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasText
 {
-    protected $text = '';
+    protected $text;
 
     public function getText(): string
     {

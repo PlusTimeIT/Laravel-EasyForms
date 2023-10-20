@@ -3,7 +3,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasColor
 {
-    protected $color = 'primary';
+    protected $color;
 
     public function getColor(): string
     {

@@ -1,18 +1,18 @@
 <?php
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
-trait HasContents
+trait HasContentPlaceholder
 {
-    protected $contents = '';
+    protected $content_placeholder = '';
 
-    public function getContents(): string
+    public function getContentPlaceholder(): string
     {
-        return $this->contents;
+        return $this->content_placeholder;
     }
 
-    public function setContents(string $contents): self
+    public function setContentPlaceholder(string $content_placeholder): self
     {
-        $this->contents = $contents;
+        $this->content_placeholder = $content_placeholder;
         return $this;
     }
 }

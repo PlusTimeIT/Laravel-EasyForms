@@ -1,18 +1,20 @@
 <?php
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
+use PlusTimeIT\EasyForms\Enums\DensityTypes;
+
 trait HasDensity
 {
-    protected $density = TRUE;
+    protected $density = DensityTypes::Default;
 
-    public function getDensity(): bool
+    public function getDensity(): DensityTypes
     {
-        return $this->dense;
+        return $this->density;
     }
 
-    public function setDensity(bool $dense): self
+    public function setDensity(DensityTypes $density): self
     {
-        $this->dense = $dense;
+        $this->density = $density;
 
         return $this;
     }

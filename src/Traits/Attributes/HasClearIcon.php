@@ -5,7 +5,7 @@ use PlusTimeIT\EasyForms\Elements\Icon;
 
 trait HasClearIcon
 {
-    protected $clear_icon = '';
+    protected $clear_icon;
 
     public function getClearIcon(): Icon | string
     {
