@@ -1,0 +1,20 @@
+<?php
+
+namespace PlusTimeIT\EasyForms\Traits\Attributes;
+
+trait HasAutoFocus
+{
+    protected $auto_focus = false;
+
+    public function getAutoFocus(): bool
+    {
+        return $this->auto_focus;
+    }
+
+    public function setAutoFocus(bool $auto_focus): self
+    {
+        $this->auto_focus = $auto_focus;
+
+        return $this;
+    }
+}

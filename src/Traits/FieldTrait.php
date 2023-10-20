@@ -3,7 +3,15 @@ namespace PlusTimeIT\EasyForms\Traits;
 
 trait FieldTrait
 {
+    use Attributes\HasActive;
+    use Attributes\HasAppendIcon;
+    use Attributes\HasAutoFocus;
+    use Attributes\HasBaseColor;
+    use Attributes\HasBgColor;
+    use Attributes\HasCenterAffix;
+    use Attributes\HasClearIcon;
     use Attributes\HasClearable;
+    use Attributes\HasColor;
     use Attributes\HasCols;
     use Attributes\HasComponent;
     use Attributes\HasDense;
@@ -15,6 +23,7 @@ trait FieldTrait
     use Attributes\HasOutlined;
     use Attributes\HasPlaceholder;
     use Attributes\HasReadOnly;
+    use Attributes\HasRequireConfirmation;
     use Attributes\HasRequired;
     use Attributes\HasRules;
     use Attributes\HasTooltip;

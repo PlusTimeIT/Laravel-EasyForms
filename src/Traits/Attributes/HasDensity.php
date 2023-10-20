@@ -1,16 +1,16 @@
 <?php
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
-trait HasDense
+trait HasDensity
 {
-    protected $dense = TRUE;
+    protected $density = TRUE;
 
-    public function getDense(): bool
+    public function getDensity(): bool
     {
         return $this->dense;
     }
 
-    public function setDense(bool $dense): self
+    public function setDensity(bool $dense): self
     {
         $this->dense = $dense;
 
