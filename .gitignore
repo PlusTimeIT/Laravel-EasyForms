@@ -1,1 +1,3 @@
-/vendor
+vendor
+/.phpunit.*
+/phpunit.xml.bak
