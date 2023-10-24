@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 use PlusTimeIT\EasyForms\Elements\Icon;
@@ -15,6 +16,7 @@ trait HasIcon
     public function setIcon(Icon $icon): self
     {
         $this->icon = $icon;
+
         return $this;
     }
 }

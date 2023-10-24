@@ -1,7 +1,6 @@
 <?php
-namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
-use PlusTimeIT\EasyForms\Elements\Icon;
+namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasPrefix
 {
@@ -15,6 +14,7 @@ trait HasPrefix
     public function setPrefix(string $prefix): self
     {
         $this->prefix = $prefix;
+
         return $this;
     }
 }

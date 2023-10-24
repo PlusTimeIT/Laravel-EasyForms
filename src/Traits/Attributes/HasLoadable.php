@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasLoadable
@@ -13,6 +14,7 @@ trait HasLoadable
     public function loadItems(\Closure $closure): self
     {
         $this->loadable = $closure;
+
         return $this;
     }
 }

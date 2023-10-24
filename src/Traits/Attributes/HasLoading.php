@@ -1,18 +1,20 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasLoading
 {
-    protected $loading = FALSE;
+    protected $loading = false;
 
-    public function getLoading(): bool | string
+    public function getLoading(): bool|string
     {
         return $this->loading;
     }
 
-    public function setLoading(bool | string $loading): self
+    public function setLoading(bool|string $loading): self
     {
         $this->loading = $loading;
+
         return $this;
     }
 }

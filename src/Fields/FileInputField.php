@@ -3,7 +3,11 @@
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\Attributes\{AcceptsFiles, HasCounter, HasMultiple, HasPrependIcon, HasShowSize};
+use PlusTimeIT\EasyForms\Traits\Attributes\AcceptsFiles;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasCounter;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasPrependIcon;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasShowSize;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 // File input Accept values

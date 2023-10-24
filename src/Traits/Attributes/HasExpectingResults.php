@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasExpectingResults
 {
-    protected $expecting_results = TRUE;
+    protected $expecting_results = true;
 
     public function getExpectingResults(): bool
     {
@@ -13,6 +14,7 @@ trait HasExpectingResults
     public function setExpectingResults(bool $expecting_results): self
     {
         $this->expecting_results = $expecting_results;
+
         return $this;
     }
 }

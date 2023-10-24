@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasNoTitle
 {
-    protected $noTitle = FALSE;
+    protected $noTitle = false;
 
     public function getNoTitle(): bool
     {

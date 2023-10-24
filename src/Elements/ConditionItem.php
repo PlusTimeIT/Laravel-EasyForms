@@ -1,7 +1,9 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Elements;
 
-use PlusTimeIT\EasyForms\Traits\{Creatable, Transformable};
+use PlusTimeIT\EasyForms\Traits\Creatable;
+use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class ConditionItem
 {
@@ -47,18 +49,21 @@ class ConditionItem
     public function setAgainst($against): self
     {
         $this->against = $against;
+
         return $this;
     }
 
     public function setCheck($check): self
     {
         $this->check = $check;
+
         return $this;
     }
 
     public function setOperator($operator): self
     {
         $this->operator = $operator;
+
         return $this;
     }
 }

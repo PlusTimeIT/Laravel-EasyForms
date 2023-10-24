@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasRows

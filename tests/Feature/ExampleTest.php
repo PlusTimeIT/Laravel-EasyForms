@@ -4,6 +4,7 @@ namespace PlusTimeIT\EasyForms\Tests\Feature;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class ExampleTest extends \Orchestra\Testbench\TestCase
@@ -15,8 +16,8 @@ class ExampleTest extends \Orchestra\Testbench\TestCase
     {
         $response = $this->postJson('/axios/forms/load', [
             'form_name' => 'ExampleForm3',
-            'id' => NULL,
-            'populate' => FALSE,
+            'id' => null,
+            'populate' => false,
         ]);
         $response->assertStatus(200);
         $response->assertJsonPath('data.name', 'ExampleForm3');

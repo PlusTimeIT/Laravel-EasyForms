@@ -1,16 +1,16 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Elements;
 
-use PlusTimeIT\EasyForms\Traits\Attributes\{
-    HasButton,
-    HasCallback,
-    HasCols,
-    HasConditions,
-    HasIdentifier,
-    HasName,
-    HasOrder
-};
-use PlusTimeIT\EasyForms\Traits\{Creatable, Transformable};
+use PlusTimeIT\EasyForms\Traits\Attributes\HasButton;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasCallback;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasCols;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasConditions;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasIdentifier;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasName;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasOrder;
+use PlusTimeIT\EasyForms\Traits\Creatable;
+use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class ActionButton
 {

@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasValidateOnBlur
 {
-    protected $validate_on_blur = FALSE;
+    protected $validate_on_blur = false;
 
     public function getValidateOnBlur(): bool
     {

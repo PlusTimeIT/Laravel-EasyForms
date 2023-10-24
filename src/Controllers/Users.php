@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Controllers;
 
 use Illuminate\Routing\Controller;
@@ -9,14 +10,15 @@ class Users extends Controller
     public static function deleteUser($id)
     {
         User::make()->deleteUserById($id);
-        return TRUE;
+
+        return true;
     }
 
     public static function find($id)
     {
         $user = User::make()->all()->where('id', $id);
 
-        return $user->isEmpty() ? FALSE : $user->first();
+        return $user->isEmpty() ? false : $user->first();
     }
 
     public static function getAllUsers()
@@ -28,7 +30,7 @@ class Users extends Controller
     {
         User::make()->resetCache();
 
-        return TRUE;
+        return true;
     }
 
     public static function updateUser($id, $args)

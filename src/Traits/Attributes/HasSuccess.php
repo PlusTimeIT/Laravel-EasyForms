@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasSuccess
 {
-    protected $success = FALSE;
+    protected $success = false;
 
     public function getSuccess(): bool
     {

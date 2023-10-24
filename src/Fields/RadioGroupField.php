@@ -4,7 +4,12 @@ namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Elements\RadioItem;
-use PlusTimeIT\EasyForms\Traits\Attributes\{HasAnyField, HasChips, HasItemId, HasItemValue, HasItems, HasMandatory, HasMultiple, HasRowColumnLayout};
+use PlusTimeIT\EasyForms\Traits\Attributes\HasAnyField;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasChips;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasItems;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasMandatory;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasRowColumnLayout;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class RadioGroupField extends EasyField

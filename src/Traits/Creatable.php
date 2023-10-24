@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits;
 
 trait Creatable
@@ -20,11 +21,12 @@ trait Creatable
 
     public function setOptions(array $args): self
     {
-        collect($args)->each(function($value, $arg) {
+        collect($args)->each(function ($value, $arg) {
             if (property_exists(__CLASS__, $arg)) {
                 $this->{$arg} = $value;
             }
         });
+
         return $this;
     }
 }

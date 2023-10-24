@@ -6,6 +6,7 @@ use PlusTimeIT\EasyForms\Fields\PasswordField;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class PasswordFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCase
@@ -40,13 +41,13 @@ class PasswordFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTes
     {
         $field = $this->fieldClass::make();
         $field->setCounter('10');
-        $this->assertTrue('10' == $field->getCounter());
+        $this->assertTrue($field->getCounter() == '10');
     }
 
     public function testCanGetMaxLength()
     {
         $field = $this->fieldClass::make();
         $field->setMaxLength('10');
-        $this->assertTrue('10' == $field->getMaxLength());
+        $this->assertTrue($field->getMaxLength() == '10');
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 use PlusTimeIT\EasyForms\Elements\Header;
@@ -10,6 +11,7 @@ trait HasHeaders
     public function addHeaders(Header $header): self
     {
         $this->headers[] = $header;
+
         return $this;
     }
 
@@ -21,6 +23,7 @@ trait HasHeaders
     public function setHeaders(array $headers): self
     {
         $this->headers = $headers;
+
         return $this;
     }
 }

@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Elements\Icon;
 
 trait HasClosable
 {
-    protected $closable = FALSE;
+    protected $closable = false;
 
     protected $close_icon = '$close';
 
@@ -17,7 +17,7 @@ trait HasClosable
         return $this->closable;
     }
 
-    public function getCloseIcon(): Icon | string
+    public function getCloseIcon(): Icon|string
     {
         return $this->close_icon;
     }
@@ -34,7 +34,7 @@ trait HasClosable
         return $this;
     }
 
-    public function setCloseIcon(Icon | string $close_icon): self
+    public function setCloseIcon(Icon|string $close_icon): self
     {
         $this->close_icon = $close_icon;
 

@@ -4,33 +4,25 @@ namespace PlusTimeIT\EasyForms\Forms;
 
 use Illuminate\Http\Request;
 use PlusTimeIT\EasyForms\Base\InputForm;
-use PlusTimeIT\EasyForms\Elements\{
-    Action,
-    Alert,
-    Axios,
-    Button,
-    Header,
-    Icon,
-    RadioItem,
-    RuleItem,
-    SelectItem
-};
-use PlusTimeIT\EasyForms\Enums\{AlertTriggers, AlertTypes};
-use PlusTimeIT\EasyForms\Fields\{
-    AutoCompleteField,
-    CheckboxField,
-    ColorPickerField,
-    DatePickerField,
-    FileInputField,
-    HiddenField,
-    NumberField,
-    PasswordField,
-    RadioGroupField,
-    SelectField,
-    TextField,
-    TextareaField,
-    TimePickerField
-};
+use PlusTimeIT\EasyForms\Elements\Alert;
+use PlusTimeIT\EasyForms\Elements\Axios;
+use PlusTimeIT\EasyForms\Elements\Button;
+use PlusTimeIT\EasyForms\Elements\Icon;
+use PlusTimeIT\EasyForms\Elements\RadioItem;
+use PlusTimeIT\EasyForms\Elements\RuleItem;
+use PlusTimeIT\EasyForms\Elements\SelectItem;
+use PlusTimeIT\EasyForms\Fields\AutoCompleteField;
+use PlusTimeIT\EasyForms\Fields\CheckboxField;
+use PlusTimeIT\EasyForms\Fields\ColorPickerField;
+use PlusTimeIT\EasyForms\Fields\DatePickerField;
+use PlusTimeIT\EasyForms\Fields\FileInputField;
+use PlusTimeIT\EasyForms\Fields\HiddenField;
+use PlusTimeIT\EasyForms\Fields\PasswordField;
+use PlusTimeIT\EasyForms\Fields\RadioGroupField;
+use PlusTimeIT\EasyForms\Fields\SelectField;
+use PlusTimeIT\EasyForms\Fields\TextareaField;
+use PlusTimeIT\EasyForms\Fields\TextField;
+use PlusTimeIT\EasyForms\Fields\TimePickerField;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 final class ExampleForm2 extends InputForm
@@ -40,6 +32,7 @@ final class ExampleForm2 extends InputForm
     public function __construct()
     {
         parent::__construct();
+
         return $this
             ->setName('ExampleForm2')
             ->setTitle('Load from axios with conditionals');
@@ -52,8 +45,8 @@ final class ExampleForm2 extends InputForm
                 ->setTrigger('process_failed')
                 ->setColor('red')
                 ->setBorder('top')
-                ->setClosable(TRUE)
-                ->setTextStyle(TRUE)
+                ->setClosable(true)
+                ->setTextStyle(true)
                 ->setText('Form Failed!')
                 ->setIcon(
                     Icon::make()->setIcon('mdi-file-excel-box')
@@ -76,8 +69,7 @@ final class ExampleForm2 extends InputForm
                 ->setIcon(
                     Icon::make()->setIcon('mdi-star')->setTooltip('Register online!')
                 )
-                ->setOrder(0)
-            ,
+                ->setOrder(0),
             Button::make()
                 ->setType('reset')
                 ->setColor('secondary')
@@ -97,36 +89,33 @@ final class ExampleForm2 extends InputForm
                 ->setOrder(0)
                 ->setLabel('Username')
                 ->setMaxLength(20)
-                ->setCounter(TRUE)
+                ->setCounter(true)
                 ->setHelp('This is your Username!')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
+                    RuleItem::make()->setName('required')->setValue(true),
                     RuleItem::make()->setName('max')->setValue(20),
-                ])
-            ,
+                ]),
             PasswordField::make()
                 ->setName('password')
                 ->setOrder(1)
                 ->setLabel('Password')
                 ->setMaxLength(35)
-                ->setCounter(TRUE)
+                ->setCounter(true)
                 ->setHelp('This is your Password!')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
+                    RuleItem::make()->setName('required')->setValue(true),
                     RuleItem::make()->setName('min')->setValue(10),
                     RuleItem::make()->setName('max')->setValue(35),
-                ])
-            ,
+                ]),
             TextField::make()
                 ->setName('email')
                 ->setOrder(2)
                 ->setLabel('Email')
                 ->setHelp('Leave your email!')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
+                    RuleItem::make()->setName('required')->setValue(true),
                     RuleItem::make()->setName('email')->setValue('filter'),
-                ])
-            ,
+                ]),
             ColorPickerField::make()
                 ->setName('customer_colour')
                 ->setMode('hexa')
@@ -134,9 +123,8 @@ final class ExampleForm2 extends InputForm
                 ->setLabel('Customer Colour')
                 ->setHelp('Select a colour for this customer')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             FileInputField::make()
                 ->setName('resume')
                 ->setOrder(3)
@@ -144,10 +132,9 @@ final class ExampleForm2 extends InputForm
                 ->setHelp('Upload your resume!')
                 ->setAccept('.doc,.pdf')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
+                    RuleItem::make()->setName('required')->setValue(true),
                     RuleItem::make()->setName('mimes')->setValue('application/msword,application/pdf'),
-                ])
-            ,
+                ]),
             FileInputField::make()
                 ->setName('avatar')
                 ->setOrder(3)
@@ -155,44 +142,38 @@ final class ExampleForm2 extends InputForm
                 ->setHelp('Upload your avatar!')
                 ->setAccept('image/*')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
+                    RuleItem::make()->setName('required')->setValue(true),
                     RuleItem::make()->setName('mimes')->setValue('image/jpeg,image/png'),
-                ])
-            ,
+                ]),
             TextField::make()
                 ->setName('experience')
                 ->setOrder(4)
                 ->setLabel('Years Experience')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                    RuleItem::make()->setName('integer')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                    RuleItem::make()->setName('integer')->setValue(true),
+                ]),
             TextareaField::make()
                 ->setName('notes')
                 ->setOrder(5)
                 ->setLabel('Account Notes')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             CheckboxField::make()
                 ->setName('terms')
                 ->setOrder(6)
                 ->setLabel('Do you accept the current terms and conditions')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             HiddenField::make()
                 ->setName('datetime')
                 ->setOrder(99)
                 ->setValue(\Carbon\Carbon::now()->toIso8601String())
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             SelectField::make()
                 ->setName('favourite_fruit')
                 ->setOrder(8)
@@ -204,9 +185,8 @@ final class ExampleForm2 extends InputForm
                     SelectItem::make()->setId(3)->setValue('Grapes'),
                 ])
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             SelectField::make()
                 ->setName('customer_select')
                 ->setOrder(8)
@@ -219,34 +199,33 @@ final class ExampleForm2 extends InputForm
                     SelectItem::make()->setId(4)->setValue('Earth Movers From Earth'),
                 ])
                 ->setRules([
-                    RuleItem::make(['name' => 'required', 'value' => TRUE]),
-                ])
-            ,
+                    RuleItem::make(['name' => 'required', 'value' => true]),
+                ]),
             SelectField::make()
                 ->setName('officer_select')
                 ->setOrder(8)
                 ->setLabel('Select an Officer')
                 ->setItemText('value')
                 ->setItemValue('badge_id')
-                ->loadItems(function($customer_id) {
-                    if ( ! $customer_id && $customer_id !== 0) {
+                ->loadItems(function ($customer_id) {
+                    if (! $customer_id && $customer_id !== 0) {
                         // this wasn't passed or it was null
-                        return NULL;
+                        return null;
                     }
                     $officers = self::getOfficers();
                     // dependsOn should be an ID from the customers above
-                    if ( ! isset($officers[$customer_id])) {
-                        return NULL;
+                    if (! isset($officers[$customer_id])) {
+                        return null;
                     }
+
                     return collect($officers[$customer_id])
                         ->map(fn ($officer) => SelectItem::make()->setId($officer['id'])->setValue($officer['name']))
                         ->toArray();
                 })
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
+                    RuleItem::make()->setName('required')->setValue(true),
                 ])
-                ->dependsOn('customer_select')
-            ,
+                ->dependsOn('customer_select'),
             AutoCompleteField::make()
                 ->setName('rating')
                 ->setOrder(10)
@@ -259,9 +238,8 @@ final class ExampleForm2 extends InputForm
                     SelectItem::make()->setId(5)->setValue('5 Star'),
                 ])
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             RadioGroupField::make()
                 ->setName('sky_colour')
                 ->setOrder(11)
@@ -270,41 +248,35 @@ final class ExampleForm2 extends InputForm
                     RadioItem::make()
                         ->setLabel('The sky is blue')
                         ->setValue('blue')
-                        ->setColor('blue')
-                    ,
+                        ->setColor('blue'),
                     RadioItem::make()
                         ->setLabel('The sky is red')
                         ->setValue('red')
-                        ->setColor('red')
-                    ,
+                        ->setColor('red'),
                     RadioItem::make()
                         ->setLabel('The sky is pink')
                         ->setValue('pink')
-                        ->setColor('pink')
-                    ,
+                        ->setColor('pink'),
                 ])
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             DatePickerField::make()
                 ->setName('birth_date')
                 ->setLabel('Whats ya Birthday?')
                 ->setValue(\Carbon\Carbon::now()->toIso8601String())
                 ->setOrder(12)
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             TimePickerField::make()
                 ->setName('born_time')
                 ->setLabel('What time were you born?')
                 ->setValue([])
                 ->setOrder(13)
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
         ];
     }
 

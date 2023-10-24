@@ -7,6 +7,7 @@ use PlusTimeIT\EasyForms\Enums\DensityTypes;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class BaseFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCase
@@ -20,7 +21,7 @@ class BaseFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCas
 
     public function testAClearableCanBeSetAndGet()
     {
-        $test = TRUE;
+        $test = true;
         $field = $this->fieldClass::make();
         $field->setClearable($test);
         $this->assertSame($field->getClearable($test), $test);
@@ -92,7 +93,7 @@ class BaseFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCas
 
     public function testAOutlinedCanBeSetAndGet()
     {
-        $test = FALSE;
+        $test = false;
         $field = $this->fieldClass::make();
         $field->setOutlined($test);
         $this->assertSame($field->getOutlined($test), $test);
@@ -108,7 +109,7 @@ class BaseFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCas
 
     public function testAReadonlyCanBeSetAndGet()
     {
-        $test = FALSE;
+        $test = false;
         $field = $this->fieldClass::make();
         $field->setReadonly($test);
         $this->assertSame($field->getReadonly($test), $test);

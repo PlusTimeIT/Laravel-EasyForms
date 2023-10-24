@@ -1,13 +1,13 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 /**
  * Require Confirmations
- * 
+ *
  * Forces process button to be disabled until all fields
  * that have this set to true have returned a validation
  * event.
- * 
  */
 trait HasRequireConfirmation
 {

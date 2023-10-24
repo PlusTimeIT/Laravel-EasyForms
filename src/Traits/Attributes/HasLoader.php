@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasLoader
 {
-    protected $loader = FALSE;
+    protected $loader = false;
 
     public function getLoader(): bool
     {
@@ -12,12 +13,13 @@ trait HasLoader
 
     public function keepLoader()
     {
-        return $this->setLoader(TRUE);
+        return $this->setLoader(true);
     }
 
     public function setLoader(bool $loader): self
     {
         $this->loader = $loader;
+
         return $this;
     }
 }

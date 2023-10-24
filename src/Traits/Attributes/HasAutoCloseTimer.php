@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasAutoCloseTimer
@@ -13,6 +14,7 @@ trait HasAutoCloseTimer
     public function setAutoCloseTimer(int $auto_close_timer): self
     {
         $this->auto_close_timer = $auto_close_timer;
+
         return $this;
     }
 }

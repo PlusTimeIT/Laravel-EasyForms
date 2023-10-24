@@ -3,7 +3,9 @@
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\Attributes\{HasCloseOnContentClick, HasControls, HasMultiple};
+use PlusTimeIT\EasyForms\Traits\Attributes\HasCloseOnContentClick;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasControls;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class DatePickerField extends EasyField

@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasInset
 {
-    protected $inset = FALSE;
+    protected $inset = false;
 
     public function getInset(): bool
     {

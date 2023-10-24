@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasJustify
@@ -13,6 +14,7 @@ trait HasJustify
     public function setJustify(string $justify): self
     {
         $this->justify = $justify;
+
         return $this;
     }
 }

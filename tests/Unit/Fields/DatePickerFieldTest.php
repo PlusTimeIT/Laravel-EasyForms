@@ -1,10 +1,12 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Tests\Unit\Fields;
 
 use PlusTimeIT\EasyForms\Fields\DatePickerField;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class DatePickerFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCase
@@ -18,7 +20,7 @@ class DatePickerFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
     public function testACloseOnContentClickCanBeSetAndGet()
     {
         $field = $this->fieldClass::make();
-        $test = FALSE;
+        $test = false;
         $field->setCloseOnContentClick($test);
         $this->assertSame($field->getCloseOnContentClick(), $test);
     }
@@ -32,7 +34,7 @@ class DatePickerFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
     public function testAControlsCanBeSetAndGet()
     {
         $field = $this->fieldClass::make();
-        $test = TRUE;
+        $test = true;
         $field->setControls($test);
         $this->assertSame($field->getControls(), $test);
     }
@@ -40,7 +42,7 @@ class DatePickerFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
     public function testAMultipleCanBeSetAndGet()
     {
         $field = $this->fieldClass::make();
-        $test = TRUE;
+        $test = true;
         $field->setMultiple($test);
         $this->assertSame($field->getMultiple(), $test);
     }

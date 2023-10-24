@@ -4,7 +4,6 @@ namespace PlusTimeIT\EasyForms\Traits;
 
 trait FieldTrait
 {
-    use Attributes\HasDiscriminator;
     use Attributes\HasActive;
     use Attributes\HasAutoFocus;
     use Attributes\HasBaseColor;
@@ -17,6 +16,7 @@ trait FieldTrait
     use Attributes\HasDensity;
     use Attributes\HasDependsOn;
     use Attributes\HasDisabled;
+    use Attributes\HasDiscriminator;
     use Attributes\HasEager;
     use Attributes\HasError;
     use Attributes\HasErrorMessages;
@@ -28,9 +28,9 @@ trait FieldTrait
     use Attributes\HasIcons;
     use Attributes\HasId;
     use Attributes\HasLabel;
-    use Attributes\HasName;
     use Attributes\HasMaxErrors;
     use Attributes\HasMessages;
+    use Attributes\HasName;
     use Attributes\HasName;
     use Attributes\HasOffset;
     use Attributes\HasOrder;

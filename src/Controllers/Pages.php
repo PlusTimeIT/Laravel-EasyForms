@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Controllers;
 
 use Illuminate\Http\Request;
@@ -15,13 +16,13 @@ class Pages extends Controller
 
         if ($example_id < 4) {
             return view('laravel-easyforms::examples.example-template')
-                ->with('load', 1 == $example_id ? 'page' : 'axios')
-                ->with('example', 1 == $example_id ? (new $form_class())->preFill() : (new $form_class()));
+                ->with('load', $example_id == 1 ? 'page' : 'axios')
+                ->with('example', $example_id == 1 ? (new $form_class())->preFill() : (new $form_class()));
         }
 
         $userList = Users::getAllUsers();
 
-        return view('laravel-easyforms::examples.example-' . $example_id)
+        return view('laravel-easyforms::examples.example-'.$example_id)
             ->with('load', 'axios')
             ->with('userList', $userList)
             ->with('example', new $form_class());

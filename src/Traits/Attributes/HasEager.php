@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasEager
 {
-    protected $eager = FALSE;
+    protected $eager = false;
 
     public function getEager(): bool
     {

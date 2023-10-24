@@ -11,7 +11,7 @@ interface FieldInterface
 
     public function getClearable(): bool;
 
-    public function getCols(): int | NULL;
+    public function getCols(): ?int;
 
     public function getComponent(): string;
 
@@ -19,7 +19,7 @@ interface FieldInterface
 
     public function getDensity(): DensityTypes;
 
-    public function getDependsOn(): string | NULL;
+    public function getDependsOn(): ?string;
 
     public function getDiscriminator(): string;
 
@@ -45,7 +45,7 @@ interface FieldInterface
 
     public function setClearable(bool $clearable);
 
-    public function setCols(int | NULL $cols);
+    public function setCols(?int $cols);
 
     public function setComponent(string $component);
 

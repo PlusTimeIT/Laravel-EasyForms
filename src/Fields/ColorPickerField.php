@@ -3,23 +3,21 @@
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\Attributes\{
-    HasCanvasHeight,
-    HasDark,
-    HasDisabled,
-    HasDotSize,
-    HasElevation,
-    HasFlat,
-    HasHideCanvas,
-    HasHideInputs,
-    HasHideModeSwitch,
-    HasHideSliders,
-    HasLight,
-    HasMode,
-    HasSwatches,
-    HasValue,
-    HasWidth
-};
+use PlusTimeIT\EasyForms\Traits\Attributes\HasCanvasHeight;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasDark;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasDisabled;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasDotSize;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasElevation;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasFlat;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasHideCanvas;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasHideInputs;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasHideModeSwitch;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasHideSliders;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasLight;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasMode;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasSwatches;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasValue;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasWidth;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class ColorPickerField extends EasyField

@@ -6,12 +6,12 @@ trait HasMaxLength
 {
     protected $maxlength;
 
-    public function getMaxLength(): int | null
+    public function getMaxLength(): ?int
     {
         return $this->maxlength;
     }
 
-    public function setMaxLength(int | null $maxlength): self
+    public function setMaxLength(?int $maxlength): self
     {
         $this->maxlength = $maxlength;
 

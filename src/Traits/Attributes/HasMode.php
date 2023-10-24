@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMode
@@ -8,8 +9,8 @@ trait HasMode
     public function availableModes(): array
     {
         return [
-            'rgba' ,
-            'hsla' ,
+            'rgba',
+            'hsla',
             'hexa',
         ];
     }
@@ -31,10 +32,11 @@ trait HasMode
 
     public function setMode(string $mode): self
     {
-        if ( ! $this->modeCheck($mode)) {
-            throw new \Exception('Supplied:' . $mode . ' Current mode must be one of the following: ' . $this->availableModesToString());
+        if (! $this->modeCheck($mode)) {
+            throw new \Exception('Supplied:'.$mode.' Current mode must be one of the following: '.$this->availableModesToString());
         }
         $this->mode = $mode;
+
         return $this;
     }
 }

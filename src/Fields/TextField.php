@@ -3,7 +3,9 @@
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\Attributes\{HasCounter, HasMasking, HasMaxLength};
+use PlusTimeIT\EasyForms\Traits\Attributes\HasCounter;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasMasking;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasMaxLength;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class TextField extends EasyField

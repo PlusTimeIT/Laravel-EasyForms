@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasOriginalText
@@ -13,6 +14,7 @@ trait HasOriginalText
     public function setOriginalText(string $original_text): self
     {
         $this->original_text = $original_text;
+
         return $this;
     }
 }

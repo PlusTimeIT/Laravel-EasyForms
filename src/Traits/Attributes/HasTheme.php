@@ -1,7 +1,6 @@
 <?php
-namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
-use PlusTimeIT\EasyForms\Elements\Icon;
+namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasTheme
 {
@@ -15,6 +14,7 @@ trait HasTheme
     public function setTheme(string $theme): self
     {
         $this->theme = $theme;
+
         return $this;
     }
 }

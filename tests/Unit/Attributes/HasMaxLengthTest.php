@@ -6,6 +6,7 @@ use PlusTimeIT\EasyForms\Traits\Attributes\HasMaxLength;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class HasMaxLengthTest extends \PlusTimeIT\EasyForms\Tests\Unit\Attributes\AttributeTestCase
@@ -26,6 +27,7 @@ class HasMaxLengthTest extends \PlusTimeIT\EasyForms\Tests\Unit\Attributes\Attri
 
         $this->assertEquals($mock->getMaxLength(), 6);
     }
+
     public function testDefaultMaxLengthIsNull()
     {
         $mock = $this->getObjectForTrait(HasMaxLength::class);

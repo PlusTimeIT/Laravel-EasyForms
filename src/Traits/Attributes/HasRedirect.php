@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasRedirect
@@ -18,6 +19,7 @@ trait HasRedirect
     public function setRedirect($redirect): self
     {
         $this->redirect = $redirect;
+
         return $this;
     }
 }

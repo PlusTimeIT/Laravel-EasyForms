@@ -5,9 +5,18 @@ namespace PlusTimeIT\EasyForms\Forms;
 use Illuminate\Http\Request;
 use PlusTimeIT\EasyForms\Base\InputForm;
 use PlusTimeIT\EasyForms\Controllers\Users;
-use PlusTimeIT\EasyForms\Elements\{Action, Alert, Axios, Button, Header, Icon, ProcessResponse, RuleItem, SelectItem};
-use PlusTimeIT\EasyForms\Enums\{AlertTriggers, AlertTypes};
-use PlusTimeIT\EasyForms\Fields\{ColorPickerField, HiddenField, SelectField, TextField};
+use PlusTimeIT\EasyForms\Elements\Alert;
+use PlusTimeIT\EasyForms\Elements\Button;
+use PlusTimeIT\EasyForms\Elements\Icon;
+use PlusTimeIT\EasyForms\Elements\ProcessResponse;
+use PlusTimeIT\EasyForms\Elements\RuleItem;
+use PlusTimeIT\EasyForms\Elements\SelectItem;
+use PlusTimeIT\EasyForms\Enums\AlertTriggers;
+use PlusTimeIT\EasyForms\Enums\AlertTypes;
+use PlusTimeIT\EasyForms\Fields\ColorPickerField;
+use PlusTimeIT\EasyForms\Fields\HiddenField;
+use PlusTimeIT\EasyForms\Fields\SelectField;
+use PlusTimeIT\EasyForms\Fields\TextField;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 final class ExampleForm5 extends InputForm
@@ -17,6 +26,7 @@ final class ExampleForm5 extends InputForm
     public function __construct()
     {
         parent::__construct();
+
         return $this
             ->setName('ExampleForm5')
             ->setTitle('Edit User details with fill');
@@ -29,18 +39,17 @@ final class ExampleForm5 extends InputForm
                 ->setTrigger(AlertTriggers::SuccessProcessing)
                 ->setType(AlertTypes::Success)
                 ->setColor('green')
-                ->setProminent(TRUE)
+                ->setProminent(true)
                 ->setBorder('top')
-                ->setClosable(TRUE)
-                ->setText('Successfully saved user')
-            ,
+                ->setClosable(true)
+                ->setText('Successfully saved user'),
             Alert::make()
                 ->setTrigger(AlertTriggers::FailedProcessing)
                 ->setType(AlertTypes::Error)
                 ->setColor('green')
-                ->setProminent(TRUE)
+                ->setProminent(true)
                 ->setBorder('top')
-                ->setClosable(TRUE)
+                ->setClosable(true)
                 ->setText('<response-data>'),
         ];
     }
@@ -66,48 +75,43 @@ final class ExampleForm5 extends InputForm
                 ->setName('id')
                 ->setOrder(0)
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
 
             TextField::make()
                 ->setName('name')
                 ->setOrder(0)
-                ->setClearable(TRUE)
+                ->setClearable(true)
                 ->setHelp('The users name')
                 ->setLabel('Name')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             ColorPickerField::make()
                 ->setName('colour')
                 ->setOrder(0)
                 ->setHelp('The users colour in hex')
                 ->setLabel('Colour')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             TextField::make()
                 ->setName('username')
                 ->setOrder(0)
-                ->setClearable(TRUE)
+                ->setClearable(true)
                 ->setHelp('The users username')
                 ->setLabel('Username')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             TextField::make()
                 ->setName('email')
                 ->setOrder(1)
                 ->setHelp('The users email address')
                 ->setLabel('Email')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             SelectField::make()
                 ->setName('status')
                 ->setOrder(2)
@@ -119,15 +123,15 @@ final class ExampleForm5 extends InputForm
                     SelectItem::make()->setId('banned')->setValue('Banned'),
                 ])
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
         ];
     }
 
     public static function fill(request $request): self
     {
         $form = self::make();
+
         return $form->setFields(
             $form->populateFields(Users::find($request->data))
         );
@@ -135,9 +139,9 @@ final class ExampleForm5 extends InputForm
 
     public function populateFields($data): array
     {
-        return collect($this->fields())->map(function($field) use ($data) {
-            if (isset($data[ $field->getName()])) {
-                $field->setValue($data[ $field->getName()]);
+        return collect($this->fields())->map(function ($field) use ($data) {
+            if (isset($data[$field->getName()])) {
+                $field->setValue($data[$field->getName()]);
             }
 
             return $field;
@@ -152,19 +156,20 @@ final class ExampleForm5 extends InputForm
 
         //check if user exists if it does send redirect
         $user = Users::find($request->id);
-        if ( ! $user) {
+        if (! $user) {
             return ProcessResponse::make()
                 ->failed()
-                ->data('User not found with id:' . $request->id);
+                ->data('User not found with id:'.$request->id);
         }
 
         Users::updateUser($request->id, [
-            'username' => $request->username ,
-            'email' => $request->email ,
+            'username' => $request->username,
+            'email' => $request->email,
             'status' => $request->status,
         ]);
 
         $user = Users::find($request->id);
+
         return ProcessResponse::make()
             ->success()
             ->data($user);

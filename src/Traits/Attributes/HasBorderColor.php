@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasBorderColor
@@ -13,6 +14,7 @@ trait HasBorderColor
     public function setBorderColor(string $border_color): self
     {
         $this->border_color = $border_color;
+
         return $this;
     }
 }

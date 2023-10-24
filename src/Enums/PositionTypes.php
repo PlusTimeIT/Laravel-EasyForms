@@ -2,10 +2,11 @@
 
 namespace PlusTimeIT\EasyForms\Enums;
 
-enum PositionTypes: string {
-    case Static = "static";
-    case Relative = "relative";
-    case Fixed = "fixed";
-    case Absolute = "absolute";
-    case Sticky = "sticky";
+enum PositionTypes: string
+{
+    case Absolute = 'absolute';
+    case Fixed = 'fixed';
+    case Relative = 'relative';
+    case Static = 'static';
+    case Sticky = 'sticky';
 }

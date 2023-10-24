@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 use PlusTimeIT\EasyForms\Fields\SwitchField;
@@ -15,6 +16,7 @@ trait HasSwitch
     public function setSwitch(SwitchField $switch): self
     {
         $this->switch = $switch;
+
         return $this;
     }
 }

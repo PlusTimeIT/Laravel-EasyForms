@@ -6,6 +6,7 @@ use PlusTimeIT\EasyForms\Fields\TextField;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class TextFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCase
@@ -48,13 +49,13 @@ class TextFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCas
     {
         $field = $this->fieldClass::make();
         $field->setCounter('10');
-        $this->assertTrue('10' == $field->getCounter());
+        $this->assertTrue($field->getCounter() == '10');
     }
 
     public function testCanGetMaxLength()
     {
         $field = $this->fieldClass::make();
         $field->setMaxLength('10');
-        $this->assertTrue('10' == $field->getMaxLength());
+        $this->assertTrue($field->getMaxLength() == '10');
     }
 }

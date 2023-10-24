@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasAlerts
@@ -18,6 +19,7 @@ trait HasAlerts
     public function setAlerts(array $alerts): self
     {
         $this->alerts = $alerts;
+
         return $this;
     }
 }

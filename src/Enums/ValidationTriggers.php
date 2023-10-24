@@ -2,15 +2,16 @@
 
 namespace PlusTimeIT\EasyForms\Enums;
 
-enum ValidationTriggers: string {
-    case Lazy = "lazy";
-    case Blur = "blur";
-    case Input = "input";
-    case Submit = "submit";
-    case BlurLazy = "blur lazy";
-    case InputLazy = "input lazy";
-    case SubmitLazy = "submit lazy";
-    case LazyBlur = "lazy blur";
-    case LazyInput = "lazy input";
-    case LazySubmit = "lazy submit";
+enum ValidationTriggers: string
+{
+    case Blur = 'blur';
+    case BlurLazy = 'blur lazy';
+    case Input = 'input';
+    case InputLazy = 'input lazy';
+    case Lazy = 'lazy';
+    case LazyBlur = 'lazy blur';
+    case LazyInput = 'lazy input';
+    case LazySubmit = 'lazy submit';
+    case Submit = 'submit';
+    case SubmitLazy = 'submit lazy';
 }

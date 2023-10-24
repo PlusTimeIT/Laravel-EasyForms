@@ -3,8 +3,10 @@
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\Attributes\{HasAmPmInTitle, HasMultiple, HasNoTitle};
-use PlusTimeIT\EasyForms\Traits\{FieldTrait, Transformable};
+use PlusTimeIT\EasyForms\Traits\Attributes\HasAmPmInTitle;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasNoTitle;
+use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class TimePickerField extends EasyField
 {

@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasTransition
@@ -13,6 +14,7 @@ trait HasTransition
     public function setTransition(string $transition): self
     {
         $this->transition = $transition;
+
         return $this;
     }
 }

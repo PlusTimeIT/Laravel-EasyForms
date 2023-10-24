@@ -6,7 +6,7 @@ trait HasClearable
 {
     use HasClearIcon;
 
-    protected $clearable = FALSE;
+    protected $clearable = false;
 
     public function getClearable(): bool
     {

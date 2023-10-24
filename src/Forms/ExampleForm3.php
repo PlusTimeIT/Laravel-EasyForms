@@ -4,10 +4,15 @@ namespace PlusTimeIT\EasyForms\Forms;
 
 use Illuminate\Http\Request;
 use PlusTimeIT\EasyForms\Base\InputForm;
+use PlusTimeIT\EasyForms\Elements\Alert;
+use PlusTimeIT\EasyForms\Elements\Axios;
+use PlusTimeIT\EasyForms\Elements\Button;
+use PlusTimeIT\EasyForms\Elements\Icon;
 use PlusTimeIT\EasyForms\Elements\ProcessResponse;
-use PlusTimeIT\EasyForms\Elements\{Action, Alert, Axios, Button, Header, Icon, RadioItem, RuleItem, SelectItem};
-use PlusTimeIT\EasyForms\Enums\{AlertTriggers, AlertTypes};
-use PlusTimeIT\EasyForms\Fields\{AutoCompleteField, CheckboxField, FileInputField, HiddenField, NumberField, PasswordField, RadioGroupField, SelectField, TextField, TextareaField};
+use PlusTimeIT\EasyForms\Elements\RuleItem;
+use PlusTimeIT\EasyForms\Enums\AlertTriggers;
+use PlusTimeIT\EasyForms\Enums\AlertTypes;
+use PlusTimeIT\EasyForms\Fields\TextField;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 final class ExampleForm3 extends InputForm
@@ -17,6 +22,7 @@ final class ExampleForm3 extends InputForm
     public function __construct()
     {
         parent::__construct();
+
         return $this
             ->setName('ExampleForm3')
             ->setTitle('Load from axios with masking');
@@ -29,29 +35,26 @@ final class ExampleForm3 extends InputForm
                 ->setTrigger(AlertTriggers::BeforeLoad)
                 ->setType(AlertTypes::Error)
                 ->setColor('red')
-                ->setProminent(TRUE)
+                ->setProminent(true)
                 ->setBorder('bottom')
-                ->setClosable(TRUE)
-                ->setText('This alert will be ignored because we load by axios!')
-            ,
+                ->setClosable(true)
+                ->setText('This alert will be ignored because we load by axios!'),
             Alert::make()
                 ->setTrigger(AlertTriggers::FailedProcessing)
                 ->setType(AlertTypes::Error)
                 ->setColor('red')
-                ->setProminent(TRUE)
+                ->setProminent(true)
                 ->setBorder('bottom')
-                ->setClosable(TRUE)
-                ->setText('Processing Failed!')
-            ,
+                ->setClosable(true)
+                ->setText('Processing Failed!'),
             Alert::make()
                 ->setTrigger(AlertTriggers::SuccessProcessing)
                 ->setType(AlertTypes::Success)
                 ->setColor('green')
-                ->setProminent(TRUE)
+                ->setProminent(true)
                 ->setBorder('top')
-                ->setClosable(TRUE)
-                ->setText('Processing Successful!')
-            ,
+                ->setClosable(true)
+                ->setText('Processing Successful!'),
         ];
     }
 
@@ -70,8 +73,7 @@ final class ExampleForm3 extends InputForm
                 ->setIcon(
                     Icon::make()->setIcon('mdi-star')->setTooltip('Process')
                 )
-                ->setOrder(0)
-            ,
+                ->setOrder(0),
         ];
     }
 
@@ -85,9 +87,8 @@ final class ExampleForm3 extends InputForm
                 ->setMasking('04##-###-###')
                 ->setHelp('Number format 1')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             TextField::make()
                 ->setName('mobile2')
                 ->setOrder(0)
@@ -95,9 +96,8 @@ final class ExampleForm3 extends InputForm
                 ->setMasking('+61 4########')
                 ->setHelp('Number format 2')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             TextField::make()
                 ->setName('mobile3')
                 ->setOrder(0)
@@ -105,9 +105,8 @@ final class ExampleForm3 extends InputForm
                 ->setMasking('(+61) 4########')
                 ->setHelp('Number format 3')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             TextField::make()
                 ->setName('quick_date')
                 ->setOrder(0)
@@ -115,9 +114,8 @@ final class ExampleForm3 extends InputForm
                 ->setMasking('##/##/####')
                 ->setHelp('Type a date quickly')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             TextField::make()
                 ->setName('quick_time')
                 ->setOrder(0)
@@ -125,9 +123,8 @@ final class ExampleForm3 extends InputForm
                 ->setMasking('##:##')
                 ->setHelp('Type a time quickly')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             TextField::make()
                 ->setName('license_plate')
                 ->setOrder(0)
@@ -135,7 +132,7 @@ final class ExampleForm3 extends InputForm
                 ->setMasking('NNN-NNN')
                 ->setHelp('Type numbers and letters')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
+                    RuleItem::make()->setName('required')->setValue(true),
                 ]),
         ];
     }

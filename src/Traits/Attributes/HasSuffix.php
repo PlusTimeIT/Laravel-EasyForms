@@ -1,7 +1,6 @@
 <?php
-namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
-use PlusTimeIT\EasyForms\Elements\Icon;
+namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasSuffix
 {
@@ -15,6 +14,7 @@ trait HasSuffix
     public function setSuffix(string $suffix): self
     {
         $this->suffix = $suffix;
+
         return $this;
     }
 }

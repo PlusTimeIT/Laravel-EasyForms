@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 use PlusTimeIT\EasyForms\Enums\AlertTriggers;
@@ -15,6 +16,7 @@ trait HasTrigger
     public function setTrigger(AlertTriggers $trigger): self
     {
         $this->trigger = $trigger;
+
         return $this;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasBgColor
@@ -13,6 +14,7 @@ trait HasBgColor
     public function setBgColor(string $bg_color): self
     {
         $this->bg_color = $bg_color;
+
         return $this;
     }
 }

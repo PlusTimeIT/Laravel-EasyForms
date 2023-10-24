@@ -1,7 +1,9 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Interfaces;
 
-use PlusTimeIT\EasyForms\Elements\{Axios, Button};
+use PlusTimeIT\EasyForms\Elements\Axios;
+use PlusTimeIT\EasyForms\Elements\Button;
 
 interface ActionInterface
 {

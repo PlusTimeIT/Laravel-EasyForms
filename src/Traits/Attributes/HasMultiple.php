@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMultiple
 {
-    protected $multiple = FALSE;
+    protected $multiple = false;
 
     public function getMultiple(): bool
     {

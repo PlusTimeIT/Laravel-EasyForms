@@ -1,11 +1,9 @@
 <?php
-namespace PlusTimeIT\EasyForms\Interfaces;
 
-use PlusTimeIT\EasyForms\Elements\Axios;
+namespace PlusTimeIT\EasyForms\Interfaces;
 
 interface ActionFormInterface
 {
-
     public function actions(): array;
 
     public function getInline(): bool;

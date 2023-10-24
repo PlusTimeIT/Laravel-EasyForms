@@ -1,12 +1,13 @@
-<?php 
+<?php
 
 namespace PlusTimeIT\EasyForms\Enums;
 
-enum ButtonVariantTypes: string {
-    case Text = "text";
-    case Flat = "flat";
-    case Elevated = "elevated";
-    case Tonal = "tonal";
-    case Outlined = "outlined";
-    case Plain = "plain";
+enum ButtonVariantTypes: string
+{
+    case Elevated = 'elevated';
+    case Flat = 'flat';
+    case Outlined = 'outlined';
+    case Plain = 'plain';
+    case Text = 'text';
+    case Tonal = 'tonal';
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Controllers;
 
 use Illuminate\Http\Request;
@@ -10,10 +11,11 @@ class Axios extends Controller
     public function fieldLoad(request $request)
     {
         // load fields value
-        $form = config('easyforms.form-namespace') . '\\' . str_replace('-', '\\', $request->form_name);
+        $form = config('easyforms.form-namespace').'\\'.str_replace('-', '\\', $request->form_name);
 
         $form = new $form();
-        $field = collect($form->fields())->filter(fn($field) => $field->getName() == $request->field_name)->first();
+        $field = collect($form->fields())->filter(fn ($field) => $field->getName() == $request->field_name)->first();
+
         return AxiosResponse::make()
             ->success()
             ->data($field->load($request->dependsOn))
@@ -22,7 +24,7 @@ class Axios extends Controller
 
     public function load(request $request)
     {
-        $form = config('easyforms.form-namespace') . '\\' . str_replace('-', '\\', $request->form_name);
+        $form = config('easyforms.form-namespace').'\\'.str_replace('-', '\\', $request->form_name);
         try {
             $formModel = call_user_func([$form, 'fill'], $request);
         } catch (\Exception $e) {
@@ -31,6 +33,7 @@ class Axios extends Controller
                 ->data('Unknown form data')
                 ->toJson();
         }
+
         return AxiosResponse::make()
             ->success()
             ->data($formModel)
@@ -39,7 +42,7 @@ class Axios extends Controller
 
     public function process(request $request)
     {
-        $form = config('easyforms.form-namespace') . '\\' . str_replace('-', '\\', $request->form_name);
+        $form = config('easyforms.form-namespace').'\\'.str_replace('-', '\\', $request->form_name);
         // fill required to get default values and any rules that may have changed.
         $form = call_user_func([$form, 'fill'], $request);
         $results = $form->validateRequest($request);
@@ -51,7 +54,7 @@ class Axios extends Controller
         }
 
         $process = $form->process($request);
-        if ( ! $process->result()) {
+        if (! $process->result()) {
             return AxiosResponse::make()
                 ->failed()
                 ->data($process->getData())

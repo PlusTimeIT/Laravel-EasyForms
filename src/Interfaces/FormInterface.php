@@ -1,8 +1,8 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Interfaces;
 
 use Illuminate\Http\Request;
-
 use PlusTimeIT\EasyForms\Elements\Axios;
 
 interface FormInterface

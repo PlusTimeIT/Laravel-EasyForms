@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasOrigin
@@ -13,6 +14,7 @@ trait HasOrigin
     public function setOrigin(string $origin): self
     {
         $this->origin = $origin;
+
         return $this;
     }
 }

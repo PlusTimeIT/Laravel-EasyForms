@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasSize
@@ -13,6 +14,7 @@ trait HasSize
     public function setSize(string $size): self
     {
         $this->size = $size;
+
         return $this;
     }
 }

@@ -6,12 +6,12 @@ trait HasScrim
 {
     protected $scrim = false;
 
-    public function getScrim(): string | bool
+    public function getScrim(): string|bool
     {
         return $this->scrim;
     }
 
-    public function setScrim(string | bool $scrim): self
+    public function setScrim(string|bool $scrim): self
     {
         $this->scrim = $scrim;
 

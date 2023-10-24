@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasData
@@ -18,6 +19,7 @@ trait HasData
     public function setData($data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

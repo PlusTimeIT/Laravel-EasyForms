@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;

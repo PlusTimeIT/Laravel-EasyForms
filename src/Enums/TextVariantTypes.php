@@ -2,12 +2,13 @@
 
 namespace PlusTimeIT\EasyForms\Enums;
 
-enum TextVariantTypes: string {
-    case Outlined = "outlined";
-    case Plain = "plain";
-    case Underlined = "underlined";
-    case Filled = "filled";
-    case Solo = "solo";
-    case SoloInverted = "solo-inverted";
-    case SoloFilled = "solo-filled";
+enum TextVariantTypes: string
+{
+    case Filled = 'filled';
+    case Outlined = 'outlined';
+    case Plain = 'plain';
+    case Solo = 'solo';
+    case SoloFilled = 'solo-filled';
+    case SoloInverted = 'solo-inverted';
+    case Underlined = 'underlined';
 }

@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasTile
 {
-    protected $tile = TRUE;
+    protected $tile = true;
 
     public function getTile(): bool
     {
@@ -13,6 +14,7 @@ trait HasTile
     public function setTile(bool $tile): self
     {
         $this->tile = $tile;
+
         return $this;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasActions
@@ -18,6 +19,7 @@ trait HasActions
     public function setActions(array $actions): self
     {
         $this->actions = $actions;
+
         return $this;
     }
 }

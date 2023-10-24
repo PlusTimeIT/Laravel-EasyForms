@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasShowSize
 {
-    protected $show_size = FALSE;
+    protected $show_size = false;
 
     public function getShowSize(): bool
     {

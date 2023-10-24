@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasProminent
 {
-    protected $prominent = FALSE;
+    protected $prominent = false;
 
     public function getProminent(): bool
     {
@@ -13,6 +14,7 @@ trait HasProminent
     public function setProminent(bool $prominent): self
     {
         $this->prominent = $prominent;
+
         return $this;
     }
 }

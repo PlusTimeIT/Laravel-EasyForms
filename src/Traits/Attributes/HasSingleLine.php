@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasSingleLine
 {
-    protected $single_line = FALSE;
+    protected $single_line = false;
 
     public function getSingleLine(): bool
     {

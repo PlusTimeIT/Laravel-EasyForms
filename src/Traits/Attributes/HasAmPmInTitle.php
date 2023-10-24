@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasAmPmInTitle
 {
-    protected $ampmInTitle = FALSE;
+    protected $ampmInTitle = false;
 
     public function getAmPmInTitle(): bool
     {

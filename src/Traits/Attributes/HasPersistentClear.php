@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasPersistentClear
 {
-    protected $persistent_clear = FALSE;
+    protected $persistent_clear = false;
 
     public function getPersistentClear(): bool
     {

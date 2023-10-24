@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasPersistentCounter
 {
-    protected $persistent_counter = FALSE;
+    protected $persistent_counter = false;
 
     public function getPersistentCounter(): bool
     {

@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasFields
@@ -13,12 +14,14 @@ trait HasFields
     public function setFields(array $fields): self
     {
         $this->fields = $fields;
+
         return $this->sortFields();
     }
 
     public function sortFields(): self
     {
-        $this->fields = collect($this->fields)->sortBy(fn($field) => $field->getOrder())->values()->all();
+        $this->fields = collect($this->fields)->sortBy(fn ($field) => $field->getOrder())->values()->all();
+
         return $this;
     }
 }

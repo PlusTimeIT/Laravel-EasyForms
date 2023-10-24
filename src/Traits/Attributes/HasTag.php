@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasTag
@@ -13,6 +14,7 @@ trait HasTag
     public function setTag(string $tag): self
     {
         $this->tag = $tag;
+
         return $this;
     }
 }

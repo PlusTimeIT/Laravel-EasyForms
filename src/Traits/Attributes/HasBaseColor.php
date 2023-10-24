@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasBaseColor
@@ -13,6 +14,7 @@ trait HasBaseColor
     public function setBaseColor(string $base_color): self
     {
         $this->base_color = $base_color;
+
         return $this;
     }
 }

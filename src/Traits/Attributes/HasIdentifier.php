@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasIdentifier
@@ -13,6 +14,7 @@ trait HasIdentifier
     public function setIdentifier(string $identifier): self
     {
         $this->identifier = $identifier;
+
         return $this;
     }
 }

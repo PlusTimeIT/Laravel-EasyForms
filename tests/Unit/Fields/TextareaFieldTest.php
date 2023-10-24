@@ -1,10 +1,12 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Tests\Unit\Fields;
 
 use PlusTimeIT\EasyForms\Fields\TextareaField;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class TextareaFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCase

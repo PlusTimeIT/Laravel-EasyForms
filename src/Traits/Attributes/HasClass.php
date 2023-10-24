@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasClass
@@ -13,6 +14,7 @@ trait HasClass
     public function setClass(string $class): self
     {
         $this->class = $class;
+
         return $this;
     }
 }

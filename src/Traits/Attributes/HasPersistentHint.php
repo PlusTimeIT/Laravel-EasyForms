@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasPersistentHint
 {
-    protected $persistent_hint = FALSE;
+    protected $persistent_hint = false;
 
     public function getPersistentHint(): bool
     {

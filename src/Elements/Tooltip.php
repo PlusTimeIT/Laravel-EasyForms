@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Elements;
 
 use PlusTimeIT\EasyForms\Interfaces\TooltipInterface;

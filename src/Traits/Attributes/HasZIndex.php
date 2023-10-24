@@ -6,12 +6,12 @@ trait HasZIndex
 {
     protected $z_index;
 
-    public function getZIndex(): string | int
+    public function getZIndex(): string|int
     {
         return $this->z_index;
     }
 
-    public function setZIndex(string | int $z_index): self
+    public function setZIndex(string|int $z_index): self
     {
         $this->z_index = $z_index;
 

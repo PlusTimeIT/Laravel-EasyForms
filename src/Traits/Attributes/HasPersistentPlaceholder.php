@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasPersistentPlaceholder
 {
-    protected $persistent_placeholder = FALSE;
+    protected $persistent_placeholder = false;
 
     public function getPersistentPlaceholder(): bool
     {

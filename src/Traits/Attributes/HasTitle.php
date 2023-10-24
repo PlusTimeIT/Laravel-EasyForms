@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasTitle
@@ -13,6 +14,7 @@ trait HasTitle
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 }

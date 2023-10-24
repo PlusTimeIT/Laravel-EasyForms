@@ -1,11 +1,12 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasRowColumnLayout
 {
-    protected $column = TRUE;
+    protected $column = true;
 
-    protected $row = FALSE;
+    protected $row = false;
 
     public function getColumn(): bool
     {

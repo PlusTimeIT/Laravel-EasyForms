@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasBorder
@@ -13,6 +14,7 @@ trait HasBorder
     public function setBorder(string $border): self
     {
         $this->border = $border;
+
         return $this;
     }
 }

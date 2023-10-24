@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasLight
 {
-    protected $light = FALSE;
+    protected $light = false;
 
     public function getLight(): bool
     {
@@ -13,6 +14,7 @@ trait HasLight
     public function setLight(bool $light): self
     {
         $this->light = $light;
+
         return $this;
     }
 }

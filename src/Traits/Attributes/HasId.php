@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasId
@@ -13,6 +14,7 @@ trait HasId
     public function setId($id): self
     {
         $this->id = $id;
+
         return $this;
     }
 }

@@ -1,7 +1,8 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits;
 
-use PlusTimeIT\EasyForms\Elements\{Axios, Button};
+use PlusTimeIT\EasyForms\Elements\Axios;
 
 trait ActionTrait
 {
@@ -16,6 +17,7 @@ trait ActionTrait
         $this->buttons = $buttons;
         $this->alerts = $alerts;
         $this->axios = $axios;
+
         return $this->sortButtons();
     }
 

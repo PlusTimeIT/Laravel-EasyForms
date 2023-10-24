@@ -4,7 +4,8 @@ namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Elements\CheckboxItem;
-use PlusTimeIT\EasyForms\Traits\Attributes\{HasCheckboxItems, HasSwitch};
+use PlusTimeIT\EasyForms\Traits\Attributes\HasCheckboxItems;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasSwitch;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 class CheckboxGroupField extends EasyField

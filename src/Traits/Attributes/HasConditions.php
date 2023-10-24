@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasConditions
@@ -13,6 +14,7 @@ trait HasConditions
     public function setConditions(array $conditions): self
     {
         $this->conditions = $conditions;
+
         return $this;
     }
 }

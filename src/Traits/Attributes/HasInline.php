@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasInline
@@ -13,6 +14,7 @@ trait HasInline
     public function setInline(bool $inline): self
     {
         $this->inline = $inline;
+
         return $this;
     }
 }

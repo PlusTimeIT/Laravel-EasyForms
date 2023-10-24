@@ -17,17 +17,19 @@ trait HasShowIf
 
     public function setShowIf(string $parent, mixed $value)
     {
-        $this->show_if = TRUE;
+        $this->show_if = true;
         $this->show_if_parent = $parent;
         $this->show_if_value = $value;
+
         return $this;
     }
 
     public function showIf(string $parent, mixed $value)
     {
-        $this->show_if = TRUE;
+        $this->show_if = true;
         $this->show_if_parent = $parent;
         $this->show_if_value = $value;
+
         return $this;
     }
 }

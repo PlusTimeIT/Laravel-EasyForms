@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasButtonJustifyRow
@@ -18,6 +19,7 @@ trait HasButtonJustifyRow
     public function setButtonJustifyRow(string $buttonJustifyRow): self
     {
         $this->buttonJustifyRow = $buttonJustifyRow;
+
         return $this;
     }
 }

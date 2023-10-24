@@ -1,12 +1,20 @@
 <?php
 
-namespace PlusTimeIT\EasyForms\Forms;
+namespace App\Http\Forms;
 
 use Illuminate\Http\Request;
 use PlusTimeIT\EasyForms\Base\InputForm;
-use PlusTimeIT\EasyForms\Elements\{Action, Alert, Axios, Button, Header, Icon, ProcessResponse, RuleItem};
-use PlusTimeIT\EasyForms\Enums\{AlertTriggers, AlertTypes};
-use PlusTimeIT\EasyForms\Fields\{PasswordField, TextField};
+use PlusTimeIT\EasyForms\Elements\Alert;
+use PlusTimeIT\EasyForms\Elements\Axios;
+use PlusTimeIT\EasyForms\Elements\Button;
+use PlusTimeIT\EasyForms\Elements\Icon;
+use PlusTimeIT\EasyForms\Elements\ProcessResponse;
+use PlusTimeIT\EasyForms\Elements\RuleItem;
+use PlusTimeIT\EasyForms\Elements\Tooltip;
+use PlusTimeIT\EasyForms\Enums\AlertTriggers;
+use PlusTimeIT\EasyForms\Enums\AlertTypes;
+use PlusTimeIT\EasyForms\Fields\PasswordField;
+use PlusTimeIT\EasyForms\Fields\TextField;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 final class ExampleForm1 extends InputForm
@@ -16,6 +24,7 @@ final class ExampleForm1 extends InputForm
     public function __construct()
     {
         parent::__construct();
+
         return $this
             ->setName('ExampleForm1')
             ->setTitle('Load from page with alerts');
@@ -25,70 +34,68 @@ final class ExampleForm1 extends InputForm
     {
         return [
             Alert::make()
+                ->setType(AlertTypes::Info)
                 ->setTrigger(AlertTriggers::BeforeLoad)
                 ->setColor('secondary')
                 ->setBorder('top')
-                ->setClosable(FALSE)
-                ->setTextStyle(TRUE)
+                ->setClosable(false)
+                ->setTextStyle(true)
                 ->setText('<p>This is a sticky alert</p> <p><a target="_blank" href="/easyforms/example/2">Check out Example 2 😁</a></p>')
                 ->setIcon(
                     Icon::make()->setIcon('mdi-note-multiple')
-                )
-            ,
+                ),
             Alert::make()
+                ->setType(AlertTypes::Warning)
                 ->setTrigger(AlertTriggers::AfterLoad)
                 ->setColor('blue')
                 ->setBorder('right')
-                ->setClosable(FALSE)
-                ->setTextStyle(TRUE)
-                ->setProminent(TRUE)
+                ->setClosable(false)
+                ->setTextStyle(true)
+                ->setProminent(true)
                 ->setAutoCloseTimer(1000)
                 ->setTransition('fade-transition')
-                ->setText('Form is loading now...')
+                ->setText('Form has finished loading - After Load')
                 ->setIcon(
                     Icon::make()->setIcon('mdi-rocket')
-                )
-            ,
+                ),
             Alert::make()
+                ->setType(AlertTypes::Success)
                 ->setTrigger(AlertTriggers::BeforeProcessing)
                 ->setColor('green')
                 ->setBorder('left')
-                ->setTextStyle(TRUE)
-                ->setClosable(TRUE)
-                ->setText('Processing starting!')
-            ,
+                ->setTextStyle(true)
+                ->setClosable(true)
+                ->setText('Form is about to process - Before Processing'),
             Alert::make()
+                ->setType(AlertTypes::Success)
                 ->setTrigger(AlertTriggers::AfterProcessing)
                 ->setColor('green')
                 ->setBorder('top')
-                ->setClosable(TRUE)
-                ->setText('Processing Finished!')
-            ,
+                ->setClosable(true)
+                ->setText('Form has processed - After Processing'),
             Alert::make()
-                ->setTrigger(AlertTriggers::FailedProcessing)
                 ->setType(AlertTypes::Error)
+                ->setTrigger(AlertTriggers::FailedProcessing)
                 ->setColor('red')
-                ->setProminent(TRUE)
+                ->setProminent(true)
                 ->setBorder('bottom')
-                ->setClosable(TRUE)
-                ->setText('Concat the response: <response-data>')
-            ,
+                ->setClosable(true)
+                ->setText('Form failed processing - Failed Processing - Response: <response-data>'),
             Alert::make()
-                ->setTrigger(AlertTriggers::SuccessProcessing)
                 ->setType(AlertTypes::Success)
+                ->setTrigger(AlertTriggers::SuccessProcessing)
                 ->setColor('green')
-                ->setProminent(TRUE)
+                ->setProminent(true)
                 ->setBorder('top')
-                ->setClosable(TRUE)
-                ->setText('Concat the response: <response-data>')
-            ,
+                ->setClosable(true)
+                ->setText('Form successfully processed - Success Processing - Response: <response-data>'),
             Alert::make()
+                ->setType(AlertTypes::Info)
                 ->setTrigger(AlertTriggers::FormReset)
                 ->setColor('grey')
                 ->setBorder('top')
-                ->setClosable(TRUE)
-                ->setText('Form Reset')
-            ,
+                ->setClosable(true)
+                ->setText('Form has reset - Form Reset'),
         ];
     }
 
@@ -99,18 +106,18 @@ final class ExampleForm1 extends InputForm
                 ->setType('process')
                 ->setColor('primary')
                 ->setText('Login')
-                ->setIcon(
-                    Icon::make()->setIcon('mdi-login')->setTooltip('Login to the app')
+                ->setPrependIcon(
+                    Icon::make()
+                        ->setIcon('mdi-login')
+                        ->setTooltip(
+                            Tooltip::make()->setText('Process Form')
+                        )
                 )
-                ->setOrder(0)
-            ,
+                ->setOrder(0),
             Button::make()
                 ->setType('reset')
                 ->setColor('secondary')
                 ->setText('Reset Form')
-                ->setIcon(
-                    Icon::make()->setIcon('mdi-refresh')->setTooltip('Reset the form fields')
-                )
                 ->setOrder(1),
         ];
     }
@@ -121,19 +128,18 @@ final class ExampleForm1 extends InputForm
             TextField::make()
                 ->setName('username')
                 ->setOrder(0)
-                ->setClearable(TRUE)
+                ->setClearable(true)
                 ->setHelp('OH OH')
                 ->setLabel('Username')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-            ,
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
             PasswordField::make()
                 ->setName('password')
                 ->setOrder(1)
                 ->setLabel('Password')
                 ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
+                    RuleItem::make()->setName('required')->setValue(true),
                 ]),
         ];
     }
@@ -146,9 +152,9 @@ final class ExampleForm1 extends InputForm
 
     public function populateFields($data): array
     {
-        return collect($this->fields())->map(function($field) use ($data) {
-            if (isset($data[ $field->getName()])) {
-                $field->setValue($data[ $field->getName()]);
+        return collect($this->fields())->map(function ($field) use ($data) {
+            if (isset($data[$field->getName()])) {
+                $field->setValue($data[$field->getName()]);
             }
 
             return $field;
@@ -159,12 +165,13 @@ final class ExampleForm1 extends InputForm
     {
         //this form is always loaded by page not axios so we want to prefill it
         $fakeData = [
-            'username' => 'Pre-populated Username' ,
+            'username' => 'Pre-populated Username',
         ];
+
         return $this->setFields($this->populateFields($fakeData));
     }
 
-    public static function process(request $request)
+    public static function process(request $request): ProcessResponse
     {
         //request has been validated so we know what we have.
         $username = $request->username;

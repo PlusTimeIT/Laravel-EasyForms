@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasButtonAlignRow
@@ -18,6 +19,7 @@ trait HasButtonAlignRow
     public function setButtonAlignRow(string $buttonAlignRow): self
     {
         $this->buttonAlignRow = $buttonAlignRow;
+
         return $this;
     }
 }
