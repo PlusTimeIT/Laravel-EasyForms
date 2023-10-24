@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
@@ -41,6 +42,8 @@ class ColorPickerField extends EasyField
     use Transformable;
 
     protected $component = 'v-color-picker';
+
+    protected $discriminator = 'ColorPickerField';
 
     protected $type = 'color-picker';
 }

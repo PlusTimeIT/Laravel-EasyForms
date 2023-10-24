@@ -36,7 +36,7 @@ trait FormTrait
         return new static();
     }
 
-    public static function process(request $request)
+    public static function process(request $request): ProcessResponse
     {
         return ProcessResponse::make()->success()->data('Yay you processed!');
     }

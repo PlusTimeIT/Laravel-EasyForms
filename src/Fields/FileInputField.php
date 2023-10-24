@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
@@ -23,6 +24,8 @@ class FileInputField extends EasyField
     use Transformable;
 
     protected $component = 'v-file-input';
+
+    protected $discriminator = 'FileInputField';
 
     protected $type = 'file-input';
 

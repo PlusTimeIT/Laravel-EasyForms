@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Tests\Unit\Fields;
 
 use PlusTimeIT\EasyForms\Fields\TextField;
@@ -25,7 +26,7 @@ class TextFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCas
     {
         $field = $this->fieldClass::make();
         $field->setCounter('10');
-        $this->assertObjectHasAttribute('counter', $field);
+        $this->assertEquals($field->getCounter(), '10');
     }
 
     public function testAMaskingCanBeSetAndGet()
@@ -40,7 +41,7 @@ class TextFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCas
     {
         $field = $this->fieldClass::make();
         $field->setMaxLength('10');
-        $this->assertObjectHasAttribute('maxlength', $field);
+        $this->assertEquals($field->getMaxLength(), '10');
     }
 
     public function testCanGetCounter()

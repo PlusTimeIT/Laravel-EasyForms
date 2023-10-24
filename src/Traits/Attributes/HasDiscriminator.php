@@ -1,0 +1,23 @@
+<?php
+
+namespace PlusTimeIT\EasyForms\Traits\Attributes;
+
+/**
+ * HasDiscriminator is used to determine the Class to instantiate the object as.
+ */
+trait HasDiscriminator
+{
+    protected $discriminator;
+
+    public function getDiscriminator(): string
+    {
+        return $this->discriminator;
+    }
+
+    public function setDiscriminator(string $discriminator): self
+    {
+        $this->discriminator = $discriminator;
+
+        return $this;
+    }
+}

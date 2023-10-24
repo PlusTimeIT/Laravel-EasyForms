@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Base;
 
 use PlusTimeIT\EasyForms\Interfaces\ActionFormInterface;
@@ -15,7 +16,7 @@ abstract class ActionForm extends EasyForm implements ActionFormInterface
     /**
      * @var string $type The type of form
      */
-    protected $type = 'action';
+    protected $type = 'action-form';
 
     public function __construct()
     {

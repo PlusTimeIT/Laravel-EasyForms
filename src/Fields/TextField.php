@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
@@ -13,6 +14,8 @@ class TextField extends EasyField
     use Transformable;
 
     protected $component = 'v-text-field';
+
+    protected $discriminator = 'TextField';
 
     protected $type = 'text';
 }

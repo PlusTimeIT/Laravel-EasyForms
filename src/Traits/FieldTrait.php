@@ -1,8 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits;
 
 trait FieldTrait
 {
+    use Attributes\HasDiscriminator;
     use Attributes\HasActive;
     use Attributes\HasAutoFocus;
     use Attributes\HasBaseColor;
@@ -42,9 +44,9 @@ trait FieldTrait
     use Attributes\HasRole;
     use Attributes\HasRounded;
     use Attributes\HasRules;
-    use Attributes\hasShowIf;
-    use Attributes\hasSingleLine;
-    use Attributes\hasSuffix;
+    use Attributes\HasShowIf;
+    use Attributes\HasSingleLine;
+    use Attributes\HasSuffix;
     use Attributes\HasTheme;
     use Attributes\HasTooltip;
     use Attributes\HasType;

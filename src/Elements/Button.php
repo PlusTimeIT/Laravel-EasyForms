@@ -12,6 +12,7 @@ class Button
     use Attributes\HasIcon;
     use Attributes\HasOrder;
     use Attributes\HasRounded;
+    use Attributes\HasIcons;
     use Attributes\HasText;
     use Attributes\HasType;
     use Attributes\HasTile;

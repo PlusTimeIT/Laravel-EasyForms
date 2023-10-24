@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
@@ -73,4 +74,6 @@ class SwitchField extends EasyField
     use Transformable;
 
     protected $component = 'v-switch';
+
+    protected $discriminator = 'SwitchField';
 }

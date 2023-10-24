@@ -1,13 +1,16 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Elements;
 
 use PlusTimeIT\EasyForms\Traits\Attributes\{
+    HasAlertType,
     HasAutoCloseTimer,
     HasBorder,
     HasBorderColor,
+    HasButtonVariant,
     HasClosable,
-    HasCols,
     HasColor,
+    HasCols,
     HasContentPlaceholder,
     HasDensity,
     HasDisplay,
@@ -18,8 +21,8 @@ use PlusTimeIT\EasyForms\Traits\Attributes\{
     HasMaxWidth,
     HasMinHeight,
     HasMinWidth,
-    HasOriginalText,
     HasOrder,
+    HasOriginalText,
     HasPosition,
     HasProminent,
     HasRounded,
@@ -28,19 +31,20 @@ use PlusTimeIT\EasyForms\Traits\Attributes\{
     HasTextStyle,
     HasTransition,
     HasTrigger,
-    HasType,
-    HasButtonVariant,
 };
 use PlusTimeIT\EasyForms\Traits\{Creatable, Transformable};
 
 class Alert
 {
+    use Creatable;
+    use HasAlertType;
     use HasAutoCloseTimer;
     use HasBorder;
     use HasBorderColor;
+    use HasButtonVariant;
     use HasClosable;
-    use HasCols;
     use HasColor;
+    use HasCols;
     use HasContentPlaceholder;
     use HasDensity;
     use HasDisplay;
@@ -51,8 +55,8 @@ class Alert
     use HasMaxWidth;
     use HasMinHeight;
     use HasMinWidth;
-    use HasOriginalText;
     use HasOrder;
+    use HasOriginalText;
     use HasPosition;
     use HasProminent;
     use HasRounded;
@@ -61,6 +65,5 @@ class Alert
     use HasTextStyle;
     use HasTransition;
     use HasTrigger;
-    use HasType;
-    use HasButtonVariant;
+    use Transformable;
 }

@@ -1,5 +1,38 @@
 {
+    "php.validate.executablePath": "/usr/bin/php8.1",
     "cSpell.words": [
-        "Hasloading"
-    ]
+        "Activitylog",
+        "Cmgmyr",
+        "Messagable",
+        "axios",
+        "basepx",
+        "delivere",
+        "Easyforms",
+        "laravel",
+        "neighbourhood",
+        "onlyhorses",
+        "padless",
+        "vuetify"
+    ],
+    "laravel-pint.enable": true,
+    "recommendations": [
+        "open-southeners.laravel-pint"
+    ],
+    "[sass]": {
+        "editor.tabSize": 2
+    },
+    "[html]": {
+        "editor.tabSize": 4
+    },
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+    "[vue]": {
+        "editor.tabSize": 2
+    },
+    "[php]": {
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+        "editor.defaultFormatter": "open-southeners.laravel-pint"
+    }
 }

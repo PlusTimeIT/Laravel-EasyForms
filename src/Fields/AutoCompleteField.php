@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
@@ -19,6 +20,8 @@ class AutoCompleteField extends EasyField
     use Transformable;
 
     protected $component = 'v-autocomplete';
+
+    protected $discriminator = 'AutoCompleteField';
 
     protected $type = 'autocomplete';
 }

@@ -1,0 +1,16 @@
+
+{
+  "preset": "laravel",
+  "rules": {
+    "ordered_imports": {
+      "sort_algorithm": "alpha"
+    },
+    "ordered_class_elements": {
+      "sort_algorithm": "alpha"
+    }
+  },
+  "exclude": [
+    "vendor",
+    "public"
+  ]
+}

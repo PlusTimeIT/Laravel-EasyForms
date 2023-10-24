@@ -1,10 +1,12 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Forms;
 
 use Illuminate\Http\Request;
 use PlusTimeIT\EasyForms\Base\InputForm;
 use PlusTimeIT\EasyForms\Elements\ProcessResponse;
 use PlusTimeIT\EasyForms\Elements\{Action, Alert, Axios, Button, Header, Icon, RadioItem, RuleItem, SelectItem};
+use PlusTimeIT\EasyForms\Enums\{AlertTriggers, AlertTypes};
 use PlusTimeIT\EasyForms\Fields\{AutoCompleteField, CheckboxField, FileInputField, HiddenField, NumberField, PasswordField, RadioGroupField, SelectField, TextField, TextareaField};
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
@@ -24,31 +26,31 @@ final class ExampleForm3 extends InputForm
     {
         return [
             Alert::make()
-                ->setTrigger('before_load')
-                ->setType('error')
+                ->setTrigger(AlertTriggers::BeforeLoad)
+                ->setType(AlertTypes::Error)
                 ->setColor('red')
                 ->setProminent(TRUE)
                 ->setBorder('bottom')
-                ->setDismissible(TRUE)
-                ->setContents('This alert will be ignored because we load by axios!')
+                ->setClosable(TRUE)
+                ->setText('This alert will be ignored because we load by axios!')
             ,
             Alert::make()
-                ->setTrigger('failed_processing')
-                ->setType('error')
+                ->setTrigger(AlertTriggers::FailedProcessing)
+                ->setType(AlertTypes::Error)
                 ->setColor('red')
                 ->setProminent(TRUE)
                 ->setBorder('bottom')
-                ->setDismissible(TRUE)
-                ->setContents('Processing Failed!')
+                ->setClosable(TRUE)
+                ->setText('Processing Failed!')
             ,
             Alert::make()
-                ->setTrigger('successful_processing')
-                ->setType('success')
+                ->setTrigger(AlertTriggers::SuccessProcessing)
+                ->setType(AlertTypes::Success)
                 ->setColor('green')
                 ->setProminent(TRUE)
                 ->setBorder('top')
-                ->setDismissible(TRUE)
-                ->setContents('Processing Successful!')
+                ->setClosable(TRUE)
+                ->setText('Processing Successful!')
             ,
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
@@ -13,6 +14,8 @@ class TimePickerField extends EasyField
     use Transformable;
 
     protected $component = 'time-picker';
+
+    protected $discriminator = 'TimePickerField';
 
     protected $type = 'time-picker';
 }

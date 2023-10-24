@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
@@ -13,6 +14,8 @@ class DatePickerField extends EasyField
     use Transformable;
 
     protected $component = 'date-picker';
+
+    protected $discriminator = 'DatePickerField';
 
     protected $type = 'date-picker';
 }

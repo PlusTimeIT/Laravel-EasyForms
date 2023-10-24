@@ -1,10 +1,11 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasClearable
 {
-    use Attributes\HasClearIcon;
-    
+    use HasClearIcon;
+
     protected $clearable = FALSE;
 
     public function getClearable(): bool

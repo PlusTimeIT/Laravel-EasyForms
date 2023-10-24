@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Base;
 
 use PlusTimeIT\EasyForms\Interfaces\InputFormInterface;
@@ -15,7 +16,7 @@ abstract class InputForm extends EasyForm implements InputFormInterface
     /**
      * @var string $type The type of form
      */
-    protected $type = 'input';
+    protected $type = 'input-form';
 
     public function __construct()
     {

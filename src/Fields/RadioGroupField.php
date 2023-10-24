@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
@@ -17,6 +18,8 @@ class RadioGroupField extends EasyField
     use Transformable;
 
     protected $component = 'v-radio-group';
+
+    protected $discriminator = 'RadioGroupField';
 
     protected $type = 'select';
 

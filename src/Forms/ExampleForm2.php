@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Forms;
 
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ use PlusTimeIT\EasyForms\Elements\{
     RuleItem,
     SelectItem
 };
+use PlusTimeIT\EasyForms\Enums\{AlertTriggers, AlertTypes};
 use PlusTimeIT\EasyForms\Fields\{
     AutoCompleteField,
     CheckboxField,
@@ -50,9 +52,9 @@ final class ExampleForm2 extends InputForm
                 ->setTrigger('process_failed')
                 ->setColor('red')
                 ->setBorder('top')
-                ->setDismissible(TRUE)
-                ->setText(TRUE)
-                ->setContents('Form Failed!')
+                ->setClosable(TRUE)
+                ->setTextStyle(TRUE)
+                ->setText('Form Failed!')
                 ->setIcon(
                     Icon::make()->setIcon('mdi-file-excel-box')
                 ),
@@ -237,7 +239,7 @@ final class ExampleForm2 extends InputForm
                         return NULL;
                     }
                     return collect($officers[$customer_id])
-                        ->map(fn($officer) => SelectItem::make()->setId($officer['id'])->setValue($officer['name']))
+                        ->map(fn ($officer) => SelectItem::make()->setId($officer['id'])->setValue($officer['name']))
                         ->toArray();
                 })
                 ->setRules([

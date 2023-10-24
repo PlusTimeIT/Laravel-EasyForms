@@ -210,24 +210,24 @@ public function alerts(): array
 {
     return [
         Alert::make()
-            ->setTrigger('before_load')
+            ->setTrigger(AlertTriggers::BeforeLoad)
             ->setColor('secondary')
             ->setBorder('top')
-            ->setDismissible(FALSE)
-            ->setText(TRUE)
-            ->setContents('<p>This is a sticky alert</p> <p><a target="_blank" href="/easyforms/example/2">Check out Example 2 😁</a></p>')
+            ->setClosable(FALSE)
+            ->setTextStyle(TRUE)
+            ->setText('<p>This is a sticky alert</p> <p><a target="_blank" href="/easyforms/example/2">Check out Example 2 😁</a></p>')
             ->setIcon(
                 Icon::make()->setIcon('mdi-note-multiple')
             )
         ,
         Alert::make()
-            ->setTrigger('successful_processing')
-            ->setType('success')
+            ->setTrigger(AlertTriggers::SuccessProcessing)
+            ->setType(AlertTypes::Success)
             ->setColor('green')
             ->setProminent(TRUE)
             ->setBorder('top')
-            ->setDismissible(TRUE)
-            ->setContents('Concat the response: <response-data>')
+            ->setClosable(TRUE)
+            ->setText('Concat the response: <response-data>')
     ];
 }
 

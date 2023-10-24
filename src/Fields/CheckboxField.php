@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
@@ -9,6 +10,8 @@ class CheckboxField extends EasyField
     use Transformable;
 
     protected $component = 'v-checkbox';
+
+    protected $discriminator = 'CheckboxField';
 
     protected $type = 'checkbox';
 }

@@ -1,5 +1,9 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Interfaces;
+
+use PlusTimeIT\EasyForms\Elements\Tooltip;
+use PlusTimeIT\EasyForms\Enums\DensityTypes;
 
 interface FieldInterface
 {
@@ -13,9 +17,11 @@ interface FieldInterface
 
     public function getComponentType(): string;
 
-    public function getDense(): bool;
+    public function getDensity(): DensityTypes;
 
     public function getDependsOn(): string | NULL;
+
+    public function getDiscriminator(): string;
 
     public function getHelp(): string;
 
@@ -31,7 +37,7 @@ interface FieldInterface
 
     public function getRules(): array;
 
-    public function getTooltip(): string;
+    public function getTooltip(): Tooltip;
 
     public function getType(): string;
 
@@ -45,9 +51,11 @@ interface FieldInterface
 
     public function setComponentType(string $component_type);
 
-    public function setDense(bool $dense);
+    public function setDensity(DensityTypes $dense);
 
     public function setDependsOn(string $dependsOn);
+
+    public function setDiscriminator(string $discriminator);
 
     public function setHelp(string $help);
 
@@ -65,7 +73,7 @@ interface FieldInterface
 
     public function setRules(array $rules);
 
-    public function setTooltip(string $tooltip);
+    public function setTooltip(Tooltip $tooltip);
 
     public function setType(string $type);
 

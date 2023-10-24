@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasContentPlaceholder
 {
-    protected $content_placeholder = '';
+    protected $content_placeholder = '<response-data>';
 
     public function getContentPlaceholder(): string
     {

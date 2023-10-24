@@ -1,7 +1,9 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Tests\Unit\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
+use PlusTimeIT\EasyForms\Enums\DensityTypes;
 
 /**
  * @internal
@@ -48,12 +50,12 @@ class BaseFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCas
         $this->assertSame($field->getComponentType($test), $test);
     }
 
-    public function testADenseCanBeSetAndGet()
+    public function testADensityCanBeSetAndGet()
     {
-        $test = FALSE;
+        $test = DensityTypes::Compact;
         $field = $this->fieldClass::make();
-        $field->setDense($test);
-        $this->assertSame($field->getDense($test), $test);
+        $field->setDensity($test);
+        $this->assertSame($field->getDensity($test), $test);
     }
 
     public function testAHelpCanBeSetAndGet()

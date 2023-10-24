@@ -46,7 +46,7 @@ class Axios extends Controller
         if ($results->fails()) {
             return AxiosResponse::make()
                 ->failed()
-                ->data(collect($results->errors()))
+                ->data(['validation_errors' => collect($results->errors())])
                 ->toJson();
         }
 

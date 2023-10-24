@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Tests\Unit\Fields;
 
 use PlusTimeIT\EasyForms\Fields\PasswordField;
@@ -25,14 +26,14 @@ class PasswordFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTes
     {
         $field = $this->fieldClass::make();
         $field->setCounter('10');
-        $this->assertObjectHasAttribute('counter', $field);
+        $this->assertEquals($field->getCounter(), '10');
     }
 
     public function testAMaxLengthCanBeSet()
     {
         $field = $this->fieldClass::make();
         $field->setMaxLength('10');
-        $this->assertObjectHasAttribute('maxlength', $field);
+        $this->assertEquals($field->getMaxLength(), '10');
     }
 
     public function testCanGetCounter()

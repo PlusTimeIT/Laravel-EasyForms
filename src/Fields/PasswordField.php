@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
@@ -14,6 +15,8 @@ class PasswordField extends EasyField
     protected $component = 'v-text-field';
 
     protected $component_type = 'password';
+
+    protected $discriminator = 'PasswordField';
 
     protected $type = 'password';
 }

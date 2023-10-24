@@ -3,7 +3,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasOffset
 {
-    protected $offset = 1;
+    protected $offset = 0;
 
     public function getOffset(): int | string
     {

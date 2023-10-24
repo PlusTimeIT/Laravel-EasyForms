@@ -5,12 +5,12 @@ trait HasRounded
 {
     protected $rounded = FALSE;
 
-    public function getRounded(): bool | string | number
+    public function getRounded(): bool | string | int
     {
         return $this->rounded;
     }
 
-    public function setRounded(bool | string | number $rounded): self
+    public function setRounded(bool | string | int $rounded): self
     {
         $this->rounded = $rounded;
         return $this;

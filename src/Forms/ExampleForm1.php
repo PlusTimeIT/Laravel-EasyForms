@@ -1,9 +1,11 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Forms;
 
 use Illuminate\Http\Request;
 use PlusTimeIT\EasyForms\Base\InputForm;
 use PlusTimeIT\EasyForms\Elements\{Action, Alert, Axios, Button, Header, Icon, ProcessResponse, RuleItem};
+use PlusTimeIT\EasyForms\Enums\{AlertTriggers, AlertTypes};
 use PlusTimeIT\EasyForms\Fields\{PasswordField, TextField};
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
@@ -23,69 +25,69 @@ final class ExampleForm1 extends InputForm
     {
         return [
             Alert::make()
-                ->setTrigger('before_load')
+                ->setTrigger(AlertTriggers::BeforeLoad)
                 ->setColor('secondary')
                 ->setBorder('top')
-                ->setDismissible(FALSE)
-                ->setText(TRUE)
-                ->setContents('<p>This is a sticky alert</p> <p><a target="_blank" href="/easyforms/example/2">Check out Example 2 😁</a></p>')
+                ->setClosable(FALSE)
+                ->setTextStyle(TRUE)
+                ->setText('<p>This is a sticky alert</p> <p><a target="_blank" href="/easyforms/example/2">Check out Example 2 😁</a></p>')
                 ->setIcon(
                     Icon::make()->setIcon('mdi-note-multiple')
                 )
             ,
             Alert::make()
-                ->setTrigger('after_load')
+                ->setTrigger(AlertTriggers::AfterLoad)
                 ->setColor('blue')
                 ->setBorder('right')
-                ->setDismissible(FALSE)
-                ->setText(TRUE)
+                ->setClosable(FALSE)
+                ->setTextStyle(TRUE)
                 ->setProminent(TRUE)
                 ->setAutoCloseTimer(1000)
                 ->setTransition('fade-transition')
-                ->setContents('Form is loading now...')
+                ->setText('Form is loading now...')
                 ->setIcon(
                     Icon::make()->setIcon('mdi-rocket')
                 )
             ,
             Alert::make()
-                ->setTrigger('before_processing')
+                ->setTrigger(AlertTriggers::BeforeProcessing)
                 ->setColor('green')
                 ->setBorder('left')
-                ->setText(TRUE)
-                ->setDismissible(TRUE)
-                ->setContents('Processing starting!')
+                ->setTextStyle(TRUE)
+                ->setClosable(TRUE)
+                ->setText('Processing starting!')
             ,
             Alert::make()
-                ->setTrigger('after_processing')
+                ->setTrigger(AlertTriggers::AfterProcessing)
                 ->setColor('green')
                 ->setBorder('top')
-                ->setDismissible(TRUE)
-                ->setContents('Processing Finished!')
+                ->setClosable(TRUE)
+                ->setText('Processing Finished!')
             ,
             Alert::make()
-                ->setTrigger('failed_processing')
-                ->setType('error')
+                ->setTrigger(AlertTriggers::FailedProcessing)
+                ->setType(AlertTypes::Error)
                 ->setColor('red')
                 ->setProminent(TRUE)
                 ->setBorder('bottom')
-                ->setDismissible(TRUE)
-                ->setContents('Concat the response: <response-data>')
+                ->setClosable(TRUE)
+                ->setText('Concat the response: <response-data>')
             ,
             Alert::make()
-                ->setTrigger('successful_processing')
-                ->setType('success')
+                ->setTrigger(AlertTriggers::SuccessProcessing)
+                ->setType(AlertTypes::Success)
                 ->setColor('green')
                 ->setProminent(TRUE)
                 ->setBorder('top')
-                ->setDismissible(TRUE)
-                ->setContents('Concat the response: <response-data>')
+                ->setClosable(TRUE)
+                ->setText('Concat the response: <response-data>')
             ,
             Alert::make()
-                ->setTrigger('reset_form')
+                ->setTrigger(AlertTriggers::FormReset)
                 ->setColor('grey')
                 ->setBorder('top')
-                ->setDismissible(TRUE)
-                ->setContents('Form Reset')
+                ->setClosable(TRUE)
+                ->setText('Form Reset')
             ,
         ];
     }

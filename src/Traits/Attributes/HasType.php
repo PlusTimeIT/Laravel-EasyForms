@@ -1,18 +1,17 @@
 <?php
-namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
-use PlusTimeIT\EasyForms\Enums\AlertTypes;
+namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasType
 {
-    protected $type;
+    protected $type = '';
 
-    public function getType(): AlertTypes
+    public function getType(): string
     {
         return $this->type;
     }
 
-    public function setType(AlertTypes $type): self
+    public function setType(string $type): self
     {
         $this->type = $type;
 

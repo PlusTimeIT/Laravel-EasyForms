@@ -1,7 +1,8 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
-trait hasShowIf
+trait HasShowIf
 {
     protected $show_if;
 
