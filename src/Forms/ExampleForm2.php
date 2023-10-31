@@ -11,6 +11,7 @@ use PlusTimeIT\EasyForms\Elements\Icon;
 use PlusTimeIT\EasyForms\Elements\RadioItem;
 use PlusTimeIT\EasyForms\Elements\RuleItem;
 use PlusTimeIT\EasyForms\Elements\SelectItem;
+use PlusTimeIT\EasyForms\Elements\Tooltip;
 use PlusTimeIT\EasyForms\Fields\AutoCompleteField;
 use PlusTimeIT\EasyForms\Fields\CheckboxField;
 use PlusTimeIT\EasyForms\Fields\ColorPickerField;
@@ -67,7 +68,11 @@ final class ExampleForm2 extends InputForm
                 ->setColor('primary')
                 ->setText('Register')
                 ->setIcon(
-                    Icon::make()->setIcon('mdi-star')->setTooltip('Register online!')
+                    Icon::make()
+                        ->setIcon('mdi-star')
+                        ->setTooltip(
+                            Tooltip::make()->setText('Register online!')
+                        )
                 )
                 ->setOrder(0),
             Button::make()
@@ -75,7 +80,7 @@ final class ExampleForm2 extends InputForm
                 ->setColor('secondary')
                 ->setText('Reset Form')
                 ->setIcon(
-                    Icon::make()->setIcon('mdi-refresh')->setTooltip('Reset the form fields')
+                    Icon::make()->setIcon('mdi-refresh')->setTooltip(Tooltip::make()->setText('Reset the form fields'))
                 )
                 ->setOrder(1),
         ];
@@ -321,7 +326,7 @@ final class ExampleForm2 extends InputForm
         ];
     }
 
-    public static function process(request $request)
+    public static function process(request $request): ProcessResponse
     {
         $form = self::make();
     }

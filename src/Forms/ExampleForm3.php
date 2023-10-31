@@ -10,6 +10,7 @@ use PlusTimeIT\EasyForms\Elements\Button;
 use PlusTimeIT\EasyForms\Elements\Icon;
 use PlusTimeIT\EasyForms\Elements\ProcessResponse;
 use PlusTimeIT\EasyForms\Elements\RuleItem;
+use PlusTimeIT\EasyForms\Elements\Tooltip;
 use PlusTimeIT\EasyForms\Enums\AlertTriggers;
 use PlusTimeIT\EasyForms\Enums\AlertTypes;
 use PlusTimeIT\EasyForms\Fields\TextField;
@@ -71,7 +72,7 @@ final class ExampleForm3 extends InputForm
                 ->setColor('primary')
                 ->setText('Process Form')
                 ->setIcon(
-                    Icon::make()->setIcon('mdi-star')->setTooltip('Process')
+                    Icon::make()->setIcon('mdi-star')->setTooltip(Tooltip::make()->setText('Process'))
                 )
                 ->setOrder(0),
         ];
@@ -142,7 +143,7 @@ final class ExampleForm3 extends InputForm
         return self::make();
     }
 
-    public static function process(request $request)
+    public static function process(request $request): ProcessResponse
     {
         return ProcessResponse::make()->success()->data('We processed yo!');
     }

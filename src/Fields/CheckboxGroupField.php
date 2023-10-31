@@ -8,6 +8,11 @@ use PlusTimeIT\EasyForms\Traits\Attributes\HasCheckboxItems;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasSwitch;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
+/**
+ * Represents a group of checkboxes in a form.
+ *
+ * @extends EasyField
+ */
 class CheckboxGroupField extends EasyField
 {
     use HasCheckboxItems;

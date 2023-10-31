@@ -2,6 +2,9 @@
 
 namespace PlusTimeIT\EasyForms\Enums;
 
+/**
+ * Available Alert Types
+ */
 enum AlertTypes: string
 {
     case Error = 'error';

@@ -3,6 +3,7 @@
 namespace PlusTimeIT\EasyForms\Tests\Unit\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
+use PlusTimeIT\EasyForms\Elements\Tooltip;
 use PlusTimeIT\EasyForms\Enums\DensityTypes;
 
 /**
@@ -117,7 +118,7 @@ class BaseFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCas
 
     public function testATooltipCanBeSetAndGet()
     {
-        $test = 'Test tooltip';
+        $test = Tooltip::make()->setText('Test Tooltip');
         $field = $this->fieldClass::make();
         $field->setTooltip($test);
         $this->assertSame($field->getTooltip($test), $test);

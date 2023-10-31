@@ -25,4 +25,17 @@ abstract class InputForm extends EasyForm implements InputFormInterface
             ->setFields($this->fields())
             ->setButtons($this->buttons());
     }
+
+    public function populateFields($data): array
+    {
+        return collect($this->fields())->map(function ($field) use ($data) {
+            if (isset($data[$field->getName()])) {
+                $field->setValue($data[$field->getName()]);
+            }
+
+            return $field;
+        }
+
+        )->toArray();
+    }
 }

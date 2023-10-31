@@ -6,23 +6,36 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use PlusTimeIT\EasyForms\Elements\AxiosResponse;
 
+/**
+ * Controller handling Axios requests related to loading / processing forms and/or fields.
+ */
 class Axios extends Controller
 {
-    public function fieldLoad(request $request)
+    /**
+     * Retrieve field load request.
+     *
+     * @return mixed
+     */
+    public function fieldLoad(Request $request): string
     {
         // load fields value
-        $form = config('easyforms.form-namespace').'\\'.str_replace('-', '\\', $request->form_name);
+        $formClass = config('easyforms.form-namespace').'\\'.str_replace('-', '\\', $request->form_name);
 
-        $form = new $form();
+        $form = new $formClass();
         $field = collect($form->fields())->filter(fn ($field) => $field->getName() == $request->field_name)->first();
 
         return AxiosResponse::make()
             ->success()
-            ->data($field->load($request->dependsOn))
+            ->data($field->load($request->parent_value))
             ->toJson();
     }
 
-    public function load(request $request)
+    /**
+     * Retrieve form load request.
+     *
+     * @return mixed
+     */
+    public function load(Request $request): string
     {
         $form = config('easyforms.form-namespace').'\\'.str_replace('-', '\\', $request->form_name);
         try {
@@ -40,11 +53,16 @@ class Axios extends Controller
             ->toJson();
     }
 
-    public function process(request $request)
+    /**
+     * Process the request.
+     *
+     * @return mixed
+     */
+    public function process(Request $request): string
     {
-        $form = config('easyforms.form-namespace').'\\'.str_replace('-', '\\', $request->form_name);
+        $formClass = config('easyforms.form-namespace').'\\'.str_replace('-', '\\', $request->form_name);
         // fill required to get default values and any rules that may have changed.
-        $form = call_user_func([$form, 'fill'], $request);
+        $form = call_user_func([$formClass, 'fill'], $request);
         $results = $form->validateRequest($request);
         if ($results->fails()) {
             return AxiosResponse::make()

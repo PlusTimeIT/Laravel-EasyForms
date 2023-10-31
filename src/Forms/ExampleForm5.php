@@ -148,7 +148,7 @@ final class ExampleForm5 extends InputForm
         })->toArray();
     }
 
-    public static function process(request $request)
+    public static function process(request $request): ProcessResponse
     {
         //request has been validated so we know what we have.
         $username = $request->username;

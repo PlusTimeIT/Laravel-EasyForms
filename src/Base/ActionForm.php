@@ -6,17 +6,22 @@ use PlusTimeIT\EasyForms\Interfaces\ActionFormInterface;
 use PlusTimeIT\EasyForms\Traits\ActionFormTrait;
 
 /**
- * Creates an action form where a form only requires buttons or a set of icons.
+ * Creates an ActionForm - buttons and icon
  */
 abstract class ActionForm extends EasyForm implements ActionFormInterface
 {
     use ActionFormTrait;
 
     /**
-     * @var string The type of form
+     * The type of form.
+     *
+     * @var string
      */
     protected $type = 'action-form';
 
+    /**
+     * Constructor for the ActionForm class.
+     */
     public function __construct()
     {
         parent::__construct();

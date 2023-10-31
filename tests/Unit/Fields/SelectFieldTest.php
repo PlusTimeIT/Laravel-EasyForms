@@ -44,7 +44,6 @@ class SelectFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestC
     {
         $field = $this->fieldClass::make();
         $test = SelectItem::make()->setId(0)->setValue('test');
-
         $field->addItem($test);
         $this->assertContains($test, $field->getItems());
     }
@@ -65,12 +64,12 @@ class SelectFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestC
         $this->assertSame($field->getItems(), $test);
     }
 
-    public function testAItemTextCanBeSetAndGet()
+    public function testAItemTitleCanBeSetAndGet()
     {
         $field = $this->fieldClass::make();
         $test = 'test text';
-        $field->setItemText($test);
-        $this->assertSame($field->getItemText(), $test);
+        $field->setItemTitle($test);
+        $this->assertSame($field->getItemTitle(), $test);
     }
 
     public function testAItemValueCanBeSetAndGet()

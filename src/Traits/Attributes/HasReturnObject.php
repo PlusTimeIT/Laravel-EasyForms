@@ -1,0 +1,20 @@
+<?php
+
+namespace PlusTimeIT\EasyForms\Traits\Attributes;
+
+trait HasReturnObject
+{
+    protected $return_object = false;
+
+    public function getReturnObject(): bool
+    {
+        return $this->return_object;
+    }
+
+    public function setReturnObject(bool $return_object): self
+    {
+        $this->return_object = $return_object;
+
+        return $this;
+    }
+}

@@ -12,7 +12,6 @@ use PlusTimeIT\EasyForms\Traits\Attributes\HasOrder;
 use PlusTimeIT\EasyForms\Traits\Creatable;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
-// TODO Create ActionIcon Interface and Traits
 class ActionIcon
 {
     use Creatable;

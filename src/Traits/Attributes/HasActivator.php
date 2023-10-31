@@ -6,12 +6,12 @@ trait HasActivator
 {
     protected $activator = false;
 
-    public function getActivator(): string
+    public function getActivator(): bool
     {
         return $this->activator;
     }
 
-    public function setActivator(string $activator): self
+    public function setActivator(bool $activator): self
     {
         $this->activator = $activator;
 

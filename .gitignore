@@ -1,3 +1,4 @@
 vendor
-/.phpunit.*
-/phpunit.xml.bak
+.phpunit.*
+phpunit.xml.bak
+*.cache

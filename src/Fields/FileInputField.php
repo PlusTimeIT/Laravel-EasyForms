@@ -18,6 +18,11 @@ use PlusTimeIT\EasyForms\Traits\Transformable;
 //
 //
 
+/**
+ * Represents a file input field in a form.
+ *
+ * @extends EasyField
+ */
 class FileInputField extends EasyField
 {
     use AcceptsFiles;

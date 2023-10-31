@@ -48,9 +48,9 @@ Laravel EasyForms is a package that makes setting up and managing forms and acti
 
 ---
 
-To ensure PlusTimeIT EasyForms runs without errors please follow below: 
+To ensure PlusTimeIT EasyForms runs without errors, please follow below:
 
-Add Laravel Easyforms to your project:
+Add Laravel EasyForms to your project:
 `composer require plustime-it/laravel-easyforms`
 
 Before either of those options is completed you first must:
@@ -117,8 +117,8 @@ Examples can be found at the following routes if the config setting is set to `T
 
 ### Globally 
 ```js
-import LaravelVueEasyforms from 'laravel-vue-easyforms';
-Vue.use( LaravelVueEasyforms );
+import LaravelVueEasyForms from 'laravel-vue-easyforms';
+Vue.use( LaravelVueEasyForms );
 ```
 
 You can then start using it in your components `<form-loader load_form"formname"></form-loader>`

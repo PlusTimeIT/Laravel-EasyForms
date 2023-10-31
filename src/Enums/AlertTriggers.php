@@ -2,6 +2,9 @@
 
 namespace PlusTimeIT\EasyForms\Enums;
 
+/**
+ * Available Triggers for Alerts
+ */
 enum AlertTriggers: string
 {
     case AfterLoad = 'after_load';
@@ -11,6 +14,7 @@ enum AlertTriggers: string
     case Cancelled = 'cancelled';
     case FailedLoad = 'failed_load';
     case FailedProcessing = 'failed_processing';
+    case FailedValidation = 'failed_validation';
     case FormReset = 'form_reset';
     case SuccessProcessing = 'success_processing';
 }

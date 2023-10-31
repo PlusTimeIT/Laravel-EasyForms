@@ -36,6 +36,11 @@ use PlusTimeIT\EasyForms\Traits\Attributes\HasValidateOnBlur;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasValue;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
+/**
+ * Represents a switch field in a form.
+ *
+ * @extends EasyField
+ */
 class SwitchField extends EasyField
 {
     use HasAppendIcon;

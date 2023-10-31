@@ -65,12 +65,12 @@ class AutoCompleteTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTest
         $this->assertSame($field->getItems(), $test);
     }
 
-    public function testAItemTextCanBeSetAndGet()
+    public function testAItemTitleCanBeSetAndGet()
     {
         $field = $this->fieldClass::make();
         $test = 'test text';
-        $field->setItemText($test);
-        $this->assertSame($field->getItemText(), $test);
+        $field->setItemTitle($test);
+        $this->assertSame($field->getItemTitle(), $test);
     }
 
     public function testAItemValueCanBeSetAndGet()

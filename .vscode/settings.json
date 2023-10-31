@@ -2,22 +2,37 @@
     "php.validate.executablePath": "/usr/bin/php8.1",
     "cSpell.words": [
         "Activitylog",
-        "Cmgmyr",
-        "Messagable",
         "axios",
         "basepx",
+        "Cmgmyr",
         "delivere",
+        "Documentor",
         "Easyforms",
+        "errors",
+        "intelephense",
         "laravel",
+        "Messagable",
         "neighbourhood",
         "onlyhorses",
         "padless",
+        "plustime",
         "vuetify"
     ],
-    "laravel-pint.enable": true,
-    "recommendations": [
-        "open-southeners.laravel-pint"
+    "intelephense.files.exclude": [
+        "**/.git/**",
+        "**/.svn/**",
+        "**/.hg/**",
+        "**/CVS/**",
+        "**/.DS_Store/**",
+        "**/node_modules/**",
+        "**/bower_components/**",
+        "**/vendor/**/{Tests,tests}/**",
+        "**/.history/**",
+        "**/vendor/**/vendor/**",
+        "**/*.stub"
     ],
+    "laravel-pint.enable": true,
+    "recommendations": ["open-southeners.laravel-pint"],
     "[sass]": {
         "editor.tabSize": 2
     },
@@ -34,5 +49,11 @@
         "editor.formatOnSave": true,
         "editor.tabSize": 4,
         "editor.defaultFormatter": "open-southeners.laravel-pint"
-    }
+    },
+    "intelephense.files.associations": [
+        "*.stub",
+        "*.php",
+        "*.phtml"
+    ],
+    "esbonio.sphinx.confDir": ""
 }

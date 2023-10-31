@@ -8,6 +8,11 @@ use PlusTimeIT\EasyForms\Traits\Attributes\HasMasking;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasMaxLength;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
+/**
+ * Represents a text input field in a form.
+ *
+ * @extends EasyField
+ */
 class TextField extends EasyField
 {
     use HasCounter;

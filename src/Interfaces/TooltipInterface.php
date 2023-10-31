@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Interfaces;
 
 interface TooltipInterface
 {
-    public function getActivator(): string;
+    public function getActivator(): bool;
 
     public function getAttach(): string|bool;
 
@@ -58,7 +58,7 @@ interface TooltipInterface
 
     public function getZIndex(): string|int;
 
-    public function setActivator(string $activator);
+    public function setActivator(bool $activator);
 
     public function setAttach(string|bool $attach);
 

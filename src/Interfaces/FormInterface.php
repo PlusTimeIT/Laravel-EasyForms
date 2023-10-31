@@ -4,6 +4,7 @@ namespace PlusTimeIT\EasyForms\Interfaces;
 
 use Illuminate\Http\Request;
 use PlusTimeIT\EasyForms\Elements\Axios;
+use PlusTimeIT\EasyForms\Elements\ProcessResponse;
 
 interface FormInterface
 {
@@ -21,7 +22,7 @@ interface FormInterface
 
     public static function make();
 
-    public static function process(request $request);
+    public static function process(request $request): ProcessResponse;
 
     public function setAxios(Axios $axios): self;
 

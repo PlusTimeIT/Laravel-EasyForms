@@ -48,7 +48,7 @@ final class ExampleForm1 extends InputForm
                 ->setType(AlertTypes::Warning)
                 ->setTrigger(AlertTriggers::AfterLoad)
                 ->setColor('blue')
-                ->setBorder('right')
+                ->setBorder('end')
                 ->setClosable(false)
                 ->setTextStyle(true)
                 ->setProminent(true)
@@ -62,7 +62,7 @@ final class ExampleForm1 extends InputForm
                 ->setType(AlertTypes::Success)
                 ->setTrigger(AlertTriggers::BeforeProcessing)
                 ->setColor('green')
-                ->setBorder('left')
+                ->setBorder('start')
                 ->setTextStyle(true)
                 ->setClosable(true)
                 ->setText('Form is about to process - Before Processing'),
@@ -148,17 +148,6 @@ final class ExampleForm1 extends InputForm
     {
         // we can just set this to preFill if we want to load by axios later
         return ( new self() )->preFill();
-    }
-
-    public function populateFields($data): array
-    {
-        return collect($this->fields())->map(function ($field) use ($data) {
-            if (isset($data[$field->getName()])) {
-                $field->setValue($data[$field->getName()]);
-            }
-
-            return $field;
-        })->toArray();
     }
 
     public function preFill(): self

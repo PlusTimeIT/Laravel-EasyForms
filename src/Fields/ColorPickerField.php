@@ -20,6 +20,11 @@ use PlusTimeIT\EasyForms\Traits\Attributes\HasValue;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasWidth;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
+/**
+ * Represents a color picker field in a form.
+ *
+ * @extends EasyField
+ */
 class ColorPickerField extends EasyField
 {
     use HasCanvasHeight;

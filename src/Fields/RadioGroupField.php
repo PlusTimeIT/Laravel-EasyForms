@@ -12,6 +12,11 @@ use PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasRowColumnLayout;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
+/**
+ * Represents a radio group field in a form.
+ *
+ * @extends EasyField
+ */
 class RadioGroupField extends EasyField
 {
     use HasAnyField;

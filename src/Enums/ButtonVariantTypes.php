@@ -2,6 +2,9 @@
 
 namespace PlusTimeIT\EasyForms\Enums;
 
+/**
+ * Available Variant Types for Buttons
+ */
 enum ButtonVariantTypes: string
 {
     case Elevated = 'elevated';

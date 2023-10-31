@@ -36,7 +36,7 @@ final class ExampleForm4 extends ActionForm
                 ->setName('Edit User Details')
                 ->setCols(null)
                 ->setIcon(
-                    Icon::make()->setIcon('mdi-pencil')->setTooltip('Edit Action')
+                    Icon::make()->setIcon('mdi-pencil')->setTooltip(Tooltip::make()->setText('Edit Action'))
                 )
                 ->setCallback('editUser')
                 ->setOrder(0),
@@ -45,7 +45,7 @@ final class ExampleForm4 extends ActionForm
                 ->setName('Activate User')
                 ->setCols(null)
                 ->setIcon(
-                    Icon::make(['icon' => 'mdi-account-check', 'tooltip' => 'Activate User'])
+                    Icon::make(['icon' => 'mdi-account-check'])
                 )
                 ->setConditions([
                     ConditionItem::make('status', '!=', 'active'),
@@ -120,7 +120,7 @@ final class ExampleForm4 extends ActionForm
         ];
     }
 
-    public static function banUser(request $request)
+    public static function banUser(request $request): ProcessResponse
     {
         Users::updateUserStatus($request->id, 'banned');
 
@@ -130,7 +130,7 @@ final class ExampleForm4 extends ActionForm
             ->redirect('reload');
     }
 
-    public static function deactivateUser(request $request)
+    public static function deactivateUser(request $request): ProcessResponse
     {
         Users::updateUserStatus($request->id, 'inactive');
 
@@ -140,7 +140,7 @@ final class ExampleForm4 extends ActionForm
             ->redirect('reload');
     }
 
-    public static function deleteUser(request $request)
+    public static function deleteUser(request $request): ProcessResponse
     {
         $user = Users::find($request->id);
         if (! $user) {
@@ -156,7 +156,7 @@ final class ExampleForm4 extends ActionForm
         return ProcessResponse::make()->failed()->data('Unable to delete user');
     }
 
-    public static function editUser(request $request)
+    public static function editUser(request $request): ProcessResponse
     {
         //check if user exists if it does send redirect
         $user = Users::find($request->id);
@@ -172,7 +172,7 @@ final class ExampleForm4 extends ActionForm
             ->redirect('/easyforms/example/5/'.$user->get('id'));
     }
 
-    public static function process(request $request)
+    public static function process(request $request): ProcessResponse
     {
         if (! $request->action || ! collect(self::make()->actions())->where('identifier', $request->action)) {
             return ProcessResponse::make()->failed()->data('Don\'t mess with the actions yo!');

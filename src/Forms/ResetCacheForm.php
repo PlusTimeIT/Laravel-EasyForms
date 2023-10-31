@@ -45,7 +45,7 @@ class ResetCacheForm extends ActionForm
         ];
     }
 
-    public static function process(request $request)
+    public static function process(request $request): ProcessResponse
     {
         if (! $request->action || ! collect(self::make()->actions())->where('identifier', $request->action)) {
             return ProcessResponse::make()->failed()->data('Don\'t mess with the actions yo!');

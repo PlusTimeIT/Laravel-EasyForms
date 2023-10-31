@@ -2,6 +2,9 @@
 
 namespace PlusTimeIT\EasyForms\Enums;
 
+/**
+ * Available Variant Types For Buttons
+ */
 enum TextVariantTypes: string
 {
     case Filled = 'filled';

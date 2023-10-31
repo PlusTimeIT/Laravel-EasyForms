@@ -2,6 +2,9 @@
 
 namespace PlusTimeIT\EasyForms\Enums;
 
+/**
+ * Available Triggers for Validations
+ */
 enum ValidationTriggers: string
 {
     case Blur = 'blur';

@@ -7,6 +7,11 @@ use PlusTimeIT\EasyForms\Traits\Attributes\HasMinMax;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasStep;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
+/**
+ * Represents a number input field in a form.
+ *
+ * @extends EasyField
+ */
 class NumberField extends EasyField
 {
     use HasMinMax;

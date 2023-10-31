@@ -2,6 +2,9 @@
 
 namespace PlusTimeIT\EasyForms\Enums;
 
+/**
+ * Available Position Types
+ */
 enum PositionTypes: string
 {
     case Absolute = 'absolute';

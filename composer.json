@@ -1,45 +1,55 @@
 {
   "name": "plustime-it/laravel-easyforms",
   "description": "Laravel EasyForms",
-  "type": "library",
   "license": "MIT",
+  "type": "library",
   "authors": [
-      {
-          "name": "Kane G",
-          "email": "kane@plustime.com.au"
-      }
+    {
+      "name": "Kane G",
+      "email": "kane@plustime.com.au"
+    }
   ],
-  "autoload": {
-      "psr-4": {
-          "PlusTimeIT\\EasyForms\\": "src/"
-      }
-  },
-  "autoload-dev": {
-      "psr-4": {
-          "PlusTimeIT\\EasyForms\\Tests\\": "tests"
-      }
-  },
-  "minimum-stability": "beta",
   "require": {
-      "php": "^8.0",
-      "laravel/framework": "^10.0"
+    "php": "^8.0",
+    "laravel/framework": "^10.0"
   },
   "require-dev": {
-      "orchestra/testbench": "^8.13",
-      "phpunit/phpunit": "^10.4",
-      "laravel/pint": "^1.13"
+    "ergebnis/composer-normalize": "^2.39",
+    "laravel/pint": "^1.13",
+    "orchestra/testbench": "^8.13",
+    "phpro/grumphp": "^2.1",
+    "phpunit/phpunit": "^10.4"
   },
-  "scripts": {
-    "format": "pint --config ./pint.json"
+  "minimum-stability": "beta",
+  "autoload": {
+    "psr-4": {
+      "PlusTimeIT\\EasyForms\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PlusTimeIT\\EasyForms\\Tests\\": "tests"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "ergebnis/composer-normalize": true,
+      "phpro/grumphp": true
+    }
   },
   "extra": {
     "laravel": {
-      "providers": [
-        "PlusTimeIT\\EasyForms\\Providers\\EasyForms"
-      ],
       "aliases": {
         "EasyForms": "PlusTimeIT\\EasyForms"
-      }
+      },
+      "providers": [
+        "PlusTimeIT\\EasyForms\\Providers\\EasyForms"
+      ]
     }
+  },
+  "scripts": {
+    "build": "rm -rf docs && composer format && composer build:docs",
+    "build:docs": "tools/phpDocumentor --config phpdoc.dist.xml",
+    "format": "pint --config ./pint.json"
   }
 }
