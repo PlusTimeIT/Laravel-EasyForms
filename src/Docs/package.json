@@ -5,13 +5,14 @@
   "main": "index.ts",
   "scripts": {
     "docs:dev": "vitepress dev",
-    "docs:build": "rm -rf ../../docs && vitepress build --force && touch ../../docs/.nojekyll",
+    "docs:build": "rimraf ../../docs && vitepress build && touch ../../docs/.nojekyll",
     "docs:serve": "vitepress serve docs",
     "docs:preview": "vitepress preview"
   },
   "author": "Kane G",
   "license": "ISC",
   "devDependencies": {
+    "rimraf": "^5.0.5",
     "vitepress": "^1.0.0-rc.25",
     "vue": "^3.3.8"
   }
