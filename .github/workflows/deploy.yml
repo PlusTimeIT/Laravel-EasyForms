@@ -35,6 +35,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
+          cache-dependency-path: ./src/Docs/package-lock.json
           node-version: 18
           cache: npm
       - name: Setup Pages
