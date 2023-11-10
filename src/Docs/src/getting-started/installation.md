@@ -58,4 +58,4 @@ Action Example:
 php artisan make:form TestActionForm action
 ````
 
-You can also supply a Path and it'll create the required directories if needed.
+You can also supply a path, and it'll create the required directories if needed.

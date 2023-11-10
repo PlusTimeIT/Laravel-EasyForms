@@ -12,7 +12,7 @@ All forms come with some common functions that are required to complete the form
 ### Load Function 
 
 ::: tip
-For the Axios controller can process the response, your function must return a [`LoadResponse`](/concepts/elements.html#load-response)
+For the Axios controller can process the response, your function must return a [`LoadResponse`](./elements#load-response)
 :::
 
 The load function is included in the abstract class that both forms extend from, so it's not required to be added.
@@ -37,7 +37,7 @@ return LoadResponse::make()->failed();
 ### Process Function 
 
 ::: tip
-For the Axios controller can process the response, your function must return a [`ProcessResponse`](/concepts/elements.html#process-response)
+For the Axios controller can process the response, your function must return a [`ProcessResponse`](./elements#process-response)
 :::
 
 The process function allows you to process requests that pass validation. You don't need to check for validation 
@@ -63,27 +63,27 @@ return ProcessResponse::make()->failed()->data('Failed!');
 
 All forms come with the following properties:
 
-| Property               |       Type       |  Default  | Description                                                                                          |
-|:-----------------------|:----------------:|:---------:|:-----------------------------------------------------------------------------------------------------|
-| `additional_data`      | AdditionalData[] | undefined | Array of [Additional Data](/concepts/elements.html#additional-data) passed when processing the form. |
-| `additional_load_data` | AdditionalData[] | undefined | Array of [Additional Data](/concepts/elements.html#additional-data) passed when loading the form.    |
-| `alerts`               |     Alert[]      | undefined | Array of [Alerts](/concepts/elements.html#alerts)                                                    |
-| `axios`                |      Axios       | undefined | [Axios](/concepts/elements.html#axios)                                                               |
-| `loader`               |    FormLoader    | undefined | [FormLoader](/concepts/elements.html#form-loader)                                                    |
-| `name`                 |      String      | undefined | The name of the form, this should include any additional namespace parameters.                       |
-| `title`                |      String      | undefined | The title of the form displayed in a h2 tag, if left blank no title is shown.                        |
+| Property               |       Type       |  Default  | Description                                                                                |
+|:-----------------------|:----------------:|:---------:|:-------------------------------------------------------------------------------------------|
+| `additional_data`      | AdditionalData[] | undefined | Array of [Additional Data](./elements#additional-data) passed when processing the form. |
+| `additional_load_data` | AdditionalData[] | undefined | Array of [Additional Data](./elements#additional-data) passed when loading the form.    |
+| `alerts`               |     Alert[]      | undefined | Array of [Alerts](./elements#alerts)                                                    |
+| `axios`                |      Axios       | undefined | [Axios](./elements#axios)                                                               |
+| `loader`               |    FormLoader    | undefined | [FormLoader](./elements#form-loader)                                                    |
+| `name`                 |      String      | undefined | The name of the form, this should include any additional namespace parameters.             |
+| `title`                |      String      | undefined | The title of the form displayed in a h2 tag, if left blank no title is shown.              |
 
 ## Input Form
 Input Forms are used when you need to take users input, this could any typical CRUD actions or
 something like logging in. The main difference is Input Forms contain
 fields (textfield, selectfield, pickers etc.). They can also be validated (including frontend validation).
 
-| Property             |  Type  |  Default  | Description                                                                                                              |
-|:---------------------|:------:|:---------:|:-------------------------------------------------------------------------------------------------------------------------|
-| `button_align_row`   | String | undefined | Alignment of row for buttons.                                                                                            |
-| `button_justify_row` | String | undefined | Justify of row for buttons.                                                                                              |
-| `buttons`            | Button | undefined | Array of [Buttons](/concepts/elements.html#buttons) but must be one of [Button Types](/concepts/enums.html#button-types) |
-| `fields`             | Field  | undefined | Array of [Fields](/concepts/fields.html)                                                                                 |
+| Property             |  Type  |  Default  | Description                                                                                          |
+|:---------------------|:------:|:---------:|:-----------------------------------------------------------------------------------------------------|
+| `button_align_row`   | String | undefined | Alignment of row for buttons.                                                                        |
+| `button_justify_row` | String | undefined | Justify of row for buttons.                                                                          |
+| `buttons`            | Button | undefined | Array of [Buttons](./elements#buttons) but must be one of [Button Types](./enums#button-types) |
+| `fields`             | Field  | undefined | Array of [Fields](./fields)                                                                       |
 
 ## Action Form
 Action forms are used when you want to display a group of icons or buttons that perform certain actions.
@@ -92,8 +92,8 @@ They are also handy in dashboards when just needing a button to process somethin
 is Action Forms contain action icons and action buttons (not fields). These perform certain specified
 actions provided in the form class.
 
-| Property  |             Type             |  Default  | Description                                                                                                           |
-|:----------|:----------------------------:|:---------:|:----------------------------------------------------------------------------------------------------------------------|
-| `actions` | ActionIcon[], ActionButton[] | undefined | Array of [Action Buttons](/concepts/actions.html#action-button) or [Action Icons](/concepts/actions.html#action-icon) |
-| `inline`  |           Boolean            | undefined | Apply inline styling to actions                                                                                       |
-| `justify` |            String            |  center   | Justify of row holding actions                                                                                        |
+| Property  |             Type             |  Default  | Description                                                                                       |
+|:----------|:----------------------------:|:---------:|:--------------------------------------------------------------------------------------------------|
+| `actions` | ActionIcon[], ActionButton[] | undefined | Array of [Action Buttons](./actions#action-button) or [Action Icons](./actions#action-icon) |
+| `inline`  |           Boolean            | undefined | Apply inline styling to actions                                                                   |
+| `justify` |            String            |  center   | Justify of row holding actions                                                                    |

@@ -10,9 +10,6 @@ hero:
     - theme: brand
       text: Getting Started
       link: /getting-started/about
-    - theme: alt
-      text: Demo
-      link: /api-examples
 
 features:
   - title: Single Responsibility

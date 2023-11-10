@@ -18,7 +18,7 @@ Get a full list of props from [Vuetify V-Icons](https://vuetifyjs.com/en/compone
 
 ## Alerts
 
-Style and Display a V-Alert with an [Alert Trigger](/concepts/enums.html#alert-triggers) on a specific form action.
+Style and Display a V-Alert with an [Alert Trigger](./enums#alert-triggers) on a specific form action.
 
 ::: tip Props
 Get a full list of props from [Vuetify V-Alerts](https://vuetifyjs.com/en/components/alerts/)
@@ -47,7 +47,7 @@ Get a full list of props from [Vuetify V-Alerts](https://vuetifyjs.com/en/compon
 
 ## Buttons
 
-Style and Display a V-Btn - Can be fully custom button or consist of a [Button Type](/concepts/enums.html#button-types)
+Style and Display a V-Btn - Can be fully custom button or consist of a [Button Type](./enums#button-types)
 
 ::: tip Props
 Get a full list of props from [Vuetify V-Buttons](https://vuetifyjs.com/en/components/buttons/)
@@ -215,7 +215,7 @@ Class used for handling radio in RadioGroupFields.
 
 ## Condition Item
 
-Class used for handling conditionals for displaying [Action Icons](/concepts/actions.html#action-icons) and [Action Buttons](/concepts/actions.html#action-button) on the frontend.
+Class used for handling conditionals for displaying [Action Icons](./actions#action-icons) and [Action Buttons](./actions#action-button) on the frontend.
 
 ### Custom Props
 
