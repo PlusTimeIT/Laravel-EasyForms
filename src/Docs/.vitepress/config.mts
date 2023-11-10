@@ -6,10 +6,7 @@ export default defineConfig({
   description: "Documentation for Laravel EasyForms",
   srcDir: './src',
   outDir: '../../docs',
-  vite: {
-    base: "./",
-    publicDir: "/Laravel-EasyForms/",
-  },
+  base: "/Laravel-EasyForms/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
