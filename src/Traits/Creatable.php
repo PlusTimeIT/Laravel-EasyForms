@@ -2,6 +2,10 @@
 
 namespace PlusTimeIT\EasyForms\Traits;
 
+use PlusTimeIT\EasyForms\Elements\Alert;
+use PlusTimeIT\EasyForms\Elements\Icon;
+use PlusTimeIT\EasyForms\Elements\Tooltip;
+
 trait Creatable
 {
     public function __construct(array $args)
@@ -9,12 +13,12 @@ trait Creatable
         return $this->setOptions($args);
     }
 
-    public static function create(array $args = [])
+    public static function create(array $args = []): self
     {
         return self::make($args);
     }
 
-    public static function make(array $args = [])
+    public static function make(array $args = []): self
     {
         return new static($args);
     }

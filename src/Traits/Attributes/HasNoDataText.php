@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasNoDataText
 {
-    protected $no_data_text = '$vuetify.noDataText';
+    protected string $no_data_text = '$vuetify.noDataText';
 
     public function getNoDataText(): string
     {

@@ -20,9 +20,7 @@ class DatePickerField extends EasyField
     use HasMultiple;
     use Transformable;
 
-    protected $component = 'date-picker';
+    protected string $component = 'easy-date-picker';
 
-    protected $discriminator = 'DatePickerField';
-
-    protected $type = 'date-picker';
+    protected string $discriminator = 'DatePickerField';
 }

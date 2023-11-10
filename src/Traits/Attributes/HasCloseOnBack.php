@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasCloseOnBack
 {
-    protected $close_on_back = false;
+    protected bool $close_on_back = false;
 
     public function getCloseOnBack(): bool
     {

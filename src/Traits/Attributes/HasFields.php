@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasFields
 {
-    protected $fields = [];
+    protected array $fields = [];
 
     public function getFields(): array
     {

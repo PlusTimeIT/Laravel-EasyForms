@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMinWidth
 {
-    protected $min_width;
+    protected string|int $min_width;
 
     public function getMinWidth(): string|int
     {

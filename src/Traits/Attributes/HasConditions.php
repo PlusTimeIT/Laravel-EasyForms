@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasConditions
 {
-    protected $conditions;
+    protected array $conditions;
 
     public function getConditions(): array
     {

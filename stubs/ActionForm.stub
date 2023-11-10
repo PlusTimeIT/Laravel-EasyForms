@@ -1,0 +1,124 @@
+<?php
+
+namespace PlusTimeIT\EasyForms\Forms;
+
+use Illuminate\Http\Request;
+use PlusTimeIT\EasyForms\Base\ActionForm;
+use PlusTimeIT\EasyForms\Elements\ActionButton;
+use PlusTimeIT\EasyForms\Elements\ActionIcon;
+use PlusTimeIT\EasyForms\Elements\Alert;
+use PlusTimeIT\EasyForms\Elements\Button;
+use PlusTimeIT\EasyForms\Elements\ConditionItem;
+use PlusTimeIT\EasyForms\Elements\Icon;
+use PlusTimeIT\EasyForms\Elements\ProcessResponse;
+use PlusTimeIT\EasyForms\Elements\Tooltip;
+use PlusTimeIT\EasyForms\Enums\AlertTriggers;
+use PlusTimeIT\EasyForms\Enums\AlertTypes;
+use PlusTimeIT\EasyForms\Traits\Transformable;
+
+final class <formName> extends ActionForm
+{
+    use Transformable;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        return $this
+            ->setName('<formName>')
+            ->setTitle('<formName> Title')
+            ->setInline(true);
+    }
+
+    public function actions(): array
+    {
+        return [
+            ActionButton::make()
+                ->setIdentifier('reset')
+                ->setName('Reset User')
+                ->setButton(
+                    Button::make()
+                        ->setType('action')
+                        ->setColor('primary')
+                        ->setText('Reset User')
+                        ->setAppendIcon(
+                            Icon::make()->setIcon('mdi-stethoscope')->setTooltip(Tooltip::make()->setText('Reset User'))->setColor('white')
+                        )
+                )
+                ->setCallback('reset')
+                ->setOrder(0),
+            ActionIcon::make()
+                ->setIdentifier('delete')
+                ->setName('Delete User')
+                ->setCols(null)
+                ->setIcon(
+                    Icon::make()->setIcon('mdi-close')->setTooltip(Tooltip::make()->setText('Delete User'))->setColor('white')
+                )
+                ->setConditions([
+                    ConditionItem::make(['check' => 'status', 'operator' => '==', 'against' => 'active']),
+                ])
+                ->setCallback('delete')
+                ->setOrder(1),
+        ];
+    }
+
+    public function alerts(): array
+    {
+        return [
+            Alert::make()
+                ->setTrigger(AlertTriggers::FailedProcessing)
+                ->setType(AlertTypes::Error)
+                ->setColor('red')
+                ->setProminent(true)
+                ->setBorder('bottom')
+                ->setClosable(true)
+                ->setText('Processing Failed!'),
+            Alert::make()
+                ->setTrigger(AlertTriggers::SuccessProcessing)
+                ->setType(AlertTypes::Success)
+                ->setColor('green')
+                ->setProminent(true)
+                ->setBorder('top')
+                ->setClosable(true)
+                ->setText('Processing Successful!'),
+        ];
+    }
+
+    public static function reset(request $request)
+    {
+        // Do something here to reset user.
+        // ID would be passed to the loaded form via additional_load_data
+        if(!$request->id){
+            return ProcessResponse::make()
+                ->failed()
+                ->data('Failed');
+        }
+        return ProcessResponse::make()
+            ->success()
+            ->data('Success');
+    }
+
+    public static function delete(request $request)
+    {
+        // Do something here to delete user.
+        // ID would be passed to the loaded form via additional_load_data
+        if(!$request->id){
+            return ProcessResponse::make()
+                ->failed()
+                ->data('Failed');
+        }
+        return ProcessResponse::make()
+            ->success()
+            ->data('Success');
+    }
+
+    public static function process(request $request): ProcessResponse
+    {
+        $action = collect(self::make()->actions())->where('identifier', $request->form_action);
+        if (! $request->form_action || ! $action) {
+            return ProcessResponse::make()->failed()->data('Don\'t mess with the actions yo!');
+        }
+
+        return self::{$action->callback}($request);
+    }
+}

@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasItemChildren
 {
-    protected $item_children = false;
+    protected bool|string $item_children = false;
 
     public function getItemChildren(): bool|string
     {

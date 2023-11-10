@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Interfaces\HeaderInterface;
 use PlusTimeIT\EasyForms\Traits\HeaderTrait;
 
 /**
- * Class representing a Header element.
+ * Header for making axios requests
  */
 class Header implements HeaderInterface
 {

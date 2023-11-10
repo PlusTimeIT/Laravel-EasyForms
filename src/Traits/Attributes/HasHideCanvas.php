@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasHideCanvas
 {
-    protected $hide_canvas = false;
+    protected bool $hide_canvas = false;
 
     public function getHideCanvas(): bool
     {

@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasZIndex
 {
-    protected $z_index;
+    protected string|int $z_index;
 
     public function getZIndex(): string|int
     {

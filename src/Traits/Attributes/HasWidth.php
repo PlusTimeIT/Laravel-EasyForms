@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasWidth
 {
-    protected $width = 300;
+    protected string|int $width = 300;
 
     public function getWidth(): string|int
     {

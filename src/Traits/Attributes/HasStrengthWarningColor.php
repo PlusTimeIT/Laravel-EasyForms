@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasStrengthWarningColor
 {
-    protected $strength_warning_color = 'warning';
+    protected string $strength_warning_color = 'warning';
 
     public function getStrengthWarningColor(): string
     {

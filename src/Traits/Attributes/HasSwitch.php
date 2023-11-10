@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Fields\SwitchField;
 
 trait HasSwitch
 {
-    protected $switch = SwitchField::class;
+    protected SwitchField $switch;
 
     public function getSwitch(): SwitchField
     {

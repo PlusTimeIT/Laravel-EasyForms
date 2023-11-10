@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasCloseDelay
 {
-    protected $close_delay;
+    protected string|int $close_delay = 250;
 
     public function getCloseDelay(): string|int
     {

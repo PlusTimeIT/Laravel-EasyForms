@@ -20,9 +20,7 @@ class TimePickerField extends EasyField
     use HasNoTitle;
     use Transformable;
 
-    protected $component = 'time-picker';
+    protected string $component = 'easy-time-picker';
 
-    protected $discriminator = 'TimePickerField';
-
-    protected $type = 'time-picker';
+    protected string $discriminator = 'TimePickerField';
 }

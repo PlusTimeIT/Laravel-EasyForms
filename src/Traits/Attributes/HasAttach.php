@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasAttach
 {
-    protected $attach = false;
+    protected bool $attach = false;
 
     public function getAttach(): string|bool
     {

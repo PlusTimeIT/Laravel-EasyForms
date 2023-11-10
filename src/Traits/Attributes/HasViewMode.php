@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasViewMode
 {
-    protected $view_mode = false;
+    protected bool $view_mode = false;
 
     public function getViewMode(): bool
     {

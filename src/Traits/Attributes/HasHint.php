@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasHint
 {
-    protected $hint = '';
+    protected string $hint = '';
 
     public function getHint(): string
     {

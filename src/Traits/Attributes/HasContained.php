@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasContained
 {
-    protected $contained = false;
+    protected bool $contained = false;
 
     public function getContained(): bool
     {

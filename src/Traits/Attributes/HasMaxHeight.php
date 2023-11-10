@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMaxHeight
 {
-    protected $max_height;
+    protected string|int $max_height;
 
     public function getMaxHeight(): string|int
     {

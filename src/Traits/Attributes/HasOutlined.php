@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasOutlined
 {
-    protected $outlined = true;
+    protected bool $outlined = true;
 
     public function getOutlined(): bool
     {

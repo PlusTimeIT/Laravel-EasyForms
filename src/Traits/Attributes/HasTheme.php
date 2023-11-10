@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasTheme
 {
-    protected $theme;
+    protected string $theme;
 
     public function getTheme(): string
     {

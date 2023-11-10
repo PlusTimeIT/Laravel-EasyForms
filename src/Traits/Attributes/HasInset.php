@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasInset
 {
-    protected $inset = false;
+    protected bool $inset = false;
 
     public function getInset(): bool
     {

@@ -4,9 +4,9 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasRowColumnLayout
 {
-    protected $column = true;
+    protected bool $column = true;
 
-    protected $row = false;
+    protected bool $row = false;
 
     public function getColumn(): bool
     {

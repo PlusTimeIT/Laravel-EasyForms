@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Enums\AlertTypes;
 
 trait HasAlertType
 {
-    protected $type = AlertTypes::Info;
+    protected AlertTypes $type = AlertTypes::Info;
 
     public function getType(): AlertTypes
     {
@@ -18,5 +18,10 @@ trait HasAlertType
         $this->type = $type;
 
         return $this;
+    }
+
+    public function type(): AlertTypes
+    {
+        return $this->type;
     }
 }

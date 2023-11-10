@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasUpperCase
 {
-    protected $upper_case = false;
+    protected bool $upper_case = false;
 
     public function getUpperCase(): bool
     {

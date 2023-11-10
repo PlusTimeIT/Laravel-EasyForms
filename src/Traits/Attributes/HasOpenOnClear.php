@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasOpenOnClear
 {
-    protected $open_on_clear;
+    protected bool $open_on_clear;
 
     public function getOpenOnClear(): bool
     {

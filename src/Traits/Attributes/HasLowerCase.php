@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasLowerCase
 {
-    protected $lower_case = false;
+    protected bool $lower_case = false;
 
     public function getLowerCase(): bool
     {

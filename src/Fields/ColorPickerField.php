@@ -3,50 +3,62 @@
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasCanvasHeight;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasDark;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasDisabled;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasDotSize;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasElevation;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasFlat;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasHideCanvas;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasHideInputs;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasHideModeSwitch;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasHideSliders;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasLight;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasMode;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasSwatches;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasValue;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasWidth;
+use PlusTimeIT\EasyForms\Elements\Icon;
+use PlusTimeIT\EasyForms\Elements\PickerMenu;
+use PlusTimeIT\EasyForms\Elements\Tooltip;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasColorPicker;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasPickerMenu;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasTextField;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 /**
- * Represents a color picker field in a form.
+ * Represents a color picker field with a textfield in a form.
  *
  * @extends EasyField
  */
 class ColorPickerField extends EasyField
 {
-    use HasCanvasHeight;
-    use HasDark;
-    use HasDisabled;
-    use HasDotSize;
-    use HasElevation;
-    use HasFlat;
-    use HasHideCanvas;
-    use HasHideInputs;
-    use HasHideModeSwitch;
-    use HasHideSliders;
-    use HasLight;
-    use HasMode;
-    use HasSwatches;
-    use HasValue;
-    use HasWidth;
+    use HasColorPicker;
+    use HasPickerMenu;
+    use HasTextField;
     use Transformable;
 
-    protected $component = 'v-color-picker';
+    protected string $component = 'easy-color-picker';
 
-    protected $discriminator = 'ColorPickerField';
+    protected string $discriminator = 'ColorPickerField';
 
-    protected $type = 'color-picker';
+    public function __construct(array $args)
+    {
+        parent::__construct($args);
+        // check if textfield present is not create default
+        if (! isset($this->textfield)) {
+            $this->textfield = TextField::make()
+                ->setName('picker_value')
+                ->setLabel('Color Picker')
+                ->setReadonly(true)
+                ->setPrependInnerIcon(
+                    Icon::make()
+                        ->setIcon('mdi-square-rounded')
+                        ->setSize('x-large')
+                        ->setTooltip(
+                            Tooltip::make()
+                                ->setText('Select Color')
+                                ->setCloseOnContentClick(false)
+                                ->setActivator(true)
+                        )
+                );
+        }
+
+        if (! isset($this->picker)) {
+            $this->picker = ColorPicker::make()->setValue('#000000');
+        }
+
+        if (! isset($this->value)) {
+            $this->value = '#000000';
+        }
+
+        if (! isset($this->menu)) {
+            $this->menu = PickerMenu::make();
+        }
+    }
 }

@@ -9,8 +9,4 @@ class Action implements ActionInterface
 {
     use ActionTrait;
 
-    public static function make()
-    {
-        return new static();
-    }
 }

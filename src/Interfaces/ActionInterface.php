@@ -9,11 +9,9 @@ interface ActionInterface
 {
     public function addButton(Button $button);
 
-    public function getAlerts();
+    public function getAlerts(): array;
 
     public function getAxios();
-
-    public function getButtons();
 
     public function setAlerts(array $alerts);
 
@@ -21,7 +19,7 @@ interface ActionInterface
 
     public function setButtons(array $buttons);
 
-    public function toArray();
+    public function toArray(): array;
 
-    public function toJson();
+    public function toJson(): string;
 }

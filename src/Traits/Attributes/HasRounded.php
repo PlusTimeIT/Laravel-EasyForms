@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasRounded
 {
-    protected $rounded = false;
+    protected bool|string|int $rounded = false;
 
     public function getRounded(): bool|string|int
     {

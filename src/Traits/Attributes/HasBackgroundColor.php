@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasBackgroundColor
 {
-    protected $background_color = '';
+    protected string $background_color = '';
 
     public function getBackgroundColor(): string
     {

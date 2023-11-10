@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasSuccessMessages
 {
-    protected $success_messages = [];
+    protected array $success_messages = [];
 
     public function getSuccessMessages(): array|string
     {

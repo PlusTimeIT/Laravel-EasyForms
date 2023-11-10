@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasExpectingResults
 {
-    protected $expecting_results = true;
+    protected bool $expecting_results = true;
 
     public function getExpectingResults(): bool
     {

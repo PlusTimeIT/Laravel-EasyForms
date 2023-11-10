@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasCanvasHeight
 {
-    protected $canvas_height = 150;
+    protected int $canvas_height = 150;
 
     public function getCanvasHeight(): string|int
     {

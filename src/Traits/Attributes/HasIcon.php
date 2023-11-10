@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Elements\Icon;
 
 trait HasIcon
 {
-    protected $icon;
+    protected Icon $icon;
 
     public function getIcon(): Icon
     {

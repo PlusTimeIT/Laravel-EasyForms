@@ -4,18 +4,18 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasShowIf
 {
-    protected $show_if;
+    protected bool $show_if;
 
-    protected $show_if_parent;
+    protected string $show_if_parent;
 
-    protected $show_if_value;
+    protected mixed $show_if_value;
 
     public function getShowIf(): array
     {
         return ['parent' => $this->show_if_parent, 'value' => $this->show_if_value];
     }
 
-    public function setShowIf(string $parent, mixed $value)
+    public function setShowIf(string $parent, mixed $value): self
     {
         $this->show_if = true;
         $this->show_if_parent = $parent;
@@ -24,7 +24,7 @@ trait HasShowIf
         return $this;
     }
 
-    public function showIf(string $parent, mixed $value)
+    public function showIf(string $parent, mixed $value): self
     {
         $this->show_if = true;
         $this->show_if_parent = $parent;

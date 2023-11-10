@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasHideInputs
 {
-    protected $hide_inputs = false;
+    protected bool $hide_inputs = false;
 
     public function getHideInputs(): bool
     {

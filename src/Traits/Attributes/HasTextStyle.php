@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasTextStyle
 {
-    protected $text_style = false;
+    protected bool $text_style = false;
 
     public function getTextStyle(): bool
     {

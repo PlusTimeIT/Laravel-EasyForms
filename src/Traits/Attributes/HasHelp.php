@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasHelp
 {
-    protected $help = '';
+    protected string $help = '';
 
     public function getHelp(): string
     {

@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasPersistentCounter
 {
-    protected $persistent_counter = false;
+    protected bool $persistent_counter = false;
 
     public function getPersistentCounter(): bool
     {

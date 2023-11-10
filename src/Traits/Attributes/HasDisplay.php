@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasDisplay
 {
-    protected $display = false;
+    protected bool $display = false;
 
     public function getDisplay(): bool
     {

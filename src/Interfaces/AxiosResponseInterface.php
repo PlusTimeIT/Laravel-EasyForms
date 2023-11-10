@@ -4,17 +4,17 @@ namespace PlusTimeIT\EasyForms\Interfaces;
 
 interface AxiosResponseInterface
 {
-    public function getData();
+    public function getData(): mixed;
 
-    public function getResult();
+    public function getResult(): bool;
 
-    public function setData($data);
+    public function setData(mixed $data);
 
     public function setOptions(array $options);
 
     public function setResult(bool $results);
 
-    public function toArray();
+    public function toArray(): array;
 
-    public function toJson();
+    public function toJson(): string;
 }

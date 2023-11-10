@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Elements\Axios;
 
 trait HasAxios
 {
-    protected $axios;
+    protected Axios $axios;
 
     public function axios(): Axios
     {

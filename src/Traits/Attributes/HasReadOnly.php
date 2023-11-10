@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasReadOnly
 {
-    protected $readonly = false;
+    protected bool $readonly = false;
 
     public function getReadonly(): bool
     {

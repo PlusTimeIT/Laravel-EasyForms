@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasReturnObject
 {
-    protected $return_object = false;
+    protected bool $return_object = false;
 
     public function getReturnObject(): bool
     {

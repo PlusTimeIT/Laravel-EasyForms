@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasSuffix
 {
-    protected $suffix;
+    protected string $suffix;
 
     public function getSuffix(): string
     {

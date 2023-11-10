@@ -4,11 +4,11 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasSwatches
 {
-    protected $show_swatches = false;
+    protected bool $show_swatches = false;
 
-    protected $swatches = [];
+    protected array $swatches = [];
 
-    protected $swatches_max_height = 150;
+    protected string|int $swatches_max_height = 150;
 
     public function getShowSwatches(): bool
     {
@@ -20,7 +20,7 @@ trait HasSwatches
         return $this->swatches;
     }
 
-    public function getSwatchesMaxHeight(): bool
+    public function getSwatchesMaxHeight(): string|int
     {
         return $this->swatches_max_height;
     }
@@ -32,7 +32,7 @@ trait HasSwatches
         return $this;
     }
 
-    public function setSwatches(array $swatches): string|int
+    public function setSwatches(array $swatches): self
     {
         $this->swatches = $swatches;
 

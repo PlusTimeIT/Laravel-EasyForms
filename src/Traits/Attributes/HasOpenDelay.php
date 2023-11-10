@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasOpenDelay
 {
-    protected $open_delay;
+    protected string|int $open_delay;
 
     public function getOpenDelay(): string|int
     {

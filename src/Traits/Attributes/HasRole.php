@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasRole
 {
-    protected $role;
+    protected string $role;
 
     public function getRole(): string
     {

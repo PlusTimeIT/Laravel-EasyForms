@@ -4,14 +4,15 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasContentProps
 {
-    protected $content_props;
+    protected mixed $content_props;
 
-    public function getContentProps()
+    public function getContentProps(): mixed
+
     {
         return $this->content_props;
     }
 
-    public function setContentProps($content_props): self
+    public function setContentProps(mixed $content_props): self
     {
         $this->content_props = $content_props;
 

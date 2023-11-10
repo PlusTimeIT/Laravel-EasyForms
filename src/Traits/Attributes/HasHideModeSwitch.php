@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasHideModeSwitch
 {
-    protected $hide_mode_switch = false;
+    protected bool $hide_mode_switch = false;
 
     public function getHideModeSwitch(): bool
     {

@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasHideDetails
 {
-    protected $hide_details;
+    protected bool|string $hide_details;
 
     public function getHideDetails(): bool|string
     {

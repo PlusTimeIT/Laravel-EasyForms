@@ -6,11 +6,11 @@ use PlusTimeIT\EasyForms\Elements\Icon;
 
 trait HasClosable
 {
-    protected $closable = false;
+    protected bool $closable = false;
 
-    protected $close_icon = '$close';
+    protected string $close_icon = '$close';
 
-    protected $close_label = '$vuetify.close';
+    protected string $close_label = '$vuetify.close';
 
     public function getClosable(): bool
     {

@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Enums\PositionTypes;
 
 trait HasPosition
 {
-    protected $position;
+    protected PositionTypes $position;
 
     public function getPosition(): PositionTypes
     {

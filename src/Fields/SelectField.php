@@ -69,11 +69,11 @@ class SelectField extends EasyField
     use HasTransition;
     use Transformable;
 
-    protected $component = 'v-select';
+    protected string $component = 'v-select';
 
-    protected $discriminator = 'SelectField';
+    protected string $discriminator = 'SelectField';
 
-    protected $type = 'select';
+    protected string $type = 'select';
 
     public function addItem(SelectItem $item): self
     {

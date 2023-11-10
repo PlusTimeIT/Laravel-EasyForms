@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasEager
 {
-    protected $eager = false;
+    protected bool $eager = false;
 
     public function getEager(): bool
     {

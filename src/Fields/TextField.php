@@ -20,9 +20,9 @@ class TextField extends EasyField
     use HasMaxLength;
     use Transformable;
 
-    protected $component = 'v-text-field';
+    protected string $component = 'v-text-field';
 
-    protected $discriminator = 'TextField';
+    protected string $discriminator = 'TextField';
 
-    protected $type = 'text';
+    protected string $type = 'text';
 }

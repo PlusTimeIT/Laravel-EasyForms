@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Elements\Button;
 
 trait HasButton
 {
-    protected $button;
+    protected Button $button;
 
     public function getButton(): Button
     {

@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasBorderColor
 {
-    protected $border_color;
+    protected ?string $border_color;
 
     public function getBorderColor(): string
     {

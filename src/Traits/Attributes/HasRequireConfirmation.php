@@ -11,7 +11,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
  */
 trait HasRequireConfirmation
 {
-    protected $require_confirmation;
+    protected bool $require_confirmation;
 
     public function getRequireConfirmation(): bool
     {

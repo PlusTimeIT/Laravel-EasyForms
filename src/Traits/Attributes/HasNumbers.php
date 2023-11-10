@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasNumbers
 {
-    protected $numbers = false;
+    protected bool $numbers = false;
 
     public function getNumbers(): bool
     {

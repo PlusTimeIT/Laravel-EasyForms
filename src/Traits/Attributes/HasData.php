@@ -4,19 +4,19 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasData
 {
-    protected $data;
+    protected mixed $data;
 
-    public function data($data): self
+    public function data(mixed $data): self
     {
         return $this->setData($data);
     }
 
-    public function getData()
+    public function getData(): mixed
     {
         return $this->data;
     }
 
-    public function setData($data): self
+    public function setData(mixed $data): self
     {
         $this->data = $data;
 

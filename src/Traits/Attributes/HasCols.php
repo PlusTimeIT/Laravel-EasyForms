@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasCols
 {
-    protected $cols = 12;
+    protected ?int $cols = 12;
 
     public function getCols(): ?int
     {

@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasBorder
 {
-    protected $border = 'left';
+    protected string $border = 'start';
 
     public function getBorder(): string
     {

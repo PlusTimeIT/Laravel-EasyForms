@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Elements\Icon;
 
 trait HasClearIcon
 {
-    protected $clear_icon;
+    protected Icon|string $clear_icon;
 
     public function getClearIcon(): Icon|string
     {

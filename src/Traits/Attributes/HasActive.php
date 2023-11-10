@@ -4,7 +4,12 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasActive
 {
-    protected $active = false;
+    protected bool $active = false;
+
+    public function active(): bool
+    {
+        return $this->active;
+    }
 
     public function getActive(): bool
     {

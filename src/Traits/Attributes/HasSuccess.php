@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasSuccess
 {
-    protected $success = false;
+    protected bool $success = false;
 
     public function getSuccess(): bool
     {

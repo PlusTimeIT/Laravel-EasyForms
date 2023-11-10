@@ -76,7 +76,7 @@ class SwitchField extends EasyField
     use HasValue;
     use Transformable;
 
-    protected $component = 'v-switch';
+    protected string $component = 'v-switch';
 
-    protected $discriminator = 'SwitchField';
+    protected string $discriminator = 'SwitchField';
 }

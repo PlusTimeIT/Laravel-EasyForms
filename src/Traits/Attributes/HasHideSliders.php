@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasHideSliders
 {
-    protected $hide_sliders = false;
+    protected bool $hide_sliders = false;
 
     public function getHideSliders(): bool
     {

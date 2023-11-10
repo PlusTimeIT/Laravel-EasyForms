@@ -4,21 +4,21 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasButtonAlignRow
 {
-    protected $buttonAlignRow = 'start';
+    protected string $button_align_row = 'start';
 
     public function buttonAlignRow(): string
     {
-        return $this->buttonAlignRow;
+        return $this->button_align_row;
     }
 
     public function getButtonAlignRow(): string
     {
-        return $this->buttonAlignRow;
+        return $this->button_align_row;
     }
 
-    public function setButtonAlignRow(string $buttonAlignRow): self
+    public function setButtonAlignRow(string $button_align_row): self
     {
-        $this->buttonAlignRow = $buttonAlignRow;
+        $this->button_align_row = $button_align_row;
 
         return $this;
     }

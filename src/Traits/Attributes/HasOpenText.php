@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasOpenText
 {
-    protected $open_text = '$vuetify.open';
+    protected string $open_text = '$vuetify.open';
 
     public function getOpenText(): string
     {

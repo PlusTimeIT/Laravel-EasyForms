@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasReverse
 {
-    protected $reverse = false;
+    protected bool $reverse = false;
 
     public function getReverse(): bool
     {

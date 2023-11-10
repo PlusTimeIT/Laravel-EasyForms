@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasChips
 {
-    protected $chips = false;
+    protected bool $chips = false;
 
     public function getChips(): bool
     {

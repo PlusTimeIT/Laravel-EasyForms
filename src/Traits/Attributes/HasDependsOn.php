@@ -4,9 +4,9 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasDependsOn
 {
-    protected $dependsOn;
+    protected ?string $dependsOn;
 
-    public function dependsOn(string $dependsOn)
+    public function dependsOn(string $dependsOn): self
     {
         $this->dependsOn = $dependsOn;
 
@@ -18,7 +18,7 @@ trait HasDependsOn
         return $this->dependsOn;
     }
 
-    public function setDependsOn(string $dependsOn)
+    public function setDependsOn(string $dependsOn): self
     {
         $this->dependsOn = $dependsOn;
 

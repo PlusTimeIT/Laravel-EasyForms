@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasOpenOnHover
 {
-    protected $open_on_hover = false;
+    protected bool $open_on_hover = false;
 
     public function getOpenOnHover(): bool
     {

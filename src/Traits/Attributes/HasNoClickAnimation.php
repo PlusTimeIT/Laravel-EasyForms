@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasNoClickAnimation
 {
-    protected $no_click_animation = false;
+    protected bool $no_click_animation = false;
 
     public function getNoClickAnimation(): bool
     {

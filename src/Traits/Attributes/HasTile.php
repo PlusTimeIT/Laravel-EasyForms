@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasTile
 {
-    protected $tile = true;
+    protected bool $tile = true;
 
     public function getTile(): bool
     {

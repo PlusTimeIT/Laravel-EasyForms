@@ -18,9 +18,9 @@ class NumberField extends EasyField
     use HasStep;
     use Transformable;
 
-    protected $component = 'v-text-field';
+    protected string $component = 'v-text-field';
 
-    protected $component_type = 'number';
+    protected string $component_type = 'number';
 
-    protected $type = 'number';
+    protected string $type = 'number';
 }

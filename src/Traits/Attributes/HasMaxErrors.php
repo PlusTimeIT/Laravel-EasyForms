@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMaxErrors
 {
-    protected $max_errors = 1;
+    protected int|string $max_errors = 1;
 
     public function getMaxErrors(): int|string
     {

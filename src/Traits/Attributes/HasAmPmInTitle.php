@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasAmPmInTitle
 {
-    protected $ampmInTitle = false;
+    protected bool $ampmInTitle = false;
 
     public function getAmPmInTitle(): bool
     {

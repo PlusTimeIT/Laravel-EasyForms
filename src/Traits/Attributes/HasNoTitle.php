@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasNoTitle
 {
-    protected $noTitle = false;
+    protected bool $noTitle = false;
 
     public function getNoTitle(): bool
     {

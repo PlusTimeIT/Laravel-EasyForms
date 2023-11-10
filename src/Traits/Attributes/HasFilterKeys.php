@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasFilterKeys
 {
-    protected $filter_keys = ['title'];
+    protected string|array $filter_keys = ['title'];
 
     public function getFilterKeys(): string|array
     {

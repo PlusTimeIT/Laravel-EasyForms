@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasOpenOnFocus
 {
-    protected $open_on_focus = false;
+    protected bool $open_on_focus = false;
 
     public function getOpenOnFocus(): bool
     {

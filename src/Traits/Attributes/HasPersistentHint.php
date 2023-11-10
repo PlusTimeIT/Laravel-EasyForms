@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasPersistentHint
 {
-    protected $persistent_hint = false;
+    protected bool $persistent_hint = false;
 
     public function getPersistentHint(): bool
     {

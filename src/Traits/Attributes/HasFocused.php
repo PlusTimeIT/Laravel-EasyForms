@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasFocused
 {
-    protected $focused = false;
+    protected bool $focused = false;
 
     public function getFocused(): bool
     {

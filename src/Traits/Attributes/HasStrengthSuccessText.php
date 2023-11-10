@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasStrengthSuccessText
 {
-    protected $strength_success_text = 'success';
+    protected string $strength_success_text = 'success';
 
     public function getStrengthSuccessText(): string
     {

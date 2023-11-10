@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasJustify
 {
-    protected $justify = 'center';
+    protected string $justify = 'center';
 
     public function getJustify(): string
     {

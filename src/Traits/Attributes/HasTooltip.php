@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Elements\Tooltip;
 
 trait HasTooltip
 {
-    protected $tooltip;
+    protected Tooltip $tooltip;
 
     public function getTooltip(): Tooltip
     {

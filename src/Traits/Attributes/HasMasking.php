@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMasking
 {
-    protected $masking;
+    protected ?string $masking;
 
     public function getMasking(): ?string
     {

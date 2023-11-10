@@ -72,9 +72,9 @@ class AutoCompleteField extends EasyField
     use HasTransition;
     use Transformable;
 
-    protected $component = 'v-autocomplete';
+    protected string $component = 'v-autocomplete';
 
-    protected $discriminator = 'AutoCompleteField';
+    protected string $discriminator = 'AutoCompleteField';
 
-    protected $type = 'text';
+    protected string $type = 'text';
 }

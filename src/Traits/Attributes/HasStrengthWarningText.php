@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasStrengthWarningText
 {
-    protected $strength_warning_text = 'warning';
+    protected string $strength_warning_text = 'warning';
 
     public function getStrengthWarningText(): string
     {

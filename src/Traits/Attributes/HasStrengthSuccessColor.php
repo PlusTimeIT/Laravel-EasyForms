@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasStrengthSuccessColor
 {
-    protected $strength_success_color = 'success';
+    protected string $strength_success_color = 'success';
 
     public function getStrengthSuccessColor(): string
     {

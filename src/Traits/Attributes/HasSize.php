@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasSize
 {
-    protected $size;
+    protected string $size;
 
     public function getSize(): string
     {

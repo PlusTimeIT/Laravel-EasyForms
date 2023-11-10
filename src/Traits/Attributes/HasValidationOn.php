@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Enums\ValidationTriggers;
 
 trait HasValidationOn
 {
-    protected $validate_on;
+    protected ValidationTriggers $validate_on;
 
     public function getValidateOn(): ValidationTriggers
     {

@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasTitle
 {
-    protected $title = '';
+    protected string $title = '';
 
     public function getTitle(): string
     {

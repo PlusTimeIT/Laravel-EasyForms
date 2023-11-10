@@ -4,14 +4,14 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasValue
 {
-    protected $value;
+    protected mixed $value;
 
-    public function getValue()
+    public function getValue(): mixed
     {
         return $this->value;
     }
 
-    public function setValue($value): self
+    public function setValue(mixed $value): self
     {
         $this->value = $value;
 

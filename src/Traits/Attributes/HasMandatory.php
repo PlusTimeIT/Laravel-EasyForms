@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMandatory
 {
-    protected $mandatory = true;
+    protected bool $mandatory = true;
 
     public function getMandatory(): bool
     {

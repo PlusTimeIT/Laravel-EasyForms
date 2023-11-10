@@ -14,9 +14,9 @@ class HiddenField extends EasyField
 {
     use Transformable;
 
-    protected $component = 'v-text-field';
+    protected string $component = 'v-text-field';
 
-    protected $component_type = 'hidden';
+    protected string $component_type = 'hidden';
 
-    protected $type = 'hidden';
+    protected string $type = 'hidden';
 }

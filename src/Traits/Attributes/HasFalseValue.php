@@ -4,14 +4,14 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasFalseValue
 {
-    protected $false_value;
+    protected mixed $false_value;
 
-    public function getFalseValue()
+    public function getFalseValue(): mixed
     {
         return $this->false_value;
     }
 
-    public function setFalseValue($false_value): self
+    public function setFalseValue(mixed $false_value): self
     {
         $this->false_value = $false_value;
 

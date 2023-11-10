@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasItemText
 {
-    protected $item_text = 'value';
+    protected string $item_text = 'value';
 
     public function getItemText(): string
     {

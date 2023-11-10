@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasShowSize
 {
-    protected $show_size = false;
+    protected bool $show_size = false;
 
     public function getShowSize(): bool
     {

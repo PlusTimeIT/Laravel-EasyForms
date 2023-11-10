@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Enums\AlertTriggers;
 
 trait HasTrigger
 {
-    protected $trigger = AlertTriggers::SuccessProcessing;
+    protected AlertTriggers $trigger = AlertTriggers::SuccessProcessing;
 
     public function getTrigger(): AlertTriggers
     {

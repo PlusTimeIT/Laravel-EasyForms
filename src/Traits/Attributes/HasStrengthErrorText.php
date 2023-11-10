@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasStrengthErrorText
 {
-    protected $strength_error_text = 'error';
+    protected string $strength_error_text = 'error';
 
     public function getStrengthErrorText(): string
     {

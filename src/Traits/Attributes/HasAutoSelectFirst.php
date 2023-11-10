@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasAutoSelectFirst
 {
-    protected $auto_select_first = false;
+    protected bool $auto_select_first = false;
 
     public function getAutoSelectFirst(): bool|string
     {

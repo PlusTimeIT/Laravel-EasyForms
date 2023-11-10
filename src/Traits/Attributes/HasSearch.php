@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasSearch
 {
-    protected $search;
+    protected string $search;
 
     public function getSearch(): string
     {

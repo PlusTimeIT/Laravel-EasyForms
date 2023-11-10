@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasPersistentClear
 {
-    protected $persistent_clear = false;
+    protected bool $persistent_clear = false;
 
     public function getPersistentClear(): bool
     {

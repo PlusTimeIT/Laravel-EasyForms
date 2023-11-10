@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasOriginalText
 {
-    protected $original_text = '';
+    protected string $original_text = '';
 
     public function getOriginalText(): string
     {

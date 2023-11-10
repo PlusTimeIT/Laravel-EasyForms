@@ -4,9 +4,9 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasResult
 {
-    protected $result;
+    protected bool $result;
 
-    public function failed()
+    public function failed(): self
     {
         return $this->setResult(false);
     }
@@ -28,12 +28,12 @@ trait HasResult
         return $this;
     }
 
-    public function success()
+    public function success(): self
     {
         return $this->setResult(true);
     }
 
-    public function wasSuccessful()
+    public function wasSuccessful(): bool
     {
         return $this->getResult();
     }

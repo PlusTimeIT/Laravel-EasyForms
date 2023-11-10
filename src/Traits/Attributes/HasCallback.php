@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasCallback
 {
-    protected $callback;
+    protected string $callback;
 
     public function getCallback(): string
     {

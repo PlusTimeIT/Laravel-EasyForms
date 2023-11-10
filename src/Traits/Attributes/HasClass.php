@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasClass
 {
-    protected $class = 'p-4';
+    protected string $class = 'p-4';
 
     public function getClass(): string
     {

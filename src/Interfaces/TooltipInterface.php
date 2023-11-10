@@ -16,9 +16,9 @@ interface TooltipInterface
 
     public function getContained(): bool;
 
-    public function getContentClass();
+    public function getContentClass(): mixed;
 
-    public function getContentProps();
+    public function getContentProps(): mixed;
 
     public function getDisabled(): bool;
 
@@ -70,9 +70,9 @@ interface TooltipInterface
 
     public function setContained(bool $contained);
 
-    public function setContentClass($content_class);
+    public function setContentClass(mixed $content_class);
 
-    public function setContentProps($content_props);
+    public function setContentProps(mixed $content_props);
 
     public function setDisabled(bool $disabled);
 
@@ -112,7 +112,7 @@ interface TooltipInterface
 
     public function setZIndex(string|int $z_index);
 
-    public function toArray();
+    public function toArray(): array;
 
-    public function toJson();
+    public function toJson(): string;
 }

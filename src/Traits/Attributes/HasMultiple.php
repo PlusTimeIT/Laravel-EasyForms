@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMultiple
 {
-    protected $multiple = false;
+    protected bool $multiple = false;
 
     public function getMultiple(): bool
     {

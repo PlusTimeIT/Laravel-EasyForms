@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMinHeight
 {
-    protected $min_height;
+    protected string|int $min_height;
 
     public function getMinHeight(): string|int
     {

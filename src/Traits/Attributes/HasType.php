@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasType
 {
-    protected $type = '';
+    protected string $type = '';
 
     public function getType(): string
     {

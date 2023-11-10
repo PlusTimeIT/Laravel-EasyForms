@@ -44,9 +44,11 @@ class PasswordField extends EasyField
     use HasViewMode;
     use Transformable;
 
-    protected $component = 'easy-password';
+    protected string $component = 'easy-password';
 
-    protected $discriminator = 'PasswordField';
+    protected string $discriminator = 'PasswordField';
+
+    protected string $type = 'password';
 
     public function __construct(array $args)
     {

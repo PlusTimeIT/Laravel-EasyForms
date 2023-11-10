@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMultiPart
 {
-    protected $multi_part = false;
+    protected bool $multi_part = false;
 
     public function getMultiPart(): bool
     {

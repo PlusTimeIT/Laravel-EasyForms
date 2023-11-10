@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Elements\Button;
 
 trait HasButtons
 {
-    protected $buttons = [];
+    protected array $buttons = [];
 
     public function addButton(Button $button): self
     {
@@ -15,7 +15,7 @@ trait HasButtons
         return $this;
     }
 
-    public function getButtons(): string
+    public function getButtons(): array
     {
         return $this->buttons;
     }

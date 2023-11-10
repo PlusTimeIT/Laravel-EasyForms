@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasCloseText
 {
-    protected $close_text;
+    protected string $close_text;
 
     public function getCloseText(): string
     {

@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasStep
 {
-    protected $step = 1;
+    protected float $step = 1;
 
     public function getStep(): float
     {

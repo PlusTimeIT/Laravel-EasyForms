@@ -14,9 +14,9 @@ class CheckboxField extends EasyField
 {
     use Transformable;
 
-    protected $component = 'v-checkbox';
+    protected string $component = 'v-checkbox';
 
-    protected $discriminator = 'CheckboxField';
+    protected string $discriminator = 'CheckboxField';
 
-    protected $type = 'checkbox';
+    protected string $type = 'checkbox';
 }

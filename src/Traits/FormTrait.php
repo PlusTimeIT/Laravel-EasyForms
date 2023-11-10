@@ -3,20 +3,20 @@
 namespace PlusTimeIT\EasyForms\Traits;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use PlusTimeIT\EasyForms\Elements\LoadResponse;
 use PlusTimeIT\EasyForms\Elements\ProcessResponse;
 
 trait FormTrait
 {
     use Attributes\HasAlerts;
     use Attributes\HasAxios;
+    use Attributes\HasFormLoader;
     use Attributes\HasName;
+    use Attributes\HasAdditionalData;
     use Attributes\HasTitle;
     use Attributes\HasType;
-
-    public static function fill(request $request)
-    {
-        return self::make();
-    }
+    use Creatable;
 
     public function getValidation(): array
     {
@@ -33,18 +33,18 @@ trait FormTrait
         })->reject(fn ($rules) => empty($rules))->toArray();
     }
 
-    public static function make(): self
+    public static function load(request $request): LoadResponse
     {
-        return new static();
+        return LoadResponse::make()->success()->form(self::make());
     }
 
     public static function process(request $request): ProcessResponse
     {
-        return ProcessResponse::make()->success()->data('Yay you processed!');
+        return ProcessResponse::make()->success()->data('Form successfully processed.');
     }
 
     public function validateRequest(request $request)
     {
-        return \Validator::make($request->all(), $this->getValidation());
+        return Validator::make($request->all(), $this->getValidation());
     }
 }

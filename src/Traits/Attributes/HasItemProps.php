@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasItemProps
 {
-    protected $item_props = 'props';
+    protected bool|string $item_props = 'props';
 
     public function getItemProps(): bool|string
     {

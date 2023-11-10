@@ -41,7 +41,7 @@ interface FieldInterface
 
     public function getType(): string;
 
-    public function getValue();
+    public function getValue(): mixed;
 
     public function setClearable(bool $clearable);
 
@@ -77,9 +77,9 @@ interface FieldInterface
 
     public function setType(string $type);
 
-    public function setValue($value);
+    public function setValue(mixed $value);
 
-    public function toArray();
+    public function toArray(): array;
 
-    public function toJson();
+    public function toJson(): string;
 }

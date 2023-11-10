@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasError
 {
-    protected $error = false;
+    protected bool $error = false;
 
     public function getError(): bool
     {

@@ -4,14 +4,14 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasContentClass
 {
-    protected $content_class;
+    protected string $content_class;
 
-    public function getContentClass()
+    public function getContentClass(): mixed
     {
         return $this->content_class;
     }
 
-    public function setContentClass($content_class): self
+    public function setContentClass(mixed $content_class): self
     {
         $this->content_class = $content_class;
 

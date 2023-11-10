@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasCenterAffix
 {
-    protected $center_affix = false;
+    protected bool $centxer_affix = false;
 
     public function getCenterAffix(): bool
     {

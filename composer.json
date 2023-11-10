@@ -18,7 +18,8 @@
     "laravel/pint": "^1.13",
     "orchestra/testbench": "^8.13",
     "phpro/grumphp": "^2.1",
-    "phpunit/phpunit": "^10.4"
+    "phpunit/phpunit": "^10.4",
+    "icanhazstring/composer-unused": "^0.8.10"
   },
   "minimum-stability": "beta",
   "autoload": {
@@ -48,8 +49,8 @@
     }
   },
   "scripts": {
-    "build": "rm -rf docs && composer format && composer build:docs",
-    "build:docs": "tools/phpDocumentor --config phpdoc.dist.xml",
-    "format": "pint --config ./pint.json"
+    "trim:packages": "php ./tools/composer-unused",
+    "format": "pint --config ./pint.json",
+    "build": "composer format"
   }
 }

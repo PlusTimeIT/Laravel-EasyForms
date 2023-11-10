@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasRules
 {
-    protected $rules = [];
+    protected array $rules = [];
 
     public function getRules(): array
     {

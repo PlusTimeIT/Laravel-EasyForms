@@ -12,6 +12,9 @@ use PlusTimeIT\EasyForms\Traits\Attributes\HasOrder;
 use PlusTimeIT\EasyForms\Traits\Creatable;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
+/**
+ * Action Icon element that triggers an action / function within the backend class.
+ */
 class ActionIcon
 {
     use Creatable;
@@ -23,4 +26,6 @@ class ActionIcon
     use HasName;
     use HasOrder;
     use Transformable;
+
+    protected string $discriminator = 'ActionIcon';
 }

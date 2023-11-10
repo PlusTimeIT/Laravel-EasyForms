@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasProminent
 {
-    protected $prominent = false;
+    protected bool $prominent = false;
 
     public function getProminent(): bool
     {

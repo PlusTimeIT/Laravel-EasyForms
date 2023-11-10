@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasIdentifier
 {
-    protected $identifier;
+    protected string $identifier;
 
     public function getIdentifier(): string
     {

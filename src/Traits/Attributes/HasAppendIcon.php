@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Elements\Icon;
 
 trait HasAppendIcon
 {
-    protected $append_icon;
+    protected Icon|string $append_icon;
 
     public function getAppendIcon(): Icon|string
     {

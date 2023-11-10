@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasOpenOnClick
 {
-    protected $open_on_click = false;
+    protected bool $open_on_click = true;
 
     public function getOpenOnClick(): bool
     {

@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasLight
 {
-    protected $light = false;
+    protected bool $light = false;
 
     public function getLight(): bool
     {

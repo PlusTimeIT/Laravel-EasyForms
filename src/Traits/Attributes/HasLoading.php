@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasLoading
 {
-    protected $loading = false;
+    protected bool $loading = false;
 
     public function getLoading(): bool|string
     {

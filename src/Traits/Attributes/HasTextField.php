@@ -6,9 +6,9 @@ use PlusTimeIT\EasyForms\Fields\TextField;
 
 trait HasTextField
 {
-    protected $textfield;
+    protected ?TextField $textfield;
 
-    public function getTextfield(): TextField
+    public function getTextfield(): ?TextField
     {
         return $this->textfield;
     }

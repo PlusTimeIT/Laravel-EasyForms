@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasHideSelected
 {
-    protected $hide_selected = false;
+    protected bool $hide_selected = false;
 
     public function getHideSelected(): bool
     {

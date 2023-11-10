@@ -14,7 +14,6 @@
       <source dsn=".">
         <path>src</path>
       </source>
-      <output>api</output>
       <ignore hidden="true" symlinks="true">
         <path>src/Forms/**/*</path>
         <path>src/Providers/**/*</path>
@@ -28,7 +27,7 @@
       </extensions>
       <default-package-name>MyPackage</default-package-name>
     </api>
-    <guide format="rst">
+    <guide format="md">
       <source dsn=".">
         <path>support</path>
       </source>

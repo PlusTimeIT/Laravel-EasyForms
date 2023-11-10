@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Interfaces\ActionFormInterface;
 use PlusTimeIT\EasyForms\Traits\ActionFormTrait;
 
 /**
- * Creates an ActionForm - buttons and icon
+ * Handles Action Forms with buttons and icon
  */
 abstract class ActionForm extends EasyForm implements ActionFormInterface
 {
@@ -17,7 +17,7 @@ abstract class ActionForm extends EasyForm implements ActionFormInterface
      *
      * @var string
      */
-    protected $type = 'action-form';
+    protected string $type = 'action-form';
 
     /**
      * Constructor for the ActionForm class.

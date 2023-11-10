@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasInline
 {
-    protected $inline;
+    protected bool $inline;
 
     public function getInline(): bool
     {

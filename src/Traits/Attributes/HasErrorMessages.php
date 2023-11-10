@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasErrorMessages
 {
-    protected $error_messages = [];
+    protected array $error_messages = [];
 
     public function getErrorMessages(): array|string
     {

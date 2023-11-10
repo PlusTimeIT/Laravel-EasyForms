@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasControls
 {
-    protected $controls = false;
+    protected bool $controls = false;
 
     public function getControls(): bool
     {

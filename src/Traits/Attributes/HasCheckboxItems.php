@@ -6,9 +6,9 @@ use PlusTimeIT\EasyForms\Elements\CheckboxItem;
 
 trait HasCheckboxItems
 {
-    protected $items = [];
+    protected array $items = [];
 
-    protected $itemType = CheckboxItem::class;
+    protected string $itemType = CheckboxItem::class;
 
     public function addItem($item): self
     {

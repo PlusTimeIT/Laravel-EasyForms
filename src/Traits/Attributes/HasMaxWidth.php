@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMaxWidth
 {
-    protected $max_width;
+    protected string|int $max_width;
 
     public function getMaxWidth(): string|int
     {

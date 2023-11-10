@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Enums\DirectionTypes;
 
 trait HasDirection
 {
-    protected $direction = DirectionTypes::Horizontal;
+    protected DirectionTypes $direction = DirectionTypes::Horizontal;
 
     public function getDirection(): DirectionTypes
     {

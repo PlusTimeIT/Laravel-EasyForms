@@ -4,21 +4,21 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasButtonJustifyRow
 {
-    protected $buttonJustifyRow = 'center';
+    protected string $button_justify_row = 'center';
 
     public function buttonJustifyRow(): string
     {
-        return $this->buttonJustifyRow;
+        return $this->button_justify_row;
     }
 
     public function getButtonJustifyRow(): string
     {
-        return $this->buttonJustifyRow;
+        return $this->button_justify_row;
     }
 
-    public function setButtonJustifyRow(string $buttonJustifyRow): self
+    public function setButtonJustifyRow(string $button_justify_row): self
     {
-        $this->buttonJustifyRow = $buttonJustifyRow;
+        $this->button_justify_row = $button_justify_row;
 
         return $this;
     }

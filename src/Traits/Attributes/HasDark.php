@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasDark
 {
-    protected $dark = false;
+    protected bool $dark = false;
 
     public function getDark(): bool
     {

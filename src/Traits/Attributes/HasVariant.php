@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Enums\TextVariantTypes;
 
 trait HasVariant
 {
-    protected $variant = TextVariantTypes::Filled;
+    protected TextVariantTypes $variant = TextVariantTypes::Filled;
 
     public function getVariant(): TextVariantTypes
     {

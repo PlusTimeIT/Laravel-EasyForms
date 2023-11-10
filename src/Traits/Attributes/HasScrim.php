@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasScrim
 {
-    protected $scrim = false;
+    protected string|bool $scrim = false;
 
     public function getScrim(): string|bool
     {

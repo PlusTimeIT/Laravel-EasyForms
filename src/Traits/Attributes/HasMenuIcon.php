@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Elements\Icon;
 
 trait HasMenuIcon
 {
-    protected $menu_icon = '$dropdown';
+    protected Icon|string $menu_icon = '$dropdown';
 
     public function getMenuIcon(): Icon|string
     {

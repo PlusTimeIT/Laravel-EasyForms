@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasSpecial
 {
-    protected $special = false;
+    protected bool $special = false;
 
     public function getSpecial(): bool
     {

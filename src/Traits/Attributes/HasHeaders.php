@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Elements\Header;
 
 trait HasHeaders
 {
-    protected $headers = [];
+    protected array $headers = [];
 
     public function addHeaders(Header $header): self
     {

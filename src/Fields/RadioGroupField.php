@@ -27,11 +27,11 @@ class RadioGroupField extends EasyField
     use HasRowColumnLayout;
     use Transformable;
 
-    protected $component = 'v-radio-group';
+    protected string $component = 'v-radio-group';
 
-    protected $discriminator = 'RadioGroupField';
+    protected string $discriminator = 'RadioGroupField';
 
-    protected $type = 'select';
+    protected string $type = 'select';
 
     /**
      * Override trait so that we can cast this item.

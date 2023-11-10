@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasOrigin
 {
-    protected $origin = 'center center';
+    protected string $origin = 'center center';
 
     public function getOrigin(): string
     {

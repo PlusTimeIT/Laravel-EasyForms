@@ -28,11 +28,15 @@ use PlusTimeIT\EasyForms\Traits\Attributes\HasRounded;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasTag;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasText;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasTextStyle;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasTitle;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasTransition;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasTrigger;
 use PlusTimeIT\EasyForms\Traits\Creatable;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
+/**
+ * Vuetify V-Alert
+ */
 class Alert
 {
     use Creatable;
@@ -61,6 +65,7 @@ class Alert
     use HasRounded;
     use HasTag;
     use HasText;
+    use HasTitle;
     use HasTextStyle;
     use HasTransition;
     use HasTrigger;

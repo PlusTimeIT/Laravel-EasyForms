@@ -5,47 +5,37 @@ namespace PlusTimeIT\EasyForms\Elements;
 use PlusTimeIT\EasyForms\Traits\Creatable;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
+/**
+ * Condition Item to provide an easy way to check against conditionals for Action Icons and Buttons
+ *
+ * The data provided comes from the forms additional data
+ */
 class ConditionItem
 {
     use Creatable;
     use Transformable;
 
-    protected $against;
+    protected string $against;
 
-    protected $check;
+    protected string $check;
+    protected string $operator;
 
-    protected $operator;
+    protected string $source;
 
-    protected $source;
-
-    public function __construct($check = '', $operator = '', $against = '')
-    {
-        return $this
-            ->setCheck($check)
-            ->setOperator($operator)
-            ->setAgainst($against);
-    }
-
-    public function getAgainst()
+    public function getAgainst(): string
     {
         return $this->against;
     }
 
-    public function getCheck()
+    public function getCheck(): string
     {
         return $this->check;
     }
 
-    public function getOperator()
+    public function getOperator(): string
     {
         return $this->operator;
     }
-
-    public static function make($check = '', $operator = '', $against = '')
-    {
-        return new static($check, $operator,  $against);
-    }
-
     public function setAgainst($against): self
     {
         $this->against = $against;

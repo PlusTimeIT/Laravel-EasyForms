@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasPersistentPlaceholder
 {
-    protected $persistent_placeholder = false;
+    protected bool $persistent_placeholder = false;
 
     public function getPersistentPlaceholder(): bool
     {

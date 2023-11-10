@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasDisabled
 {
-    protected $disabled = false;
+    protected bool $disabled = false;
 
     public function getDisabled(): bool
     {

@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasClosableChips
 {
-    protected $closable_chips = false;
+    protected bool $closable_chips = false;
 
     public function getClosableChips(): bool
     {

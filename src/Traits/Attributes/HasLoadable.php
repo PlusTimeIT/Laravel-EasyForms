@@ -4,9 +4,9 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasLoadable
 {
-    protected $loadable;
+    protected \Closure $loadable;
 
-    public function load($args)
+    public function load($args): array
     {
         return call_user_func($this->loadable, $args);
     }

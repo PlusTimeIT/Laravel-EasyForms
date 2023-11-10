@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMinLength
 {
-    protected $min_length;
+    protected string|int $min_length;
 
     public function getMinLength(): string|int
     {

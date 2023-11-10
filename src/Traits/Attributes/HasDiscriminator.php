@@ -7,7 +7,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
  */
 trait HasDiscriminator
 {
-    protected $discriminator;
+    protected string $discriminator;
 
     public function getDiscriminator(): string
     {

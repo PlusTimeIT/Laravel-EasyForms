@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasDotSize
 {
-    protected $dot_size = 10;
+    protected int|string $dot_size = 10;
 
     public function getDotSize(): int|string
     {

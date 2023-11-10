@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasTag
 {
-    protected $tag = 'div';
+    protected string $tag = 'div';
 
     public function getTag(): string
     {

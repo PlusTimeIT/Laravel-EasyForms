@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Enums\ButtonVariantTypes;
 
 trait HasButtonVariant
 {
-    protected $variant = ButtonVariantTypes::Flat;
+    protected ButtonVariantTypes $variant = ButtonVariantTypes::Flat;
 
     public function getVariant(): ButtonVariantTypes
     {

@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasFlat
 {
-    protected $flat = false;
+    protected bool $flat = false;
 
     public function getFlat(): bool
     {

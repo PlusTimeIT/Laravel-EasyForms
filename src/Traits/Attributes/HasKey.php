@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasKey
 {
-    protected $key;
+    protected string $key;
 
     public function getKey(): string
     {

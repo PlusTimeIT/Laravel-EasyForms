@@ -19,11 +19,11 @@ class CheckboxGroupField extends EasyField
     use HasSwitch;
     use Transformable;
 
-    protected $component = 'lvef-checkbox-group';
+    protected string $component = 'lvef-checkbox-group';
 
-    protected $discriminator = 'CheckboxGroupField';
+    protected string $discriminator = 'CheckboxGroupField';
 
-    protected $type = 'checkbox-group';
+    protected string $type = 'checkbox-group';
 
     /**
      * Override trait so that we can cast this item.

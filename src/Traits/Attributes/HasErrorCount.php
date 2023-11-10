@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasErrorCount
 {
-    protected $error_count = 1;
+    protected int|string $error_count = 1;
 
     public function getErrorCount(): int|string
     {

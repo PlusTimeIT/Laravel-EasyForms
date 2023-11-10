@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasCounter
 {
-    protected $counter = false;
+    protected bool $counter = false;
 
     public function getCounter(): bool
     {

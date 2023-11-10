@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasHideNoData
 {
-    protected $hide_no_data = false;
+    protected bool $hide_no_data = false;
 
     public function getHideNoData(): bool
     {

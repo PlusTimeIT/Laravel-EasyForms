@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMessages
 {
-    protected $messages = [];
+    protected array|string $messages = [];
 
     public function getMessages(): array|string
     {

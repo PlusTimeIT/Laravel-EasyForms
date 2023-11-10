@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasStrengthErrorColor
 {
-    protected $strength_error_color = 'error';
+    protected string $strength_error_color = 'error';
 
     public function getStrengthErrorColor(): string
     {

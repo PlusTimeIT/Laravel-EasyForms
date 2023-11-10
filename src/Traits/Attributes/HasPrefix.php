@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasPrefix
 {
-    protected $prefix;
+    protected string $prefix;
 
     public function getPrefix(): string
     {

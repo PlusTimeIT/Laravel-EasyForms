@@ -4,14 +4,14 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasLoader
 {
-    protected $loader = false;
+    protected bool $loader = false;
 
     public function getLoader(): bool
     {
         return $this->loader;
     }
 
-    public function keepLoader()
+    public function keepLoader(): self
     {
         return $this->setLoader(true);
     }

@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasActions
 {
-    protected $actions = [];
+    protected array $actions = [];
 
     public function actions(): array
     {

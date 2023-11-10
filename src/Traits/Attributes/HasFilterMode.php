@@ -6,7 +6,7 @@ use PlusTimeIT\EasyForms\Enums\FilterModeTypes;
 
 trait HasFilterMode
 {
-    protected $filter_mode = FilterModeTypes::Intersection;
+    protected FilterModeTypes $filter_mode = FilterModeTypes::Intersection;
 
     public function getFilterMode(): FilterModeTypes
     {
