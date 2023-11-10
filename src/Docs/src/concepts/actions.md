@@ -16,14 +16,17 @@ All actions have the following properties:
 
 
 ## Action Button
+
 Action buttons are used when you need to process some actions but no user input is required.
 
 | Property     |      Type       |  Default  | Description                                                                     |
 |:-------------|:---------------:|:---------:|:--------------------------------------------------------------------------------|
 | `button`     |     Button      | undefined | [Button](/concepts/elements.html#buttons) for styling that should be displayed. |
 
+
 ## Action Icon
-Icons are used in multiple components and elements and are the base for Action Icons.
+
+Action icons are used when the form action is best displayed as an icon.
 
 | Property | Type |  Default  | Description                                                                 |
 |:---------|:----:|:---------:|:----------------------------------------------------------------------------|

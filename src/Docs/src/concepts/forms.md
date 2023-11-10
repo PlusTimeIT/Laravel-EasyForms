@@ -9,24 +9,36 @@ The current form types are:
 ## Common Functions
 All forms come with some common functions that are required to complete the forms basic operations.
 
-### Load Function - returns [LoadResponse](/concepts/elements.html#load-response)
+### Load Function 
+
+::: tip
+For the Axios controller can process the response, your function must return a [`LoadResponse`](/concepts/elements.html#load-response)
+:::
+
 The load function is included in the abstract class that both forms extend from, so it's not required to be added.
 If a child function doesn't override the parent function, this will return a blank form when loaded
 (no values in fields etc.). 
 
-For the Axios controller can process the response, your function must return a `LoadResponse`
 
-#### Example Successful Response
+
+::: details Example Successful Response
 ````php
 return LoadResponse::make()->success()->form($form);
 ````
+:::
 
-#### Example Failed Response
+
+::: details Example Failed Response
 ````php
 return LoadResponse::make()->failed();
 ````
+:::
 
-### Process Function - returns [ProcessResponse](/concepts/elements.html#process-response)
+### Process Function 
+
+::: tip
+For the Axios controller can process the response, your function must return a [`ProcessResponse`](/concepts/elements.html#process-response)
+:::
 
 The process function allows you to process requests that pass validation. You don't need to check for validation 
 or conformity, you can just get straight to processing. Once the data reaches the process function the validation process
@@ -35,18 +47,18 @@ has already passed successfully.
 With Action Forms the process function doesn't need to be updated, but you do need to create 
 functions for each callback you create for your actions.
 
-For the Axios controller can process the response, your function must return a `ProcessResponse`
 
-#### Example Successful Response
+::: details Example Successful Response
 ````php
 return ProcessResponse::make()->success()->data('Success!');
 ````
+:::
 
-#### Example Failed Response
+::: details Example Failed Response
 ````php
 return ProcessResponse::make()->failed()->data('Failed!');
 ````
-
+:::
 ## All Forms
 
 All forms come with the following properties:

@@ -2,7 +2,12 @@
 There are multiple types of elements to help keep the data structure strict for the frontend.
 
 ## Icons
+
 Icons are used in multiple components and elements and are the base for Action Icons.
+
+::: tip Props
+Get a full list of props from [Vuetify V-Icons](https://vuetifyjs.com/en/components/icons/)
+:::
 
 ### Modified or Custom Props
 | Property              |      Type       |      Default      | Description                                        |
@@ -10,10 +15,14 @@ Icons are used in multiple components and elements and are the base for Action I
 | `class`               |     String      |     undefined     | Classes to add to Icon component                   |
 | `tooltip`             |     Tooltip     |     undefined     | Add Tooltip to Icon                                |
 
-[Vuetify Icons - More information](https://vuetifyjs.com/en/components/icons/)
 
 ## Alerts
-Display a V-Alert with an Alert Trigger on a specific form action.
+
+Style and Display a V-Alert with an [Alert Trigger](/concepts/enums.html#alert-triggers) on a specific form action.
+
+::: tip Props
+Get a full list of props from [Vuetify V-Alerts](https://vuetifyjs.com/en/components/alerts/)
+:::
 
 ### Modified or Custom Props
 | Property              |      Type       |      Default      | Description                                        |
@@ -27,17 +36,22 @@ Display a V-Alert with an Alert Trigger on a specific form action.
 | `text`                |     String      |     undefined     | This has been altered to allow basic HTML          |
 | `trigger`             |  AlertTriggers  | SuccessProcessing | This has been altered to allow basic HTML          |
 
-[Vuetify Alerts - More information](https://vuetifyjs.com/en/components/alerts/)
+::: details Props Not Present
 
-### Props Not Present
 | Property              |
 |:----------------------|
 | `location`            |
 | `model-value`         |
+:::
 
 
 ## Buttons
-Display a V-Btn
+
+Style and Display a V-Btn - Can be fully custom button or consist of a [Button Type](/concepts/enums.html#button-types)
+
+::: tip Props
+Get a full list of props from [Vuetify V-Buttons](https://vuetifyjs.com/en/components/buttons/)
+:::
 
 ### Modified or Custom Props
 | Property              |      Type       |      Default      | Description                                        |
@@ -46,41 +60,51 @@ Display a V-Btn
 | `order`               |     Integer     |         0         | When multiple buttons are present, define an order |
 | `tooltip`             |     Tooltip     |     undefined     | Add Tooltip to Icon                                |
 
-[Vuetify Buttons - More information](https://vuetifyjs.com/en/components/buttons/)
+::: details Props Not Present
 
-### Props Not Present
 | Property   |
 |:-----------|
 | `location` |
 | `ripple`   |
+:::
 
 
 ## Tooltips
-Display a V-Tooltip
 
-[Vuetify Buttons - More information](https://vuetifyjs.com/en/components/tooltips/)
+Style and Display a V-Tooltip
 
-### Props Not Present
+::: tip Props
+Get a full list of props from [Vuetify V-Tooltips](https://vuetifyjs.com/en/components/tooltips/)
+:::
+
+::: details Props Not Present
+
 | Property            |
 |:--------------------|
 | `activator-props`   |
 | `location-strategy` |
 | `model-value`       |
 | `origin`            |
+:::
 
 ## Menu
-Display a V-Menu used for PickerFields
+
+Style and Display a V-Menu used for Picker Fields
+
+::: tip Props
+Get a full list of props from [Vuetify V-Menu](https://vuetifyjs.com/en/components/menus/)
+:::
 
 ### Modified or Custom Props
+
 | Property              |      Type       |      Default      | Description                                        |
 |:----------------------|:---------------:|:-----------------:|:---------------------------------------------------|
 | `class`               |     String      |     undefined     | Classes to add to Button component                 |
 | `order`               |     Integer     |         0         | When multiple buttons are present, define an order |
 | `tooltip`             |     Tooltip     |     undefined     | Add Tooltip to Icon                                |
 
-[Vuetify Menu - More information](https://vuetifyjs.com/en/components/menus/)
+::: details Props Not Present
 
-### Props Not Present
 | Property            |
 |:--------------------|
 | `activator-props`   |
@@ -88,44 +112,61 @@ Display a V-Menu used for PickerFields
 | `model-value`       |
 | `origin`            |
 | `transition`        |
+:::
+
 
 ## Progress Circular
-Display a V-Progress-Circular
+
+Style and Display a V-Progress-Circular
+
+::: tip Props
+Get a full list of props from [Vuetify V-Progress-Circular](https://vuetifyjs.com/en/components/progress-circular/)
+:::
 
 ### Modified or Custom Props
 | Property              |      Type       |      Default      | Description                                   |
 |:----------------------|:---------------:|:-----------------:|:----------------------------------------------|
 | `class`               |     String      |     undefined     | Classes to add to Progress Circular component |
 
-[Vuetify Progress Circular - More information](https://vuetifyjs.com/en/components/progress-circular/)
+::: details Props Not Present
 
-### Props Not Present
 | Property            |
 |:--------------------|
 | `model-value`       |
+:::
+
 
 ## Progress Linear
-Display a V-Progress-Linear
+
+Style and Display a V-Progress-Linear
+
+::: tip Props
+Get a full list of props from [Vuetify V-Progress-Linear](https://vuetifyjs.com/en/components/progress-linear/)
+:::
 
 ### Modified or Custom Props
+
 | Property              |      Type       |      Default      | Description                                 |
 |:----------------------|:---------------:|:-----------------:|:--------------------------------------------|
 | `class`               |     String      |     undefined     | Classes to add to Progress Linear component |
 
-[Vuetify Progress Linear - More information](https://vuetifyjs.com/en/components/progress-linear/)
+::: details Props Not Present
 
-### Props Not Present
 | Property       |
 |:---------------|
 | `model-value`  |
 | `buffer-value` |
 | `clickable`    |
 | `max`          |
+:::
+
 
 ## Checkbox Item
+
 Class used for handling checkboxes in CheckboxGroupFields.
 
 ### Custom Props
+
 | Property |      Type      |  Default  | Description                                 |
 |:---------|:--------------:|:---------:|:--------------------------------------------|
 | `color`  |     String     | undefined | Color of checkbox                           |
@@ -134,38 +175,50 @@ Class used for handling checkboxes in CheckboxGroupFields.
 | `label`  |     String     | undefined | Display label for the checkbox              |
 | `value`  |     Mixed      | undefined | Value of the checkbox                       |
 
+
 ## Select Item
+
 Class used for handling items in SelectFields and AutoCompleteFields.
 
 ### Custom Props
+
 | Property |      Type      |  Default  | Description              |
 |:---------|:--------------:|:---------:|:-------------------------|
 | `id`     |     String     | undefined | ID of the select item    |
 | `value`  |     Mixed      | undefined | Value of the select item |
 
+
 ## Rule Item
+
 Class used for handling validation rules.
 
 ### Custom Props
+
 | Property |      Type      |  Default  | Description                 |
 |:---------|:--------------:|:---------:|:----------------------------|
 | `name`   |     String     | undefined | Name of the validation rule |
 | `value`  |     Mixed      | undefined | Value of the validation     |
 
+
 ## Radio Item
+
 Class used for handling radio in RadioGroupFields.
 
 ### Custom Props
+
 | Property |      Type      |  Default  | Description                 |
 |:---------|:--------------:|:---------:|:----------------------------|
 | `color`  |     String     | undefined | Color of radio              |
 | `label`  |     String     | undefined | Display label for the radio |
 | `value`  |     Mixed      | undefined | Value of the radio          |
 
+
 ## Condition Item
-Class used for handling conditionals for displaying action icons and buttons on the frontend.
+
+Class used for handling conditionals for displaying [Action Icons](/concepts/actions.html#action-icons) and [Action Buttons](/concepts/actions.html#action-button) on the frontend.
 
 ### Custom Props
+
 | Property   |  Type  |  Default  | Description                                                                                     |
 |:-----------|:------:|:---------:|:------------------------------------------------------------------------------------------------|
 | `check`    | String | undefined | Search additional data provided to the form on load. Check attribute value against below value. |
@@ -174,18 +227,23 @@ Class used for handling conditionals for displaying action icons and buttons on 
 
 
 ## Form Loader
+
 Class for handling how the form loader is styled and it's type.
 
 ### Custom Props
+
 | Property   |               Type               |  Default  | Description                                                                    |
 |:-----------|:--------------------------------:|:---------:|:-------------------------------------------------------------------------------|
 | `type`     |         FormLoaderTypes          | undefined | Whether this is a Circular or Linear loader                                    |
 | `progress` | ProgressLinear, ProgressCircular | undefined | [Progress Linear](#progress-linear) or [Progress Circular](#progress-circular) |
 
+
 ## Form Container
+
 A custom element for displaying the form in.
 
 ### Custom Props
+
 | Property |  Type   | Default | Description                                     |
 |:---------|:-------:|:-------:|:------------------------------------------------|
 | `cols`   | Integer |   12    | Cols to spread the form over (xs).              |
@@ -193,30 +251,39 @@ A custom element for displaying the form in.
 | `md`     | Integer |   12    | Cols to spread the form over on a medium screen |
 | `sm`     | Integer |   12    | Cols to spread the form over on a small screen  |
 
+
 ## Load Response
+
 A custom class for providing data conformity for loading forms in the Axios controller
 
 ### Custom Props
+
 | Property   |         Type          |  Default  | Description                                                                                                |
 |:-----------|:---------------------:|:---------:|:-----------------------------------------------------------------------------------------------------------|
 | `form`     | InputForm, ActionForm | undefined | The loaded form object.                                                                                    |
 | `redirect` |    Boolean,String     |   false   | Should the user be redirected when this response is returned. Set to "reload" to refresh the current page. |
 | `result`   |        Boolean        | undefined | Determines if the load request was successful or failed.                                                   |
 
+
 ## Process Response
+
 A custom class for providing data conformity when processing forms in the Axios controller
 
 ### Custom Props
+
 | Property   |      Type      |  Default  | Description                                                                                                                   |
 |:-----------|:--------------:|:---------:|:------------------------------------------------------------------------------------------------------------------------------|
 | `data`     |     Mixed      | undefined | Data to pass back to the form, this can be displayed in alerts, or if form is expecting results - be passed in a Loader Event |
 | `redirect` | Boolean,String |   false   | Should the user be redirected when this response is returned. Set to "reload" to refresh the current page.                    |
 | `result`   |    Boolean     | undefined | Determines if the process request was successful or failed.                                                                   |
 
+
 ## Axios
+
 Class for handling how axios should behave on the frontend.
 
 ### Custom Props
+
 | Property            |  Type   | Default | Description                                                        |
 |:--------------------|:-------:|:-------:|:-------------------------------------------------------------------|
 | `expecting_results` | Boolean |  true   | Data will be pushed via LoaderEvents.Results when successful.      |
@@ -225,9 +292,11 @@ Class for handling how axios should behave on the frontend.
 
 
 ## Additional Data
+
 Class for handling passing additional data to loading and processing forms.
 
 ### Custom Props
+
 | Property |  Type  |  Default  | Description                                               |
 |:---------|:------:|:---------:|:----------------------------------------------------------|
 | `key`    | String | undefined | Key the value for easy reference when using conditionals. |

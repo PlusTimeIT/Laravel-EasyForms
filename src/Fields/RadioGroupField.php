@@ -6,6 +6,7 @@ use PlusTimeIT\EasyForms\Base\EasyField;
 use PlusTimeIT\EasyForms\Elements\RadioItem;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasAnyField;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasChips;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasInline;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasItems;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasMandatory;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
@@ -19,12 +20,8 @@ use PlusTimeIT\EasyForms\Traits\Transformable;
  */
 class RadioGroupField extends EasyField
 {
-    use HasAnyField;
-    use HasChips;
     use HasItems;
-    use HasMandatory;
-    use HasMultiple;
-    use HasRowColumnLayout;
+    use HasInline;
     use Transformable;
 
     protected string $component = 'v-radio-group';
