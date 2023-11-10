@@ -1,10 +1,12 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Tests\Unit\Fields;
 
 use PlusTimeIT\EasyForms\Fields\TimePickerField;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class TimePickerFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCase
@@ -18,7 +20,7 @@ class TimePickerFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
     public function testAAmPmInTitleCanBeSetAndGet()
     {
         $field = $this->fieldClass::make();
-        $test = FALSE;
+        $test = false;
         $field->setAmPmInTitle($test);
         $this->assertSame($field->getAmPmInTitle(), $test);
     }
@@ -32,7 +34,7 @@ class TimePickerFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
     public function testAMultipleCanBeSetAndGet()
     {
         $field = $this->fieldClass::make();
-        $test = TRUE;
+        $test = true;
         $field->setMultiple($test);
         $this->assertSame($field->getMultiple(), $test);
     }
@@ -40,7 +42,7 @@ class TimePickerFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
     public function testANoTitleCanBeSetAndGet()
     {
         $field = $this->fieldClass::make();
-        $test = TRUE;
+        $test = true;
         $field->setNoTitle($test);
         $this->assertSame($field->getNoTitle(), $test);
     }

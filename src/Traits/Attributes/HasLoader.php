@@ -1,23 +1,25 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasLoader
 {
-    protected $loader = FALSE;
+    protected bool $loader = false;
 
     public function getLoader(): bool
     {
         return $this->loader;
     }
 
-    public function keepLoader()
+    public function keepLoader(): self
     {
-        return $this->setLoader(TRUE);
+        return $this->setLoader(true);
     }
 
     public function setLoader(bool $loader): self
     {
         $this->loader = $loader;
+
         return $this;
     }
 }

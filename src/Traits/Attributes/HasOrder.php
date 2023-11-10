@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasOrder
 {
-    protected $order = 0;
+    protected int $order = 0;
 
     public function getOrder(): int
     {

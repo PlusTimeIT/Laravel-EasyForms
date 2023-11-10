@@ -1,18 +1,20 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasCanvasHeight
 {
-    protected $canvas_height = 150;
+    protected int $canvas_height = 150;
 
-    public function getCanvasHeight(): string | int
+    public function getCanvasHeight(): string|int
     {
         return $this->canvas_height;
     }
 
-    public function setCanvasHeight(string | int $canvas_height): self
+    public function setCanvasHeight(string|int $canvas_height): self
     {
         $this->canvas_height = $canvas_height;
+
         return $this;
     }
 }

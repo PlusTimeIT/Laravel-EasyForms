@@ -1,27 +1,45 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Interfaces;
 
 use Illuminate\Http\Request;
-
 use PlusTimeIT\EasyForms\Elements\Axios;
+use PlusTimeIT\EasyForms\Elements\LoadResponse;
+use PlusTimeIT\EasyForms\Elements\ProcessResponse;
 
 interface FormInterface
 {
-    public function alerts();
+    public function additionalData(): array;
+
+    public function additionalLoadData(): array;
+
+    public function alerts(): array;
 
     public function axios(): Axios;
 
-    public static function fill(request $request);
+    public function getAdditionalData(): array;
+
+    public function getAdditionalLoadData(): array;
+
+    public function getAlerts(): array;
 
     public function getAxios(): Axios;
 
-    public function getName();
+    public function getName(): string;
 
-    public function getTitle();
+    public function getTitle(): string;
 
-    public static function make();
+    public static function load(request $request): LoadResponse;
 
-    public static function process(request $request);
+    public static function make(): self;
+
+    public static function process(request $request): ProcessResponse;
+
+    public function setAdditionalData(array $additional_data): self;
+
+    public function setAdditionalLoadData(array $additional_load_data): self;
+
+    public function setAlerts(array $alerts): self;
 
     public function setAxios(Axios $axios): self;
 
@@ -29,7 +47,7 @@ interface FormInterface
 
     public function setTitle(string $title);
 
-    public function toArray();
+    public function toArray(): array;
 
-    public function toJson();
+    public function toJson(): string;
 }

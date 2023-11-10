@@ -1,15 +1,16 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 use PlusTimeIT\EasyForms\Elements\SelectItem;
 
 trait HasItems
 {
-    protected $items = [];
+    protected array $items = [];
 
-    protected $itemType = SelectItem::class;
+    protected string $itemType = SelectItem::class;
 
-    public function addItem($item): self
+    public function addItem(SelectItem $item): self
     {
         $this->items[] = $item;
 

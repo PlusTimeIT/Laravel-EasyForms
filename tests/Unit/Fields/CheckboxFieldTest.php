@@ -1,10 +1,12 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Tests\Unit\Fields;
 
 use PlusTimeIT\EasyForms\Fields\CheckboxField;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class CheckboxFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCase

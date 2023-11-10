@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasRequired
 {
-    protected $required = TRUE;
+    protected bool $required = true;
 
     public function getRequired(): bool
     {

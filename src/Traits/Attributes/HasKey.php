@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasKey
 {
-    protected $key;
+    protected string $key;
 
     public function getKey(): string
     {
@@ -13,6 +14,7 @@ trait HasKey
     public function setKey(string $key): self
     {
         $this->key = $key;
+
         return $this;
     }
 }

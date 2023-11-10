@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasFlat
 {
-    protected $flat = FALSE;
+    protected bool $flat = false;
 
     public function getFlat(): bool
     {
@@ -13,6 +14,7 @@ trait HasFlat
     public function setFlat(bool $flat): self
     {
         $this->flat = $flat;
+
         return $this;
     }
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdocumentor
+  configVersion="3.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="https://www.phpdoc.org"
+  xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/phpDocumentor/phpDocumentor/master/data/xsd/phpdoc.xsd"
+>
+  <setting name="template.color" value="light-blue"/>
+  <paths>
+    <output>docs</output>
+  </paths>
+  <version number="3.0">
+    <api format="php">
+      <source dsn=".">
+        <path>src</path>
+      </source>
+      <ignore hidden="true" symlinks="true">
+        <path>src/Forms/**/*</path>
+        <path>src/Providers/**/*</path>
+        <path>src/Models/**/*</path>
+        <path>src/Console/**/*</path>
+        <path>src/Controllers/Pages.php</path>
+        <path>src/Controllers/Users.php</path>
+      </ignore>
+      <extensions>
+        <extension>php</extension>
+      </extensions>
+      <default-package-name>MyPackage</default-package-name>
+    </api>
+    <guide format="md">
+      <source dsn=".">
+        <path>support</path>
+      </source>
+      <output>docs</output>
+    </guide>
+  </version>
+</phpdocumentor>

@@ -1,11 +1,12 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasComponent
 {
-    protected $component = 'v-text-field';
+    protected string $component = 'v-text-field';
 
-    protected $component_type = '';
+    protected string $component_type = '';
 
     public function getComponent(): string
     {

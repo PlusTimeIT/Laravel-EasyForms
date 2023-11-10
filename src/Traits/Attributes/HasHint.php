@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasHint
 {
-    protected $hint = FALSE;
+    protected string $hint = '';
 
     public function getHint(): string
     {

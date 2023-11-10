@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasDisplay
 {
-    protected $display = FALSE;
+    protected bool $display = false;
 
     public function getDisplay(): bool
     {

@@ -1,18 +1,20 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasId
 {
-    protected $id;
+    protected string $id;
 
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
 
-    public function setId($id): self
+    public function setId(string $id): self
     {
         $this->id = $id;
+
         return $this;
     }
 }

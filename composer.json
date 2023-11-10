@@ -1,47 +1,56 @@
 {
-    "name": "plustime-it/laravel-easyforms",
-    "description": "Laravel EasyForms",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Kane G",
-            "email": "kane@plustime.com.au"
-        },
-        {
-          "name": "LionEagleSolutions",
-          "email": "james@lioneagle.solutions"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "PlusTimeIT\\EasyForms\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "PlusTimeIT\\EasyForms\\Tests\\": "tests"
-        }
-    },
-    "minimum-stability": "beta",
-    "require": {
-        "php": "^7.3|^8.0",
-        "nesbot/carbon": "^2.16",
-        "laravel/framework": "^7.0|^8.0|^9.0|^10.0"
-    },
-    "require-dev": {
-        "laravel/ui": "^3.2",
-        "orchestra/testbench": "^6.17",
-        "phpunit/phpunit": "^9.5"
-    },
-    "extra": {
-      "laravel": {
-        "providers": [
-          "PlusTimeIT\\EasyForms\\Providers\\EasyForms"
-        ],
-        "aliases": {
-          "EasyForms": "PlusTimeIT\\EasyForms"
-        }
-      }
+  "name": "plustime-it/laravel-easyforms",
+  "description": "Laravel EasyForms",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Kane G",
+      "email": "kane@plustime.com.au"
     }
+  ],
+  "require": {
+    "php": "^8.0",
+    "laravel/framework": "^10.0"
+  },
+  "require-dev": {
+    "ergebnis/composer-normalize": "^2.39",
+    "laravel/pint": "^1.13",
+    "orchestra/testbench": "^8.13",
+    "phpro/grumphp": "^2.1",
+    "phpunit/phpunit": "^10.4",
+    "icanhazstring/composer-unused": "^0.8.10"
+  },
+  "minimum-stability": "beta",
+  "autoload": {
+    "psr-4": {
+      "PlusTimeIT\\EasyForms\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PlusTimeIT\\EasyForms\\Tests\\": "tests"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "ergebnis/composer-normalize": true,
+      "phpro/grumphp": true
+    }
+  },
+  "extra": {
+    "laravel": {
+      "aliases": {
+        "EasyForms": "PlusTimeIT\\EasyForms"
+      },
+      "providers": [
+        "PlusTimeIT\\EasyForms\\Providers\\EasyForms"
+      ]
+    }
+  },
+  "scripts": {
+    "trim:packages": "php ./tools/composer-unused",
+    "format": "pint --config ./pint.json",
+    "build": "composer format"
+  }
 }

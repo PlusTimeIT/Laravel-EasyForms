@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Interfaces;
 
 interface InputFormInterface
@@ -13,7 +14,7 @@ interface InputFormInterface
 
     public function sortFields(): self;
 
-    public function toArray();
+    public function toArray(): array;
 
-    public function toJson();
+    public function toJson(): string;
 }

@@ -1,23 +1,25 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasRedirect
 {
-    protected $redirect;
+    protected bool|string $redirect = false;
 
-    public function getRedirect()
+    public function getRedirect(): bool|string
     {
         return $this->redirect;
     }
 
-    public function redirect($redirect)
+    public function redirect($redirect): self
     {
         return $this->setRedirect($redirect);
     }
 
-    public function setRedirect($redirect): self
+    public function setRedirect(bool|string $redirect): self
     {
         $this->redirect = $redirect;
+
         return $this;
     }
 }

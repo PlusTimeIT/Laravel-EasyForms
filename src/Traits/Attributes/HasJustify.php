@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasJustify
 {
-    protected $justify = 'center';
+    protected string $justify = 'center';
 
     public function getJustify(): string
     {
@@ -13,6 +14,7 @@ trait HasJustify
     public function setJustify(string $justify): self
     {
         $this->justify = $justify;
+
         return $this;
     }
 }

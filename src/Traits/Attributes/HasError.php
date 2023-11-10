@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasError
 {
-    protected $error = FALSE;
+    protected bool $error = false;
 
     public function getError(): bool
     {

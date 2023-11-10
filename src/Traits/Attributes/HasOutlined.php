@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasOutlined
 {
-    protected $outlined = TRUE;
+    protected bool $outlined = true;
 
     public function getOutlined(): bool
     {

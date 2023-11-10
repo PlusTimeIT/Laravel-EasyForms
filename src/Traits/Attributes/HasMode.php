@@ -1,40 +1,27 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
+
+use PlusTimeIT\EasyForms\Enums\ColorPickerModes;
 
 trait HasMode
 {
-    protected $mode = 'rgba';
+    protected ColorPickerModes $mode = ColorPickerModes::Hex;
 
-    public function availableModes(): array
-    {
-        return [
-            'rgba' ,
-            'hsla' ,
-            'hexa',
-        ];
-    }
-
-    public function availableModesToString()
-    {
-        return implode(', ', $this->availableModes());
-    }
-
-    public function getMode(): string
+    public function getMode(): ColorPickerModes
     {
         return $this->mode;
     }
 
-    public function modeCheck(string $mode): bool
+    public function mode(): ColorPickerModes
     {
-        return in_array($mode, $this->availableModes());
+        return $this->mode;
     }
 
-    public function setMode(string $mode): self
+    public function setMode(ColorPickerModes $mode): self
     {
-        if ( ! $this->modeCheck($mode)) {
-            throw new \Exception('Supplied:' . $mode . ' Current mode must be one of the following: ' . $this->availableModesToString());
-        }
         $this->mode = $mode;
+
         return $this;
     }
 }

@@ -1,43 +1,71 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Console\Commands;
 
 use File;
 use Illuminate\Console\Command;
 
 /**
- * Command to make a form from the terminal
+ * Command to create a new Laravel EasyForm via terminal.
  */
-
 class MakeForm extends Command
 {
-    public function handle()
+    /**
+     * The description of the command.
+     *
+     * @var string
+     */
+    protected $description = 'Create a new Laravel EasyForm';
+
+    /**
+     * The signature of the command.
+     *
+     * @var string
+     */
+    protected $signature = 'make:form {name} {type=input}';
+
+    /**
+     * Execute the console command.
+     */
+    public function handle(): int
     {
         $this->comment('Creating EasyForm....');
+        $type = strtolower($this->argument('type'));
+
         $replacements = [
-            '<projectNamespace>' => config('easyforms.form-namespace') ,
-            '<formName>' => $this->argument('formName') ,
-            '<formType>' => ucfirst($this->argument('formType')) ,
+            '<projectNamespace>' => config('easyforms.form.namespace'),
+            '<formName>' => $this->argument('name'),
         ];
+        $allowedTypes = ['input', 'action'];
 
-        if ( ! File::isDirectory(app_path('Http/Forms'))) {
-            File::makeDirectory(app_path('Http/Forms'));
-        }
+        if (! in_array($type, $allowedTypes)) {
+            $this->comment("{$this->argument('type')} is unknown, Type must be one of the following: ".implode(',', $allowedTypes));
 
-        if (File::exists(app_path("Http/Forms/{$this->argument('formName')}.php"))) {
-            $this->comment("{$this->argument('formName')} already exists, failed to create.");
             return 0;
         }
 
-        $contents = File::get(base_path('/vendor/plustime-it/laravel-easyforms/stubs/Form.stub'));
+        if (! File::isDirectory(config('easyforms.form.path'))) {
+            File::makeDirectory(config('easyforms.form.path'));
+        }
+
+        if (File::exists(app_path(config('easyforms.form.path')."/{$this->argument('name')}.php"))) {
+            $this->comment("{$this->argument('name')} already exists, failed to create.");
+
+            return 0;
+        }
+
+        $contents = match ($type) {
+            'action' => File::get(base_path('/vendor/plustime-it/laravel-easyforms/stubs/ActionForm.stub')),
+            default => File::get(base_path('/vendor/plustime-it/laravel-easyforms/stubs/InputForm.stub')),
+        };
+
         foreach ($replacements as $find => $replace) {
             $contents = str_replace($find, $replace, $contents);
         }
-        File::put(config('easyforms.form-path') . "/{$this->argument('formName')}.php", $contents);
-        $this->comment("Successfully created {$this->argument('formName')}");
+
+        File::put(config('easyforms.form.path')."/{$this->argument('name')}.php", $contents);
+        $this->comment("Successfully created {$this->argument('name')}");
+
         return 1;
     }
-
-    protected $description = 'Create a new Laravel EasyForm';
-
-    protected $signature = 'make:form {formName} {formType=input}';
 }

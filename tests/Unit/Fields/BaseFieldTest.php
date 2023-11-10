@@ -1,10 +1,14 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Tests\Unit\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
+use PlusTimeIT\EasyForms\Elements\Tooltip;
+use PlusTimeIT\EasyForms\Enums\DensityTypes;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class BaseFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCase
@@ -18,7 +22,7 @@ class BaseFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCas
 
     public function testAClearableCanBeSetAndGet()
     {
-        $test = TRUE;
+        $test = true;
         $field = $this->fieldClass::make();
         $field->setClearable($test);
         $this->assertSame($field->getClearable($test), $test);
@@ -48,12 +52,12 @@ class BaseFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCas
         $this->assertSame($field->getComponentType($test), $test);
     }
 
-    public function testADenseCanBeSetAndGet()
+    public function testADensityCanBeSetAndGet()
     {
-        $test = FALSE;
+        $test = DensityTypes::Compact;
         $field = $this->fieldClass::make();
-        $field->setDense($test);
-        $this->assertSame($field->getDense($test), $test);
+        $field->setDensity($test);
+        $this->assertSame($field->getDensity($test), $test);
     }
 
     public function testAHelpCanBeSetAndGet()
@@ -90,7 +94,7 @@ class BaseFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCas
 
     public function testAOutlinedCanBeSetAndGet()
     {
-        $test = FALSE;
+        $test = false;
         $field = $this->fieldClass::make();
         $field->setOutlined($test);
         $this->assertSame($field->getOutlined($test), $test);
@@ -106,7 +110,7 @@ class BaseFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCas
 
     public function testAReadonlyCanBeSetAndGet()
     {
-        $test = FALSE;
+        $test = false;
         $field = $this->fieldClass::make();
         $field->setReadonly($test);
         $this->assertSame($field->getReadonly($test), $test);
@@ -114,7 +118,7 @@ class BaseFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCas
 
     public function testATooltipCanBeSetAndGet()
     {
-        $test = 'Test tooltip';
+        $test = Tooltip::make()->setText('Test Tooltip');
         $field = $this->fieldClass::make();
         $field->setTooltip($test);
         $this->assertSame($field->getTooltip($test), $test);

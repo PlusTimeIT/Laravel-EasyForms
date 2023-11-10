@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasAnyField
 {
-    protected $any_field = false;
+    protected bool $any_field = false;
 
     public function getAnyField(): bool
     {

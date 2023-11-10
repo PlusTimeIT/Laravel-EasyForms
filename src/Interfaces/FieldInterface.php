@@ -1,5 +1,9 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Interfaces;
+
+use PlusTimeIT\EasyForms\Elements\Tooltip;
+use PlusTimeIT\EasyForms\Enums\DensityTypes;
 
 interface FieldInterface
 {
@@ -7,15 +11,17 @@ interface FieldInterface
 
     public function getClearable(): bool;
 
-    public function getCols(): int | NULL;
+    public function getCols(): ?int;
 
     public function getComponent(): string;
 
     public function getComponentType(): string;
 
-    public function getDense(): bool;
+    public function getDensity(): DensityTypes;
 
-    public function getDependsOn(): string | NULL;
+    public function getDependsOn(): ?string;
+
+    public function getDiscriminator(): string;
 
     public function getHelp(): string;
 
@@ -31,23 +37,25 @@ interface FieldInterface
 
     public function getRules(): array;
 
-    public function getTooltip(): string;
+    public function getTooltip(): Tooltip;
 
     public function getType(): string;
 
-    public function getValue();
+    public function getValue(): mixed;
 
     public function setClearable(bool $clearable);
 
-    public function setCols(int | NULL $cols);
+    public function setCols(?int $cols);
 
     public function setComponent(string $component);
 
     public function setComponentType(string $component_type);
 
-    public function setDense(bool $dense);
+    public function setDensity(DensityTypes $dense);
 
     public function setDependsOn(string $dependsOn);
+
+    public function setDiscriminator(string $discriminator);
 
     public function setHelp(string $help);
 
@@ -65,13 +73,13 @@ interface FieldInterface
 
     public function setRules(array $rules);
 
-    public function setTooltip(string $tooltip);
+    public function setTooltip(Tooltip $tooltip);
 
     public function setType(string $type);
 
-    public function setValue($value);
+    public function setValue(mixed $value);
 
-    public function toArray();
+    public function toArray(): array;
 
-    public function toJson();
+    public function toJson(): string;
 }

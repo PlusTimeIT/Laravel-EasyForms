@@ -1,18 +1,22 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
+
+use PlusTimeIT\EasyForms\Elements\Icon;
 
 trait HasAppendIcon
 {
-    protected $append_icon = '';
+    protected Icon|string $append_icon;
 
-    public function getAppendIcon(): string
+    public function getAppendIcon(): Icon|string
     {
         return $this->append_icon;
     }
 
-    public function setAppendIcon(string $append_icon): self
+    public function setAppendIcon(Icon|string $append_icon): self
     {
         $this->append_icon = $append_icon;
+
         return $this;
     }
 }

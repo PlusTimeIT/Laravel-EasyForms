@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasTransition
 {
-    protected $transition = 'fade-transition';
+    protected string $transition = 'fade-transition';
 
     public function getTransition(): string
     {
@@ -13,6 +14,7 @@ trait HasTransition
     public function setTransition(string $transition): self
     {
         $this->transition = $transition;
+
         return $this;
     }
 }

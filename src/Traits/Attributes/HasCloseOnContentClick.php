@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasCloseOnContentClick
 {
-    protected $close_on_content_click = true;
+    protected bool $close_on_content_click = true;
 
     public function getCloseOnContentClick(): bool
     {

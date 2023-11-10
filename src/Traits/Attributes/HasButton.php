@@ -1,11 +1,12 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 use PlusTimeIT\EasyForms\Elements\Button;
 
 trait HasButton
 {
-    protected $button;
+    protected Button $button;
 
     public function getButton(): Button
     {
@@ -15,6 +16,7 @@ trait HasButton
     public function setButton(Button $button): self
     {
         $this->button = $button;
+
         return $this;
     }
 }

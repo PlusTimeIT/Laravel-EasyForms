@@ -1,17 +1,18 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Interfaces;
 
 interface HeaderInterface
 {
-    public function getKey();
+    public function getKey(): string;
 
-    public function getValue();
+    public function getValue(): mixed;
 
-    public function setKey(string $string);
+    public function setKey(string $string): self;
 
-    public function setValue($value);
+    public function setValue(mixed $value): self;
 
-    public function toArray();
+    public function toArray(): array;
 
-    public function toJson();
+    public function toJson(): string;
 }

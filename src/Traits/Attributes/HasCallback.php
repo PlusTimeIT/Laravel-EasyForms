@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasCallback
 {
-    protected $callback;
+    protected string $callback;
 
     public function getCallback(): string
     {
@@ -13,6 +14,7 @@ trait HasCallback
     public function setCallback(string $callback): self
     {
         $this->callback = $callback;
+
         return $this;
     }
 }

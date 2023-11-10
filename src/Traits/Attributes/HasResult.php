@@ -1,13 +1,14 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasResult
 {
-    protected $result;
+    protected bool $result;
 
-    public function failed()
+    public function failed(): self
     {
-        return $this->setResult(FALSE);
+        return $this->setResult(false);
     }
 
     public function getResult(): bool
@@ -23,15 +24,16 @@ trait HasResult
     public function setResult(bool $result): self
     {
         $this->result = $result;
+
         return $this;
     }
 
-    public function success()
+    public function success(): self
     {
-        return $this->setResult(TRUE);
+        return $this->setResult(true);
     }
 
-    public function wasSuccessful()
+    public function wasSuccessful(): bool
     {
         return $this->getResult();
     }

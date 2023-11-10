@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasPlaceholder
 {
-    protected $placeholder = '';
+    protected string $placeholder = '';
 
     public function getPlaceholder(): string
     {

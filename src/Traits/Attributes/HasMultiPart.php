@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMultiPart
 {
-    protected $multi_part = FALSE;
+    protected bool $multi_part = false;
 
     public function getMultiPart(): bool
     {
@@ -13,6 +14,7 @@ trait HasMultiPart
     public function setMultiPart(bool $multi_part): self
     {
         $this->multi_part = $multi_part;
+
         return $this;
     }
 }

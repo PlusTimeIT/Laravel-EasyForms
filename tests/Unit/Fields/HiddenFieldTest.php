@@ -1,10 +1,12 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Tests\Unit\Fields;
 
 use PlusTimeIT\EasyForms\Fields\HiddenField;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class HiddenFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCase

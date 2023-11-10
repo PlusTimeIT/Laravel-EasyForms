@@ -1,30 +1,31 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMinMax
 {
-    protected $max = 99999;
+    protected int $max = 99999;
 
-    protected $min = 0;
+    protected int $min = 0;
 
-    public function getMax(): float
+    public function getMax(): int
     {
         return $this->max;
     }
 
-    public function getMin(): float
+    public function getMin(): int
     {
         return $this->min;
     }
 
-    public function setMax(float $max): self
+    public function setMax(int $max): self
     {
         $this->max = $max;
 
         return $this;
     }
 
-    public function setMin(float $min): self
+    public function setMin(int $min): self
     {
         $this->min = $min;
 

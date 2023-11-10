@@ -1,10 +1,12 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Tests\Unit\Fields;
 
 use PlusTimeIT\EasyForms\Fields\NumberField;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class NumberFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCase
@@ -25,41 +27,41 @@ class NumberFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestC
     {
         $field = $this->fieldClass::make();
         $field->setMax('10');
-        $this->assertObjectHasAttribute('max', $field);
+        $this->assertEquals($field->getMax(), '10');
     }
 
     public function testAMinCanBeSet()
     {
         $field = $this->fieldClass::make();
         $field->setMin('10');
-        $this->assertObjectHasAttribute('min', $field);
+        $this->assertEquals($field->getMin(), '10');
     }
 
     public function testAStepCanBeSet()
     {
         $field = $this->fieldClass::make();
         $field->setStep(10);
-        $this->assertObjectHasAttribute('step', $field);
+        $this->assertEquals($field->getStep(), 10);
     }
 
     public function testCanGetMax()
     {
         $field = $this->fieldClass::make();
         $field->setMax('10');
-        $this->assertTrue('10' == $field->getMax());
+        $this->assertTrue($field->getMax() == '10');
     }
 
     public function testCanGetMin()
     {
         $field = $this->fieldClass::make();
         $field->setMin('10');
-        $this->assertTrue('10' == $field->getMin());
+        $this->assertTrue($field->getMin() == '10');
     }
 
     public function testCanGetStep()
     {
         $field = $this->fieldClass::make();
         $field->setStep('10');
-        $this->assertTrue('10' == $field->getStep());
+        $this->assertTrue($field->getStep() == '10');
     }
 }

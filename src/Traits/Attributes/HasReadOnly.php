@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasReadOnly
 {
-    protected $readonly = FALSE;
+    protected bool $readonly = false;
 
     public function getReadonly(): bool
     {

@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasColor
 {
-    protected $color = 'primary';
+    protected string $color;
 
     public function getColor(): string
     {
@@ -13,6 +14,7 @@ trait HasColor
     public function setColor(string $color): self
     {
         $this->color = $color;
+
         return $this;
     }
 }

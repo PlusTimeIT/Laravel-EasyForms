@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasLabel
 {
-    protected $label = '';
+    protected string $label = '';
 
     public function getLabel(): string
     {

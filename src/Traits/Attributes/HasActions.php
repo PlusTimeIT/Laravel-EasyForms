@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasActions
 {
-    protected $actions = [];
+    protected array $actions = [];
 
     public function actions(): array
     {
@@ -18,6 +19,7 @@ trait HasActions
     public function setActions(array $actions): self
     {
         $this->actions = $actions;
+
         return $this;
     }
 }

@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasHideSliders
 {
-    protected $hide_sliders = FALSE;
+    protected bool $hide_sliders = false;
 
     public function getHideSliders(): bool
     {
@@ -13,6 +14,7 @@ trait HasHideSliders
     public function setHideSliders(bool $hide_sliders): self
     {
         $this->hide_sliders = $hide_sliders;
+
         return $this;
     }
 }

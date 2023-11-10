@@ -1,0 +1,24 @@
+grumphp:
+  stop_on_failure: true
+  hide_circumvention_tip: true
+  process_timeout: 600
+  parallel:
+    enabled: true
+    max_workers: 32
+  fixer:
+    enabled: true
+    fix_by_default: true
+  tasks:
+    composer_normalize:
+      no_check_lock: false
+      no_update_lock: false
+      verbose: false
+    composer_script:
+      script: format
+    phpunit:
+      config_file: phpunit.xml
+      always_execute: true
+  environment:
+    variables:
+      GRUMPHP_PROJECT_DIR: "."
+      GRUMPHP_BIN_DIR: "./vendor/bin/"

@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasText
 {
-    protected $text = '';
+    protected string $text;
 
     public function getText(): string
     {
@@ -13,6 +14,7 @@ trait HasText
     public function setText(string $text): self
     {
         $this->text = $text;
+
         return $this;
     }
 }

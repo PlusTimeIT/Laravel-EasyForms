@@ -1,8 +1,14 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\Attributes\{AcceptsFiles, HasCounter, HasMultiple, HasPrependIcon, HasShowSize};
+use PlusTimeIT\EasyForms\Elements\Icon;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasAccept;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasCounter;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasPrependIcon;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasShowSize;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
 // File input Accept values
@@ -13,23 +19,28 @@ use PlusTimeIT\EasyForms\Traits\Transformable;
 //
 //
 
+/**
+ * Represents a file input field in a form.
+ *
+ * @extends EasyField
+ */
 class FileInputField extends EasyField
 {
-    use AcceptsFiles;
+    use HasAccept;
     use HasCounter;
     use HasMultiple;
     use HasPrependIcon;
     use HasShowSize;
     use Transformable;
 
-    protected $component = 'v-file-input';
+    protected string $component = 'v-file-input';
 
-    protected $type = 'file-input';
+    protected string $discriminator = 'FileInputField';
 
-    protected $value = [];
+    protected mixed $value = [];
 
     public function __construct()
     {
-        $this->prepend_icon = 'mdi-paperclip';
+        $this->prepend_icon = Icon::make()->setIcon('mdi-camera');
     }
 }

@@ -1,19 +1,20 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Interfaces;
 
-use PlusTimeIT\EasyForms\Elements\{Axios, Button, Header};
+use PlusTimeIT\EasyForms\Elements\Header;
 
 interface AxiosInterface
 {
     public function addHeaders(Header $header);
 
-    public function getExpectingResults();
+    public function getExpectingResults(): bool;
 
-    public function getHeaders();
+    public function getHeaders(): array;
 
-    public function getMultiPart();
+    public function getMultiPart(): bool;
 
-    public static function make();
+    public static function make(): self;
 
     public function setExpectingResults(bool $expecting_results);
 
@@ -23,7 +24,7 @@ interface AxiosInterface
 
     public function setOptions(array $options);
 
-    public function toArray();
+    public function toArray(): array;
 
-    public function toJson();
+    public function toJson(): string;
 }

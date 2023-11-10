@@ -1,10 +1,18 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Fields;
 
 use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\Attributes\{HasCloseOnContentClick, HasControls, HasMultiple};
+use PlusTimeIT\EasyForms\Traits\Attributes\HasCloseOnContentClick;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasControls;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
+/**
+ * Represents a date picker field in a form.
+ *
+ * @extends EasyField
+ */
 class DatePickerField extends EasyField
 {
     use HasCloseOnContentClick;
@@ -12,7 +20,7 @@ class DatePickerField extends EasyField
     use HasMultiple;
     use Transformable;
 
-    protected $component = 'date-picker';
+    protected string $component = 'easy-date-picker';
 
-    protected $type = 'date-picker';
+    protected string $discriminator = 'DatePickerField';
 }

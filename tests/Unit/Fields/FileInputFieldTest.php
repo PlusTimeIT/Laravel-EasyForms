@@ -1,10 +1,12 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Tests\Unit\Fields;
 
 use PlusTimeIT\EasyForms\Fields\FileInputField;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class FileInputFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCase
@@ -32,7 +34,7 @@ class FileInputFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTe
     public function testACounterCanBeSetAndGet()
     {
         $field = $this->fieldClass::make();
-        $test = TRUE;
+        $test = true;
         $field->setCounter($test);
         $this->assertSame($field->getCounter(), $test);
     }
@@ -40,7 +42,7 @@ class FileInputFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTe
     public function testAMultipleCanBeSetAndGet()
     {
         $field = $this->fieldClass::make();
-        $test = TRUE;
+        $test = true;
         $field->setMultiple($test);
         $this->assertSame($field->getMultiple(), $test);
     }
@@ -56,7 +58,7 @@ class FileInputFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTe
     public function testAShowSizeCanBeSetAndGet()
     {
         $field = $this->fieldClass::make();
-        $test = TRUE;
+        $test = true;
         $field->setShowSize($test);
         $this->assertSame($field->getShowSize(), $test);
     }

@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasDark
 {
-    protected $dark = FALSE;
+    protected bool $dark = false;
 
     public function getDark(): bool
     {
@@ -13,6 +14,7 @@ trait HasDark
     public function setDark(bool $dark): self
     {
         $this->dark = $dark;
+
         return $this;
     }
 }

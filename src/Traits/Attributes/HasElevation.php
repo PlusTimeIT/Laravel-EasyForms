@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasElevation
 {
-    protected $elevation = 0;
+    protected int $elevation = 0;
 
     public function getElevation(): int
     {
@@ -13,6 +14,7 @@ trait HasElevation
     public function setElevation(int $elevation): self
     {
         $this->elevation = $elevation;
+
         return $this;
     }
 }

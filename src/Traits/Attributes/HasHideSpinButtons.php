@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasHideSpinButtons
 {
-    protected $hide_spin_buttons = FALSE;
+    protected bool $hide_spin_buttons = false;
 
     public function getHideSpinButtons(): bool
     {

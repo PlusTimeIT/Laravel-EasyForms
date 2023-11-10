@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasDisabled
 {
-    protected $disabled = FALSE;
+    protected bool $disabled = false;
 
     public function getDisabled(): bool
     {
@@ -13,6 +14,7 @@ trait HasDisabled
     public function setDisabled(bool $disabled): self
     {
         $this->disabled = $disabled;
+
         return $this;
     }
 }

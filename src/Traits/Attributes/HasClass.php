@@ -1,9 +1,10 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasClass
 {
-    protected $class = 'p-4';
+    protected string $class = 'p-4';
 
     public function getClass(): string
     {
@@ -13,6 +14,7 @@ trait HasClass
     public function setClass(string $class): self
     {
         $this->class = $class;
+
         return $this;
     }
 }

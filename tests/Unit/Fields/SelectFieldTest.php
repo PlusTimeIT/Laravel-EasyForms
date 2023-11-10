@@ -1,4 +1,5 @@
 <?php
+
 namespace PlusTimeIT\EasyForms\Tests\Unit\Fields;
 
 use PlusTimeIT\EasyForms\Elements\SelectItem;
@@ -6,6 +7,7 @@ use PlusTimeIT\EasyForms\Fields\SelectField;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class SelectFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCase
@@ -19,7 +21,7 @@ class SelectFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestC
     public function testAAnyFieldCanBeSetAndGet()
     {
         $field = $this->fieldClass::make();
-        $test = TRUE;
+        $test = true;
         $field->setAnyField($test);
         $this->assertSame($field->getAnyField(), $test);
     }
@@ -27,7 +29,7 @@ class SelectFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestC
     public function testAChipsCanBeSetAndGet()
     {
         $field = $this->fieldClass::make();
-        $test = TRUE;
+        $test = true;
         $field->setChips($test);
         $this->assertSame($field->getChips(), $test);
     }
@@ -42,7 +44,6 @@ class SelectFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestC
     {
         $field = $this->fieldClass::make();
         $test = SelectItem::make()->setId(0)->setValue('test');
-
         $field->addItem($test);
         $this->assertContains($test, $field->getItems());
     }
@@ -63,12 +64,12 @@ class SelectFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestC
         $this->assertSame($field->getItems(), $test);
     }
 
-    public function testAItemTextCanBeSetAndGet()
+    public function testAItemTitleCanBeSetAndGet()
     {
         $field = $this->fieldClass::make();
         $test = 'test text';
-        $field->setItemText($test);
-        $this->assertSame($field->getItemText(), $test);
+        $field->setItemTitle($test);
+        $this->assertSame($field->getItemTitle(), $test);
     }
 
     public function testAItemValueCanBeSetAndGet()
@@ -82,7 +83,7 @@ class SelectFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestC
     public function testAMultipleCanBeSetAndGet()
     {
         $field = $this->fieldClass::make();
-        $test = TRUE;
+        $test = true;
         $field->setMultiple($test);
         $this->assertSame($field->getMultiple(), $test);
     }
