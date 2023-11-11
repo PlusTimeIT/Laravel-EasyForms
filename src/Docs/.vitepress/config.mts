@@ -35,15 +35,15 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Examples',
+        text: 'Templates',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'Docker Template - Split', link: 'https://github.com/PlusTimeIT/EasyForms-Split-Template-Docker' },
+          { text: 'Docker Template - Joint', link: 'https://github.com/PlusTimeIT/EasyForms-Template-Docker' }
         ]
       }
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/BoredLunatic/Laravel-EasyForms' }
+      { icon: 'github', link: 'https://github.com/plustimeit/Laravel-EasyForms' }
     ]
   }
 })
