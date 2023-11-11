@@ -12,7 +12,7 @@ For the forms to load properly you'll need to update the namespace variable in t
 To get access you'll need to  run `vendor:publish`
 
 ````bash
-php artisan vendor:publish --provider=PlusTimeIT\EasyForms\Providers\EasyForms
+php artisan vendor:publish --provider="PlusTimeIT\EasyForms\Providers\EasyForms"
 ````
 
 This will create a config file `config/easyforms.php` with the following contents:
