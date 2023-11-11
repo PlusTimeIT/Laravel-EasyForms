@@ -12,10 +12,12 @@ class EasyForms extends ServiceProvider
 
     public function boot(): void
     {
-        $this->publishes([
-            __DIR__.'/../../config/easyforms.php' => config_path('easyforms.php'),
-            'easyforms',
-        ]);
+        $this->publishes(
+            [
+                __DIR__.'/../../config/easyforms.php' => config_path('easyforms.php')
+            ],
+            'config'
+        );
 
         $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
     }
@@ -25,7 +27,7 @@ class EasyForms extends ServiceProvider
         $this->commands($this->commands);
         $this->mergeConfigFrom(
             __DIR__.'/../../config/easyforms.php',
-            'easyforms'
+            'config'
         );
     }
 }
