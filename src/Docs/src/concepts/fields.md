@@ -107,12 +107,12 @@ Style and Display a group of V-Checkbox Fields.
 
 ### Modified or Custom Props
 
-| Property |          Type          |  Default  | Description                                   |
-|:---------|:----------------------:|:---------:|:----------------------------------------------|
-| `class`  |        Boolean         | "ml-auto" | Custom classes to attach to checkbox group    |
-| `items`  |    CheckboxField[]     |    []     | Array of [Checkbox Fields](#checkbox-field) |
-| `switch` | SwitchField, undefined | undefined | SwitchField for select all and deselect all.  |
-| `value`  |  CheckboxGroupValue[]  |    []     | Key - Value pair for each checkbox.           |
+| Property |          Type          |  Default  | Description                                  |
+|:---------|:----------------------:|:---------:|:---------------------------------------------|
+| `class`  |        Boolean         | "ml-auto" | Custom classes to attach to checkbox group   |
+| `items`  |    CheckboxField[]     |    []     | Array of [Checkbox Fields](#checkbox-field)  |
+| `switch` | SwitchField, undefined | undefined | SwitchField for select all and deselect all. |
+| `value`  |  CheckboxGroupValue[]  |    []     | Key - Value pair for each checkbox.          |
 
 
 ## Color Picker
@@ -152,11 +152,11 @@ Style and Display a V-Textfield with V-Color-Picker in a V-Menu.
 
 ### Modified or Custom Props
 
-| Property    |    Type    |  Default   | Description                                                             |
-|:------------|:----------:|:----------:|:------------------------------------------------------------------------|
-| `menu`      |    Menu    |    Menu    | Style and display a [Menu](./elements#menu) for the picker.             |
-| `picker`    | DatePicker | DatePicker | Style and display a [Date Picker](#date-picker)                       |
-| `textfield` | TextField  | TextField  | Style and display a [Text Field](#text-field)                         |
+| Property    |    Type    |  Default   | Description                                                 |
+|:------------|:----------:|:----------:|:------------------------------------------------------------|
+| `menu`      |    Menu    |    Menu    | Style and display a [Menu](./elements#menu) for the picker. |
+| `picker`    | DatePicker | DatePicker | Style and display a [Date Picker](#date-picker)             |
+| `textfield` | TextField  | TextField  | Style and display a [Text Field](#text-field)               |
 
 
 ## File Input Field
@@ -201,7 +201,7 @@ Get a full list of props from [Vuetify V-File-Input](https://vuetifyjs.com/en/co
 | `strength_success_text`  |      String      | "Strong"  | Text to display when password is considered strong       |
 | `strength_warning_color` |      String      | "warning" | Color of bar when password is considered medium          |
 | `strength_warning_text`  |      String      | "Medium"  | Text to display when password is considered medium       |
-| `textfield`              |    TextField     | TextField | Style and display a [Text Field](#text-field)          |
+| `textfield`              |    TextField     | TextField | Style and display a [Text Field](#text-field)            |
 | `view_mode`              |     Boolean      |   false   | Should the password field include a "show password" mode |
 
 ## Radio Field
@@ -222,9 +222,9 @@ Get a full list of props from [Vuetify V-Radio-Group](https://vuetifyjs.com/en/c
 
 ### Modified or Custom Props
 
-| Property            |     Type     | Default | Description                             |
-|:--------------------|:------------:|:-------:|:----------------------------------------|
-| `items`             | RadioField[] |   []    | Array of [Radio Fields](#radio-field) |
+| Property |     Type     | Default | Description                           |
+|:---------|:------------:|:-------:|:--------------------------------------|
+| `items`  | RadioField[] |   []    | Array of [Radio Fields](#radio-field) |
 
 
 ## Select Field
@@ -312,5 +312,5 @@ Style and Display a V-Textfield with V-Time-Picker in a V-Menu.
 | Property    |    Type    |  Default   | Description                                                 |
 |:------------|:----------:|:----------:|:------------------------------------------------------------|
 | `menu`      |    Menu    |    Menu    | Style and display a [Menu](./elements#menu) for the picker. |
-| `picker`    | TimePicker | TimePicker | Style and display a [Time Picker](#time-picker)           |
-| `textfield` | TextField  | TextField  | Style and display a [Text Field](#text-field)             |
+| `picker`    | TimePicker | TimePicker | Style and display a [Time Picker](#time-picker)             |
+| `textfield` | TextField  | TextField  | Style and display a [Text Field](#text-field)               |
