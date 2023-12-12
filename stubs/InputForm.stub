@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Forms;
+namespace <namespace>;
 
 use Illuminate\Http\Request;
 use PlusTimeIT\EasyForms\Base\InputForm;
 use PlusTimeIT\EasyForms\Elements\Alert;
 use PlusTimeIT\EasyForms\Elements\Button;
 use PlusTimeIT\EasyForms\Elements\Icon;
+use PlusTimeIT\EasyForms\Elements\LoadResponse;
 use PlusTimeIT\EasyForms\Elements\ProcessResponse;
 use PlusTimeIT\EasyForms\Elements\RuleItem;
 use PlusTimeIT\EasyForms\Elements\Tooltip;
@@ -16,7 +17,7 @@ use PlusTimeIT\EasyForms\Fields\PasswordField;
 use PlusTimeIT\EasyForms\Fields\TextField;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
-final class <formName> extends InputForm
+final class <name> extends InputForm
 {
     use Transformable;
 
@@ -25,15 +26,20 @@ final class <formName> extends InputForm
         parent::__construct();
 
         return $this
-            ->setName('<formName>')
-            ->setTitle('<formName> Title');
+            ->setName('<fullName>')
+            ->setTitle('<name> Title');
     }
 
     public function alerts(): array
     {
         return [
             Alert::make()
-                ->setType(AlertTypes::Warning)
+                ->setType(AlertTypes::Info)
+                ->setColor('purple')
+                ->setTrigger(AlertTriggers::AfterLoad)
+                ->setText('Loaded - This is a sticky alert that shows when a form has been loaded.'),
+            Alert::make()
+                ->setType(AlertTypes::Error)
                 ->setTrigger(AlertTriggers::FailedValidation)
                 ->setAutoCloseTimer(2500)
                 ->setText('Failed Validation - This alert shows when validation errors are present (will disappear in 2.5 seconds).')
@@ -43,15 +49,23 @@ final class <formName> extends InputForm
             Alert::make()
                 ->setType(AlertTypes::Error)
                 ->setTrigger(AlertTriggers::FailedProcessing)
+                ->setClosable(true)
                 ->setText('Failed Processing - This alert shows if the processing fails - Response: <response-data>'),
             Alert::make()
                 ->setType(AlertTypes::Success)
                 ->setTrigger(AlertTriggers::SuccessProcessing)
+                ->setClosable(true)
                 ->setText('Successful Processing - This alert shows on successful processing [Prominent] - Response: <response-data>'),
             Alert::make()
                 ->setType(AlertTypes::Info)
                 ->setTrigger(AlertTriggers::Cancelled)
+                ->setClosable(true)
                 ->setText('Cancelled - This alert shows when a form has been cancelled.'),
+            Alert::make()
+                ->setType(AlertTypes::Warning)
+                ->setTrigger(AlertTriggers::FormReset)
+                ->setClosable(true)
+                ->setText('Reset - This alert shows when a form has been reset.'),
         ];
     }
 
@@ -123,20 +137,10 @@ final class <formName> extends InputForm
         ];
     }
 
-    public static function fill(request $request): self
+    public static function load(request $request): LoadResponse
     {
         // we can just set this to preFill if we want to load by axios later
-        return (new self())->preFill();
-    }
-
-    public function populateFields($data): array
-    {
-        return collect($this->fields())->map(function ($field) use ($data) {
-            if (isset($data[$field->getName()])) {
-                $field->setValue($data[$field->getName()]);
-            }
-            return $field;
-        })->toArray();
+        return LoadResponse::make()->success()->form((new self())->preFill());
     }
 
     public function preFill(): self
@@ -146,7 +150,7 @@ final class <formName> extends InputForm
             'username' => 'Pre-populated Username',
         ];
 
-        return $this->setFields($this->populateFields($data));
+        return $this->populateFields($data);
     }
 
     public static function process(request $request): ProcessResponse

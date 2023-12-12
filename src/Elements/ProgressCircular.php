@@ -12,7 +12,7 @@ use PlusTimeIT\EasyForms\Traits\Transformable;
  */
 class ProgressCircular
 {
-    use Attributes\HasClass;
+    use Attributes\HasClasses;
     use Attributes\HasBgColor;
     use Attributes\HasColor;
     use Attributes\HasRotate;

@@ -16,7 +16,7 @@ class Button
     use Attributes\HasBlock;
     use Attributes\HasBorder;
     use Attributes\HasButtonVariant;
-    use Attributes\HasClass;
+    use Attributes\HasClasses;
     use Attributes\HasColor;
     use Attributes\HasDensity;
     use Attributes\HasDisabled;

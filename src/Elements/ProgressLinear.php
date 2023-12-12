@@ -16,7 +16,7 @@ class ProgressLinear
     use Attributes\HasActive;
     use Attributes\HasBgColor;
     use Attributes\HasBgOpacity;
-    use Attributes\HasClass;
+    use Attributes\HasClasses;
     use Attributes\HasColor;
     use Attributes\HasHeight;
     use Attributes\HasIndeterminate;
