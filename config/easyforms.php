@@ -1,4 +1,6 @@
 <?php
+use PlusTimeIT\EasyForms\Enums\DefaultHelpPositions;
+use PlusTimeIT\EasyForms\Elements\Icon;
 
 return [
     'display' => true,
@@ -9,6 +11,9 @@ return [
         'path' => app_path('Http/Forms'), // must not have trailing forward slash
     ],
     'defaults' => [
-        'tooltip-icon' => 'mdi-help',
+        'help' => [
+            'position' => DefaultHelpPositions::AppendInner,
+            'icon' => Icon::make()->setIcon('mdi-help'),
+        ]
     ],
 ];

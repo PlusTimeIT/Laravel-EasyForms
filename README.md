@@ -3,7 +3,7 @@
 
 ![Laravel EasyForms Logo](/src/Docs/assets/Laravel%20EasyForms%20Logo.png)
 
-![Version Badge](https://img.shields.io/badge/version-0.2.3%40beta-blue)
+![Version Badge](https://img.shields.io/badge/version-0.2.4%40beta-blue)
 
 </div>
 

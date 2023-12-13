@@ -25,11 +25,11 @@ trait Creatable
 
     public function setOptions(array $args): self
     {
-        collect($args)->each(function ($value, $arg) {
-            if (property_exists(__CLASS__, $arg)) {
-                $this->{$arg} = $value;
+        foreach($args as $key => $value) {
+            if (property_exists(__CLASS__, $key)) {
+                $this->{$key} = $value;
             }
-        });
+        }
 
         return $this;
     }
