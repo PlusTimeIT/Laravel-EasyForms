@@ -16,27 +16,37 @@ update_version() {
     local version_type=$1
     local new_version
 
+    if [ -z "$VERSION" ]; then
+        VERSION="0.0.0"
+    fi
+
     echo "Updating version from $VERSION"
+    IFS='.' read -r -a version_parts <<< "$VERSION"
+
+    echo "Current version parts: ${version_parts[@]}"
 
     case "$version_type" in
         "patch")
-            new_version=$(php -r "echo implode('.', array_map(function(\$v) { return \$v + (int)(\$v === end(\$a)); }, explode('.', '$VERSION')));")
+            ((version_parts[2]++))
             ;;
         "minor")
-            new_version=$(php -r "echo implode('.', array_map(function(\$v, \$i) { return \$i === 1 ? \$v + 1 : \$v; }, explode('.', '$VERSION'), array_keys(explode('.', '$VERSION'))));")
+            ((version_parts[1]++))
+            version_parts[2]=0
             ;;
         "major")
-            new_version=$(php -r "echo implode('.', array_map(function(\$v, \$i) { return \$i === 0 ? \$v + 1 : \$v; }, explode('.', '$VERSION'), array_keys(explode('.', '$VERSION'))));")
+            ((version_parts[0]++))
+            version_parts[1]=0
+            version_parts[2]=0
             ;;
         *)
             echo "Invalid version type. Please use 'patch', 'minor', or 'major'. Supplied: $version_type"
             exit 1
             ;;
     esac
-    
-    echo "Updating version to $new_version"
-    
-    sed -i "s/\"version\": \"$current_version\"/\"version\": \"$new_version\"/g" composer.json
+
+    new_version=$(IFS='.'; echo "${version_parts[*]}")
+
+    sed -i "s/\"version\": \"$VERSION\"/\"version\": \"$new_version\"/g" composer.json
 
     echo $new_version
 }
