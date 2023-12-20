@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasMaxLength
 {
-    protected ?int $maxlength;
+    protected ?int $maxlength = null;
 
     public function getMaxLength(): ?int
     {

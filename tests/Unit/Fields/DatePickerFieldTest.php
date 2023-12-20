@@ -14,7 +14,7 @@ class DatePickerFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
     public function setUp(): void
     {
         $this->fieldClass = DatePickerField::class;
-        $this->fieldComponent = 'date-picker';
+        $this->fieldComponent = 'easy-date-picker';
     }
 
     public function testACloseOnContentClickCanBeSetAndGet()

@@ -2,10 +2,6 @@
 
 namespace PlusTimeIT\EasyForms\Traits;
 
-use PlusTimeIT\EasyForms\Elements\Alert;
-use PlusTimeIT\EasyForms\Elements\Icon;
-use PlusTimeIT\EasyForms\Elements\Tooltip;
-
 trait Creatable
 {
     public function __construct(array $args)
@@ -25,7 +21,7 @@ trait Creatable
 
     public function setOptions(array $args): self
     {
-        foreach($args as $key => $value) {
+        foreach ($args as $key => $value) {
             if (property_exists(__CLASS__, $key)) {
                 $this->{$key} = $value;
             }

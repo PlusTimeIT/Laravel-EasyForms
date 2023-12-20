@@ -33,6 +33,7 @@ class Icon
     {
         $this->setOptions($args);
         $this->tag = $this->tag ?? 'i';
+
         return $this;
     }
 

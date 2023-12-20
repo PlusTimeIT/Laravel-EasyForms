@@ -8,5 +8,4 @@ use PlusTimeIT\EasyForms\Traits\ActionTrait;
 class Action implements ActionInterface
 {
     use ActionTrait;
-
 }

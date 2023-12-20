@@ -13,6 +13,11 @@ trait HasTooltip
         return $this->tooltip;
     }
 
+    public function hasTooltip(): bool
+    {
+        return isset($this->tooltip);
+    }
+
     public function setTooltip(Tooltip $tooltip): self
     {
         $this->tooltip = $tooltip;

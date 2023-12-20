@@ -7,6 +7,6 @@ namespace PlusTimeIT\EasyForms\Enums;
  */
 enum FormLoaderTypes: string
 {
-    case Linear = 'linear';
     case Circular = 'circular';
+    case Linear = 'linear';
 }

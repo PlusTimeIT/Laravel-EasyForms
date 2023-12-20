@@ -9,11 +9,12 @@ use PlusTimeIT\EasyForms\Elements\ProcessResponse;
 
 trait FormTrait
 {
+    use Attributes\HasAdditionalData;
     use Attributes\HasAlerts;
     use Attributes\HasAxios;
     use Attributes\HasFormLoader;
     use Attributes\HasName;
-    use Attributes\HasAdditionalData;
+    use Attributes\HasShowTitle;
     use Attributes\HasTitle;
     use Attributes\HasType;
     use Creatable;

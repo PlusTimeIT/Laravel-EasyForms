@@ -18,6 +18,7 @@ class ConditionItem
     protected string $against;
 
     protected string $check;
+
     protected string $operator;
 
     protected string $source;
@@ -36,6 +37,7 @@ class ConditionItem
     {
         return $this->operator;
     }
+
     public function setAgainst($against): self
     {
         $this->against = $against;

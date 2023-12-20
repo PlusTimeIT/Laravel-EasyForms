@@ -14,7 +14,7 @@ class EasyForms extends ServiceProvider
     {
         $this->publishes(
             [
-                __DIR__.'/../../config/easyforms.php' => config_path('easyforms.php')
+                __DIR__.'/../../config/easyforms.php' => config_path('easyforms.php'),
             ],
             'config'
         );

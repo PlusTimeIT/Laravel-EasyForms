@@ -3,6 +3,7 @@
   "description": "Laravel EasyForms",
   "license": "MIT",
   "type": "library",
+  "version": "0.2.4",
   "authors": [
     {
       "name": "Kane G",
@@ -14,12 +15,12 @@
     "laravel/framework": "^10.0"
   },
   "require-dev": {
+    "brianium/paratest": "^7.3",
     "ergebnis/composer-normalize": "^2.39",
+    "icanhazstring/composer-unused": "^0.8.10",
     "laravel/pint": "^1.13",
-    "orchestra/testbench": "^8.13",
-    "phpro/grumphp": "^2.1",
-    "phpunit/phpunit": "^10.4",
-    "icanhazstring/composer-unused": "^0.8.10"
+    "nunomaduro/collision": "^7.10",
+    "orchestra/testbench": "^8.18.0"
   },
   "minimum-stability": "beta",
   "autoload": {
@@ -34,8 +35,7 @@
   },
   "config": {
     "allow-plugins": {
-      "ergebnis/composer-normalize": true,
-      "phpro/grumphp": true
+      "ergebnis/composer-normalize": true
     }
   },
   "extra": {
@@ -49,8 +49,9 @@
     }
   },
   "scripts": {
-    "trim:packages": "php ./tools/composer-unused",
+    "build": "./.scripts/build.sh --non-interactive",
     "format": "pint --config ./pint.json",
-    "build": "composer format"
+    "test": "vendor/bin/testbench package:test --parallel",
+    "trim:packages": "vendor/bin/composer-unused"
   }
 }

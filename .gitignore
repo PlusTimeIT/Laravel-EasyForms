@@ -3,3 +3,4 @@ vendor
 .phpunit.*
 phpunit.xml.bak
 *.cache
+*.idea

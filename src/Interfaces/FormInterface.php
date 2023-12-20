@@ -27,6 +27,8 @@ interface FormInterface
 
     public function getName(): string;
 
+    public function getShowTitle(): bool;
+
     public function getTitle(): string;
 
     public static function load(request $request): LoadResponse;
@@ -44,6 +46,8 @@ interface FormInterface
     public function setAxios(Axios $axios): self;
 
     public function setName(string $name);
+
+    public function setShowTitle(bool $show_title): self;
 
     public function setTitle(string $title);
 

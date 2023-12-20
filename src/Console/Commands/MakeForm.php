@@ -24,10 +24,24 @@ class MakeForm extends Command
      */
     protected $signature = 'make:form {name} {type=input}';
 
+    public function buildDirectories(array $directories): void
+    {
+        $base = '';
+        foreach ($directories as $directory) {
+            $base .= $directory;
+            $this->comment('Checking: '.$base);
+            if (! File::isDirectory(config('easyforms.form.path').'/'.$base)) {
+                File::makeDirectory(config('easyforms.form.path').'/'.$base);
+            }
+            $base .= '/';
+        }
+    }
+
     /**
      * Execute the console command.
      */
-    public function checks(string $type): bool {
+    public function checks(string $type): bool
+    {
         $allowedTypes = ['input', 'action'];
         $this->comment('Running checks...');
         if (! File::isDirectory(config('easyforms.form.path'))) {
@@ -39,28 +53,19 @@ class MakeForm extends Command
 
             return false;
         }
+
         return true;
     }
 
-    public function buildDirectories(array $directories): void {
-        $base = '';
-        foreach($directories as $directory){
-            $base .= $directory;
-            $this->comment('Checking: ' . $base);
-            if (! File::isDirectory(config('easyforms.form.path') . '/' . $base)) {
-                File::makeDirectory(config('easyforms.form.path') . '/' . $base);
-            }
-            $base .= '/';
-        }
-    }
     public function handle(): int
     {
 
         $this->comment('Creating EasyForm....');
         $type = strtolower($this->argument('type'));
 
-        if( ! $this->checks($type) ){
+        if (! $this->checks($type)) {
             $this->comment('Creating Form failed');
+
             return 0;
         }
 
@@ -69,10 +74,10 @@ class MakeForm extends Command
         $name = $directories[array_key_last($directories)];
         $this->comment('Directory checking...');
         $namespace = config('easyforms.form.namespace');
-        if(count($directories) > 1){
+        if (count($directories) > 1) {
             $this->comment('Directories found...');
             array_pop($directories);
-            $namespace .=  '\\' . implode('\\', $directories);
+            $namespace .= '\\'.implode('\\', $directories);
 
             $this->buildDirectories($directories);
 

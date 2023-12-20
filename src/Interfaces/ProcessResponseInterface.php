@@ -6,7 +6,7 @@ interface ProcessResponseInterface
 {
     public function getData(): mixed;
 
-    public function getResult():bool;
+    public function getResult(): bool;
 
     public function result(): bool;
 

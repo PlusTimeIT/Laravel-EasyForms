@@ -14,7 +14,7 @@ class TimePickerFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldT
     public function setUp(): void
     {
         $this->fieldClass = TimePickerField::class;
-        $this->fieldComponent = 'time-picker';
+        $this->fieldComponent = 'easy-time-picker';
     }
 
     public function testAAmPmInTitleCanBeSetAndGet()

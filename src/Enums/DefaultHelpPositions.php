@@ -8,7 +8,7 @@ namespace PlusTimeIT\EasyForms\Enums;
 enum DefaultHelpPositions: string
 {
     case Append = 'append_icon';
-    case Prepend = 'prepend_icon';
     case AppendInner = 'append_inner_icon';
+    case Prepend = 'prepend_icon';
     case PrependInner = 'prepend_inner_icon';
 }

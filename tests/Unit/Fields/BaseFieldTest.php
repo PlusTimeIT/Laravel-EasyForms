@@ -11,12 +11,13 @@ use PlusTimeIT\EasyForms\Enums\DensityTypes;
  *
  * @coversNothing
  */
-class BaseFieldTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTestCase
+class BaseFieldTest extends FieldTestCase
 {
     protected $fieldClass;
 
     public function setUp(): void
     {
+        parent::setup();
         $this->fieldClass = EasyField::class;
     }
 

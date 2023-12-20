@@ -14,8 +14,6 @@ abstract class ActionForm extends EasyForm implements ActionFormInterface
 
     /**
      * The type of form.
-     *
-     * @var string
      */
     protected string $type = 'action-form';
 
@@ -25,6 +23,8 @@ abstract class ActionForm extends EasyForm implements ActionFormInterface
     public function __construct()
     {
         parent::__construct();
+
+        $this->show_title = false;
 
         return $this
             ->setActions($this->actions());

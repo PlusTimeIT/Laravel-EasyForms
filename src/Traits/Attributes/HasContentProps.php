@@ -7,7 +7,6 @@ trait HasContentProps
     protected mixed $content_props;
 
     public function getContentProps(): mixed
-
     {
         return $this->content_props;
     }

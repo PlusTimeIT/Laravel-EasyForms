@@ -11,27 +11,31 @@ use PlusTimeIT\EasyForms\Traits\Attributes\HasMaxLength;
  */
 class HasMaxLengthTest extends \PlusTimeIT\EasyForms\Tests\Unit\Attributes\AttributeTestCase
 {
+    public $traitedClass;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->traitedClass = new class
+        {
+            use HasMaxLength;
+        };
+    }
+
     public function testCanGetMaxLength()
     {
-        $mock = $this->getObjectForTrait(HasMaxLength::class);
-
-        $mock->setMaxLength(2);
-
-        $this->assertSame(2, $mock->getMaxLength());
+        $this->traitedClass->setMaxLength(2);
+        $this->assertSame(2, $this->traitedClass->getMaxLength());
     }
 
     public function testCanSetMaxLength()
     {
-        $mock = $this->getObjectForTrait(HasMaxLength::class);
-        $mock->setMaxLength(6);
-
-        $this->assertEquals($mock->getMaxLength(), 6);
+        $this->traitedClass->setMaxLength(6);
+        $this->assertEquals($this->traitedClass->getMaxLength(), 6);
     }
 
     public function testDefaultMaxLengthIsNull()
     {
-        $mock = $this->getObjectForTrait(HasMaxLength::class);
-
-        $this->assertNull($mock->getMaxLength());
+        $this->assertNull($this->traitedClass->getMaxLength());
     }
 }

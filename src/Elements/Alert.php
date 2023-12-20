@@ -65,8 +65,8 @@ class Alert
     use HasRounded;
     use HasTag;
     use HasText;
-    use HasTitle;
     use HasTextStyle;
+    use HasTitle;
     use HasTransition;
     use HasTrigger;
     use Transformable;

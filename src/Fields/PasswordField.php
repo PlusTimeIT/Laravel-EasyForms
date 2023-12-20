@@ -7,6 +7,8 @@ use PlusTimeIT\EasyForms\Traits\Attributes\HasErrorMessages;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasLowerCase;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasMinLength;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasNumbers;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasShowRequirementsDialog;
+use PlusTimeIT\EasyForms\Traits\Attributes\HasShowStrengthBar;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasSpecial;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasStrengthErrorColor;
 use PlusTimeIT\EasyForms\Traits\Attributes\HasStrengthErrorText;
@@ -32,6 +34,8 @@ class PasswordField extends EasyField
     use HasLowerCase;
     use HasMinLength;
     use HasNumbers;
+    use HasShowRequirementsDialog;
+    use HasShowStrengthBar;
     use HasSpecial;
     use HasStrengthErrorColor;
     use HasStrengthErrorText;
@@ -52,6 +56,28 @@ class PasswordField extends EasyField
 
     public function __construct(array $args)
     {
+        // some properties can be passed via args in intialization
+        // but when chained with functions this will not trigger.
         parent::__construct($args);
+        $this->initializeTextfield($args);
+
+    }
+
+    protected function initializeTextfield(array $args): void
+    {
+        if (! isset($this->textfield) || ! $this->textfield instanceof TextField) {
+            $tempTextfield = $this->toArray();
+            // remove component specific properties
+            unset($tempTextfield['component']);
+            unset($tempTextfield['component_type']);
+            unset($tempTextfield['discriminator']);
+            unset($tempTextfield['type']);
+
+            // set textfield name and label
+            $tempTextfield['name'] = ($args['name'] ?? 'password').'_text_field';
+            $tempTextfield['label'] = $args['label'] ?? 'Password';
+            $this->textfield = TextField::make($tempTextfield);
+        }
+
     }
 }

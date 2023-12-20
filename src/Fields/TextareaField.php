@@ -22,8 +22,8 @@ class TextareaField extends EasyField
     use HasCounter;
     use HasMaxRows;
     use HasNoResize;
-    use HasRows;
     use HasReverse;
+    use HasRows;
     use Transformable;
 
     protected string $component = 'v-textarea';
