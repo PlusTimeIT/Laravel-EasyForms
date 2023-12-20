@@ -14,17 +14,18 @@ PATCHTYPE=${2:-"patch"}
 
 update_version() {
     local version_type=$1
-    local updated_version
+    local current_version=$(php -r "echo json_decode(file_get_contents('composer.json'))->version;")
+    local new_version
 
     case "$version_type" in
         "patch")
-            updated_version=$(composer version --patch)
+            new_version=$(php -r "echo implode('.', array_map(function(\$v) { return \$v + (int)(\$v === end(\$a)); }, explode('.', '$current_version')));")
             ;;
         "minor")
-            updated_version=$(composer version --minor)
+            new_version=$(php -r "echo implode('.', array_map(function(\$v, \$i) { return \$i === 1 ? \$v + 1 : \$v; }, explode('.', '$current_version'), array_keys(explode('.', '$current_version'))));")
             ;;
         "major")
-            updated_version=$(composer version --major)
+            new_version=$(php -r "echo implode('.', array_map(function(\$v, \$i) { return \$i === 0 ? \$v + 1 : \$v; }, explode('.', '$current_version'), array_keys(explode('.', '$current_version'))));")
             ;;
         *)
             echo "Invalid version type. Please use 'patch', 'minor', or 'major'. Supplied: $version_type"
@@ -32,7 +33,9 @@ update_version() {
             ;;
     esac
 
-    echo $updated_version
+    sed -i "s/\"version\": \"$current_version\"/\"version\": \"$new_version\"/g" composer.json
+
+    echo $new_version
 }
 
 header() {
