@@ -14,25 +14,28 @@ PATCHTYPE=${2:-"patch"}
 
 update_version() {
     local version_type=$1
-    local current_version=$(php -r "echo json_decode(file_get_contents('composer.json'))->version;")
     local new_version
+
+    echo "Updating version from $VERSION"
 
     case "$version_type" in
         "patch")
-            new_version=$(php -r "echo implode('.', array_map(function(\$v) { return \$v + (int)(\$v === end(\$a)); }, explode('.', '$current_version')));")
+            new_version=$(php -r "echo implode('.', array_map(function(\$v) { return \$v + (int)(\$v === end(\$a)); }, explode('.', '$VERSION')));")
             ;;
         "minor")
-            new_version=$(php -r "echo implode('.', array_map(function(\$v, \$i) { return \$i === 1 ? \$v + 1 : \$v; }, explode('.', '$current_version'), array_keys(explode('.', '$current_version'))));")
+            new_version=$(php -r "echo implode('.', array_map(function(\$v, \$i) { return \$i === 1 ? \$v + 1 : \$v; }, explode('.', '$VERSION'), array_keys(explode('.', '$VERSION'))));")
             ;;
         "major")
-            new_version=$(php -r "echo implode('.', array_map(function(\$v, \$i) { return \$i === 0 ? \$v + 1 : \$v; }, explode('.', '$current_version'), array_keys(explode('.', '$current_version'))));")
+            new_version=$(php -r "echo implode('.', array_map(function(\$v, \$i) { return \$i === 0 ? \$v + 1 : \$v; }, explode('.', '$VERSION'), array_keys(explode('.', '$VERSION'))));")
             ;;
         *)
             echo "Invalid version type. Please use 'patch', 'minor', or 'major'. Supplied: $version_type"
             exit 1
             ;;
     esac
-
+    
+    echo "Updating version to $new_version"
+    
     sed -i "s/\"version\": \"$current_version\"/\"version\": \"$new_version\"/g" composer.json
 
     echo $new_version
