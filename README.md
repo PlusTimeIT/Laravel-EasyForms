@@ -1,4 +1,5 @@
 # Laravel EasyForms
+
 <div style="text-align:center">
 
 ![Laravel EasyForms Logo](/src/Docs/assets/Laravel%20EasyForms%20Logo.png)
@@ -7,8 +8,8 @@
 
 </div>
 
-* > [Documentation](https://plustimeit.github.io/Laravel-EasyForms/)
-* > [Packagist](https://packagist.org/packages/plustime-it/laravel-easyforms)
+- > [Documentation](https://plustimeit.github.io/Laravel-EasyForms/)
+- > [Packagist](https://packagist.org/packages/plustime-it/laravel-easyforms)
 
 ## Note
 
@@ -18,11 +19,14 @@ This package is considered the parent package to all development that covers bot
 
 The below features are currently in dev / testing phase and may has issues:
 
-* Password Strength Bar - Customisation of Linear Progress and Requirements Dialog
-* Styling and customisation to form title
+- Password Strength Bar - Customisation of Linear Progress and Requirements Dialog
+- Styling and customisation to form title
 
 ## Laravel Vue EasyForms
 
-* > [Documentation](https://plustimeit.github.io/Laravel-Vue-EasyForms/#/)
-* > [Npm](https://www.npmjs.com/package/laravel-vue-easyforms)
+- > [Documentation](https://plustimeit.github.io/Laravel-Vue-EasyForms/#/)
+- > [Npm](https://www.npmjs.com/package/laravel-vue-easyforms)
 
+## To Do
+
+More unit and feature tests for backend package
