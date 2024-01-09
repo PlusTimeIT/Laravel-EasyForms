@@ -1,8 +1,8 @@
 # About
 
-This package was created to help keep creating and managing forms easy. 
+This package was created to help keep creating and managing forms easy.
 The main purpose is to provide a central location to create and maintain forms,
-so with that in mind this is meant to be coupled with 
+so with that in mind this is meant to be coupled with
 [Laravel Vue EasyForms](https://www.npmjs.com/package/laravel-vue-easyforms) Vue plugin.
 
 ## Vue Plugin
@@ -24,17 +24,17 @@ on the frontend.
 
 ## Masking
 
-Masking is currently handled by [V-Maska](https://beholdr.github.io/maska/#/) 
+Masking is currently handled by [V-Maska](https://beholdr.github.io/maska/#/)
 
 ## Requirements
 
 The documentation is created for `Laravel 10+` only. While this package may work in other versions, no support or
 documentation is provided for those.
 
-You also need to make sure your [Laravel Vue EasyForms](https://www.npmjs.com/package/laravel-vue-easyforms) 
-version is `0.4.25+`
+You also need to make sure your [Laravel Vue EasyForms](https://www.npmjs.com/package/laravel-vue-easyforms)
+version is `0.4.34+`
 
-| Package               | Min Version  |
-|:----------------------|:-------------|
-| PHP                   | 8.1+         |
-| Laravel               | 10+          |
+| Package | Min Version |
+| :------ | :---------- |
+| PHP     | 8.1+        |
+| Laravel | 10+         |
