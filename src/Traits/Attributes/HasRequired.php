@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasRequired
 {
-    protected bool $required = true;
+    protected bool $required = false;
 
     public function getRequired(): bool
     {
