@@ -32,7 +32,7 @@ The documentation is created for `Laravel 10+` only. While this package may work
 documentation is provided for those.
 
 You also need to make sure your [Laravel Vue EasyForms](https://www.npmjs.com/package/laravel-vue-easyforms)
-version is `0.4.34+`
+version is `0.4.38+`
 
 | Package | Min Version |
 | :------ | :---------- |

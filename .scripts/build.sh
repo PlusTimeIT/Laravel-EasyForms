@@ -101,8 +101,8 @@ done
 
 header "Starting Composer Package Build - $VERSION"
 
-tasks=("Running Tests" "Prettifying" "Trimming Unused Composer Packages" "Normalizing Composer" "Deploy to GitHub" "Create Packagist Tag" "Update Version - $PATCHTYPE")
-commands=("composer test" "composer format" "composer trim:packages" "composer normalize" "git add . && git commit -m 'update: $VERSION' && git push" "git tag $VERSION && git push origin $VERSION" "update_version $PATCHTYPE")
+tasks=("Updating Composer Lock" "Running Tests" "Prettifying" "Trimming Unused Composer Packages" "Normalizing Composer" "Deploy to GitHub" "Create Packagist Tag" "Update Version - $PATCHTYPE")
+commands=("composer update --lock" "composer test" "composer format" "composer trim:packages" "composer normalize" "git add . && git commit -m 'update: $VERSION' && git push" "git tag $VERSION && git push origin $VERSION" "update_version $PATCHTYPE")
 
 for ((i=0; i<${#tasks[@]}; i++)); do
     task "$((i+1))/${#tasks[@]} ${tasks[i]}...."
