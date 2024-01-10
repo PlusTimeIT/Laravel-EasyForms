@@ -59,12 +59,13 @@ class PasswordField extends EasyField
         // some properties can be passed via args in intialization
         // but when chained with functions this will not trigger.
         parent::__construct($args);
-        $this->initializeTextfield($args);
+        $this->initializeTextfield();
 
     }
 
-    protected function initializeTextfield(array $args): void
+    protected function initializeTextfield(): void
     {
+        // if textfield is not intialized then intialize
         if (! isset($this->textfield) || ! $this->textfield instanceof TextField) {
             $tempTextfield = $this->toArray();
             // remove component specific properties
@@ -74,8 +75,9 @@ class PasswordField extends EasyField
             unset($tempTextfield['type']);
 
             // set textfield name and label
-            $tempTextfield['name'] = ($args['name'] ?? 'password').'_text_field';
+            $tempTextfield['name'] = ($args['name'] ?? 'password');
             $tempTextfield['label'] = $args['label'] ?? 'Password';
+
             $this->textfield = TextField::make($tempTextfield);
         }
 
