@@ -14,6 +14,9 @@ class Button
     use \PlusTimeIT\EasyForms\Traits\Attributes\HasButtonVariant;
     use \PlusTimeIT\EasyForms\Traits\Attributes\HasClasses;
     use \PlusTimeIT\EasyForms\Traits\Attributes\HasColor;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasDataAction;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasDataCallback;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasDataSiteKey;
     use \PlusTimeIT\EasyForms\Traits\Attributes\HasDensity;
     use \PlusTimeIT\EasyForms\Traits\Attributes\HasDisabled;
     use \PlusTimeIT\EasyForms\Traits\Attributes\HasElevation;
@@ -45,6 +48,9 @@ class Button
         $this->setOptions($args);
         $this->tag = $args['tag'] ?? 'button';
 
+        if (config('easyforms.form.google_recaptcha.site_key') !== null) {
+            $this->classes = $this->classes . ' g-recaptcha';
+        }
         return $this;
     }
 }
