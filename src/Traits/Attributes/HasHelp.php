@@ -19,19 +19,19 @@ trait HasHelp
         $this->help = $help;
         // get default settings for help icon.
         $defaultHelp = config('easyforms.defaults.help');
-        $defaultHelp['position'] = $defaultHelp['position']->value ?? 'append_inner_icon';
-        $defaultHelp['icon'] = $defaultHelp['icon'] ?? Icon::make()->setSize('small')->setIcon('mdi-help');
-        if (! $defaultHelp['icon']->hasTooltip()) {
-            $defaultHelp['icon']->setTooltip(
+        $defaultHelp['position'] = $defaultHelp['position'] ?? 'append_inner_icon';
+        $helpIcon = Icon::make()->setSize('small')->setIcon($defaultHelp['icon']);
+        if (!$helpIcon->hasTooltip()) {
+            $helpIcon->setTooltip(
                 Tooltip::make(['text' => $this->help])
             );
         }
         if (property_exists(__CLASS__, $defaultHelp['position'])) {
             // icon position exists on field
-            $this->{$defaultHelp['position']} = $defaultHelp['icon'];
+            $this->{$defaultHelp['position']} = $helpIcon;
         } else {
             // set help icon position to default append-inner
-            $this->append_inner_icon = $defaultHelp['icon'];
+            $this->append_inner_icon = $helpIcon;
         }
 
         return $this;

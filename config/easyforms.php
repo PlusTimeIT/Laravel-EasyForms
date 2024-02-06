@@ -1,8 +1,5 @@
 <?php
 
-use PlusTimeIT\EasyForms\Elements\Icon;
-use PlusTimeIT\EasyForms\Enums\DefaultHelpPositions;
-
 return [
     'display' => true,
     'prefix' => 'axios',
@@ -13,8 +10,8 @@ return [
     ],
     'defaults' => [
         'help' => [
-            'position' => DefaultHelpPositions::AppendInner,
-            'icon' => Icon::make(['icon' => 'mdi-help']),
+            'position' => 'append_inner_icon',
+            'icon' => ['icon' => 'mdi-help'],
         ],
     ],
 ];
