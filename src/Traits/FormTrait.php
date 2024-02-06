@@ -26,7 +26,7 @@ trait FormTrait
             $rules = [];
             collect($field->getRules())->each(function ($rule) use (&$rules) {
                 // if boolean check if true, if not skip it.
-                if ((is_bool($rule->getValue()) && $rule->getValue()) || ! is_bool($rule->getValue())) {
+                if ((is_bool($rule->getValue()) && $rule->getValue()) || !is_bool($rule->getValue())) {
                     $rules[] = (is_bool($rule->getValue()) ? $rule->getName() : implode(':', [$rule->getName(), $rule->getValue()]));
                 }
             });

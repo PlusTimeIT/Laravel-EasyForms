@@ -5,7 +5,7 @@ return [
     'prefix' => 'axios',
     'middleware' => 'web',
     'form' => [
-        'namespace' => 'PlusTimeIT\EasyForms\Forms',
+        'namespace' => 'App\Http\Forms',
         'path' => app_path('Http/Forms'), // must not have trailing forward slash
         'google_recaptcha' => [
             'site_key' => env('GOOGLE_RECAPTCHA_SITE_KEY', null),
