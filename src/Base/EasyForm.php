@@ -2,29 +2,23 @@
 
 namespace PlusTimeIT\EasyForms\Base;
 
-use PlusTimeIT\EasyForms\Elements\FormLoader;
-use PlusTimeIT\EasyForms\Elements\ProgressCircular;
-use PlusTimeIT\EasyForms\Enums\FormLoaderTypes;
-use PlusTimeIT\EasyForms\Interfaces\FormInterface;
-use PlusTimeIT\EasyForms\Traits\FormTrait;
-
 /**
  * Base form class.
  */
-abstract class EasyForm implements FormInterface
+abstract class EasyForm implements \PlusTimeIT\EasyForms\Interfaces\FormInterface
 {
-    use FormTrait;
+    use \PlusTimeIT\EasyForms\Traits\FormTrait;
 
     public function __construct()
     {
         return $this
             ->setLoader(
-                FormLoader::make()
+                \PlusTimeIT\EasyForms\Elements\FormLoader::make()
                     ->setType(
-                        FormLoaderTypes::Circular
+                        \PlusTimeIT\EasyForms\Enums\FormLoaderTypes::Circular
                     )
                     ->setProgress(
-                        ProgressCircular::make()->setColor('primary')
+                        \PlusTimeIT\EasyForms\Elements\ProgressCircular::make()->setColor('primary')
                     )
             )
             ->setAlerts($this->alerts())

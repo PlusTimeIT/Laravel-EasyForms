@@ -2,26 +2,17 @@
 
 namespace PlusTimeIT\EasyForms\Fields;
 
-use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Elements\Icon;
-use PlusTimeIT\EasyForms\Elements\PickerMenu;
-use PlusTimeIT\EasyForms\Elements\Tooltip;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasColorPicker;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasPickerMenu;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasTextField;
-use PlusTimeIT\EasyForms\Traits\Transformable;
-
 /**
  * Represents a color picker field with a textfield in a form.
  *
- * @extends EasyField
+ * @extends \PlusTimeIT\EasyForms\Base\EasyField
  */
-class ColorPickerField extends EasyField
+class ColorPickerField extends \PlusTimeIT\EasyForms\Base\EasyField
 {
-    use HasColorPicker;
-    use HasPickerMenu;
-    use HasTextField;
-    use Transformable;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasColorPicker;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasPickerMenu;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasTextField;
+    use \PlusTimeIT\EasyForms\Traits\Transformable;
 
     protected string $component = 'easy-color-picker';
 
@@ -32,16 +23,16 @@ class ColorPickerField extends EasyField
         parent::__construct($args);
         // check if textfield present is not create default
         if (! isset($this->textfield)) {
-            $this->textfield = TextField::make()
+            $this->textfield = \PlusTimeIT\EasyForms\Fields\TextField::make()
                 ->setName('picker_value')
                 ->setLabel('Color Picker')
                 ->setReadonly(true)
                 ->setPrependInnerIcon(
-                    Icon::make()
+                    \PlusTimeIT\EasyForms\Elements\Icon::make()
                         ->setIcon('mdi-square-rounded')
                         ->setSize('x-large')
                         ->setTooltip(
-                            Tooltip::make()
+                            \PlusTimeIT\EasyForms\Elements\Tooltip::make()
                                 ->setText('Select Color')
                                 ->setCloseOnContentClick(false)
                                 ->setActivator(true)
@@ -50,7 +41,7 @@ class ColorPickerField extends EasyField
         }
 
         if (! isset($this->picker)) {
-            $this->picker = ColorPicker::make()->setValue('#000000');
+            $this->picker = \PlusTimeIT\EasyForms\Fields\ColorPicker::make()->setValue('#000000');
         }
 
         if (! isset($this->value)) {
@@ -58,7 +49,7 @@ class ColorPickerField extends EasyField
         }
 
         if (! isset($this->menu)) {
-            $this->menu = PickerMenu::make();
+            $this->menu = \PlusTimeIT\EasyForms\Elements\PickerMenu::make();
         }
     }
 }

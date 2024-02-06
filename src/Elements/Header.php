@@ -2,13 +2,10 @@
 
 namespace PlusTimeIT\EasyForms\Elements;
 
-use PlusTimeIT\EasyForms\Interfaces\HeaderInterface;
-use PlusTimeIT\EasyForms\Traits\HeaderTrait;
-
 /**
  * Header for making axios requests
  */
-class Header implements HeaderInterface
+class Header implements \PlusTimeIT\EasyForms\Interfaces\HeaderInterface
 {
-    use HeaderTrait;
+    use \PlusTimeIT\EasyForms\Traits\HeaderTrait;
 }

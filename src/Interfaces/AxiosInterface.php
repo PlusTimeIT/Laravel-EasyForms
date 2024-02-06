@@ -2,11 +2,9 @@
 
 namespace PlusTimeIT\EasyForms\Interfaces;
 
-use PlusTimeIT\EasyForms\Elements\Header;
-
 interface AxiosInterface
 {
-    public function addHeaders(Header $header);
+    public function addHeaders(\PlusTimeIT\EasyForms\Elements\Header $header);
 
     public function getExpectingResults(): bool;
 

@@ -2,17 +2,14 @@
 
 namespace PlusTimeIT\EasyForms\Fields;
 
-use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\Transformable;
-
 /**
  * Represents a checkbox input field.
  *
- * @extends EasyField
+ * @extends \PlusTimeIT\EasyForms\Base\EasyField
  */
-class CheckboxField extends EasyField
+class CheckboxField extends \PlusTimeIT\EasyForms\Base\EasyField
 {
-    use Transformable;
+    use \PlusTimeIT\EasyForms\Traits\Transformable;
 
     protected string $component = 'v-checkbox';
 

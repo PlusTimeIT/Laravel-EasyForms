@@ -3,7 +3,6 @@
 namespace <namespace>;
 
 use Illuminate\Http\Request;
-use PlusTimeIT\EasyForms\Base\InputForm;
 use PlusTimeIT\EasyForms\Elements\Alert;
 use PlusTimeIT\EasyForms\Elements\Button;
 use PlusTimeIT\EasyForms\Elements\Icon;
@@ -17,7 +16,7 @@ use PlusTimeIT\EasyForms\Fields\PasswordField;
 use PlusTimeIT\EasyForms\Fields\TextField;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
-final class <name> extends InputForm
+final class <name> extends \PlusTimeIT\EasyForms\Base\InputForm
 {
     use Transformable;
 

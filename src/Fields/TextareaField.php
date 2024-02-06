@@ -2,29 +2,20 @@
 
 namespace PlusTimeIT\EasyForms\Fields;
 
-use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasAutoGrow;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasCounter;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasMaxRows;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasNoResize;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasReverse;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasRows;
-use PlusTimeIT\EasyForms\Traits\Transformable;
-
 /**
  * Represents a textarea input field in a form.
  *
- * @extends EasyField
+ * @extends \PlusTimeIT\EasyForms\Base\EasyField
  */
-class TextareaField extends EasyField
+class TextareaField extends \PlusTimeIT\EasyForms\Base\EasyField
 {
-    use HasAutoGrow;
-    use HasCounter;
-    use HasMaxRows;
-    use HasNoResize;
-    use HasReverse;
-    use HasRows;
-    use Transformable;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasAutoGrow;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasCounter;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasMaxRows;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasNoResize;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasReverse;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasRows;
+    use \PlusTimeIT\EasyForms\Traits\Transformable;
 
     protected string $component = 'v-textarea';
 

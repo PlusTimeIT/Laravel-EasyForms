@@ -2,15 +2,12 @@
 
 namespace PlusTimeIT\EasyForms\Base;
 
-use PlusTimeIT\EasyForms\Interfaces\InputFormInterface;
-use PlusTimeIT\EasyForms\Traits\InputFormTrait;
-
 /**
  * Handles Input Forms with fields and buttons
  */
-abstract class InputForm extends EasyForm implements InputFormInterface
+abstract class InputForm extends EasyForm implements \PlusTimeIT\EasyForms\Interfaces\InputFormInterface
 {
-    use InputFormTrait;
+    use \PlusTimeIT\EasyForms\Traits\InputFormTrait;
 
     /**
      * @var string The type of form
@@ -22,20 +19,21 @@ abstract class InputForm extends EasyForm implements InputFormInterface
         parent::__construct();
 
         return $this
-            ->setFields($this->fields())
-            ->setButtons($this->buttons());
+            ->setButtons($this->buttons())
+            ->setFields($this->fields());
     }
 
     public function populateFields($data = null): InputForm
     {
         return $this->setFields(
-            collect($this->fields())->map(function ($field) use ($data) {
-                if (isset($data[$field->getName()])) {
-                    $field->setValue($data[$field->getName()]);
-                }
+            collect($this->fields())->map(
+                function ($field) use ($data) {
+                    if (isset($data[$field->getName()])) {
+                        $field->setValue($data[$field->getName()]);
+                    }
 
-                return $field;
-            }
+                    return $field;
+                }
 
             )->toArray()
         );

@@ -2,9 +2,6 @@
 
 namespace PlusTimeIT\EasyForms\Elements;
 
-use PlusTimeIT\EasyForms\Traits\Creatable;
-use PlusTimeIT\EasyForms\Traits\Transformable;
-
 /**
  * Condition Item to provide an easy way to check against conditionals for Action Icons and Buttons
  *
@@ -12,8 +9,8 @@ use PlusTimeIT\EasyForms\Traits\Transformable;
  */
 class ConditionItem
 {
-    use Creatable;
-    use Transformable;
+    use \PlusTimeIT\EasyForms\Traits\Creatable;
+    use \PlusTimeIT\EasyForms\Traits\Transformable;
 
     protected string $against;
 

@@ -2,30 +2,20 @@
 
 namespace PlusTimeIT\EasyForms\Elements;
 
-use PlusTimeIT\EasyForms\Traits\Attributes\HasColor;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasEnd;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasSize;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasStart;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasTag;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasTheme;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasTooltip;
-use PlusTimeIT\EasyForms\Traits\Creatable;
-use PlusTimeIT\EasyForms\Traits\Transformable;
-
 /**
  * Easy Icon that will provide additional options like tooltips.
  */
 class Icon
 {
-    use Creatable;
-    use HasColor;
-    use HasEnd;
-    use HasSize;
-    use HasStart;
-    use HasTag;
-    use HasTheme;
-    use HasTooltip;
-    use Transformable;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasColor;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasEnd;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasSize;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasStart;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasTag;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasTheme;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasTooltip;
+    use \PlusTimeIT\EasyForms\Traits\Creatable;
+    use \PlusTimeIT\EasyForms\Traits\Transformable;
 
     protected string $icon;
 

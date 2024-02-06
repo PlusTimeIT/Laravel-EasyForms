@@ -2,12 +2,9 @@
 
 namespace PlusTimeIT\EasyForms\Interfaces;
 
-use PlusTimeIT\EasyForms\Elements\Axios;
-use PlusTimeIT\EasyForms\Elements\Button;
-
 interface ActionInterface
 {
-    public function addButton(Button $button);
+    public function addButton(\PlusTimeIT\EasyForms\Elements\Button $button);
 
     public function getAlerts(): array;
 
@@ -15,7 +12,7 @@ interface ActionInterface
 
     public function setAlerts(array $alerts);
 
-    public function setAxios(Axios $axios);
+    public function setAxios(\PlusTimeIT\EasyForms\Elements\Axios $axios);
 
     public function setButtons(array $buttons);
 

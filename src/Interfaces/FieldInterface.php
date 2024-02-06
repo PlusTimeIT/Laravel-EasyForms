@@ -2,9 +2,6 @@
 
 namespace PlusTimeIT\EasyForms\Interfaces;
 
-use PlusTimeIT\EasyForms\Elements\Tooltip;
-use PlusTimeIT\EasyForms\Enums\DensityTypes;
-
 interface FieldInterface
 {
     public function dependsOn(string $dependsOn);
@@ -17,7 +14,7 @@ interface FieldInterface
 
     public function getComponentType(): string;
 
-    public function getDensity(): DensityTypes;
+    public function getDensity(): \PlusTimeIT\EasyForms\Enums\DensityTypes;
 
     public function getDependsOn(): ?string;
 
@@ -37,7 +34,7 @@ interface FieldInterface
 
     public function getRules(): array;
 
-    public function getTooltip(): Tooltip;
+    public function getTooltip(): \PlusTimeIT\EasyForms\Elements\Tooltip;
 
     public function getType(): string;
 
@@ -51,7 +48,7 @@ interface FieldInterface
 
     public function setComponentType(string $component_type);
 
-    public function setDensity(DensityTypes $dense);
+    public function setDensity(\PlusTimeIT\EasyForms\Enums\DensityTypes $dense);
 
     public function setDependsOn(string $dependsOn);
 
@@ -73,7 +70,7 @@ interface FieldInterface
 
     public function setRules(array $rules);
 
-    public function setTooltip(Tooltip $tooltip);
+    public function setTooltip(\PlusTimeIT\EasyForms\Elements\Tooltip $tooltip);
 
     public function setType(string $type);
 

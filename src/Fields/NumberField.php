@@ -2,21 +2,16 @@
 
 namespace PlusTimeIT\EasyForms\Fields;
 
-use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasMinMax;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasStep;
-use PlusTimeIT\EasyForms\Traits\Transformable;
-
 /**
  * Represents a number input field in a form.
  *
- * @extends EasyField
+ * @extends \PlusTimeIT\EasyForms\Base\EasyField
  */
-class NumberField extends EasyField
+class NumberField extends \PlusTimeIT\EasyForms\Base\EasyField
 {
-    use HasMinMax;
-    use HasStep;
-    use Transformable;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasMinMax;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasStep;
+    use \PlusTimeIT\EasyForms\Traits\Transformable;
 
     protected string $component = 'v-text-field';
 

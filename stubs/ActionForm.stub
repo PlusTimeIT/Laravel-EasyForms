@@ -3,7 +3,6 @@
 namespace <namespace>;
 
 use Illuminate\Http\Request;
-use PlusTimeIT\EasyForms\Base\ActionForm;
 use PlusTimeIT\EasyForms\Elements\ActionButton;
 use PlusTimeIT\EasyForms\Elements\ActionIcon;
 use PlusTimeIT\EasyForms\Elements\Alert;
@@ -16,7 +15,7 @@ use PlusTimeIT\EasyForms\Enums\AlertTriggers;
 use PlusTimeIT\EasyForms\Enums\AlertTypes;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
-final class <name> extends ActionForm
+final class <name> extends \PlusTimeIT\EasyForms\Base\ActionForm
 {
     use Transformable;
 

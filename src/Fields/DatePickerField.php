@@ -2,23 +2,17 @@
 
 namespace PlusTimeIT\EasyForms\Fields;
 
-use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasCloseOnContentClick;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasControls;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
-use PlusTimeIT\EasyForms\Traits\Transformable;
-
 /**
  * Represents a date picker field in a form.
  *
- * @extends EasyField
+ * @extends \PlusTimeIT\EasyForms\Base\EasyField
  */
-class DatePickerField extends EasyField
+class DatePickerField extends \PlusTimeIT\EasyForms\Base\EasyField
 {
-    use HasCloseOnContentClick;
-    use HasControls;
-    use HasMultiple;
-    use Transformable;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasCloseOnContentClick;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasControls;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
+    use \PlusTimeIT\EasyForms\Traits\Transformable;
 
     protected string $component = 'easy-date-picker';
 

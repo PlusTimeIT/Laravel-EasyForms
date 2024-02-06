@@ -2,15 +2,12 @@
 
 namespace PlusTimeIT\EasyForms\Elements;
 
-use PlusTimeIT\EasyForms\Interfaces\TooltipInterface;
-use PlusTimeIT\EasyForms\Traits\TooltipTrait;
-
 /**
  * Vuetify Tooltip
  */
-class Tooltip implements TooltipInterface
+class Tooltip implements \PlusTimeIT\EasyForms\Interfaces\TooltipInterface
 {
-    use TooltipTrait;
+    use \PlusTimeIT\EasyForms\Traits\TooltipTrait;
 
     public function __construct(array $args)
     {

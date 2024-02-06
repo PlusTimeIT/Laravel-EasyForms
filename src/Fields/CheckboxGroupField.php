@@ -2,22 +2,16 @@
 
 namespace PlusTimeIT\EasyForms\Fields;
 
-use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Elements\CheckboxItem;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasCheckboxItems;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasSwitch;
-use PlusTimeIT\EasyForms\Traits\Transformable;
-
 /**
  * Represents a group of checkboxes in a form.
  *
- * @extends EasyField
+ * @extends \PlusTimeIT\EasyForms\Base\EasyField
  */
-class CheckboxGroupField extends EasyField
+class CheckboxGroupField extends \PlusTimeIT\EasyForms\Base\EasyField
 {
-    use HasCheckboxItems;
-    use HasSwitch;
-    use Transformable;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasCheckboxItems;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasSwitch;
+    use \PlusTimeIT\EasyForms\Traits\Transformable;
 
     protected string $component = 'lvef-checkbox-group';
 
@@ -28,7 +22,7 @@ class CheckboxGroupField extends EasyField
     /**
      * Override trait so that we can cast this item.
      */
-    public function addItem(CheckboxItem $item): self
+    public function addItem(\PlusTimeIT\EasyForms\Elements\CheckboxItem $item): self
     {
         $this->items[] = $item;
 

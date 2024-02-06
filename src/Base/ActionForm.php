@@ -2,15 +2,12 @@
 
 namespace PlusTimeIT\EasyForms\Base;
 
-use PlusTimeIT\EasyForms\Interfaces\ActionFormInterface;
-use PlusTimeIT\EasyForms\Traits\ActionFormTrait;
-
 /**
  * Handles Action Forms with buttons and icon
  */
-abstract class ActionForm extends EasyForm implements ActionFormInterface
+abstract class ActionForm extends EasyForm implements \PlusTimeIT\EasyForms\Interfaces\ActionFormInterface
 {
-    use ActionFormTrait;
+    use \PlusTimeIT\EasyForms\Traits\ActionFormTrait;
 
     /**
      * The type of form.

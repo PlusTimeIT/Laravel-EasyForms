@@ -2,17 +2,14 @@
 
 namespace PlusTimeIT\EasyForms\Fields;
 
-use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Traits\Transformable;
-
 /**
  * Represents a hidden input field in a form.
  *
- * @extends EasyField
+ * @extends \PlusTimeIT\EasyForms\Base\EasyField
  */
-class HiddenField extends EasyField
+class HiddenField extends \PlusTimeIT\EasyForms\Base\EasyField
 {
-    use Transformable;
+    use \PlusTimeIT\EasyForms\Traits\Transformable;
 
     protected string $component = 'v-text-field';
 

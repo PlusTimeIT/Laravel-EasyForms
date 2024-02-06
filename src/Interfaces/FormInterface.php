@@ -2,11 +2,6 @@
 
 namespace PlusTimeIT\EasyForms\Interfaces;
 
-use Illuminate\Http\Request;
-use PlusTimeIT\EasyForms\Elements\Axios;
-use PlusTimeIT\EasyForms\Elements\LoadResponse;
-use PlusTimeIT\EasyForms\Elements\ProcessResponse;
-
 interface FormInterface
 {
     public function additionalData(): array;
@@ -15,7 +10,7 @@ interface FormInterface
 
     public function alerts(): array;
 
-    public function axios(): Axios;
+    public function axios(): \PlusTimeIT\EasyForms\Elements\Axios;
 
     public function getAdditionalData(): array;
 
@@ -23,7 +18,7 @@ interface FormInterface
 
     public function getAlerts(): array;
 
-    public function getAxios(): Axios;
+    public function getAxios(): \PlusTimeIT\EasyForms\Elements\Axios;
 
     public function getName(): string;
 
@@ -31,11 +26,11 @@ interface FormInterface
 
     public function getTitle(): string;
 
-    public static function load(request $request): LoadResponse;
+    public static function load(\Illuminate\Http\Request $request): \PlusTimeIT\EasyForms\Elements\LoadResponse;
 
     public static function make(): self;
 
-    public static function process(request $request): ProcessResponse;
+    public static function process(\Illuminate\Http\Request $request): \PlusTimeIT\EasyForms\Elements\ProcessResponse;
 
     public function setAdditionalData(array $additional_data): self;
 
@@ -43,7 +38,7 @@ interface FormInterface
 
     public function setAlerts(array $alerts): self;
 
-    public function setAxios(Axios $axios): self;
+    public function setAxios(\PlusTimeIT\EasyForms\Elements\Axios $axios): self;
 
     public function setName(string $name);
 

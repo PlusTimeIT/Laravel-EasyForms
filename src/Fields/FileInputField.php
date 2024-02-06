@@ -2,15 +2,6 @@
 
 namespace PlusTimeIT\EasyForms\Fields;
 
-use PlusTimeIT\EasyForms\Base\EasyField;
-use PlusTimeIT\EasyForms\Elements\Icon;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasAccept;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasCounter;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasPrependIcon;
-use PlusTimeIT\EasyForms\Traits\Attributes\HasShowSize;
-use PlusTimeIT\EasyForms\Traits\Transformable;
-
 // File input Accept values
 // image/*, video/*, audio/*, .doc,.pdf etc.
 //
@@ -22,16 +13,16 @@ use PlusTimeIT\EasyForms\Traits\Transformable;
 /**
  * Represents a file input field in a form.
  *
- * @extends EasyField
+ * @extends \PlusTimeIT\EasyForms\Base\EasyField
  */
-class FileInputField extends EasyField
+class FileInputField extends \PlusTimeIT\EasyForms\Base\EasyField
 {
-    use HasAccept;
-    use HasCounter;
-    use HasMultiple;
-    use HasPrependIcon;
-    use HasShowSize;
-    use Transformable;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasAccept;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasCounter;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasMultiple;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasPrependIcon;
+    use \PlusTimeIT\EasyForms\Traits\Attributes\HasShowSize;
+    use \PlusTimeIT\EasyForms\Traits\Transformable;
 
     protected string $component = 'v-file-input';
 
@@ -41,6 +32,6 @@ class FileInputField extends EasyField
 
     public function __construct()
     {
-        $this->prepend_icon = Icon::make()->setIcon('mdi-camera');
+        $this->prepend_icon = \PlusTimeIT\EasyForms\Elements\Icon::make()->setIcon('mdi-camera');
     }
 }
