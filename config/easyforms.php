@@ -11,7 +11,7 @@ return [
     'defaults' => [
         'help' => [
             'position' => 'append_inner_icon',
-            'icon' => ['icon' => 'mdi-help'],
+            'icon' => 'mdi-help',
         ],
     ],
 ];
