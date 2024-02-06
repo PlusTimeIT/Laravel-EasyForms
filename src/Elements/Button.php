@@ -49,8 +49,9 @@ class Button
         $this->tag = $args['tag'] ?? 'button';
 
         if (config('easyforms.form.google_recaptcha.site_key') !== null) {
-            $this->classes = $this->classes . ' g-recaptcha';
+            $this->classes = $this->classes.' g-recaptcha';
         }
+
         return $this;
     }
 }

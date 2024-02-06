@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Traits\Attributes;
 
 trait HasGoogleRecaptchaSiteKey
 {
-    protected string | null $google_recaptcha_site_key = null;
+    protected ?string $google_recaptcha_site_key = null;
 
     public function getGoogleRecaptchaSiteKey(): string
     {
