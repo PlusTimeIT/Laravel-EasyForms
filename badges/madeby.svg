@@ -1,14 +1,14 @@
 <svg width="141.9" height="20" viewBox="0 0 1419 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="made-by: PLUSTIME-IT">
   <title>made-by: PLUSTIME-IT</title>
-  <linearGradient id="BJeip" x2="0" y2="100%">
+  <linearGradient id="gJUzQ" x2="0" y2="100%">
     <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
     <stop offset="1" stop-opacity=".1"/>
   </linearGradient>
-  <mask id="BPAeo"><rect width="1419" height="200" rx="30" fill="#FFF"/></mask>
-  <g mask="url(#BPAeo)">
+  <mask id="nzarb"><rect width="1419" height="200" rx="30" fill="#FFF"/></mask>
+  <g mask="url(#nzarb)">
     <rect width="595" height="200" fill="#555"/>
     <rect width="824" height="200" fill="#1BC" x="595"/>
-    <rect width="1419" height="200" fill="url(#BJeip)"/>
+    <rect width="1419" height="200" fill="url(#gJUzQ)"/>
   </g>
   <g aria-hidden="true" fill="#fff" text-anchor="start" font-family="Verdana,DejaVu Sans,sans-serif" font-size="110">
     <text x="60" y="148" textLength="495" fill="#000" opacity="0.25">made-by</text>
