@@ -2,6 +2,8 @@
 
 namespace PlusTimeIT\EasyForms\Controllers;
 
+use PlusTimeIT\EasyForms\Services\GoogleRecaptcha;
+
 /**
  * Controller handling Axios requests related to loading / processing forms and/or fields.
  */
@@ -103,6 +105,17 @@ class Axios extends \Illuminate\Routing\Controller
                 ->failed()
                 ->data(['validation_errors' => collect($results->errors())])
                 ->toJson();
+        }
+
+        // check if form requires recaptcha verification.
+        if ($form->getGoogleRecaptchaSiteKey()) {
+            $recaptcha = GoogleRecaptcha::verify($request);
+            if (is_array($recaptcha)) {
+                return \PlusTimeIT\EasyForms\Elements\AxiosResponse::make()
+                    ->failed()
+                    ->data(config('app.debug') ? 'Recaptcha Errors: '.json_encode($recaptcha) : 'Unknown form data')
+                    ->toJson();
+            }
         }
 
         $process = $form->process($request);

@@ -6,12 +6,12 @@ trait HasGoogleRecaptchaSiteKey
 {
     protected ?string $google_recaptcha_site_key = null;
 
-    public function getGoogleRecaptchaSiteKey(): string
+    public function getGoogleRecaptchaSiteKey(): ?string
     {
         return $this->google_recaptcha_site_key;
     }
 
-    public function setGoogleRecaptchaSiteKey(string $google_recaptcha_site_key): self
+    public function setGoogleRecaptchaSiteKey(?string $google_recaptcha_site_key): self
     {
         $this->google_recaptcha_site_key = $google_recaptcha_site_key;
 

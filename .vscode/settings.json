@@ -1,4 +1,11 @@
 {
-  "cSpell.words": ["easyforms", "Laravel", "Packagist", "plustime", "Vuetify"],
+  "cSpell.words": [
+    "easyforms",
+    "Laravel",
+    "Packagist",
+    "plustime",
+    "Recaptcha",
+    "Vuetify"
+  ],
   "phpFileRefactoring.safeRefactoring": true
 }

@@ -12,7 +12,11 @@ abstract class EasyForm implements \PlusTimeIT\EasyForms\Interfaces\FormInterfac
     public function __construct()
     {
         return $this
-            ->setGoogleRecaptchaSiteKey(config('easyforms.form.google_recaptcha.site_key'))
+            ->setGoogleRecaptchaSiteKey(
+                config('easyforms.form.google_recaptcha.mode') === 'global'
+                    ? config('easyforms.form.google_recaptcha.site_key')
+                    : null
+            )
             ->setLoader(
                 \PlusTimeIT\EasyForms\Elements\FormLoader::make()
                     ->setType(
