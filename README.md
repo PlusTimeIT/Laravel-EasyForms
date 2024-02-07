@@ -1,6 +1,6 @@
 # Laravel EasyForms
 
-<p style="text-align: center;">
+<center>
 
 ![Laravel EasyForms Logo](/src/Docs/assets/Laravel%20EasyForms%20Logo.png)
 
@@ -9,7 +9,7 @@
 [![Documentation Badge](./badges/documentation.svg)](https://plustimeit.github.io/Laravel-EasyForms/)
 [![Made By](./badges/madeby.svg)](https://plustime.com.au)
 
-</p>
+</center>
 
 - > [Documentation](https://plustimeit.github.io/Laravel-EasyForms/)
 - > [Packagist](https://packagist.org/packages/plustime-it/laravel-easyforms)
