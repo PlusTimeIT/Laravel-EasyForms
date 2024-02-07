@@ -1,13 +1,13 @@
 # Laravel EasyForms
 
-<div style="text-align:center">
+<p style="text-align: center;">
 
 ![Laravel EasyForms Logo](/src/Docs/assets/Laravel%20EasyForms%20Logo.png)
 
-[![Version Badge](./badges/version.svg)]
-[![License Badge](./badges/license.svg)]
+![Version Badge](./badges/version.svg)
+![License Badge](./badges/license.svg)
 
-</div>
+</p>
 
 - > [Documentation](https://plustimeit.github.io/Laravel-EasyForms/)
 - > [Packagist](https://packagist.org/packages/plustime-it/laravel-easyforms)
