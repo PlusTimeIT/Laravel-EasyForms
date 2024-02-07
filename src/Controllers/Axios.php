@@ -23,11 +23,11 @@ class Axios extends \Illuminate\Routing\Controller
         } catch (\Exception $e) {
             return \PlusTimeIT\EasyForms\Elements\AxiosResponse::make()
                 ->failed()
-                ->data(config('app.debug') ? 'Form Error: '.$e->getMessage() : 'Unknown form data')
+                ->data(config('app.debug') ? 'Form Error: ' . $e->getMessage() : 'Unknown form data')
                 ->toJson();
         }
 
-        if (! $form->result()) {
+        if (!$form->result()) {
             return \PlusTimeIT\EasyForms\Elements\AxiosResponse::make()
                 ->failed()
                 ->redirect($form->getRedirect())
@@ -49,7 +49,7 @@ class Axios extends \Illuminate\Routing\Controller
      */
     public static function getFormClass(string $formName): string
     {
-        return config('easyforms.form.namespace').'\\'.str_replace('-', '\\', $formName);
+        return config('easyforms.form.namespace') . '\\' . str_replace('-', '\\', $formName);
     }
 
     /**
@@ -63,11 +63,11 @@ class Axios extends \Illuminate\Routing\Controller
         } catch (\Exception $e) {
             return \PlusTimeIT\EasyForms\Elements\AxiosResponse::make()
                 ->failed()
-                ->data(config('app.debug') ? 'Form Error: '.$e->getMessage() : 'Unknown form data')
+                ->data(config('app.debug') ? 'Form Error: ' . $e->getMessage() : 'Unknown form data')
                 ->toJson();
         }
 
-        if (! $load->result()) {
+        if (!$load->result()) {
             return \PlusTimeIT\EasyForms\Elements\AxiosResponse::make()
                 ->failed()
                 ->redirect($load->getRedirect())
@@ -91,7 +91,7 @@ class Axios extends \Illuminate\Routing\Controller
         $formClass = Axios::getFormClass($request->form_name);
         // load form to get default values and any rules that may have changed.
         $load = $formClass::load($request);
-        if (! $load->result()) {
+        if (!$load->result()) {
             return \PlusTimeIT\EasyForms\Elements\AxiosResponse::make()
                 ->failed()
                 ->redirect($load->getRedirect())
@@ -109,17 +109,17 @@ class Axios extends \Illuminate\Routing\Controller
 
         // check if form requires recaptcha verification.
         if ($form->getGoogleRecaptchaSiteKey()) {
-            $recaptcha = GoogleRecaptcha::verify($request);
+            $recaptcha = GoogleRecaptcha::verify($request, $form);
             if (is_array($recaptcha)) {
                 return \PlusTimeIT\EasyForms\Elements\AxiosResponse::make()
                     ->failed()
-                    ->data(config('app.debug') ? 'Recaptcha Errors: '.json_encode($recaptcha) : 'Unknown form data')
+                    ->data(config('app.debug') ? 'Recaptcha Errors: ' . json_encode($recaptcha) : 'Unknown form data')
                     ->toJson();
             }
         }
 
         $process = $form->process($request);
-        if (! $process->result()) {
+        if (!$process->result()) {
             return \PlusTimeIT\EasyForms\Elements\AxiosResponse::make()
                 ->failed()
                 ->data($process->getData())
