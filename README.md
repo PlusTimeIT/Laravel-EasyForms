@@ -14,7 +14,7 @@
 
 ## Note
 
-This package is considered the parent package to all development that covers both packages will be posted here.
+This package is considered the parent package. All development that covers both packages will be posted here.
 
 ## In Progress
 
