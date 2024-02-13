@@ -4,7 +4,7 @@ namespace PlusTimeIT\EasyForms\Fields;
 
 /**
  * Represents an autocomplete field in a form.
- * 
+ *
  * @extends \PlusTimeIT\EasyForms\Base\EasyField
  */
 class AutoCompleteField extends \PlusTimeIT\EasyForms\Base\EasyField

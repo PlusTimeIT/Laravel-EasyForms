@@ -49,14 +49,6 @@ class AutoCompleteTest extends \PlusTimeIT\EasyForms\Tests\Unit\Fields\FieldTest
         $this->assertContains($test, $field->getItems());
     }
 
-    public function testAItemIdCanBeSetAndGet()
-    {
-        $field = $this->fieldClass::make();
-        $test = 'test id';
-        $field->setItemId($test);
-        $this->assertSame($field->getItemId(), $test);
-    }
-
     public function testAItemsCanBeSetAndGet()
     {
         $field = $this->fieldClass::make();

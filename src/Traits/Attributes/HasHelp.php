@@ -21,7 +21,7 @@ trait HasHelp
         $defaultHelp = config('easyforms.defaults.help');
         $defaultHelp['position'] = $defaultHelp['position'] ?? 'append_inner_icon';
         $helpIcon = Icon::make()->setSize('small')->setIcon($defaultHelp['icon'] ?? 'mdi-help');
-        if (!$helpIcon->hasTooltip()) {
+        if (! $helpIcon->hasTooltip()) {
             $helpIcon->setTooltip(
                 Tooltip::make(['text' => $this->help])
             );
