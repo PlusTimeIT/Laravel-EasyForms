@@ -11,7 +11,7 @@ trait HasDotSize
         return $this->dot_size;
     }
 
-    public function setDotSize(int|string $dot_size): self
+    public function setDotSize(int|string $dot_size): static
     {
         $this->dot_size = $dot_size;
 

@@ -11,7 +11,7 @@ trait HasItemTitle
         return $this->item_title;
     }
 
-    public function setItemTitle(string $item_title): self
+    public function setItemTitle(string $item_title): static
     {
         $this->item_title = $item_title;
 

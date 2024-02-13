@@ -11,7 +11,7 @@ trait HasSuccess
         return $this->success;
     }
 
-    public function setSuccess(bool $success): self
+    public function setSuccess(bool $success): static
     {
         $this->success = $success;
 

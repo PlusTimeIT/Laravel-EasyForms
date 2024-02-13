@@ -11,7 +11,7 @@ trait HasPrefix
         return $this->prefix;
     }
 
-    public function setPrefix(string $prefix): self
+    public function setPrefix(string $prefix): static
     {
         $this->prefix = $prefix;
 

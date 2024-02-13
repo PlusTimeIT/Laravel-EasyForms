@@ -13,7 +13,7 @@ trait HasMenuIcon
         return $this->menu_icon;
     }
 
-    public function setMenuIcon(Icon|string $menu_icon): self
+    public function setMenuIcon(Icon|string $menu_icon): static
     {
         $this->menu_icon = $menu_icon;
 

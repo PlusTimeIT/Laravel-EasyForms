@@ -11,7 +11,7 @@ trait HasMinWidth
         return $this->min_width;
     }
 
-    public function setMinWidth(string|int $min_width): self
+    public function setMinWidth(string|int $min_width): static
     {
         $this->min_width = $min_width;
 

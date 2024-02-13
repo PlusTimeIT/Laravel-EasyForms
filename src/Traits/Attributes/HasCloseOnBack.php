@@ -11,7 +11,7 @@ trait HasCloseOnBack
         return $this->close_on_back;
     }
 
-    public function setCloseOnBack(bool $close_on_back): self
+    public function setCloseOnBack(bool $close_on_back): static
     {
         $this->close_on_back = $close_on_back;
 

@@ -11,7 +11,7 @@ trait HasAutoGrow
         return $this->auto_grow;
     }
 
-    public function setAutoGrow(bool $auto_grow): self
+    public function setAutoGrow(bool $auto_grow): static
     {
         $this->auto_grow = $auto_grow;
 

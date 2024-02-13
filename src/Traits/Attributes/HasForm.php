@@ -9,7 +9,7 @@ trait HasForm
 {
     protected InputForm|ActionForm|null $form;
 
-    public function form(InputForm|ActionForm $form): self
+    public function form(InputForm|ActionForm $form): static
     {
         return $this->setForm($form);
     }
@@ -19,7 +19,7 @@ trait HasForm
         return $this->form;
     }
 
-    public function setForm(InputForm|ActionForm $form): self
+    public function setForm(InputForm|ActionForm $form): static
     {
         $this->form = $form;
 

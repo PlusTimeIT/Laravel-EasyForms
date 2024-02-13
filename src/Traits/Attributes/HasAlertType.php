@@ -13,7 +13,7 @@ trait HasAlertType
         return $this->type;
     }
 
-    public function setType(AlertTypes $type): self
+    public function setType(AlertTypes $type): static
     {
         $this->type = $type;
 

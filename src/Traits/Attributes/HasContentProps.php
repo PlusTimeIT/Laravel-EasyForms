@@ -11,7 +11,7 @@ trait HasContentProps
         return $this->content_props;
     }
 
-    public function setContentProps(mixed $content_props): self
+    public function setContentProps(mixed $content_props): static
     {
         $this->content_props = $content_props;
 

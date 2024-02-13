@@ -11,7 +11,7 @@ trait HasRows
         return $this->rows;
     }
 
-    public function setRows(int|string $rows): self
+    public function setRows(int|string $rows): static
     {
         $this->rows = $rows;
 

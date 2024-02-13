@@ -11,7 +11,7 @@ trait HasMaxLength
         return $this->maxlength;
     }
 
-    public function setMaxLength(?int $maxlength): self
+    public function setMaxLength(?int $maxlength): static
     {
         $this->maxlength = $maxlength;
 

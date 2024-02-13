@@ -11,7 +11,7 @@ trait HasBorderColor
         return $this->border_color;
     }
 
-    public function setBorderColor(string $border_color): self
+    public function setBorderColor(string $border_color): static
     {
         $this->border_color = $border_color;
 

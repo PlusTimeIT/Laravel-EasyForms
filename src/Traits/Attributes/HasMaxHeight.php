@@ -11,7 +11,7 @@ trait HasMaxHeight
         return $this->max_height;
     }
 
-    public function setMaxHeight(string|int $max_height): self
+    public function setMaxHeight(string|int $max_height): static
     {
         $this->max_height = $max_height;
 

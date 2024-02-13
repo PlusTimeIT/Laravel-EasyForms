@@ -11,7 +11,7 @@ trait HasFilterKeys
         return $this->filter_keys;
     }
 
-    public function setFilterKeys(string|array $filter_keys): self
+    public function setFilterKeys(string|array $filter_keys): static
     {
         $this->filter_keys = $filter_keys;
 

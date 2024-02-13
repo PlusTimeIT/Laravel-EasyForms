@@ -11,7 +11,7 @@ trait HasOpenOnClear
         return $this->open_on_clear;
     }
 
-    public function setOpenOnClear(bool $open_on_clear): self
+    public function setOpenOnClear(bool $open_on_clear): static
     {
         $this->open_on_clear = $open_on_clear;
 

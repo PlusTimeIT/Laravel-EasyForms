@@ -11,7 +11,7 @@ trait HasOriginalText
         return $this->original_text;
     }
 
-    public function setOriginalText(string $original_text): self
+    public function setOriginalText(string $original_text): static
     {
         $this->original_text = $original_text;
 

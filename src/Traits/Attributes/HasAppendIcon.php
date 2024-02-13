@@ -13,7 +13,7 @@ trait HasAppendIcon
         return $this->append_icon;
     }
 
-    public function setAppendIcon(Icon|string $append_icon): self
+    public function setAppendIcon(Icon|string $append_icon): static
     {
         $this->append_icon = $append_icon;
 

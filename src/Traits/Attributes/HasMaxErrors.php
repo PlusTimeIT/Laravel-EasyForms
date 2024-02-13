@@ -11,7 +11,7 @@ trait HasMaxErrors
         return $this->max_errors;
     }
 
-    public function setMaxErrors(int|string $max_errors): self
+    public function setMaxErrors(int|string $max_errors): static
     {
         $this->max_errors = $max_errors;
 

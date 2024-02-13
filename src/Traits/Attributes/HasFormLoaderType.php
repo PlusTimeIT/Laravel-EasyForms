@@ -13,7 +13,7 @@ trait HasFormLoaderType
         return $this->type;
     }
 
-    public function setType(FormLoaderTypes $type): self
+    public function setType(FormLoaderTypes $type): static
     {
         $this->type = $type;
 

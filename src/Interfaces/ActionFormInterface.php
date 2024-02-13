@@ -8,9 +8,9 @@ interface ActionFormInterface
 
     public function getInline(): bool;
 
-    public function setActions(array $actions): self;
+    public function setActions(array $actions): static;
 
-    public function setInline(bool $inline): self;
+    public function setInline(bool $inline): static;
 
     public function toArray(): array;
 

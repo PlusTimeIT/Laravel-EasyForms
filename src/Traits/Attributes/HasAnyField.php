@@ -11,7 +11,7 @@ trait HasAnyField
         return $this->any_field;
     }
 
-    public function setAnyField(bool $any_field): self
+    public function setAnyField(bool $any_field): static
     {
         $this->any_field = $any_field;
 

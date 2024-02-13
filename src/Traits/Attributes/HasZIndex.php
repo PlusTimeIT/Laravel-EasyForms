@@ -11,7 +11,7 @@ trait HasZIndex
         return $this->z_index;
     }
 
-    public function setZIndex(string|int $z_index): self
+    public function setZIndex(string|int $z_index): static
     {
         $this->z_index = $z_index;
 

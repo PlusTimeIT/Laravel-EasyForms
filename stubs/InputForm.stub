@@ -142,7 +142,7 @@ final class <name> extends \PlusTimeIT\EasyForms\Base\InputForm
         return LoadResponse::make()->success()->form((new self())->preFill());
     }
 
-    public function preFill(): self
+    public function preFill(): static
     {
         // populate fields with data
         $data = [

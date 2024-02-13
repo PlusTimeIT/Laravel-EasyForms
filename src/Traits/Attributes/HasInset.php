@@ -11,7 +11,7 @@ trait HasInset
         return $this->inset;
     }
 
-    public function setInset(bool $inset): self
+    public function setInset(bool $inset): static
     {
         $this->inset = $inset;
 

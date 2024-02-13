@@ -13,7 +13,7 @@ trait HasDirection
         return $this->direction;
     }
 
-    public function setDirection(DirectionTypes $direction): self
+    public function setDirection(DirectionTypes $direction): static
     {
         $this->direction = $direction;
 

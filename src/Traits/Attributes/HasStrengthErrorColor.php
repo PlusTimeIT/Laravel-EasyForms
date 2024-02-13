@@ -11,7 +11,7 @@ trait HasStrengthErrorColor
         return $this->strength_error_color;
     }
 
-    public function setStrengthErrorColor(string $strength_error_color): self
+    public function setStrengthErrorColor(string $strength_error_color): static
     {
         $this->strength_error_color = $strength_error_color;
 

@@ -11,7 +11,7 @@ trait HasNoResize
         return $this->no_resize;
     }
 
-    public function setNoResize(bool $no_resize): self
+    public function setNoResize(bool $no_resize): static
     {
         $this->no_resize = $no_resize;
 

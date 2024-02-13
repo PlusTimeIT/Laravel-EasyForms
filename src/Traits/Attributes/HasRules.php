@@ -11,7 +11,7 @@ trait HasRules
         return $this->rules;
     }
 
-    public function setRules(array $rules): self
+    public function setRules(array $rules): static
     {
         $this->rules = $rules;
 

@@ -13,7 +13,7 @@ trait HasButton
         return $this->button;
     }
 
-    public function setButton(Button $button): self
+    public function setButton(Button $button): static
     {
         $this->button = $button;
 

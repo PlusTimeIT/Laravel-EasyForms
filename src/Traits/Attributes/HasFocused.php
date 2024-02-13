@@ -11,7 +11,7 @@ trait HasFocused
         return $this->focused;
     }
 
-    public function setFocused(bool $focused): self
+    public function setFocused(bool $focused): static
     {
         $this->focused = $focused;
 

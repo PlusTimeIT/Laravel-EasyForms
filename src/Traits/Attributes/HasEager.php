@@ -11,7 +11,7 @@ trait HasEager
         return $this->eager;
     }
 
-    public function setEager(bool $eager): self
+    public function setEager(bool $eager): static
     {
         $this->eager = $eager;
 

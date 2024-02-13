@@ -11,7 +11,7 @@ trait HasTheme
         return $this->theme;
     }
 
-    public function setTheme(string $theme): self
+    public function setTheme(string $theme): static
     {
         $this->theme = $theme;
 

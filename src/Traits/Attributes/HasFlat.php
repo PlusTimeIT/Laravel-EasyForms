@@ -11,7 +11,7 @@ trait HasFlat
         return $this->flat;
     }
 
-    public function setFlat(bool $flat): self
+    public function setFlat(bool $flat): static
     {
         $this->flat = $flat;
 

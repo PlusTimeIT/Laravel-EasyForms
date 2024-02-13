@@ -11,7 +11,7 @@ trait HasRounded
         return $this->rounded;
     }
 
-    public function setRounded(bool|string|int $rounded): self
+    public function setRounded(bool|string|int $rounded): static
     {
         $this->rounded = $rounded;
 

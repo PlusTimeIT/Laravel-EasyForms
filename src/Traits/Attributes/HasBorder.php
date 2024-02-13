@@ -11,7 +11,7 @@ trait HasBorder
         return $this->border;
     }
 
-    public function setBorder(string $border): self
+    public function setBorder(string $border): static
     {
         $this->border = $border;
 

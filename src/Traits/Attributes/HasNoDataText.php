@@ -11,7 +11,7 @@ trait HasNoDataText
         return $this->no_data_text;
     }
 
-    public function setNoDataText(string $no_data_text): self
+    public function setNoDataText(string $no_data_text): static
     {
         $this->no_data_text = $no_data_text;
 

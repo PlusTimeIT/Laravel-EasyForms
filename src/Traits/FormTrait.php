@@ -26,7 +26,7 @@ trait FormTrait
             $rules = [];
             collect($field->getRules())->each(function ($rule) use (&$rules) {
                 // if boolean check if true, if not skip it.
-                if ((is_bool($rule->getValue()) && $rule->getValue()) || ! is_bool($rule->getValue())) {
+                if ((is_bool($rule->getValue()) && $rule->getValue()) || !is_bool($rule->getValue())) {
                     $rules[] = (is_bool($rule->getValue()) ? $rule->getName() : implode(':', [$rule->getName(), $rule->getValue()]));
                 }
             });
@@ -40,10 +40,7 @@ trait FormTrait
         return LoadResponse::make()->success()->form(self::make());
     }
 
-    public static function process(request $request): ProcessResponse
-    {
-        return ProcessResponse::make()->success()->data('Form successfully processed.');
-    }
+    abstract static function process(request $request): ProcessResponse;
 
     public function validateRequest(request $request)
     {

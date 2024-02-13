@@ -11,7 +11,7 @@ trait HasClosableChips
         return $this->closable_chips;
     }
 
-    public function setClosableChips(bool $closable_chips): self
+    public function setClosableChips(bool $closable_chips): static
     {
         $this->closable_chips = $closable_chips;
 

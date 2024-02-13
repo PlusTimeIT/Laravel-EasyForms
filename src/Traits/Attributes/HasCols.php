@@ -11,7 +11,7 @@ trait HasCols
         return $this->cols;
     }
 
-    public function setCols(?int $cols): self
+    public function setCols(?int $cols): static
     {
         $this->cols = $cols;
 

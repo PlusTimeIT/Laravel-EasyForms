@@ -13,7 +13,7 @@ trait HasClearIcon
         return $this->clear_icon;
     }
 
-    public function setClearIcon(Icon|string $clear_icon): self
+    public function setClearIcon(Icon|string $clear_icon): static
     {
         $this->clear_icon = $clear_icon;
 

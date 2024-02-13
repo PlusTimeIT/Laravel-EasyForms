@@ -11,7 +11,7 @@ trait HasHeight
         return $this->height;
     }
 
-    public function setHeight(string|int $height): self
+    public function setHeight(string|int $height): static
     {
         $this->height = $height;
 

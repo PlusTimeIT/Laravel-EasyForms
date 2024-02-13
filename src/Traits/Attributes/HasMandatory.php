@@ -11,7 +11,7 @@ trait HasMandatory
         return $this->mandatory;
     }
 
-    public function setMandatory(bool $mandatory): self
+    public function setMandatory(bool $mandatory): static
     {
         $this->mandatory = $mandatory;
 

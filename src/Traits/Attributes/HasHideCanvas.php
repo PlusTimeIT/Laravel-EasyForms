@@ -11,7 +11,7 @@ trait HasHideCanvas
         return $this->hide_canvas;
     }
 
-    public function setHideCanvas(bool $hide_canvas): self
+    public function setHideCanvas(bool $hide_canvas): static
     {
         $this->hide_canvas = $hide_canvas;
 

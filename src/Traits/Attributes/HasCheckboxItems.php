@@ -10,7 +10,7 @@ trait HasCheckboxItems
 
     protected string $itemType = CheckboxItem::class;
 
-    public function addItem($item): self
+    public function addItem($item): static
     {
         $this->items[] = $item;
 
@@ -22,7 +22,7 @@ trait HasCheckboxItems
         return $this->items;
     }
 
-    public function setItems(array $items): self
+    public function setItems(array $items): static
     {
         $this->items = $items;
 

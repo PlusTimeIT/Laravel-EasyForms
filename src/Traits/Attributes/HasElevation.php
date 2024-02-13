@@ -11,7 +11,7 @@ trait HasElevation
         return $this->elevation;
     }
 
-    public function setElevation(int $elevation): self
+    public function setElevation(int $elevation): static
     {
         $this->elevation = $elevation;
 

@@ -19,7 +19,7 @@ trait HasProgress
         return $this->progress;
     }
 
-    public function setProgress(ProgressLinear|ProgressCircular $progress): self
+    public function setProgress(ProgressLinear|ProgressCircular $progress): static
     {
         $this->progress = $progress;
 

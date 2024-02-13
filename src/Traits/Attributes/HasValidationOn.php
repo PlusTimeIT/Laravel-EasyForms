@@ -13,7 +13,7 @@ trait HasValidationOn
         return $this->validate_on;
     }
 
-    public function setValidateOn(ValidationTriggers $validate_on): self
+    public function setValidateOn(ValidationTriggers $validate_on): static
     {
         $this->validate_on = $validate_on;
 

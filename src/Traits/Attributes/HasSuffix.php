@@ -11,7 +11,7 @@ trait HasSuffix
         return $this->suffix;
     }
 
-    public function setSuffix(string $suffix): self
+    public function setSuffix(string $suffix): static
     {
         $this->suffix = $suffix;
 

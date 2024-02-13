@@ -18,7 +18,7 @@ trait HasMode
         return $this->mode;
     }
 
-    public function setMode(ColorPickerModes $mode): self
+    public function setMode(ColorPickerModes $mode): static
     {
         $this->mode = $mode;
 

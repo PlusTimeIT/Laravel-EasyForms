@@ -11,7 +11,7 @@ trait HasStrengthSuccessText
         return $this->strength_success_text;
     }
 
-    public function setStrengthSuccessText(string $strength_success_text): self
+    public function setStrengthSuccessText(string $strength_success_text): static
     {
         $this->strength_success_text = $strength_success_text;
 

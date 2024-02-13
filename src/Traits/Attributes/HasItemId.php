@@ -11,7 +11,7 @@ trait HasItemId
         return $this->item_text;
     }
 
-    public function setItemId(string $id): self
+    public function setItemId(string $id): static
     {
         $this->item_text = $id;
 

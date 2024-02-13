@@ -20,7 +20,7 @@ class RadioGroupField extends \PlusTimeIT\EasyForms\Base\EasyField
     /**
      * Override trait so that we can cast this item.
      */
-    public function addItem(\PlusTimeIT\EasyForms\Elements\RadioItem $item): self
+    public function addItem(\PlusTimeIT\EasyForms\Elements\RadioItem $item): static
     {
         $this->items[] = $item;
 

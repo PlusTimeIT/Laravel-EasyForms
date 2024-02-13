@@ -11,7 +11,7 @@ trait HasPersistentPlaceholder
         return $this->persistent_placeholder;
     }
 
-    public function setPersistentPlaceholder(bool $persistent_placeholder): self
+    public function setPersistentPlaceholder(bool $persistent_placeholder): static
     {
         $this->persistent_placeholder = $persistent_placeholder;
 

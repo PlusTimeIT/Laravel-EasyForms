@@ -11,7 +11,7 @@ trait HasItemValue
         return $this->item_value;
     }
 
-    public function setItemValue(string $value): self
+    public function setItemValue(string $value): static
     {
         $this->item_value = $value;
 

@@ -11,7 +11,7 @@ trait HasContentPlaceholder
         return $this->content_placeholder;
     }
 
-    public function setContentPlaceholder(string $content_placeholder): self
+    public function setContentPlaceholder(string $content_placeholder): static
     {
         $this->content_placeholder = $content_placeholder;
 

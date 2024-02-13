@@ -18,7 +18,7 @@ trait HasPickerMenu
         return $this->menu;
     }
 
-    public function setMenu(PickerMenu $menu): self
+    public function setMenu(PickerMenu $menu): static
     {
         $this->menu = $menu;
 

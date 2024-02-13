@@ -11,7 +11,7 @@ trait HasNoTitle
         return $this->noTitle;
     }
 
-    public function setNoTitle(bool $noTitle): self
+    public function setNoTitle(bool $noTitle): static
     {
         $this->noTitle = $noTitle;
 

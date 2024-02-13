@@ -11,7 +11,7 @@ trait HasOpenOnFocus
         return $this->open_on_focus;
     }
 
-    public function setOpenOnFocus(bool $open_on_focus): self
+    public function setOpenOnFocus(bool $open_on_focus): static
     {
         $this->open_on_focus = $open_on_focus;
 

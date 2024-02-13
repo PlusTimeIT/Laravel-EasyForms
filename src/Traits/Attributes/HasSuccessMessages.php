@@ -11,7 +11,7 @@ trait HasSuccessMessages
         return $this->success_messages;
     }
 
-    public function setSuccessMessages(array|string $success_messages): self
+    public function setSuccessMessages(array|string $success_messages): static
     {
         $this->success_messages = $success_messages;
 

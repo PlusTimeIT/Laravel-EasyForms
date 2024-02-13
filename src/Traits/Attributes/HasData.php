@@ -6,7 +6,7 @@ trait HasData
 {
     protected mixed $data;
 
-    public function data(mixed $data): self
+    public function data(mixed $data): static
     {
         return $this->setData($data);
     }
@@ -16,7 +16,7 @@ trait HasData
         return $this->data;
     }
 
-    public function setData(mixed $data): self
+    public function setData(mixed $data): static
     {
         $this->data = $data;
 

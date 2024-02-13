@@ -11,7 +11,7 @@ trait HasShowTitle
         return $this->show_title;
     }
 
-    public function setShowTitle(bool $show_title): self
+    public function setShowTitle(bool $show_title): static
     {
         $this->show_title = $show_title;
 

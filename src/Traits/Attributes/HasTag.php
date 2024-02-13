@@ -11,7 +11,7 @@ trait HasTag
         return $this->tag;
     }
 
-    public function setTag(string $tag): self
+    public function setTag(string $tag): static
     {
         $this->tag = $tag;
 

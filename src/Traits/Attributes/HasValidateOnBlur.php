@@ -11,7 +11,7 @@ trait HasValidateOnBlur
         return $this->validate_on_blur;
     }
 
-    public function setValidateOnBlur(bool $validate_on_blur): self
+    public function setValidateOnBlur(bool $validate_on_blur): static
     {
         $this->validate_on_blur = $validate_on_blur;
 

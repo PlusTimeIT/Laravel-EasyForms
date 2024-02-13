@@ -11,7 +11,7 @@ trait HasProminent
         return $this->prominent;
     }
 
-    public function setProminent(bool $prominent): self
+    public function setProminent(bool $prominent): static
     {
         $this->prominent = $prominent;
 

@@ -16,7 +16,7 @@ trait HasButtonAlignRow
         return $this->button_align_row;
     }
 
-    public function setButtonAlignRow(string $button_align_row): self
+    public function setButtonAlignRow(string $button_align_row): static
     {
         $this->button_align_row = $button_align_row;
 

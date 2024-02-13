@@ -11,7 +11,7 @@ trait HasOpenOnClick
         return $this->open_on_click;
     }
 
-    public function setOpenOnClick(bool $open_on_click): self
+    public function setOpenOnClick(bool $open_on_click): static
     {
         $this->open_on_click = $open_on_click;
 

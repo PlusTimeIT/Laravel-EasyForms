@@ -18,7 +18,7 @@ trait HasAxios
         return $this->axios;
     }
 
-    public function setAxios(Axios $axios): self
+    public function setAxios(Axios $axios): static
     {
         $this->axios = $axios;
 

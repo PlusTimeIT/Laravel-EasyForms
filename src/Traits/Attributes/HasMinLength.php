@@ -11,7 +11,7 @@ trait HasMinLength
         return $this->min_length;
     }
 
-    public function setMinLength(string|int $min_length): self
+    public function setMinLength(string|int $min_length): static
     {
         $this->min_length = $min_length;
 

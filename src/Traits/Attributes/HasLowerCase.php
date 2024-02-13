@@ -11,7 +11,7 @@ trait HasLowerCase
         return $this->lower_case;
     }
 
-    public function setLowerCase(bool $lower_case): self
+    public function setLowerCase(bool $lower_case): static
     {
         $this->lower_case = $lower_case;
 

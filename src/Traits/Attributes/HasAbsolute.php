@@ -11,7 +11,7 @@ trait HasAbsolute
         return $this->absolute;
     }
 
-    public function setAbsolute(bool $absolute): self
+    public function setAbsolute(bool $absolute): static
     {
         $this->absolute = $absolute;
 

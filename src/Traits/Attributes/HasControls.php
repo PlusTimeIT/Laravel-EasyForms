@@ -11,7 +11,7 @@ trait HasControls
         return $this->controls;
     }
 
-    public function setControls(bool $controls): self
+    public function setControls(bool $controls): static
     {
         $this->controls = $controls;
 

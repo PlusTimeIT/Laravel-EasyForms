@@ -13,7 +13,7 @@ trait HasButtonVariant
         return $this->variant;
     }
 
-    public function setVariant(ButtonVariantTypes $variant): self
+    public function setVariant(ButtonVariantTypes $variant): static
     {
         $this->variant = $variant;
 

@@ -13,7 +13,7 @@ trait HasAppendInnerIcon
         return $this->append_inner_icon;
     }
 
-    public function setAppendInnerIcon(Icon|string $append_inner_icon): self
+    public function setAppendInnerIcon(Icon|string $append_inner_icon): static
     {
         $this->append_inner_icon = $append_inner_icon;
 

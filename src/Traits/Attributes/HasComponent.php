@@ -18,14 +18,14 @@ trait HasComponent
         return $this->component_type;
     }
 
-    public function setComponent(string $component): self
+    public function setComponent(string $component): static
     {
         $this->component = $component;
 
         return $this;
     }
 
-    public function setComponentType(string $component_type): self
+    public function setComponentType(string $component_type): static
     {
         $this->component_type = $component_type;
 

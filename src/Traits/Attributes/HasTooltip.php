@@ -18,7 +18,7 @@ trait HasTooltip
         return isset($this->tooltip);
     }
 
-    public function setTooltip(Tooltip $tooltip): self
+    public function setTooltip(Tooltip $tooltip): static
     {
         $this->tooltip = $tooltip;
 

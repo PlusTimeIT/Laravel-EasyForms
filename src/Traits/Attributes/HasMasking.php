@@ -11,7 +11,7 @@ trait HasMasking
         return $this->masking;
     }
 
-    public function setMasking(?string $masking): self
+    public function setMasking(?string $masking): static
     {
         $this->masking = $masking;
 

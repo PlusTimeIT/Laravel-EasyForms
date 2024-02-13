@@ -11,7 +11,7 @@ trait HasRole
         return $this->role;
     }
 
-    public function setRole(string $role): self
+    public function setRole(string $role): static
     {
         $this->role = $role;
 

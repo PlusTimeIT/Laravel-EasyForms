@@ -35,21 +35,21 @@ class ConditionItem
         return $this->operator;
     }
 
-    public function setAgainst($against): self
+    public function setAgainst($against): static
     {
         $this->against = $against;
 
         return $this;
     }
 
-    public function setCheck($check): self
+    public function setCheck($check): static
     {
         $this->check = $check;
 
         return $this;
     }
 
-    public function setOperator($operator): self
+    public function setOperator($operator): static
     {
         $this->operator = $operator;
 

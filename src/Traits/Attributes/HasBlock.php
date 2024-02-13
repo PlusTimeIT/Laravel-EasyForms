@@ -11,7 +11,7 @@ trait HasBlock
         return $this->block;
     }
 
-    public function setBlock(bool $block): self
+    public function setBlock(bool $block): static
     {
         $this->block = $block;
 

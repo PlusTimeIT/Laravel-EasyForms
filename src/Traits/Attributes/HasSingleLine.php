@@ -11,7 +11,7 @@ trait HasSingleLine
         return $this->single_line;
     }
 
-    public function setSingleLine(bool $single_line): self
+    public function setSingleLine(bool $single_line): static
     {
         $this->single_line = $single_line;
 

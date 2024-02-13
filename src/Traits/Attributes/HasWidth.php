@@ -11,7 +11,7 @@ trait HasWidth
         return $this->width;
     }
 
-    public function setWidth(string|int $width): self
+    public function setWidth(string|int $width): static
     {
         $this->width = $width;
 

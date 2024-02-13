@@ -11,7 +11,7 @@ trait HasScrim
         return $this->scrim;
     }
 
-    public function setScrim(string|bool $scrim): self
+    public function setScrim(string|bool $scrim): static
     {
         $this->scrim = $scrim;
 

@@ -11,7 +11,7 @@ trait HasOpenText
         return $this->open_text;
     }
 
-    public function setOpenText(string $open_text): self
+    public function setOpenText(string $open_text): static
     {
         $this->open_text = $open_text;
 

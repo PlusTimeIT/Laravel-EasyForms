@@ -11,7 +11,7 @@ trait HasEnd
         return $this->end;
     }
 
-    public function setEnd(bool $end): self
+    public function setEnd(bool $end): static
     {
         $this->end = $end;
 

@@ -11,7 +11,7 @@ trait HasMultiple
         return $this->multiple;
     }
 
-    public function setMultiple(bool $multiple): self
+    public function setMultiple(bool $multiple): static
     {
         $this->multiple = $multiple;
 

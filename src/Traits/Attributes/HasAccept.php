@@ -11,7 +11,7 @@ trait HasAccept
         return $this->accept;
     }
 
-    public function setAccept(string $accept): self
+    public function setAccept(string $accept): static
     {
         $this->accept = $accept;
 

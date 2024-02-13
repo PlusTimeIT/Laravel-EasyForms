@@ -11,14 +11,14 @@ trait HasFields
         return $this->fields;
     }
 
-    public function setFields(array $fields): self
+    public function setFields(array $fields): static
     {
         $this->fields = $fields;
 
         return $this->sortFields();
     }
 
-    public function sortFields(): self
+    public function sortFields(): static
     {
         $this->fields = collect($this->fields)->sortBy(fn ($field) => $field->getOrder())->values()->all();
 

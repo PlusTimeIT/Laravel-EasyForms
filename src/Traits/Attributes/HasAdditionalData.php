@@ -32,14 +32,14 @@ trait HasAdditionalData
         return $this->additional_load_data;
     }
 
-    public function setAdditionalData(array $additional_data): self
+    public function setAdditionalData(array $additional_data): static
     {
         $this->additional_data = $additional_data;
 
         return $this;
     }
 
-    public function setAdditionalLoadData(array $additional_load_data): self
+    public function setAdditionalLoadData(array $additional_load_data): static
     {
         $this->additional_load_data = $additional_load_data;
 

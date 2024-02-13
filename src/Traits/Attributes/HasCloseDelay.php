@@ -11,7 +11,7 @@ trait HasCloseDelay
         return $this->close_delay;
     }
 
-    public function setCloseDelay(string|int $close_delay): self
+    public function setCloseDelay(string|int $close_delay): static
     {
         $this->close_delay = $close_delay;
 

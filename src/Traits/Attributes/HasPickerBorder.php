@@ -16,7 +16,7 @@ trait HasPickerBorder
         return $this->border;
     }
 
-    public function setBorder(string|int|bool $border): self
+    public function setBorder(string|int|bool $border): static
     {
         $this->border = $border;
 

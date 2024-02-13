@@ -11,7 +11,7 @@ trait HasChips
         return $this->chips;
     }
 
-    public function setChips(bool $chips): self
+    public function setChips(bool $chips): static
     {
         $this->chips = $chips;
 

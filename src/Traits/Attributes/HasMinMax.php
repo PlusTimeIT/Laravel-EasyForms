@@ -18,14 +18,14 @@ trait HasMinMax
         return $this->min;
     }
 
-    public function setMax(int $max): self
+    public function setMax(int $max): static
     {
         $this->max = $max;
 
         return $this;
     }
 
-    public function setMin(int $min): self
+    public function setMin(int $min): static
     {
         $this->min = $min;
 

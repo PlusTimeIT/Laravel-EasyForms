@@ -11,7 +11,7 @@ trait HasSearch
         return $this->search;
     }
 
-    public function setSearch(string $search): self
+    public function setSearch(string $search): static
     {
         $this->search = $search;
 

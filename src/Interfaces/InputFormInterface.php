@@ -10,9 +10,9 @@ interface InputFormInterface
 
     public function getFields(): array;
 
-    public function setFields(array $fields): self;
+    public function setFields(array $fields): static;
 
-    public function sortFields(): self;
+    public function sortFields(): static;
 
     public function toArray(): array;
 

@@ -11,7 +11,7 @@ trait HasViewMode
         return $this->view_mode;
     }
 
-    public function setViewMode(bool $view_mode): self
+    public function setViewMode(bool $view_mode): static
     {
         $this->view_mode = $view_mode;
 

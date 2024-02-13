@@ -11,7 +11,7 @@ trait HasTile
         return $this->tile;
     }
 
-    public function setTile(bool $tile): self
+    public function setTile(bool $tile): static
     {
         $this->tile = $tile;
 

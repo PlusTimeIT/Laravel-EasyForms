@@ -17,7 +17,7 @@ trait HasAlerts
         return $this->alerts;
     }
 
-    public function setAlerts(array $alerts): self
+    public function setAlerts(array $alerts): static
     {
         $this->alerts = $alerts;
 

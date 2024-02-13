@@ -32,7 +32,7 @@ class Icon
         return $this->icon;
     }
 
-    public function setIcon(string $icon): self
+    public function setIcon(string $icon): static
     {
         $this->icon = $icon;
 

@@ -8,7 +8,7 @@ trait HasHeaders
 {
     protected array $headers = [];
 
-    public function addHeaders(Header $header): self
+    public function addHeaders(Header $header): static
     {
         $this->headers[] = $header;
 
@@ -20,7 +20,7 @@ trait HasHeaders
         return $this->headers;
     }
 
-    public function setHeaders(array $headers): self
+    public function setHeaders(array $headers): static
     {
         $this->headers = $headers;
 

@@ -11,7 +11,7 @@ trait HasPersistentClear
         return $this->persistent_clear;
     }
 
-    public function setPersistentClear(bool $persistent_clear): self
+    public function setPersistentClear(bool $persistent_clear): static
     {
         $this->persistent_clear = $persistent_clear;
 

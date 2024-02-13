@@ -13,7 +13,7 @@ trait HasTextField
         return $this->textfield;
     }
 
-    public function setTextfield(TextField $textfield): self
+    public function setTextfield(TextField $textfield): static
     {
         $this->textfield = $textfield;
 

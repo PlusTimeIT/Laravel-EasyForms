@@ -11,7 +11,7 @@ trait HasDataCallback
         return $this->data_callback;
     }
 
-    public function setDataCallback(string $data_callback): self
+    public function setDataCallback(string $data_callback): static
     {
         $this->data_callback = $data_callback;
 

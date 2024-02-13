@@ -11,7 +11,7 @@ trait HasStep
         return $this->step;
     }
 
-    public function setStep(float $step): self
+    public function setStep(float $step): static
     {
         $this->step = $step;
 

@@ -11,7 +11,7 @@ trait HasStream
         return $this->stream;
     }
 
-    public function setStream(bool $stream): self
+    public function setStream(bool $stream): static
     {
         $this->stream = $stream;
 

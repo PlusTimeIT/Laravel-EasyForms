@@ -11,7 +11,7 @@ trait HasOrder
         return $this->order;
     }
 
-    public function setOrder(int $order): self
+    public function setOrder(int $order): static
     {
         $this->order = $order;
 

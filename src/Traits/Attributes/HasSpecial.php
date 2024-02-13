@@ -11,7 +11,7 @@ trait HasSpecial
         return $this->special;
     }
 
-    public function setSpecial(bool $special): self
+    public function setSpecial(bool $special): static
     {
         $this->special = $special;
 

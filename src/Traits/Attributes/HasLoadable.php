@@ -11,7 +11,7 @@ trait HasLoadable
         return call_user_func($this->loadable, $args);
     }
 
-    public function loadItems(\Closure $closure): self
+    public function loadItems(\Closure $closure): static
     {
         $this->loadable = $closure;
 

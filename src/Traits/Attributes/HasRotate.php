@@ -16,7 +16,7 @@ trait HasRotate
         return $this->rotate;
     }
 
-    public function setRotate(string|int $rotate): self
+    public function setRotate(string|int $rotate): static
     {
         $this->rotate = $rotate;
 

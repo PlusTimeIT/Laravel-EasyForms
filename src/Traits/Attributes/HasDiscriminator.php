@@ -14,7 +14,7 @@ trait HasDiscriminator
         return $this->discriminator;
     }
 
-    public function setDiscriminator(string $discriminator): self
+    public function setDiscriminator(string $discriminator): static
     {
         $this->discriminator = $discriminator;
 

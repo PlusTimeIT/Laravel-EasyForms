@@ -11,7 +11,7 @@ trait HasHref
         return $this->href;
     }
 
-    public function setHref(string $href): self
+    public function setHref(string $href): static
     {
         $this->href = $href;
 

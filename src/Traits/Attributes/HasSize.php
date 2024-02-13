@@ -11,7 +11,7 @@ trait HasSize
         return $this->size;
     }
 
-    public function setSize(string $size): self
+    public function setSize(string $size): static
     {
         $this->size = $size;
 

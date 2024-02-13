@@ -11,7 +11,7 @@ trait HasNoFilter
         return $this->no_filter;
     }
 
-    public function setNoFilter(bool $no_filter): self
+    public function setNoFilter(bool $no_filter): static
     {
         $this->no_filter = $no_filter;
 

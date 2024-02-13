@@ -11,7 +11,7 @@ trait HasClasses
         return $this->classes;
     }
 
-    public function setClasses(string $classes): self
+    public function setClasses(string $classes): static
     {
         $this->classes = $classes;
 

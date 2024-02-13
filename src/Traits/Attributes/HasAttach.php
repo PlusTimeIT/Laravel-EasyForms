@@ -11,7 +11,7 @@ trait HasAttach
         return $this->attach;
     }
 
-    public function setAttach(string|bool $attach): self
+    public function setAttach(string|bool $attach): static
     {
         $this->attach = $attach;
 

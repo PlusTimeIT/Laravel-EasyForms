@@ -11,7 +11,7 @@ trait HasTransition
         return $this->transition;
     }
 
-    public function setTransition(string $transition): self
+    public function setTransition(string $transition): static
     {
         $this->transition = $transition;
 

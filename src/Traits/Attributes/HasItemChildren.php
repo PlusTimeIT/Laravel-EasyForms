@@ -11,7 +11,7 @@ trait HasItemChildren
         return $this->item_children;
     }
 
-    public function setItemChildren(bool|string $item_children): self
+    public function setItemChildren(bool|string $item_children): static
     {
         $this->item_children = $item_children;
 

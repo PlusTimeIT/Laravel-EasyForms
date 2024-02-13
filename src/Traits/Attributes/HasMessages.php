@@ -11,7 +11,7 @@ trait HasMessages
         return $this->messages;
     }
 
-    public function setMessages(array|string $messages): self
+    public function setMessages(array|string $messages): static
     {
         $this->messages = $messages;
 

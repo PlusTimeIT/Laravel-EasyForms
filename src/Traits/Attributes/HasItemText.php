@@ -11,7 +11,7 @@ trait HasItemText
         return $this->item_text;
     }
 
-    public function setItemText(string $text): self
+    public function setItemText(string $text): static
     {
         $this->item_text = $text;
 

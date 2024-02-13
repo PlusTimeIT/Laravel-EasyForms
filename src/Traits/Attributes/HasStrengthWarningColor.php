@@ -11,7 +11,7 @@ trait HasStrengthWarningColor
         return $this->strength_warning_color;
     }
 
-    public function setStrengthWarningColor(string $strength_warning_color): self
+    public function setStrengthWarningColor(string $strength_warning_color): static
     {
         $this->strength_warning_color = $strength_warning_color;
 

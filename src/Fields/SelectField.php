@@ -17,13 +17,7 @@ class SelectField extends \PlusTimeIT\EasyForms\Base\EasyField
     use \PlusTimeIT\EasyForms\Traits\Attributes\HasDirection;
     use \PlusTimeIT\EasyForms\Traits\Attributes\HasHideNoData;
     use \PlusTimeIT\EasyForms\Traits\Attributes\HasHideSelected;
-    use \PlusTimeIT\EasyForms\Traits\Attributes\HasItemChildren;
-    use \PlusTimeIT\EasyForms\Traits\Attributes\HasItemColor;
-    use \PlusTimeIT\EasyForms\Traits\Attributes\HasItemId;
-    use \PlusTimeIT\EasyForms\Traits\Attributes\HasItemProps;
     use \PlusTimeIT\EasyForms\Traits\Attributes\HasItems;
-    use \PlusTimeIT\EasyForms\Traits\Attributes\HasItemTitle;
-    use \PlusTimeIT\EasyForms\Traits\Attributes\HasItemValue;
     use \PlusTimeIT\EasyForms\Traits\Attributes\HasLoadable;
     use \PlusTimeIT\EasyForms\Traits\Attributes\HasMenu;
     use \PlusTimeIT\EasyForms\Traits\Attributes\HasMenuIcon;
@@ -44,7 +38,7 @@ class SelectField extends \PlusTimeIT\EasyForms\Base\EasyField
 
     protected string $type = 'select';
 
-    public function addItem(\PlusTimeIT\EasyForms\Elements\SelectItem $item): self
+    public function addItem(\PlusTimeIT\EasyForms\Elements\SelectItem $item): static
     {
         $this->items[] = $item;
 

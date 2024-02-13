@@ -11,7 +11,7 @@ trait HasRoundedBar
         return $this->rounded_bar;
     }
 
-    public function setRoundedBar(bool $rounded_bar): self
+    public function setRoundedBar(bool $rounded_bar): static
     {
         $this->rounded_bar = $rounded_bar;
 

@@ -11,7 +11,7 @@ trait HasCloseOnContentClick
         return $this->close_on_content_click;
     }
 
-    public function setCloseOnContentClick(bool $close_on_content_click): self
+    public function setCloseOnContentClick(bool $close_on_content_click): static
     {
         $this->close_on_content_click = $close_on_content_click;
 

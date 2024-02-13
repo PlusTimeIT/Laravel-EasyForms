@@ -6,7 +6,7 @@ trait HasResult
 {
     protected bool $result;
 
-    public function failed(): self
+    public function failed(): static
     {
         return $this->setResult(false);
     }
@@ -21,14 +21,14 @@ trait HasResult
         return $this->result;
     }
 
-    public function setResult(bool $result): self
+    public function setResult(bool $result): static
     {
         $this->result = $result;
 
         return $this;
     }
 
-    public function success(): self
+    public function success(): static
     {
         return $this->setResult(true);
     }

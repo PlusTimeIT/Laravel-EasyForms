@@ -11,7 +11,7 @@ trait HasJustify
         return $this->justify;
     }
 
-    public function setJustify(string $justify): self
+    public function setJustify(string $justify): static
     {
         $this->justify = $justify;
 

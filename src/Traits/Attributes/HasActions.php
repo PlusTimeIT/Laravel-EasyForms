@@ -16,7 +16,7 @@ trait HasActions
         return $this->actions;
     }
 
-    public function setActions(array $actions): self
+    public function setActions(array $actions): static
     {
         $this->actions = $actions;
 

@@ -11,7 +11,7 @@ trait HasStrengthWarningText
         return $this->strength_warning_text;
     }
 
-    public function setStrengthWarningText(string $strength_warning_text): self
+    public function setStrengthWarningText(string $strength_warning_text): static
     {
         $this->strength_warning_text = $strength_warning_text;
 

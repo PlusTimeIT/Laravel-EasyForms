@@ -11,7 +11,7 @@ trait HasShowSize
         return $this->show_size;
     }
 
-    public function setShowSize(bool $show_size): self
+    public function setShowSize(bool $show_size): static
     {
         $this->show_size = $show_size;
 

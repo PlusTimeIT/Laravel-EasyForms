@@ -22,7 +22,7 @@ class CheckboxGroupField extends \PlusTimeIT\EasyForms\Base\EasyField
     /**
      * Override trait so that we can cast this item.
      */
-    public function addItem(\PlusTimeIT\EasyForms\Elements\CheckboxItem $item): self
+    public function addItem(\PlusTimeIT\EasyForms\Elements\CheckboxItem $item): static
     {
         $this->items[] = $item;
 

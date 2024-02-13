@@ -11,7 +11,7 @@ trait HasTrueValue
         return $this->true_value;
     }
 
-    public function setTrueValue(mixed $true_value): self
+    public function setTrueValue(mixed $true_value): static
     {
         $this->true_value = $true_value;
 

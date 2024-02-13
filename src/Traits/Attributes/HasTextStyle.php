@@ -11,7 +11,7 @@ trait HasTextStyle
         return $this->text_style;
     }
 
-    public function setTextStyle(bool $text_style): self
+    public function setTextStyle(bool $text_style): static
     {
         $this->text_style = $text_style;
 

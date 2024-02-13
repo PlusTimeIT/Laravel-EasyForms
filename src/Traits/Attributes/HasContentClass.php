@@ -11,7 +11,7 @@ trait HasContentClass
         return $this->content_class;
     }
 
-    public function setContentClass(mixed $content_class): self
+    public function setContentClass(mixed $content_class): static
     {
         $this->content_class = $content_class;
 

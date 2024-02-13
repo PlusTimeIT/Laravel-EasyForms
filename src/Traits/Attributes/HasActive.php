@@ -16,7 +16,7 @@ trait HasActive
         return $this->active;
     }
 
-    public function setActive(bool $active): self
+    public function setActive(bool $active): static
     {
         $this->active = $active;
 

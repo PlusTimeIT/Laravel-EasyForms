@@ -18,7 +18,7 @@ trait HasRequireConfirmation
         return $this->require_confirmation;
     }
 
-    public function setRequireConfirmation(bool $require_confirmation): self
+    public function setRequireConfirmation(bool $require_confirmation): static
     {
         $this->require_confirmation = $require_confirmation;
 

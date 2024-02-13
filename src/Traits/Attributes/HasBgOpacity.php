@@ -11,7 +11,7 @@ trait HasBgOpacity
         return $this->bg_opacity;
     }
 
-    public function setBgOpacity(string|int $bg_opacity): self
+    public function setBgOpacity(string|int $bg_opacity): static
     {
         $this->bg_opacity = $bg_opacity;
 

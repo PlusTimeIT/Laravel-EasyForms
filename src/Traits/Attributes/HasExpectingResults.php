@@ -11,7 +11,7 @@ trait HasExpectingResults
         return $this->expecting_results;
     }
 
-    public function setExpectingResults(bool $expecting_results): self
+    public function setExpectingResults(bool $expecting_results): static
     {
         $this->expecting_results = $expecting_results;
 

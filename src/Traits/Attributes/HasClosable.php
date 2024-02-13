@@ -27,21 +27,21 @@ trait HasClosable
         return $this->close_label;
     }
 
-    public function setClosable(bool $closable): self
+    public function setClosable(bool $closable): static
     {
         $this->closable = $closable;
 
         return $this;
     }
 
-    public function setCloseIcon(Icon|string $close_icon): self
+    public function setCloseIcon(Icon|string $close_icon): static
     {
         $this->close_icon = $close_icon;
 
         return $this;
     }
 
-    public function setCloseLabel(string $close_label): self
+    public function setCloseLabel(string $close_label): static
     {
         $this->close_label = $close_label;
 

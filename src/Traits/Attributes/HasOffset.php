@@ -11,7 +11,7 @@ trait HasOffset
         return $this->offset;
     }
 
-    public function setOffset(int|string $offset): self
+    public function setOffset(int|string $offset): static
     {
         $this->offset = $offset;
 

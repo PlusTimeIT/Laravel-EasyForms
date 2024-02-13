@@ -11,7 +11,7 @@ trait HasNumbers
         return $this->numbers;
     }
 
-    public function setNumbers(bool $numbers): self
+    public function setNumbers(bool $numbers): static
     {
         $this->numbers = $numbers;
 

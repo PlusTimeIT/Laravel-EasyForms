@@ -11,7 +11,7 @@ trait HasAutoCloseTimer
         return $this->auto_close_timer;
     }
 
-    public function setAutoCloseTimer(int $auto_close_timer): self
+    public function setAutoCloseTimer(int $auto_close_timer): static
     {
         $this->auto_close_timer = $auto_close_timer;
 

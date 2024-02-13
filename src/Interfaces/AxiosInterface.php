@@ -12,7 +12,7 @@ interface AxiosInterface
 
     public function getMultiPart(): bool;
 
-    public static function make(): self;
+    public static function make(): static;
 
     public function setExpectingResults(bool $expecting_results);
 

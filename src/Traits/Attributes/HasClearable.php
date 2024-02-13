@@ -13,7 +13,7 @@ trait HasClearable
         return $this->clearable;
     }
 
-    public function setClearable(bool $clearable): self
+    public function setClearable(bool $clearable): static
     {
         $this->clearable = $clearable;
 

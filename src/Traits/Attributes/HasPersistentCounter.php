@@ -11,7 +11,7 @@ trait HasPersistentCounter
         return $this->persistent_counter;
     }
 
-    public function setPersistentCounter(bool $persistent_counter): self
+    public function setPersistentCounter(bool $persistent_counter): static
     {
         $this->persistent_counter = $persistent_counter;
 

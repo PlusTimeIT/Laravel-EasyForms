@@ -11,7 +11,7 @@ trait HasPersistentHint
         return $this->persistent_hint;
     }
 
-    public function setPersistentHint(bool $persistent_hint): self
+    public function setPersistentHint(bool $persistent_hint): static
     {
         $this->persistent_hint = $persistent_hint;
 

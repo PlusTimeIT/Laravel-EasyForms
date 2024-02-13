@@ -11,7 +11,7 @@ trait HasCounter
         return $this->counter;
     }
 
-    public function setCounter(string $counter): self
+    public function setCounter(string $counter): static
     {
         $this->counter = $counter;
 

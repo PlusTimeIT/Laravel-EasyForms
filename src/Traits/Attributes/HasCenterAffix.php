@@ -11,7 +11,7 @@ trait HasCenterAffix
         return $this->center_affix;
     }
 
-    public function setCenterAffix(bool $center_affix): self
+    public function setCenterAffix(bool $center_affix): static
     {
         $this->center_affix = $center_affix;
 

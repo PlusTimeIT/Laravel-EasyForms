@@ -13,7 +13,7 @@ trait HasFilterMode
         return $this->filter_mode;
     }
 
-    public function setFilterMode(FilterModeTypes $filter_mode): self
+    public function setFilterMode(FilterModeTypes $filter_mode): static
     {
         $this->filter_mode = $filter_mode;
 

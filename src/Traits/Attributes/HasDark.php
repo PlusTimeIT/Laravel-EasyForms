@@ -11,7 +11,7 @@ trait HasDark
         return $this->dark;
     }
 
-    public function setDark(bool $dark): self
+    public function setDark(bool $dark): static
     {
         $this->dark = $dark;
 

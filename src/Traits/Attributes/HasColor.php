@@ -11,7 +11,7 @@ trait HasColor
         return $this->color;
     }
 
-    public function setColor(string $color): self
+    public function setColor(string $color): static
     {
         $this->color = $color;
 

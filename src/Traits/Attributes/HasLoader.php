@@ -11,12 +11,12 @@ trait HasLoader
         return $this->loader;
     }
 
-    public function keepLoader(): self
+    public function keepLoader(): static
     {
         return $this->setLoader(true);
     }
 
-    public function setLoader(bool $loader): self
+    public function setLoader(bool $loader): static
     {
         $this->loader = $loader;
 

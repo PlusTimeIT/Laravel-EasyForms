@@ -11,7 +11,7 @@ trait HasBaseColor
         return $this->base_color;
     }
 
-    public function setBaseColor(string $base_color): self
+    public function setBaseColor(string $base_color): static
     {
         $this->base_color = $base_color;
 

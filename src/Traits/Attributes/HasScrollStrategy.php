@@ -18,7 +18,7 @@ trait HasScrollStrategy
         return $this->scroll_strategy;
     }
 
-    public function setScrollStrategy(ScrollStrategyTypes $scroll_strategy): self
+    public function setScrollStrategy(ScrollStrategyTypes $scroll_strategy): static
     {
         $this->scroll_strategy = $scroll_strategy;
 

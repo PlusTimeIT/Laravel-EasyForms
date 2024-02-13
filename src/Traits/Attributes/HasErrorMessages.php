@@ -11,7 +11,7 @@ trait HasErrorMessages
         return $this->error_messages;
     }
 
-    public function setErrorMessages(array|string $error_messages): self
+    public function setErrorMessages(array|string $error_messages): static
     {
         $this->error_messages = $error_messages;
 

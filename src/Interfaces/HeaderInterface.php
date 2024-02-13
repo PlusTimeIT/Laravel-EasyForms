@@ -8,9 +8,9 @@ interface HeaderInterface
 
     public function getValue(): mixed;
 
-    public function setKey(string $string): self;
+    public function setKey(string $string): static;
 
-    public function setValue(mixed $value): self;
+    public function setValue(mixed $value): static;
 
     public function toArray(): array;
 

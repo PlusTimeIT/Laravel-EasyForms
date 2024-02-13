@@ -16,7 +16,7 @@ trait HasButtonJustifyRow
         return $this->button_justify_row;
     }
 
-    public function setButtonJustifyRow(string $button_justify_row): self
+    public function setButtonJustifyRow(string $button_justify_row): static
     {
         $this->button_justify_row = $button_justify_row;
 

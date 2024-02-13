@@ -11,7 +11,7 @@ trait HasPlaceholder
         return $this->placeholder;
     }
 
-    public function setPlaceholder(string $placeholder): self
+    public function setPlaceholder(string $placeholder): static
     {
         $this->placeholder = $placeholder;
 

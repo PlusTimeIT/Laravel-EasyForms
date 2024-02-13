@@ -11,7 +11,7 @@ trait HasItemProps
         return $this->item_props;
     }
 
-    public function setItemProps(bool|string $item_props): self
+    public function setItemProps(bool|string $item_props): static
     {
         $this->item_props = $item_props;
 

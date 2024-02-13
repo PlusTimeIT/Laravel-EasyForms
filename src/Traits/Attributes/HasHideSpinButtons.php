@@ -11,7 +11,7 @@ trait HasHideSpinButtons
         return $this->hide_spin_buttons;
     }
 
-    public function setHideSpinButtons(bool $hide_spin_buttons): self
+    public function setHideSpinButtons(bool $hide_spin_buttons): static
     {
         $this->hide_spin_buttons = $hide_spin_buttons;
 

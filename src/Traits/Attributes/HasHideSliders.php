@@ -11,7 +11,7 @@ trait HasHideSliders
         return $this->hide_sliders;
     }
 
-    public function setHideSliders(bool $hide_sliders): self
+    public function setHideSliders(bool $hide_sliders): static
     {
         $this->hide_sliders = $hide_sliders;
 

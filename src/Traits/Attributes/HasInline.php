@@ -11,7 +11,7 @@ trait HasInline
         return $this->inline;
     }
 
-    public function setInline(bool $inline): self
+    public function setInline(bool $inline): static
     {
         $this->inline = $inline;
 

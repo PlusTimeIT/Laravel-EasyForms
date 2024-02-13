@@ -11,7 +11,7 @@ trait HasConditions
         return $this->conditions;
     }
 
-    public function setConditions(array $conditions): self
+    public function setConditions(array $conditions): static
     {
         $this->conditions = $conditions;
 

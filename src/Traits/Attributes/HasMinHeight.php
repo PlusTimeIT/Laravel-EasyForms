@@ -11,7 +11,7 @@ trait HasMinHeight
         return $this->min_height;
     }
 
-    public function setMinHeight(string|int $min_height): self
+    public function setMinHeight(string|int $min_height): static
     {
         $this->min_height = $min_height;
 

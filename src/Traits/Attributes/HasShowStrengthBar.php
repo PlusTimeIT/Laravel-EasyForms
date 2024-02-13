@@ -11,7 +11,7 @@ trait HasShowStrengthBar
         return $this->show_strength_bar;
     }
 
-    public function setShowStrengthBar(bool $show_strength_bar): self
+    public function setShowStrengthBar(bool $show_strength_bar): static
     {
         $this->show_strength_bar = $show_strength_bar;
 

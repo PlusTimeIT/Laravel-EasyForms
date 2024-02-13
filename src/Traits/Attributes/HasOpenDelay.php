@@ -11,7 +11,7 @@ trait HasOpenDelay
         return $this->open_delay;
     }
 
-    public function setOpenDelay(string|int $open_delay): self
+    public function setOpenDelay(string|int $open_delay): static
     {
         $this->open_delay = $open_delay;
 

@@ -11,7 +11,7 @@ trait HasErrorCount
         return $this->error_count;
     }
 
-    public function setErrorCount(int|string $error_count): self
+    public function setErrorCount(int|string $error_count): static
     {
         $this->error_count = $error_count;
 

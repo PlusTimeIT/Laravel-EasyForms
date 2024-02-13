@@ -11,7 +11,7 @@ trait HasDisplay
         return $this->display;
     }
 
-    public function setDisplay(bool $display): self
+    public function setDisplay(bool $display): static
     {
         $this->display = $display;
 

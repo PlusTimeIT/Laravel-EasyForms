@@ -11,7 +11,7 @@ trait HasLight
         return $this->light;
     }
 
-    public function setLight(bool $light): self
+    public function setLight(bool $light): static
     {
         $this->light = $light;
 

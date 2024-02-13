@@ -11,7 +11,7 @@ trait HasHideNoData
         return $this->hide_no_data;
     }
 
-    public function setHideNoData(bool $hide_no_data): self
+    public function setHideNoData(bool $hide_no_data): static
     {
         $this->hide_no_data = $hide_no_data;
 

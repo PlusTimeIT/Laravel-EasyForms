@@ -11,7 +11,7 @@ trait HasStrengthErrorText
         return $this->strength_error_text;
     }
 
-    public function setStrengthErrorText(string $strength_error_text): self
+    public function setStrengthErrorText(string $strength_error_text): static
     {
         $this->strength_error_text = $strength_error_text;
 

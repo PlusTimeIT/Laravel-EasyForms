@@ -11,7 +11,7 @@ trait HasKey
         return $this->key;
     }
 
-    public function setKey(string $key): self
+    public function setKey(string $key): static
     {
         $this->key = $key;
 

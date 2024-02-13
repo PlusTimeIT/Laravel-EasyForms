@@ -11,7 +11,7 @@ trait HasInputValue
         return $this->input_value;
     }
 
-    public function setInputValue(mixed $input_value): self
+    public function setInputValue(mixed $input_value): static
     {
         $this->input_value = $input_value;
 

@@ -11,7 +11,7 @@ trait HasHideSelected
         return $this->hide_selected;
     }
 
-    public function setHideSelected(bool $hide_selected): self
+    public function setHideSelected(bool $hide_selected): static
     {
         $this->hide_selected = $hide_selected;
 

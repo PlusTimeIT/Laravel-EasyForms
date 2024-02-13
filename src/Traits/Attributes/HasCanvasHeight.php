@@ -11,7 +11,7 @@ trait HasCanvasHeight
         return $this->canvas_height;
     }
 
-    public function setCanvasHeight(string|int $canvas_height): self
+    public function setCanvasHeight(string|int $canvas_height): static
     {
         $this->canvas_height = $canvas_height;
 

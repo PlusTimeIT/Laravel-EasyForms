@@ -13,7 +13,7 @@ trait HasPrependIcon
         return $this->prepend_icon;
     }
 
-    public function setPrependIcon(Icon|string $prepend_icon): self
+    public function setPrependIcon(Icon|string $prepend_icon): static
     {
         $this->prepend_icon = $prepend_icon;
 

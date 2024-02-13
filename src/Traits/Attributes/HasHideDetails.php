@@ -11,7 +11,7 @@ trait HasHideDetails
         return $this->hide_details;
     }
 
-    public function setHideDetails(bool|string $hide_details): self
+    public function setHideDetails(bool|string $hide_details): static
     {
         $this->hide_details = $hide_details;
 

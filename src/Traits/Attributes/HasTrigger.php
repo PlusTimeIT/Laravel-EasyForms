@@ -13,7 +13,7 @@ trait HasTrigger
         return $this->trigger;
     }
 
-    public function setTrigger(AlertTriggers $trigger): self
+    public function setTrigger(AlertTriggers $trigger): static
     {
         $this->trigger = $trigger;
 

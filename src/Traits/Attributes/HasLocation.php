@@ -18,7 +18,7 @@ trait HasLocation
         return $this->location;
     }
 
-    public function setLocation(LocationTypes $location): self
+    public function setLocation(LocationTypes $location): static
     {
         $this->location = $location;
 

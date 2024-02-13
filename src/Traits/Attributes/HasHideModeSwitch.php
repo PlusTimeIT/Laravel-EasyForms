@@ -11,7 +11,7 @@ trait HasHideModeSwitch
         return $this->hide_mode_switch;
     }
 
-    public function setHideModeSwitch(bool $hide_mode_switch): self
+    public function setHideModeSwitch(bool $hide_mode_switch): static
     {
         $this->hide_mode_switch = $hide_mode_switch;
 

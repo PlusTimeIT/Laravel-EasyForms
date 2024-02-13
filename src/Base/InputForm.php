@@ -34,7 +34,6 @@ abstract class InputForm extends EasyForm implements \PlusTimeIT\EasyForms\Inter
 
                     return $field;
                 }
-
             )->toArray()
         );
     }

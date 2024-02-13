@@ -11,7 +11,7 @@ trait HasMaxRows
         return $this->max_rows;
     }
 
-    public function setMaxRows(int|string $max_rows): self
+    public function setMaxRows(int|string $max_rows): static
     {
         $this->max_rows = $max_rows;
 

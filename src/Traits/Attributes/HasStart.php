@@ -11,7 +11,7 @@ trait HasStart
         return $this->start;
     }
 
-    public function setStart(bool $start): self
+    public function setStart(bool $start): static
     {
         $this->start = $start;
 

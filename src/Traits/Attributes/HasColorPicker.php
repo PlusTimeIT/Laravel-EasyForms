@@ -18,7 +18,7 @@ trait HasColorPicker
         return $this->picker;
     }
 
-    public function setPicker(ColorPicker $picker): self
+    public function setPicker(ColorPicker $picker): static
     {
         $this->picker = $picker;
 

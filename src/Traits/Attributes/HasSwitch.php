@@ -13,7 +13,7 @@ trait HasSwitch
         return $this->switch;
     }
 
-    public function setSwitch(SwitchField $switch): self
+    public function setSwitch(SwitchField $switch): static
     {
         $this->switch = $switch;
 

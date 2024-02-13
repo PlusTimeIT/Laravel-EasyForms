@@ -11,7 +11,7 @@ trait HasStrengthSuccessColor
         return $this->strength_success_color;
     }
 
-    public function setStrengthSuccessColor(string $strength_success_color): self
+    public function setStrengthSuccessColor(string $strength_success_color): static
     {
         $this->strength_success_color = $strength_success_color;
 

@@ -11,7 +11,7 @@ trait HasLoading
         return $this->loading;
     }
 
-    public function setLoading(bool|string $loading): self
+    public function setLoading(bool|string $loading): static
     {
         $this->loading = $loading;
 

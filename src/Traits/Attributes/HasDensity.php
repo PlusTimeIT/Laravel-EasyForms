@@ -13,7 +13,7 @@ trait HasDensity
         return $this->density;
     }
 
-    public function setDensity(DensityTypes $density): self
+    public function setDensity(DensityTypes $density): static
     {
         $this->density = $density;
 

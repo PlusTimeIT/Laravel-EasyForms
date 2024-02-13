@@ -11,7 +11,7 @@ trait HasDataSiteKey
         return $this->data_site_key;
     }
 
-    public function setDataSiteKey(string $data_site_key): self
+    public function setDataSiteKey(string $data_site_key): static
     {
         $this->data_site_key = $data_site_key;
 

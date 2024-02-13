@@ -11,7 +11,7 @@ trait HasError
         return $this->error;
     }
 
-    public function setError(bool $error): self
+    public function setError(bool $error): static
     {
         $this->error = $error;
 

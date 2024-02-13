@@ -11,7 +11,7 @@ trait HasHideInputs
         return $this->hide_inputs;
     }
 
-    public function setHideInputs(bool $hide_inputs): self
+    public function setHideInputs(bool $hide_inputs): static
     {
         $this->hide_inputs = $hide_inputs;
 

@@ -11,7 +11,7 @@ trait HasOpenOnHover
         return $this->open_on_hover;
     }
 
-    public function setOpenOnHover(bool $open_on_hover): self
+    public function setOpenOnHover(bool $open_on_hover): static
     {
         $this->open_on_hover = $open_on_hover;
 

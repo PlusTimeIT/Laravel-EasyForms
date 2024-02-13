@@ -11,7 +11,7 @@ trait HasContained
         return $this->contained;
     }
 
-    public function setContained(bool $contained): self
+    public function setContained(bool $contained): static
     {
         $this->contained = $contained;
 

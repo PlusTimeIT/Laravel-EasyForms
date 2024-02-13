@@ -11,7 +11,7 @@ trait HasStriped
         return $this->striped;
     }
 
-    public function setStriped(bool $striped): self
+    public function setStriped(bool $striped): static
     {
         $this->striped = $striped;
 

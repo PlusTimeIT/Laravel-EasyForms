@@ -18,7 +18,7 @@ trait HasFormLoader
         return $this->loader;
     }
 
-    public function setLoader(FormLoader $loader): self
+    public function setLoader(FormLoader $loader): static
     {
         $this->loader = $loader;
 

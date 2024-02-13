@@ -6,7 +6,7 @@ trait HasDependsOn
 {
     protected ?string $dependsOn;
 
-    public function dependsOn(string $dependsOn): self
+    public function dependsOn(string $dependsOn): static
     {
         $this->dependsOn = $dependsOn;
 
@@ -18,7 +18,7 @@ trait HasDependsOn
         return $this->dependsOn;
     }
 
-    public function setDependsOn(string $dependsOn): self
+    public function setDependsOn(string $dependsOn): static
     {
         $this->dependsOn = $dependsOn;
 

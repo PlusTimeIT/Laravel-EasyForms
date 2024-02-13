@@ -16,7 +16,7 @@ trait HasIndeterminate
         return $this->indeterminate;
     }
 
-    public function setIndeterminate(string|bool $indeterminate): self
+    public function setIndeterminate(string|bool $indeterminate): static
     {
         $this->indeterminate = $indeterminate;
 

@@ -18,14 +18,14 @@ trait HasRowColumnLayout
         return $this->row;
     }
 
-    public function setColumn(bool $column): self
+    public function setColumn(bool $column): static
     {
         $this->column = $column;
 
         return $this;
     }
 
-    public function setRow(bool $row): self
+    public function setRow(bool $row): static
     {
         $this->row = $row;
 

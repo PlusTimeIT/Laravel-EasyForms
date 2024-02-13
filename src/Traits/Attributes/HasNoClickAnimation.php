@@ -11,7 +11,7 @@ trait HasNoClickAnimation
         return $this->no_click_animation;
     }
 
-    public function setNoClickAnimation(bool $no_click_animation): self
+    public function setNoClickAnimation(bool $no_click_animation): static
     {
         $this->no_click_animation = $no_click_animation;
 

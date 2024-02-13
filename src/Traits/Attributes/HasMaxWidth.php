@@ -11,7 +11,7 @@ trait HasMaxWidth
         return $this->max_width;
     }
 
-    public function setMaxWidth(string|int $max_width): self
+    public function setMaxWidth(string|int $max_width): static
     {
         $this->max_width = $max_width;
 

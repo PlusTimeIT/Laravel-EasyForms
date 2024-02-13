@@ -11,7 +11,7 @@ trait HasDisabled
         return $this->disabled;
     }
 
-    public function setDisabled(bool $disabled): self
+    public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
 

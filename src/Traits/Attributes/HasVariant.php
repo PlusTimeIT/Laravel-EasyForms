@@ -13,7 +13,7 @@ trait HasVariant
         return $this->variant;
     }
 
-    public function setVariant(TextVariantTypes $variant): self
+    public function setVariant(TextVariantTypes $variant): static
     {
         $this->variant = $variant;
 

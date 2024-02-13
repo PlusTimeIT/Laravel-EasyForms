@@ -11,7 +11,7 @@ trait HasValue
         return $this->value;
     }
 
-    public function setValue(mixed $value): self
+    public function setValue(mixed $value): static
     {
         $this->value = $value;
 

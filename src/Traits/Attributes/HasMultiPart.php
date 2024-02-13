@@ -11,7 +11,7 @@ trait HasMultiPart
         return $this->multi_part;
     }
 
-    public function setMultiPart(bool $multi_part): self
+    public function setMultiPart(bool $multi_part): static
     {
         $this->multi_part = $multi_part;
 

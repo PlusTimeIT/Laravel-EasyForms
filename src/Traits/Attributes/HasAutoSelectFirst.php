@@ -11,7 +11,7 @@ trait HasAutoSelectFirst
         return $this->auto_select_first;
     }
 
-    public function setAutoSelectFirst(bool|string $auto_select_first): self
+    public function setAutoSelectFirst(bool|string $auto_select_first): static
     {
         $this->auto_select_first = $auto_select_first;
 

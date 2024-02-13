@@ -15,7 +15,7 @@ trait HasShowIf
         return ['parent' => $this->show_if_parent, 'value' => $this->show_if_value];
     }
 
-    public function setShowIf(string $parent, mixed $value): self
+    public function setShowIf(string $parent, mixed $value): static
     {
         $this->show_if = true;
         $this->show_if_parent = $parent;
@@ -24,7 +24,7 @@ trait HasShowIf
         return $this;
     }
 
-    public function showIf(string $parent, mixed $value): self
+    public function showIf(string $parent, mixed $value): static
     {
         $this->show_if = true;
         $this->show_if_parent = $parent;

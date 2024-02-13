@@ -11,7 +11,7 @@ trait HasAmPmInTitle
         return $this->ampmInTitle;
     }
 
-    public function setAmPmInTitle(bool $ampmInTitle): self
+    public function setAmPmInTitle(bool $ampmInTitle): static
     {
         $this->ampmInTitle = $ampmInTitle;
 

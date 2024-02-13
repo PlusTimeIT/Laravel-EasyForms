@@ -13,7 +13,7 @@ trait HasPosition
         return $this->position;
     }
 
-    public function setPosition(PositionTypes $position): self
+    public function setPosition(PositionTypes $position): static
     {
         $this->position = $position;
 

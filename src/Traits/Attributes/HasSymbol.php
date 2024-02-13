@@ -11,7 +11,7 @@ trait HasSymbol
         return $this->view_symbolmode;
     }
 
-    public function setSymbol(mixed $symbol): self
+    public function setSymbol(mixed $symbol): static
     {
         $this->symbol = $symbol;
 

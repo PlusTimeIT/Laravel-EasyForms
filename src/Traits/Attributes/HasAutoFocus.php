@@ -11,7 +11,7 @@ trait HasAutoFocus
         return $this->auto_focus;
     }
 
-    public function setAutoFocus(bool $auto_focus): self
+    public function setAutoFocus(bool $auto_focus): static
     {
         $this->auto_focus = $auto_focus;
 

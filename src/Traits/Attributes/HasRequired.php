@@ -11,7 +11,7 @@ trait HasRequired
         return $this->required;
     }
 
-    public function setRequired(bool $required): self
+    public function setRequired(bool $required): static
     {
         $this->required = $required;
 

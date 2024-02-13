@@ -11,7 +11,7 @@ trait HasStacked
         return $this->stacked;
     }
 
-    public function setStacked(bool $stacked): self
+    public function setStacked(bool $stacked): static
     {
         $this->stacked = $stacked;
 

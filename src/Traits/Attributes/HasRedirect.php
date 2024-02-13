@@ -11,12 +11,12 @@ trait HasRedirect
         return $this->redirect;
     }
 
-    public function redirect($redirect): self
+    public function redirect($redirect): static
     {
         return $this->setRedirect($redirect);
     }
 
-    public function setRedirect(bool|string $redirect): self
+    public function setRedirect(bool|string $redirect): static
     {
         $this->redirect = $redirect;
 

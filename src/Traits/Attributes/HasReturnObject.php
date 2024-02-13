@@ -11,7 +11,7 @@ trait HasReturnObject
         return $this->return_object;
     }
 
-    public function setReturnObject(bool $return_object): self
+    public function setReturnObject(bool $return_object): static
     {
         $this->return_object = $return_object;
 

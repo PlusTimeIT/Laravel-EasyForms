@@ -11,7 +11,7 @@ trait HasOutlined
         return $this->outlined;
     }
 
-    public function setOutlined(bool $outlined): self
+    public function setOutlined(bool $outlined): static
     {
         $this->outlined = $outlined;
 

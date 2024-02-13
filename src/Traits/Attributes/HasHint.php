@@ -11,7 +11,7 @@ trait HasHint
         return $this->hint;
     }
 
-    public function setHint(string $hint): self
+    public function setHint(string $hint): static
     {
         $this->hint = $hint;
 

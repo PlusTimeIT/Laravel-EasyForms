@@ -11,7 +11,7 @@ trait HasUpperCase
         return $this->upper_case;
     }
 
-    public function setUpperCase(bool $upper_case): self
+    public function setUpperCase(bool $upper_case): static
     {
         $this->upper_case = $upper_case;
 

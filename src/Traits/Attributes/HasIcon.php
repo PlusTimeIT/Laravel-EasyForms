@@ -13,7 +13,7 @@ trait HasIcon
         return $this->icon;
     }
 
-    public function setIcon(Icon $icon): self
+    public function setIcon(Icon $icon): static
     {
         $this->icon = $icon;
 

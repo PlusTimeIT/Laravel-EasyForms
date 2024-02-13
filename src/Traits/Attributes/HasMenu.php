@@ -11,7 +11,7 @@ trait HasMenu
         return $this->menu;
     }
 
-    public function setMenu(bool|string $menu): self
+    public function setMenu(bool|string $menu): static
     {
         $this->menu = $menu;
 

@@ -16,7 +16,7 @@ trait HasActivator
         return $this->activator;
     }
 
-    public function setActivator(bool $activator): self
+    public function setActivator(bool $activator): static
     {
         $this->activator = $activator;
 

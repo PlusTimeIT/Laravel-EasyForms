@@ -11,7 +11,7 @@ trait HasReverse
         return $this->reverse;
     }
 
-    public function setReverse(bool $reverse): self
+    public function setReverse(bool $reverse): static
     {
         $this->reverse = $reverse;
 

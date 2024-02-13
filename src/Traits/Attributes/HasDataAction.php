@@ -11,7 +11,7 @@ trait HasDataAction
         return $this->data_action;
     }
 
-    public function setDataAction(string $data_action): self
+    public function setDataAction(string $data_action): static
     {
         $this->data_action = $data_action;
 
