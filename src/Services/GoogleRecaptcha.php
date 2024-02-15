@@ -26,7 +26,9 @@ class GoogleRecaptcha
 
         // check action is set correctly for action forms
         if ($form instanceof ActionForm) {
-            if ($response['action'] != 'process_form_'.strtolower(str_replace('\\', '_', $request->input('form_name'))).'_'.strtolower(str_replace('\\', '_', $request->input('form_action')))) {
+            $formToGoogleAction = strtolower(str_replace('\\', '_', $request->input('form_name')));
+            $actionGoogleAction = strtolower(str_replace('\\', '_', $request->input('form_action')));
+            if ($response['action'] != 'process_form_'.$formToGoogleAction.'_'.$actionGoogleAction) {
                 return ['form' => 'Action does not meet requirements'];
             }
         }
