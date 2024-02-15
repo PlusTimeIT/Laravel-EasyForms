@@ -26,14 +26,14 @@ class GoogleRecaptcha
 
         // check action is set correctly for action forms
         if ($form instanceof ActionForm) {
-            if ($response['action'] != 'process_form_'.str_replace('\\', '_', $request->input('form_name')).'_'.str_replace('\\', '_', $request->input('form_action'))) {
+            if ($response['action'] != 'process_form_'.strtolower(str_replace('\\', '_', $request->input('form_name'))).'_'.strtolower(str_replace('\\', '_', $request->input('form_action')))) {
                 return ['form' => 'Action does not meet requirements'];
             }
         }
 
         // check action is set correctly for input forms
         if ($form instanceof InputForm) {
-            if ($response['action'] != 'process_form_'.str_replace('\\', '_', $request->input('form_name'))) {
+            if ($response['action'] != 'process_form_'.strtolower(str_replace('\\', '_', $request->input('form_name')))) {
                 return ['form' => 'Action does not meet requirements'];
             }
         }
